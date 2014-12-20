@@ -36,8 +36,51 @@
     </nav>
     <div class="container-fluid">
        <br>
-                   <h3>css</h3>
-        <pre class="language-css"><code class="language-css"><span class="token atrule">@media screen and (-webkit-min-device-pixel-ratio<span class="token punctuation">:</span> 0)</span> <span class="token punctuation">{</span>
+           <h1>Code Samples</h1>
+    <div class="row">
+        <div class="col-sm-3 form-group">
+            <label>Select a language</label>
+            <select id="lang-select" class="form-control">
+                            <option value="bash">Bash</option>
+                            <option value="css">Css</option>
+                            <option value="javascript">Javascript</option>
+                            <option value="markup">Markup</option>
+                        </select>
+        </div>
+    </div>
+            <pre id="bash" class="language-bash hidden"><code class="language-bash"><span class="token important">#!/bin/bash</span>
+
+<span class="token comment" spellcheck="true">###### BEGIN CONFIG
+</span>ACCEPTED_HOSTS<span class="token operator">=</span><span class="token string">"/root/.hag_accepted.conf"</span>
+BE_VERBOSE<span class="token operator">=</span><span class="token boolean">false</span>
+<span class="token comment" spellcheck="true">###### END CONFIG
+</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"$UID"</span> <span class="token operator">-</span>ne <span class="token number">0</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+ <span class="token keyword">echo</span> <span class="token string">"Superuser rights is required"</span>
+ <span class="token keyword">echo</span> 'Printing the <span class="token comment" spellcheck="true"># sign'
+</span> <span class="token keyword">exit</span> <span class="token number">2</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> test $<span class="token comment" spellcheck="true"># -eq 0
+</span><span class="token keyword">then</span>
+<span class="token keyword">elif</span> test <span class="token punctuation">[</span> $<span class="token number">1</span> <span class="token operator">==</span> <span class="token string">'start'</span> <span class="token punctuation">]</span>
+<span class="token keyword">else</span>
+<span class="token keyword">fi</span>
+
+<span class="token function">genApacheConf<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"$2"</span> <span class="token operator">=</span> <span class="token string">"www"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span>
+ <span class="token keyword">then</span>
+  full_domain<span class="token operator">=</span>$<span class="token number">1</span>
+ <span class="token keyword">else</span>
+  full_domain<span class="token operator">=</span>$<span class="token number">2</span><span class="token punctuation">.</span>$<span class="token number">1</span>
+ <span class="token keyword">fi</span>
+ host_root<span class="token operator">=</span><span class="token string">"${APACHE_HOME_DIR}$1/$2/$(title)"</span>
+ <span class="token keyword">echo</span> <span class="token operator">-</span>e <span class="token string">"# Host $1/$2 :"</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+            <pre id="css" class="language-css hidden"><code class="language-css"><span class="token atrule">@media screen and (-webkit-min-device-pixel-ratio<span class="token punctuation">:</span> 0)</span> <span class="token punctuation">{</span>
   <span class="token selector">body<span class="token pseudo-class">:first-of-type</span> pre<span class="token pseudo-element">::after</span> </span><span class="token punctuation">{</span>
     <span class="token property">content</span><span class="token punctuation">:</span> '<span class="token property">highlight</span><span class="token punctuation">:</span> ' <span class="token function">attr</span>(class)<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
@@ -64,8 +107,7 @@ li[lang=ru] </span><span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
 
 </code></pre>
-            <h3>javascript</h3>
-        <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> $<span class="token function">initHighlight<span class="token punctuation">(</span></span>block<span class="token punctuation">,</span> flags<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <pre id="javascript" class="language-javascript hidden"><code class="language-javascript"><span class="token keyword">function</span> $<span class="token function">initHighlight<span class="token punctuation">(</span></span>block<span class="token punctuation">,</span> flags<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">try</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>block<span class="token punctuation">.</span>className<span class="token punctuation">.</span><span class="token function">search<span class="token punctuation">(</span></span><span class="token regex">/\bno\-highlight\b/</span><span class="token punctuation">)</span> <span class="token operator">!</span><span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
       <span class="token keyword">return</span> <span class="token function">processBlock<span class="token punctuation">(</span></span>block<span class="token punctuation">.</span><span class="token keyword">function</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token number">0x0F</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">' class=""'</span><span class="token punctuation">;</span>
@@ -82,8 +124,7 @@ li[lang=ru] </span><span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span>Array<span class="token punctuation">.</span><span class="token function">every<span class="token punctuation">(</span></span>classes<span class="token punctuation">,</span> Boolean<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-            <h3>markup</h3>
-        <pre class="language-markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+            <pre id="markup" class="language-markup hidden"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>response</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ok<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xml:</span>lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>text</span><span class="token punctuation">&gt;</span></span>Ok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>comment</span> <span class="token attr-name">html_allowed</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
@@ -128,6 +169,23 @@ li[lang=ru] </span><span class="token punctuation">{</span>
             switchTheme('okaidia', true);
         });
     </script>
-    
+     <script type="text/javascript">
+    $(document).ready(function(){
+
+        function switchSample(id, select){
+            $('pre').addClass('hidden');
+            $('#'+ id).removeClass('hidden');
+            if (select) $('#lang-select').val(id);
+        }
+        
+        $("#lang-select").on('change', function(){
+            var id = $(this).val();
+            switchSample(id);
+        })
+
+        switchSample('markup', true);
+    });
+</script>
+
 </body>
 </html>

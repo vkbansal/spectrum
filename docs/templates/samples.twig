@@ -1,11 +1,38 @@
 {% extends 'base.twig' %}
 
 {% block content %}
+    <h1>Code Samples</h1>
+    <div class="row">
+        <div class="col-sm-3 form-group">
+            <label>Select a language</label>
+            <select id="lang-select" class="form-control">
+            {% for lang,code in data %}
+                <option value="{{lang}}">{{ lang|capitalize }}</option>
+            {% endfor %}
+            </select>
+        </div>
+    </div>
     {% for lang,code in data %}
-        <h3>{{ lang }}</h3>
-        <pre class="language-{{lang}}"><code class="language-{{lang}}">{{ code|raw }}</code></pre>
+        <pre id="{{lang}}" class="language-{{lang}} hidden"><code class="language-{{lang}}">{{ code|raw }}</code></pre>
     {% endfor %}
 {% endblock %}
 {% block js %}
+ <script type="text/javascript">
+    $(document).ready(function(){
+
+        function switchSample(id, select){
+            $('pre').addClass('hidden');
+            $('#'+ id).removeClass('hidden');
+            if (select) $('#lang-select').val(id);
+        }
+        
+        $("#lang-select").on('change', function(){
+            var id = $(this).val();
+            switchSample(id);
+        })
+
+        switchSample('markup', true);
+    });
+</script>
 
 {% endblock %}

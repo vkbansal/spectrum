@@ -10,7 +10,7 @@ $loader = new Twig_Loader_Filesystem(__DIR__.'/../templates');
 $twig = new Twig_Environment($loader);
 
 $finder = new Finder();
-$finder->files()->name('*.txt')->in(__DIR__.'/../samples/');
+$finder->sortByName()->files()->name('*.txt')->in(__DIR__.'/../samples/');
 
 $data = [];
 
