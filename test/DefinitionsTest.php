@@ -18,6 +18,7 @@ class DefinitionsTest extends PHPUnit_Framework_TestCase {
         $this->repo->loadDefinition('clike');
         $this->repo->loadDefinition('javascript');
         $this->repo->loadDefinition('php');
+        $this->repo->loadDefinition('bash');
     }
     
 }
