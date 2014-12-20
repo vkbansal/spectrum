@@ -1,0 +1,11 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+    {% for lang,code in data %}
+        <h3>{{ lang }}</h3>
+        <pre class="language-{{lang}}"><code class="language-{{lang}}">{{ code|raw }}</code></pre>
+    {% endfor %}
+{% endblock %}
+{% block js %}
+
+{% endblock %}

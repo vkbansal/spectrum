@@ -1,0 +1,7 @@
+/vendor/
+composer.lock
+.idea/
+bower_components/
+test/visualTest/prismed-js/*.html
+test/visualTest/prismed-php/*.html
+test/visualTest/unprismed/*.html

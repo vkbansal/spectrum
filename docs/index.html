@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Prism.php</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" id="theme-basic" href="assets/css/prism-basic.css" disabled>
+    <link rel="stylesheet" id="theme-coy" href="assets/css/prism-coy.css" disabled>
+    <link rel="stylesheet" id="theme-dark" href="assets/css/prism-dark.css" disabled>
+    <link rel="stylesheet" id="theme-funky" href="assets/css/prism-funky.css" disabled>
+    <link rel="stylesheet" id="theme-okaidia" href="assets/css/prism-okaidia.css">
+    <link rel="stylesheet" id="theme-twilight" href="assets/css/prism-twilight.css" disabled>
+    <link rel="stylesheet" id="theme-tomorrow" href="assets/css/prism-tomorrow.css" disabled>
+</head>
+<body>
+    <nav class="navmenu navmenu-default navmenu-fixed-left" role="navigation">
+        <a class="navmenu-brand" href="#">Prism.php</a>
+
+        <ul class="nav navmenu-nav">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="samples.html">Code Samples</a></li>
+            <li class="theme-switcher">
+                <span>Theme Switcher</span>
+                <select name="theme" id="theme-switcher" class="form-control">
+                    <option value="basic">Basic</option>
+                    <option value="coy">Coy</option>
+                    <option value="dark">Dark</option>
+                    <option value="funky">Funky</option>
+                    <option value="okaidia">Okaidia</option>
+                    <option value="twilight">Twilight</option>
+                    <option value="tomorrow">Tomorrow</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+       <br>
+           <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><h1>Prism.php (WIP)</h1>
+<p>This is a php port of <a href="https://github.com/LeaVerou/prism">prism.js</a> syntax highlighter originally written by <a href="http://github.com/LeaVerou">@LeaVerou</a>.</p>
+<h2>Requirements</h2>
+<ul><li>PHP &gt;= 5.4</li>
+<li>libxml &gt;= 2.6.0</li>
+</ul><h2>Installation</h2>
+<pre class=" language-js"><code class=" language-js"><span class="token punctuation">{</span>
+    <span class="token string">"require"</span> <span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string">"vkbansal/prism"</span> <span class="token punctuation">:</span> <span class="token string">"dev-master"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2>Usage</h2>
+<pre class=" language-php"><code class=" language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Prism</span><span class="token punctuation">;</span>
+
+$prism <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prism</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+$code <span class="token operator">=</span> $prism<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">highlightHTML<span class="token punctuation">(</span></span>'<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span></span>string<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></span>'<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> $code<span class="token punctuation">;</span></code></pre></body></html>
+
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            function switchTheme(id, select){
+                $('link[id^=theme]').attr('disabled', 'disabled');
+                $('link#theme-'+ id).removeAttr('disabled');
+                if (select) $('#theme-switcher').val(id);
+            }
+            
+            $("#theme-switcher").on('change', function(){
+                var id = $(this).val();
+                switchTheme(id);
+            })
+
+            switchTheme('okaidia', true);
+        });
+    </script>
+    
+</body>
+</html>

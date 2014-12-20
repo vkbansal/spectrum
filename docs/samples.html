@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Prism.php</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" id="theme-basic" href="assets/css/prism-basic.css" disabled>
+    <link rel="stylesheet" id="theme-coy" href="assets/css/prism-coy.css" disabled>
+    <link rel="stylesheet" id="theme-dark" href="assets/css/prism-dark.css" disabled>
+    <link rel="stylesheet" id="theme-funky" href="assets/css/prism-funky.css" disabled>
+    <link rel="stylesheet" id="theme-okaidia" href="assets/css/prism-okaidia.css">
+    <link rel="stylesheet" id="theme-twilight" href="assets/css/prism-twilight.css" disabled>
+    <link rel="stylesheet" id="theme-tomorrow" href="assets/css/prism-tomorrow.css" disabled>
+</head>
+<body>
+    <nav class="navmenu navmenu-default navmenu-fixed-left" role="navigation">
+        <a class="navmenu-brand" href="#">Prism.php</a>
+
+        <ul class="nav navmenu-nav">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="samples.html">Code Samples</a></li>
+            <li class="theme-switcher">
+                <span>Theme Switcher</span>
+                <select name="theme" id="theme-switcher" class="form-control">
+                    <option value="basic">Basic</option>
+                    <option value="coy">Coy</option>
+                    <option value="dark">Dark</option>
+                    <option value="funky">Funky</option>
+                    <option value="okaidia">Okaidia</option>
+                    <option value="twilight">Twilight</option>
+                    <option value="tomorrow">Tomorrow</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+       <br>
+                   <h3>css</h3>
+        <pre class="language-css"><code class="language-css"><span class="token atrule">@media screen and (-webkit-min-device-pixel-ratio<span class="token punctuation">:</span> 0)</span> <span class="token punctuation">{</span>
+  <span class="token selector">body<span class="token pseudo-class">:first-of-type</span> pre<span class="token pseudo-element">::after</span> </span><span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> '<span class="token property">highlight</span><span class="token punctuation">:</span> ' <span class="token function">attr</span>(class)<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">body </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span>(45deg, blue, red)<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule">@import url('print.css')<span class="token punctuation">;</span></span>
+<span class="token atrule">@page<span class="token punctuation">:</span>right</span> <span class="token punctuation">{</span>
+ <span class="token property">margin</span><span class="token punctuation">:</span> 1cm 2cm 1.3cm 4cm<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule">@font-face</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> Chunkfive<span class="token punctuation">;</span> <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('Chunkfive.otf')</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div<span class="token class">.text</span>,
+<span class="token id">#content</span>,
+li[lang=ru] </span><span class="token punctuation">{</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> Tahoma, Chunkfive, sans-serif<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url('hatch.png')</span> <span class="token comment" spellcheck="true">/* wtf? */</span><span class="token punctuation">;</span>  <span class="token property">color</span><span class="token punctuation">:</span> #F0F0F0 <span class="token important">!important</span><span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+            <h3>javascript</h3>
+        <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> $<span class="token function">initHighlight<span class="token punctuation">(</span></span>block<span class="token punctuation">,</span> flags<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>block<span class="token punctuation">.</span>className<span class="token punctuation">.</span><span class="token function">search<span class="token punctuation">(</span></span><span class="token regex">/\bno\-highlight\b/</span><span class="token punctuation">)</span> <span class="token operator">!</span><span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token function">processBlock<span class="token punctuation">(</span></span>block<span class="token punctuation">.</span><span class="token keyword">function</span><span class="token punctuation">,</span> <span class="token keyword">true</span><span class="token punctuation">,</span> <span class="token number">0x0F</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">' class=""'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/* handle exception */</span>
+    <span class="token keyword">var</span> e4x <span class="token operator">=</span>
+        <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>Example
+            <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span><span class="token number">1234</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> classes<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// "0 / 2" should not be parsed as regexp
+</span>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">checkCondition<span class="token punctuation">(</span></span>classes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">===</span> undefined<span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token regex">/\d+[\s/]/g</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span>Array<span class="token punctuation">.</span><span class="token function">every<span class="token punctuation">(</span></span>classes<span class="token punctuation">,</span> Boolean<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+            <h3>markup</h3>
+        <pre class="language-markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0"?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>response</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ok<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xml:</span>lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>text</span><span class="token punctuation">&gt;</span></span>Ok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>comment</span> <span class="token attr-name">html_allowed</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">ns1:</span>description</span><span class="token punctuation">&gt;</span></span><span class="token cdata">&lt;![CDATA[
+  CDATA is &lt;not&gt; magical.
+  ]]&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">ns1:</span>description</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>response</span><span class="token punctuation">&gt;</span></span>
+
+
+<span class="token doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span>body {width: 500px;}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>application/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  function $init() {return true;}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">checked</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>'title'</span><span class="token punctuation">&gt;</span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- here goes the rest of the page --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre>
+        </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            function switchTheme(id, select){
+                $('link[id^=theme]').attr('disabled', 'disabled');
+                $('link#theme-'+ id).removeAttr('disabled');
+                if (select) $('#theme-switcher').val(id);
+            }
+            
+            $("#theme-switcher").on('change', function(){
+                var id = $(this).val();
+                switchTheme(id);
+            })
+
+            switchTheme('okaidia', true);
+        });
+    </script>
+    
+</body>
+</html>
