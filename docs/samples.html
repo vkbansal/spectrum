@@ -47,6 +47,7 @@
                             <option value="ini">INI</option>
                             <option value="java">Java</option>
                             <option value="javascript">JavaScript</option>
+                            <option value="less">LESS CSS</option>
                             <option value="markup">Markup</option>
                             <option value="php">PHP</option>
                             <option value="python">Python</option>
@@ -237,6 +238,43 @@ use-prompt</span><span class="token attr-value"><span class="token punctuation">
       <span class="token keyword">return</span> <span class="token regex">/\d+[\s/]/g</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">every</span><span class="token punctuation">(</span>classes<span class="token punctuation">,</span> Boolean<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+        </div>
+            <div id="less" class="definition">
+            <p>Default language reference: <b>less</b></p>
+                        <pre class="language-less"><code class="language-less"><span class="token comment" spellcheck="true">/*
+Using the most minimal language subset to ensure we
+have enough relevance hints for proper Less detection
+*/</span>
+
+<span class="token variable">@import</span> <span class="token string">"fruits"</span><span class="token punctuation">;</span>
+
+<span class="token variable">@rhythm<span class="token punctuation">:</span></span> <span class="token number">1.5</span>em<span class="token punctuation">;</span>
+
+<span class="token atrule">@media screen and <span class="token punctuation">(</span>min-resolution<span class="token punctuation">:</span> 2dppx<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">body</span> <span class="token punctuation">{</span><span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">125%</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">section &gt; .foo + #bar:hover [href*="less"]</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span>     <span class="token variable">@rhythm</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token variable">@rhythm</span><span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span>    <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">5%</span> <span class="token operator">+</span> <span class="token number">20</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#f00ba7</span> <span class="token function">url</span><span class="token punctuation">(</span><span class="token property">http</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true">//placehold.alpha-centauri/42.png) no-repeat;</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">135</span>deg<span class="token punctuation">,</span> wheat<span class="token punctuation">,</span> fuchsia<span class="token punctuation">)</span> <span class="token important">!important</span> <span class="token punctuation">;</span>
+    <span class="token property">background-blend-mode</span><span class="token punctuation">:</span> multiply<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule">@font-face</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true">/* ? */</span> <span class="token string">'Omega'</span><span class="token punctuation">;</span>
+    <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('../fonts/omega-webfont.woff?v=2.0.2')</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.icon-baz::before</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span>     inline<span class="token operator">-</span>block<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Omega"</span><span class="token punctuation">,</span> Alpha<span class="token punctuation">,</span> sans<span class="token operator">-</span>serif<span class="token punctuation">;</span>
+    <span class="token property">content</span><span class="token punctuation">:</span>     <span class="token string">"\f085"</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span>       <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">98</span><span class="token punctuation">,</span> <span class="token number">76</span> <span class="token comment" spellcheck="true">/* or 54 */</span><span class="token punctuation">,</span> <span class="token number">231</span><span class="token punctuation">,</span> <span class="token number">.75</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 </code></pre>
