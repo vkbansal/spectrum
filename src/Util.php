@@ -26,7 +26,7 @@ class Util
      */
     public static function encodeCodeBlocks($code)
     {
-        return preg_replace_callback(self::$codeTagRegex, function($match){
+        return preg_replace_callback(self::$codeTagRegex, function ($match) {
             return $match[1].self::encodeHTML($match[2]).$match[3];
         }, $code);
     }
@@ -38,7 +38,7 @@ class Util
      */
     public static function decodeCodeBlocks($code)
     {
-        return preg_replace_callback(self::$codeTagRegex, function($match){
+        return preg_replace_callback(self::$codeTagRegex, function ($match) {
             return $match[1].self::decodeHTML($match[2]).$match[3];
         }, $code);
     }

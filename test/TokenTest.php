@@ -13,7 +13,7 @@ class TokenTest extends PHPUnit_Framework_TestCase {
     public function testDetokenize()
     {
         $case = ['lorem ipsum', $this->token];
-        $nodes = Token::Detokenize($case, 'dummy');
+        $nodes = Token::detokenize($case, 'dummy');
 
         $this->assertInstanceOf('DOMText', $nodes[0]);
         $this->assertInstanceOf('DOMNode', $nodes[1]);

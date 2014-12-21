@@ -71,7 +71,7 @@ class Prism
         $this->document = new DOMDocument();
         $this->document->encoding = 'utf-8';
         
-        $html = $encode ? Util::encodeCodeBlocks($html) : $html; 
+        $html = $encode ? Util::encodeCodeBlocks($html) : $html;
         
         $this->document->loadHTML($html);
         
@@ -79,7 +79,7 @@ class Prism
         
         $nodes = $crawler->filter('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code');
 
-        foreach($nodes as $node) {
+        foreach ($nodes as $node) {
             $this->highlightElement($node);
         }
 
@@ -111,14 +111,16 @@ class Prism
      */
     public function highlightElement(DOMElement $element)
     {
-        $language; $grammar; $parent = $element;
+        $language = null;
+        $grammar = null;
+        $parent = $element;
 
-        while($parent && preg_match($this->langTest, $parent->getAttribute('class')) !== 1){
+        while ($parent && preg_match($this->langTest, $parent->getAttribute('class')) !== 1) {
             $parent = $parent->parentNode;
         }
 
-        if($parent) {
-            if (preg_match($this->langTest, $parent->getAttribute('class'), $matches) === 1){
+        if ($parent) {
+            if (preg_match($this->langTest, $parent->getAttribute('class'), $matches) === 1) {
                 
                 $language = $matches[1];
             
@@ -128,7 +130,7 @@ class Prism
             $grammar = $this->getGrammar($language);
         }
 
-        if(!isset($grammar) || is_null($grammar)){
+        if (!isset($grammar) || is_null($grammar)) {
             return false;
         }
 
@@ -139,7 +141,7 @@ class Prism
 
         $parent = $element->parentNode;
 
-        if(preg_match("/pre/i", $parent->nodeName) === 1){
+        if (preg_match("/pre/i", $parent->nodeName) === 1) {
             $className = $parent->getAttribute('class');
             $className = preg_replace($this->langTest, '', $className);
             $className = preg_replace("/\s+/", ' ', $className).' language-'.$language;
@@ -148,7 +150,7 @@ class Prism
 
         $code = $this->getInnerHTML($element);
 
-        if(!isset($code)){
+        if (!isset($code)) {
             return false;
         }
 
@@ -218,5 +220,4 @@ class Prism
 
         return $innerHTML;
     }
-
 }

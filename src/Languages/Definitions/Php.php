@@ -83,7 +83,7 @@ class Php extends AbstractLanguage
             });
 
             // Wrap tokens in classes that are missing them
-            $this->repository->addHook('wrap', function($env) {
+            $this->repository->addHook('wrap', function ($env) {
                 // if (env.language === 'php' && env.type === 'markup') {
                 //     env.content = env.content.replace(/(\{\{\{PHP[0-9]+\}\}\})/g, "<span class=\"token php\">$1</span>");
                 // }

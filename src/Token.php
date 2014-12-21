@@ -54,8 +54,11 @@ class Token
             $temp = [];
 
             for ($i = 0; $i < count($content); $i++) {
-                if (!$content[$i]) continue;
-                $temp[] = self::detokenize($content[$i], $language, $content); 
+                if (!$content[$i]) {
+                    continue;
+                }
+
+                $temp[] = self::detokenize($content[$i], $language, $content);
             }
 
             return $temp;
@@ -72,7 +75,7 @@ class Token
      * @param array       $grammar
      * @param null|string $language
      */
-    public static function Tokenize($text, $grammar, $language = null)
+    public static function tokenize($text, $grammar, $language = null)
     {
         $strarr = [Util::decodeHTML($text)];
 
@@ -88,24 +91,24 @@ class Token
             $patterns = is_string($regex) || Util::isAssoc($regex) ? [$regex] : $regex;
 
             foreach ($patterns as $pattern) {
-               $inside = $alias = $match = $before = $after = $lookbehind = null;
-               $lookbehindLength = 0;
+                $inside = $alias = $match = $before = $after = $lookbehind = null;
+                $lookbehindLength = 0;
 
-                if(is_array($pattern)){
+                if (is_array($pattern)) {
 
-                    if(isset($pattern['inside'])) {
+                    if (isset($pattern['inside'])) {
                         $inside = $pattern['inside'];
                     }
 
-                    if(isset($pattern['alias'])) {
+                    if (isset($pattern['alias'])) {
                         $alias = $pattern['alias'];
                     }
 
-                    if(isset($pattern['lookbehind'])) {
+                    if (isset($pattern['lookbehind'])) {
                         $lookbehind = !!$pattern['lookbehind'];
                     }
 
-                    if(isset($pattern['pattern'])) {
+                    if (isset($pattern['pattern'])) {
                         $pattern = $pattern['pattern'];
                     }
                 }
@@ -127,7 +130,7 @@ class Token
 
                     if ($index > 0) {
                             
-                        if(!is_null($lookbehind)){
+                        if (!is_null($lookbehind)) {
                             $lookbehindLength = strlen($matches[1][0]);
                         }
 
@@ -136,7 +139,7 @@ class Token
                         $match = substr($matches[0][0], $lookbehindLength);
                         $to = $from + strlen($match);
 
-                        $before = substr($str,0, $from);
+                        $before = substr($str, 0, $from);
                         $after = substr($str, $to);
                         
                         $args = [];
@@ -155,7 +158,7 @@ class Token
                             $args[] = $after;
                         }
                         
-                        array_splice($strarr, $i , 1, $args);
+                        array_splice($strarr, $i, 1, $args);
                     }
                 }
             }
