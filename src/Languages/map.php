@@ -13,6 +13,7 @@ return [
         'clike'      => 'VKBansal\Prism\Languages\Definitions\CLike',
         'css'        => 'VKBansal\Prism\Languages\Definitions\CSS',
         'ini'        => 'VKBansal\Prism\Languages\Definitions\Ini',
+        'java' => 'VKBansal\Prism\Languages\Definitions\Java',
         'javascript' => 'VKBansal\Prism\Languages\Definitions\JavaScript',
         'markup'     => 'VKBansal\Prism\Languages\Definitions\Markup',
         'php'        => 'VKBansal\Prism\Languages\Definitions\Php',
