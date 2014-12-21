@@ -14,13 +14,15 @@ interface HookInterface
      * Add a Hook
      * @param string   $name
      * @param callable $callback
+     * @return void
      */
     public function add($name, callable $callback);
 
     /**
      * Run a Hook
-     * @param  name   $name
-     * @param  Node   $node
+     * @param  string $name
+     * @param  array  $node
+     * @return void
      */
     public function run($name, array $env = []);
 }

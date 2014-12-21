@@ -76,7 +76,11 @@ class Prism
 
     /**
      * Highlights all the code blocks in given HTML
-     * @return $this
+     * @param string  $html   HTML to be highlighted
+     * @param boolean $encode Whether input (HTML entities) should be encoded. Default true.
+     *                        Can be turned off in case input is already encoded to boost performance.
+     * @param boolean $decode Whether output (HTML entities) should be decoded. Default false.
+     * @return string
      */
     public function highlightHTML($html, $encode = true, $decode = false)
     {

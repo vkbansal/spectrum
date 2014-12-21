@@ -67,8 +67,8 @@ class Node
     }
 
     /**
-     * Get DOMNode for node
-     * @return DOMNode
+     * Get DOMElement for node
+     * @return \DOMElement
      */
     public function getDOMNode()
     {
