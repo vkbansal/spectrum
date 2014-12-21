@@ -136,7 +136,6 @@ class Token
                     $index = preg_match($pattern, $str, $matches, PREG_OFFSET_CAPTURE);
 
                     if ($index > 0) {
-                        $match = $before = $after = null;
                             
                         if (!is_null($lookbehind)) {
                             $lookbehindLength = strlen($matches[1][0]);
@@ -152,7 +151,7 @@ class Token
                         
                         $args = [];
                         
-                        if (!is_null($before) && $before !== "") {
+                        if ($before !== false && $before !== "") {
                             $args[] = $before;
                         }
 
@@ -162,7 +161,7 @@ class Token
                         
                         $args[] = $wrapped;
 
-                        if (!is_null($after) && $after!=="") {
+                        if ($after !== false && $after !== "") {
                             $args[] = $after;
                         }
                         
