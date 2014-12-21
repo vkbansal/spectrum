@@ -1,7 +1,7 @@
 ---
 name: CoffeeScript
 lang:
-  ref: markup
+  ref: coffeescript
   aliases:
     - coffee
     - coffee-script
