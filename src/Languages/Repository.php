@@ -55,6 +55,13 @@ class Repository implements RepositoryInterface
         }
     }
 
+    public function loadAllDefinitions()
+    {
+        foreach ($this->map as $key => $value) {
+            $this->loadDefinition($key);
+        }
+    }
+
     public function &referDefinition($language = null){
         
         $language = $this->resolveAlias($language);

@@ -57,6 +57,11 @@ class Prism
         }
     }
 
+    public function addAllLanguages()
+    {
+        $this->repo->loadAllDefinitions();
+    }
+
     /**
      * Highlights all the code blocks
      * @return $this
