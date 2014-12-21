@@ -3,6 +3,13 @@ namespace VKBansal\Prism\Languages;
 
 use VKBansal\Prism\Hooks\HookInterface;
 
+/**
+ * Repository for language definitions
+ * @package VKBansal\Prism\Languages\Repository
+ * @version 0.1.0
+ * @author Vivek Kumar Bansal <contact@vkbansal.me>
+ * @license MIT
+ */
 class Repository implements RepositoryInterface
 {
     /**
@@ -11,15 +18,34 @@ class Repository implements RepositoryInterface
      */
     protected $languages = [];
 
+    /**
+     * Language map container
+     * @var array
+     */
     protected $map = [];
 
+    /**
+     * Language aliases container
+     * @var array
+     */
     protected $aliases = [];
 
+    /**
+     * Default languages to be loaded
+     * @var [type]
+     */
+    protected $defaults = [];
+
+    /**
+     * Hooks container
+     * @var VKBansal\Prism\Hooks\HookInterface
+     */
     protected $hooks;
 
     /**
-     * [__construct description]
-     * @param [type] $dir [description]
+     * constructor
+     * @param VKBansal\Prism\Hooks\HookInterface $hooks
+     * @param string|null                        $path
      */
     public function __construct(HookInterface $hooks, $path = null)
     {
@@ -33,13 +59,12 @@ class Repository implements RepositoryInterface
             $data = require $path;
             $this->map = $data['map'];
             $this->aliases = $data['aliases'];
+            $this->defaults = $data['defaults'];
         }
     }
 
     /**
-     * Loads language definition
-     * @param  string $language
-     * @return void
+     * {@inheritdoc}
      */
     public function loadDefinition($language)
     {
@@ -57,6 +82,10 @@ class Repository implements RepositoryInterface
         }
     }
 
+    /**
+     * Loads All Definitions
+     * @return void
+     */
     public function loadAllDefinitions()
     {
         foreach ($this->map as $key => $value) {
@@ -64,6 +93,20 @@ class Repository implements RepositoryInterface
         }
     }
 
+    /**
+     * Loads Default Definitions
+     * @return void
+     */
+    public function loadDefaultDefinitions()
+    {
+        foreach ($this->defaults as $key) {
+            $this->loadDefinition($key);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function &referDefinition($language = null)
     {
         $language = $this->resolveAlias($language);
@@ -85,10 +128,12 @@ class Repository implements RepositoryInterface
         foreach ($segments as $segment) {
              $root =& $root[$segment];
         }
-
         return $root;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getDefinition($language = null)
     {
         $language = $this->resolveAlias($language);
@@ -113,27 +158,44 @@ class Repository implements RepositoryInterface
         return $root;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function hasDefinition($language)
     {
         return isset($this->languages[$language]);
     }
 
+    /**
+     * Add Hook
+     * @param string   $name
+     * @param callable $callback
+     */
     public function addHook($name, callable $callback)
     {
         $this->hooks->add($name, $callback);
     }
 
+    /**
+     * Run Hooks
+     * @param  string $name
+     * @return void
+     */
     public function runHook($name)
     {
         $this->hooks->run($name);
     }
 
-    protected function resolveAlias($language)
+    /**
+     * Resolve language alias
+     * @param  string $language
+     * @return string
+     */
+    public function resolveAlias($language)
     {
         if (isset($this->aliases[$language])) {
             $language = $this->aliases[$language];
         }
-
         return $language;
     }
 }

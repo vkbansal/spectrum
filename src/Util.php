@@ -1,6 +1,13 @@
 <?php
 namespace VKBansal\Prism;
 
+/**
+ * Utility Class
+ * @package VKBansal\Prism\Languages\Repository
+ * @version 0.1.0
+ * @author Vivek Kumar Bansal <contact@vkbansal.me>
+ * @license MIT
+ */
 class Util
 {
     /**

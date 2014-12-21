@@ -5,6 +5,13 @@ use DOMDocument;
 use VKBansal\Prism\Node;
 use VKBansal\Prism\Util;
 
+/**
+ * Token Class
+ * @package VKBansal\Prism\Token
+ * @version 0.1.0
+ * @author Vivek Kumar Bansal <contact@vkbansal.me>
+ * @license MIT
+ */
 class Token
 {
     /**
@@ -39,9 +46,10 @@ class Token
      * Detokenize
      * @param  string|array|Token $content
      * @param  string             $language
+     * @param  null|string        $parent
      * @return DOMNode|DOMNode[]
      */
-    public static function detokenize($content, $language)
+    public static function detokenize($content, $language, $parent = null)
     {
         $document = new DOMDocument();
         
@@ -72,7 +80,7 @@ class Token
      * Tokenize
      * @param string      $text
      * @param array       $grammar
-     * @param null|string $language
+     * @return Token[]
      */
     public static function tokenize($text, $grammar)
     {

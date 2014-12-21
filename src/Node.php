@@ -4,10 +4,17 @@ namespace VKBansal\Prism;
 use DOMDocument;
 use VKBansal\Prism\Token;
 
+/**
+ * Node Maker
+ * @package VKBansal\Prism\Node
+ * @version 0.1.0
+ * @author Vivek Kumar Bansal <contact@vkbansal.me>
+ * @license MIT
+ */
 class Node
 {
     /**
-     * @var [type]
+     * @var Token
      */
     protected $content;
 
@@ -17,7 +24,7 @@ class Node
     protected $language;
 
     /**
-     * @var [type]
+     * @var array
      */
     protected $parent;
 
@@ -37,10 +44,10 @@ class Node
     protected $attributes = [];
 
     /**
-     * [__construct description]
-     * @param Token  $content  [description]
-     * @param [type] $language [description]
-     * @param [type] $parent   [description]
+     * constructor
+     * @param Token      $content
+     * @param string     $language
+     * @param array|null $parent
      */
     public function __construct(Token $content, $language, $parent = null)
     {
@@ -51,8 +58,8 @@ class Node
     }
 
     /**
-     * [getLanguage description]
-     * @return [type] [description]
+     * Get language of node
+     * @return string
      */
     public function getLanguage()
     {
@@ -60,8 +67,8 @@ class Node
     }
 
     /**
-     * [getDOMNode description]
-     * @return [type] [description]
+     * Get DOMNode for node
+     * @return DOMNode
      */
     public function getDOMNode()
     {

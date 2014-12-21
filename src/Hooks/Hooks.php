@@ -3,6 +3,13 @@ namespace VKBansal\Prism\Hooks;
 
 use VKBansal\Prism\Hooks\HookInterface;
 
+/**
+ * Hooks Implementation.
+ * @package VKBansal\Prism\Hooks\Hooks
+ * @version 0.1.0
+ * @author Vivek Kumar Bansal <contact@vkbansal.me>
+ * @license MIT
+ */
 class Hooks implements HookInterface
 {
     /**
@@ -31,7 +38,8 @@ class Hooks implements HookInterface
             return;
         }
 
-        for ($i = 0; $i < count($this->hooks[$name]); $i++) {
+        $count = count($this->hooks[$name]);
+        for ($i = 0; $i < $count; $i++) {
             call_user_func($this->hooks[$name][$i], $env);
         }
     }

@@ -4,15 +4,14 @@ namespace VKBansal\Prism;
 use DOMDocument;
 use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\CssSelector\CssSelector;
 use VKBansal\Prism\Hooks\Hooks;
 use VKBansal\Prism\Languages\Repository;
 use VKBansal\Prism\Token;
 
 /**
- * Core class for syntax highliting
- * @package VKBansal\Prism\Highlighter
- * @version 1.0.0
+ * Core Prism class for syntax highliting
+ * @package VKBansal\Prism\Prism
+ * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
@@ -38,6 +37,7 @@ class Prism
 
     /**
      * Class Constructor
+     * @param string|null path Path to language map
      */
     public function __construct($path = null)
     {
@@ -45,11 +45,19 @@ class Prism
         $this->repo = new Repository($hooks, $path);
     }
 
+    /**
+     * Load default languages description]
+     * @return void
+     */
     public function loadDefaultLanguages()
     {
-        $this->addLanguages(['markup']);
+        $this->repo->loadDefaultLanguages();
     }
 
+    /**
+     * Add specified languages
+     * @param string[] $langs
+     */
     public function addLanguages(array $langs)
     {
         foreach ($langs as $lang) {
@@ -57,13 +65,17 @@ class Prism
         }
     }
 
+    /**
+     * Add all languages defined in map
+     * @return void
+     */
     public function addAllLanguages()
     {
         $this->repo->loadAllDefinitions();
     }
 
     /**
-     * Highlights all the code blocks
+     * Highlights all the code blocks in given HTML
      * @return $this
      */
     public function highlightHTML($html, $encode = true, $decode = false)
@@ -88,6 +100,12 @@ class Prism
         return $decode ? Util::decodeCodeBlocks($html): $html;
     }
 
+    /**
+     * Highlight given text
+     * @param  string $text     Text to be highlighted
+     * @param  string $language Language to be used
+     * @return string           Highlighted text (HTML)
+     */
     public function highlightText($text, $language)
     {
         $text = Util::encodeCodeBlocks($text);
@@ -101,7 +119,6 @@ class Prism
         }
 
         return $document->saveHTML();
-
     }
 
     /**
@@ -120,13 +137,14 @@ class Prism
         }
 
         if ($parent) {
-            if (preg_match($this->langTest, $parent->getAttribute('class'), $matches) === 1) {
-                
-                $language = $matches[1];
+            $class = $parent->getAttribute('class');
             
+            if (preg_match($this->langTest, $class, $matches) === 1) {    
+                $language = $matches[1];
             } else {
                 $language = '';
             }
+
             $grammar = $this->getGrammar($language);
         }
 
