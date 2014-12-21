@@ -42,7 +42,7 @@ class CSS extends AbstractLanguage
             'hexcode'=> "/\#[\da-f]{3,6}/i",
             'entity' => "/\\\\[\da-f]{1,8}/i",
             'number' => "/[\d%\.]+/"
-        ], 'ignore');
+        ], 'function');
         
         if ($markup) {
             $inside = $this->repository->getDefinition('markup.tag.inside');
