@@ -24,7 +24,7 @@ class Node
     protected $language;
 
     /**
-     * @var array
+     * @var array|null
      */
     protected $parent;
 

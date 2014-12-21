@@ -47,7 +47,7 @@ class Token
      * @param  string|array|Token $content
      * @param  string             $language
      * @param  null|string        $parent
-     * @return DOMNode|DOMNode[]
+     * @return DOMElement|DOMText|array<DOMElement|DOMText>
      */
     public static function detokenize($content, $language, $parent = null)
     {
@@ -59,8 +59,8 @@ class Token
 
         if (is_array($content)) {
             $temp = [];
-
-            for ($i = 0; $i < count($content); $i++) {
+            $count = count($content);
+            for ($i = 0; $i < $count; $i++) {
                 if (!$content[$i]) {
                     continue;
                 }

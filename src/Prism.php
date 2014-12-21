@@ -51,7 +51,7 @@ class Prism
      */
     public function loadDefaultLanguages()
     {
-        $this->repo->loadDefaultLanguages();
+        $this->repo->loadDefaultDefinitions();
     }
 
     /**
@@ -139,7 +139,7 @@ class Prism
         if ($parent) {
             $class = $parent->getAttribute('class');
             
-            if (preg_match($this->langTest, $class, $matches) === 1) {    
+            if (preg_match($this->langTest, $class, $matches) === 1) {
                 $language = $matches[1];
             } else {
                 $language = '';
@@ -213,8 +213,8 @@ class Prism
 
     /**
      * Gets Grammar for the  specified language
-     * @param  LanguageInterface $language
-     * @return mixed
+     * @param  string
+     * @return array
      */
     protected function getGrammar($language)
     {

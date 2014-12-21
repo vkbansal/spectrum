@@ -12,10 +12,14 @@ abstract class AbstractLanguage
 {
     /**
      * Repository
-     * @var VKBansal\Prism\Languages\Repository
+     * @var RepositoryInterface
      */
     protected $repository;
 
+    /**
+     * constructor
+     * @param RepositoryInterface $repository
+     */
     public function __construct(RepositoryInterface $repository)
     {
         $this->repository = $repository;
@@ -73,7 +77,9 @@ abstract class AbstractLanguage
         $temp = explode('.', $inside);
         $rootKey = array_shift($temp);
 
-        array_walk_recursive($this->repository->referDefinition(), function (&$value, $key) use ($root, $rootKey, $ret) {
+        $def =& $this->repository->referDefinition();
+
+        array_walk_recursive($def, function (&$value, $key) use ($root, $rootKey, $ret) {
             if ($value === $root && $key !== $rootKey) {
                 $value = $ret;
             }

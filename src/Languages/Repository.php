@@ -38,14 +38,14 @@ class Repository implements RepositoryInterface
 
     /**
      * Hooks container
-     * @var VKBansal\Prism\Hooks\HookInterface
+     * @var \VKBansal\Prism\Hooks\HookInterface
      */
     protected $hooks;
 
     /**
      * constructor
-     * @param VKBansal\Prism\Hooks\HookInterface $hooks
-     * @param string|null                        $path
+     * @param \VKBansal\Prism\Hooks\HookInterface $hooks
+     * @param string|null                         $path
      */
     public function __construct(HookInterface $hooks, $path = null)
     {
