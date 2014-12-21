@@ -8,19 +8,20 @@
  */
 return [
     'map' => [
-        'markup'     => 'VKBansal\Prism\Languages\Definitions\Markup',
+        'bash'       => 'VKBansal\Prism\Languages\Definitions\Bash',
+        'c'          => 'VKBansal\Prism\Languages\Definitions\CLang',
         'clike'      => 'VKBansal\Prism\Languages\Definitions\CLike',
         'css'        => 'VKBansal\Prism\Languages\Definitions\CSS',
         'javascript' => 'VKBansal\Prism\Languages\Definitions\JavaScript',
+        'markup'     => 'VKBansal\Prism\Languages\Definitions\Markup',
         'php'        => 'VKBansal\Prism\Languages\Definitions\Php',
-        'bash'       => 'VKBansal\Prism\Languages\Definitions\Bash',
-        'c'          => 'VKBansal\Prism\Languages\Definitions\CLang',
+        'sql'        => 'VKBansal\Prism\Languages\Definitions\Sql'
     ],
     
     'aliases'=> [
         'html' => 'markup',
-        'xml'  => 'markup',
-        'js' => 'javascript'
+        'js' => 'javascript',
+        'xml'  => 'markup'
     ],
 
     'defaults' => [ 'markup', 'clike', 'css', 'javascript', 'php', 'bash' ]
