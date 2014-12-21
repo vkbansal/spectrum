@@ -99,7 +99,7 @@ class Php extends AbstractLanguage
             ], 'comment');
 
             //PHP Extras
-            $this->insertBefore('php', 'variable', [
+            $this->insertBefore('php', [
                 'this' => "/\$this/",
                 'global'=> "/\$_?(GLOBALS|SERVER|GET|POST|FILES|REQUEST|SESSION|ENV|COOKIE|HTTP_RAW_POST_DATA|argc|argv|php_errormsg|http_response_header)/",
                 'scope'=> [
@@ -109,7 +109,7 @@ class Php extends AbstractLanguage
                         "punctuation"=> "/(::|\\\\)/"
                     ]
                 ]
-            ]);
+            ], 'variable');
         }
     }
 }
