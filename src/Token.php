@@ -46,7 +46,7 @@ class Token
      * Detokenize
      * @param  string|array|Token $content
      * @param  string             $language
-     * @param  null|string        $parent
+     * @param  null|string|array  $parent
      * @return DOMElement|DOMText|array<DOMElement|DOMText>
      */
     public static function detokenize($content, $language, $parent = null)

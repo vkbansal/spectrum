@@ -36,7 +36,7 @@ abstract class AbstractLanguage
         $this->repository->loadDefinition($id);
         $lang = $this->repository->getDefinition($id);
 
-        foreach ($redef  as $key => $value) {
+        foreach ($redef as $key => $value) {
             $lang[$key] = $value;
         }
 

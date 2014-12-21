@@ -45,9 +45,9 @@ class Node
 
     /**
      * constructor
-     * @param Token      $content
-     * @param string     $language
-     * @param array|null $parent
+     * @param Token             $content
+     * @param string            $language
+     * @param array|string|null $parent
      */
     public function __construct(Token $content, $language, $parent = null)
     {
