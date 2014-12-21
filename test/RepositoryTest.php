@@ -25,11 +25,10 @@ class RepositoryTest extends PHPUnit_Framework_TestCase {
     public function testGetDefinition()
     {
         $lang = $this->repo->getDefinition('markup');
-
-        $this->assertTrue(isset($lang['comment']));
+        $this->assertArrayHasKey('comment', $lang);
 
         $lang = $this->repo->getDefinition('markup.tag.inside.tag.inside');
-        $this->assertTrue(isset($lang['punctuation']));
+        $this->assertArrayHasKey('punctuation', $lang);
     }
 
     public function testReferDefinitionRoot()
@@ -40,7 +39,7 @@ class RepositoryTest extends PHPUnit_Framework_TestCase {
 
         $test = $this->repo->getDefinition();
 
-        $this->assertTrue(isset($test['dummytag']));
+        $this->assertArrayHasKey('dummytag', $test);
 
         unset($lang);
     }
@@ -53,8 +52,8 @@ class RepositoryTest extends PHPUnit_Framework_TestCase {
 
         $test = $this->repo->getDefinition('markup');
 
-        $this->assertTrue(isset($test['dummytag']));
-        $this->assertTrue(isset($test['dummytag']));
+        $this->assertArrayHasKey('dummytag', $test);
+        $this->assertArrayHasKey('dummytag', $test);
 
         unset($lang);
     }
@@ -67,7 +66,7 @@ class RepositoryTest extends PHPUnit_Framework_TestCase {
         
         $test = $this->repo->getDefinition('markup.tag.inside.tag.inside');
         
-        $this->assertTrue(isset($test['punctuation']));
+        $this->assertArrayHasKey('punctuation', $test);
 
         unset($lang);
     }

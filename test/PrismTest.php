@@ -11,12 +11,26 @@ class PrismTest extends PHPUnit_Framework_TestCase {
         $this->prism = new Prism();
     }
 
-    public function testHighlightHTML()
+    public function testloadDefaultLanguages()
     {
+        $this->prism->loadDefaultLanguages();
+        $grammar = $this->prism->getGrammar();
+        $this->assertArrayHasKey('markup', $grammar);
+        $this->assertArrayHasKey('clike', $grammar);
     }
 
-    public function testHighlightText()
+    public function testAddLanguages()
     {
+        $this->prism->addLanguages(['markup']);
+        $grammar = $this->prism->getGrammar('markup');
+        $this->assertArrayHasKey('comment', $grammar);
+    }
+
+    public function testAddAllLanguages()
+    {
+        $this->prism->addAllLanguages();
+        $grammar = $this->prism->getGrammar();
+        $this->assertArrayHasKey('markup', $grammar);
     }
     
 }
