@@ -39,10 +39,9 @@ class Token
      * Detokenize
      * @param  string|array|Token $content
      * @param  string             $language
-     * @param  null|string        $parent
      * @return DOMNode|DOMNode[]
      */
-    public static function detokenize($content, $language, $parent = null)
+    public static function detokenize($content, $language)
     {
         $document = new DOMDocument();
         
