@@ -216,9 +216,11 @@ class Prism
      * @param  string
      * @return array
      */
-    protected function getGrammar($language)
+    public function getGrammar($language = null)
     {
-        $this->repo->loadDefinition($language);
+        if (!is_null($language)) {
+            $this->repo->loadDefinition($language);
+        }
         return $this->repo->getDefinition($language);
     }
 

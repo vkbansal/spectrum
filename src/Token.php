@@ -98,7 +98,7 @@ class Token
             $patterns = is_string($regex) || Util::isAssoc($regex) ? [$regex] : $regex;
 
             foreach ($patterns as $pattern) {
-                $inside = $alias = $match = $before = $after = $lookbehind = null;
+                $inside = $alias = $lookbehind = null;
                 $lookbehindLength = 0;
 
                 if (is_array($pattern)) {
@@ -136,6 +136,7 @@ class Token
                     $index = preg_match($pattern, $str, $matches, PREG_OFFSET_CAPTURE);
 
                     if ($index > 0) {
+                        $match = $before = $after = null;
                             
                         if (!is_null($lookbehind)) {
                             $lookbehindLength = strlen($matches[1][0]);
