@@ -15,13 +15,14 @@ return [
         'javascript' => 'VKBansal\Prism\Languages\Definitions\JavaScript',
         'markup'     => 'VKBansal\Prism\Languages\Definitions\Markup',
         'php'        => 'VKBansal\Prism\Languages\Definitions\Php',
-        'ruby'        => 'VKBansal\Prism\Languages\Definitions\Ruby',
+        'python'     => 'VKBansal\Prism\Languages\Definitions\Python',
+        'ruby'       => 'VKBansal\Prism\Languages\Definitions\Ruby',
         'sql'        => 'VKBansal\Prism\Languages\Definitions\Sql'
     ],
     
     'aliases'=> [
         'html' => 'markup',
-        'js' => 'javascript',
+        'js'   => 'javascript',
         'xml'  => 'markup'
     ],
 

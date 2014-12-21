@@ -47,6 +47,7 @@
                             <option value="javascript">JavaScript</option>
                             <option value="markup">Markup</option>
                             <option value="php">PHP</option>
+                            <option value="python">Python</option>
                             <option value="ruby">Ruby</option>
                             <option value="sql">SQL</option>
                         </select>
@@ -265,6 +266,23 @@ __halt_compiler <span class="token punctuation">(</span><span class="token punct
 datahere
 datahere <span class="token operator">*</span><span class="token operator">/</span>
 datahere
+
+</code></pre>
+        </div>
+            <div id="python" class="definition">
+            <p>Default language reference: <b>python</b></p>
+                        <pre class="language-python"><code class="language-python">@requires_authorization
+<span class="token keyword">def</span> somefunc<span class="token punctuation">(</span>param1<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> param2<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    r<span class="token string">''</span><span class="token string">'A docstring'</span><span class="token string">''</span>
+    <span class="token keyword">if</span> param1 &gt; param2<span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># interesting
+</span>        <span class="token keyword">print</span> <span class="token string">'Gre\'ater'</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>param2 <span class="token operator">-</span> param1 <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">+</span> 0b10l<span class="token punctuation">)</span> <span class="token operator">or</span> None
+
+<span class="token keyword">class</span> SomeClass<span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+&gt;&gt;&gt; message <span class="token operator">=</span> <span class="token string">''</span>'interpreter
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> prompt<span class="token string">''</span>'
 
 </code></pre>
         </div>
