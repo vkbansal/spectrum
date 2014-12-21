@@ -17,7 +17,7 @@ class CLang extends AbstractLanguage
 
     public function setup()
     {
-        $this->insertBefore('c', 'string', [
+        $this->insertBefore('c', [
             // property class reused for macro statements
             'property'=> [
                 // allow for multiline macro definitions
@@ -32,7 +32,7 @@ class CLang extends AbstractLanguage
                     ]
                 ]
             ]
-        ]);
+        ], 'string');
 
         $lang =& $this->repository->referDefinition('c');
         unset($lang['boolean']);
