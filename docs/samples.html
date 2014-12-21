@@ -42,6 +42,7 @@
             <label>Select a language</label>
             <select id="lang-select" class="form-control">
                             <option value="bash">Bash</option>
+                            <option value="c">C</option>
                             <option value="css">Markup</option>
                             <option value="javascript">JavaScript</option>
                             <option value="markup">Markup</option>
@@ -80,6 +81,48 @@ BE_VERBOSE<span class="token operator">=</span><span class="token boolean">false
  <span class="token keyword">fi</span>
  host_root<span class="token operator">=</span><span class="token string">"${APACHE_HOME_DIR}$1/$2/$(title)"</span>
  <span class="token keyword">echo</span> <span class="token operator">-</span>e <span class="token string">"# Host $1/$2 :"</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+        </div>
+            <div id="c" class="definition">
+            <p>Default language reference: <b>c</b></p>
+                        <pre class="language-c"><code class="language-c"><span class="token comment" spellcheck="true">/***********************************************************
+* Bubble Sort
+***********************************************************/</span>
+ 
+#include<span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">&gt;</span>
+<span class="token keyword">int</span> <span class="token function">main<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> temp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+ 
+  <span class="token function">printf<span class="token punctuation">(</span></span><span class="token string">"Enter how many numbers you want:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">scanf<span class="token punctuation">(</span></span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+  <span class="token function">printf<span class="token punctuation">(</span></span><span class="token string">"Enter the %d elements:\n"</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">scanf<span class="token punctuation">(</span></span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+  <span class="token function">printf<span class="token punctuation">(</span></span><span class="token string">"\n\t\tThe given array is:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf<span class="token punctuation">(</span></span><span class="token string">"\n\t\t%d"</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        temp <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+ 
+  <span class="token function">printf<span class="token punctuation">(</span></span><span class="token string">"\n\n\n\t\tThe sorted array using Buble sort is:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf<span class="token punctuation">(</span></span><span class="token string">"\n\t\t%d"</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 </code></pre>

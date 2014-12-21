@@ -13,7 +13,8 @@ return [
         'css'        => 'VKBansal\Prism\Languages\Definitions\CSS',
         'javascript' => 'VKBansal\Prism\Languages\Definitions\JavaScript',
         'php'        => 'VKBansal\Prism\Languages\Definitions\Php',
-        'bash'       => 'VKBansal\Prism\Languages\Definitions\Bash'
+        'bash'       => 'VKBansal\Prism\Languages\Definitions\Bash',
+        'c'          => 'VKBansal\Prism\Languages\Definitions\CLang',
     ],
     
     'aliases'=> [

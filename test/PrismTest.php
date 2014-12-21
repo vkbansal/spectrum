@@ -31,6 +31,8 @@ class PrismTest extends PHPUnit_Framework_TestCase {
         $this->prism->loadAllLanguages();
         $grammar = $this->prism->getGrammar();
         $this->assertArrayHasKey('markup', $grammar);
+        $this->assertFalse(isset($grammar['c']['class-name']));
+        $this->assertFalse(isset($grammar['c']['boolean']));
     }
     
 }
