@@ -19,16 +19,16 @@ class PrismTest extends PHPUnit_Framework_TestCase {
         $this->assertArrayHasKey('clike', $grammar);
     }
 
-    public function testAddLanguages()
+    public function testLoadLanguages()
     {
-        $this->prism->addLanguages(['markup']);
+        $this->prism->loadLanguages(['markup']);
         $grammar = $this->prism->getGrammar('markup');
         $this->assertArrayHasKey('comment', $grammar);
     }
 
-    public function testAddAllLanguages()
+    public function testLoadAllLanguages()
     {
-        $this->prism->addAllLanguages();
+        $this->prism->loadAllLanguages();
         $grammar = $this->prism->getGrammar();
         $this->assertArrayHasKey('markup', $grammar);
     }

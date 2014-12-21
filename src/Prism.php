@@ -58,7 +58,7 @@ class Prism
      * Add specified languages
      * @param string[] $langs
      */
-    public function addLanguages(array $langs)
+    public function loadLanguages(array $langs)
     {
         foreach ($langs as $lang) {
             $this->repo->loadDefinition($lang);
@@ -66,10 +66,10 @@ class Prism
     }
 
     /**
-     * Add all languages defined in map
+     * Load all languages defined in map
      * @return void
      */
-    public function addAllLanguages()
+    public function loadAllLanguages()
     {
         $this->repo->loadAllDefinitions();
     }
