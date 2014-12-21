@@ -8,7 +8,7 @@ tools:
         excluded_dirs: {  }
         filter:
             excluded_paths:
-                - 'spec/*'
+                - 'docs/*'
                 - 'test/*'
             paths: {  }
     php_analyzer:
@@ -18,7 +18,7 @@ tools:
         dependency_paths: {  }
         filter:
             excluded_paths:
-                - 'spec/*'
+                - 'docs/*'
                 - 'test/*'
             paths: {  }
         path_configs: {  }
@@ -28,7 +28,7 @@ tools:
         runs: 1
         filter:
             excluded_paths:
-                - 'spec/*'
+                - 'docs/*'
                 - 'test/*'
             paths: {  }
     php_mess_detector:
@@ -37,7 +37,7 @@ tools:
             - php
         filter:
             excluded_paths:
-                - 'spec/*'
+                - 'docs/*'
                 - 'test/*'
             paths: {  }
         config:
@@ -82,7 +82,7 @@ tools:
             - php
         filter:
             excluded_paths:
-                - 'spec/*'
+                - 'docs/*'
                 - 'test/*'
             paths: {  }
         config:
@@ -94,7 +94,7 @@ tools:
         enabled: true
         filter:
             excluded_paths:
-                - 'spec/*'
+                - 'docs/*'
                 - 'test/*'
             paths: {  }
     php_loc:
@@ -115,7 +115,7 @@ tools:
         min_tokens: 70
         filter:
             excluded_paths:
-                - 'spec/*'
+                - 'docs/*'
                 - 'test/*'
             paths: {  }
     php_changetracking:
@@ -127,12 +127,12 @@ tools:
             - '\bimplement(?:s|ed)?\b'
         filter:
             excluded_paths:
-                - 'spec/*'
+                - 'docs/*'
                 - 'test/*'
             paths: {  }
 filter:
     excluded_paths:
-        - 'spec/*'
+        - 'docs/*'
         - 'test/*'
         - 'vendor/*'
     paths: {  }
