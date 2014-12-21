@@ -6,14 +6,20 @@
         <div class="col-sm-3 form-group">
             <label>Select a language</label>
             <select id="lang-select" class="form-control">
-            {% for lang,code in data %}
-                <option value="{{lang}}">{{ lang|capitalize }}</option>
+            {% for def in data %}
+                <option value="{{def.lang.ref}}">{{ def.name }}</option>
             {% endfor %}
             </select>
         </div>
     </div>
-    {% for lang,code in data %}
-        <pre id="{{lang}}" class="language-{{lang}} hidden"><code class="language-{{lang}}">{{ code|raw }}</code></pre>
+    {% for def in data %}
+        <div id="{{def.lang.ref}}" class="definition">
+            <p>Default language reference: <b>{{def.lang.ref}}</b></p>
+            {% if def.lang.aliases %}
+                <p>Language aliases: <b>{{def.lang.aliases|join(', ')}}</b></p>
+            {% endif %}
+            <pre class="language-{{def.lang.ref}}"><code class="language-{{def.lang.ref}}">{{ def.code|raw }}</code></pre>
+        </div>
     {% endfor %}
 {% endblock %}
 {% block js %}
@@ -21,7 +27,7 @@
     $(document).ready(function(){
 
         function switchSample(id, select){
-            $('pre').addClass('hidden');
+            $('.definition').addClass('hidden');
             $('#'+ id).removeClass('hidden');
             if (select) $('#lang-select').val(id);
         }

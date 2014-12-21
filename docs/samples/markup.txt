@@ -1,3 +1,11 @@
+---
+name: Markup
+lang:
+  ref: markup
+  aliases:
+    - xml
+    - html
+---
 <?xml version="1.0"?>
 <response value="ok" xml:lang="en">
   <text>Ok</text>

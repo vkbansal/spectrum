@@ -1,3 +1,10 @@
+---
+name: JavaScript
+lang:
+  ref: javascript
+  aliases:
+    - js
+---
 function $initHighlight(block, flags) {
   try {
     if (block.className.search(/\bno\-highlight\b/) != -1)
