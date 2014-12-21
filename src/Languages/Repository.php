@@ -43,11 +43,11 @@ class Repository implements RepositoryInterface
     {
         $language = $this->resolveAlias($language);
 
-        if(isset($this->languages[$language])) {
+        if (isset($this->languages[$language])) {
             return;
         }
         
-        if (isset($this->map[$language])){
+        if (isset($this->map[$language])) {
             $class = $this->map[$language];
             $def = new $class($this);
             $this->languages[$language] = $def->definition();
@@ -62,11 +62,11 @@ class Repository implements RepositoryInterface
         }
     }
 
-    public function &referDefinition($language = null){
-        
+    public function &referDefinition($language = null)
+    {    
         $language = $this->resolveAlias($language);
 
-        if(is_null($language)){
+        if (is_null($language)) {
             return $this->languages;
         }
 
@@ -87,11 +87,11 @@ class Repository implements RepositoryInterface
         return $root;
     }
 
-    public function getDefinition($language = null){
-        
+    public function getDefinition($language = null)
+    {    
         $language = $this->resolveAlias($language);
 
-        if(is_null($language)){
+        if (is_null($language)) {
             return $this->languages;
         }
 

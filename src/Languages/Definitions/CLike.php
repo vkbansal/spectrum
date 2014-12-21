@@ -6,7 +6,7 @@ use VKBansal\Prism\Languages\AbstractLanguage;
 class CLike extends AbstractLanguage
 {
     public function definition()
-    { 
+    {
         return [
             'comment' => [
                 [

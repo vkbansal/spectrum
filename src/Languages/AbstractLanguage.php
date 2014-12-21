@@ -21,7 +21,7 @@ abstract class AbstractLanguage
         $this->repository->loadDefinition($id);
         $lang = $this->repository->getDefinition($id);
 
-        foreach($redef  as $key => $value) {
+        foreach ($redef  as $key => $value) {
             $lang[$key] = $value;
         }
 
@@ -61,8 +61,8 @@ abstract class AbstractLanguage
         $temp = explode('.', $inside);
         $rootKey = array_shift($temp);
 
-        array_walk_recursive($this->repository->referDefinition(), function(&$value, $key) use ($root, $rootKey, $ret) {
-            if ($value === $root && $key !== $rootKey){
+        array_walk_recursive($this->repository->referDefinition(), function (&$value, $key) use ($root, $rootKey, $ret) {
+            if ($value === $root && $key !== $rootKey) {
                 $value = $ret;
             }
         });
@@ -74,6 +74,6 @@ abstract class AbstractLanguage
 
     public function setup()
     {
-        return true;    
+        return true;
     }
 }

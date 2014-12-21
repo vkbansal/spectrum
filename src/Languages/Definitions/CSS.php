@@ -6,7 +6,7 @@ use VKBansal\Prism\Languages\AbstractLanguage;
 class CSS extends AbstractLanguage
 {
     public function definition()
-    { 
+    {
         return [
             "comment" => "/\/\*[\w\W]*?\*\//",
             "atrule" => [
@@ -77,7 +77,7 @@ class CSS extends AbstractLanguage
                     ],
                     "alias" => 'language-css'
                 ]
-            ],'attr-value');
+            ], 'attr-value');
         }
     }
 }

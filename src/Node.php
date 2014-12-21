@@ -54,7 +54,8 @@ class Node
      * [getLanguage description]
      * @return [type] [description]
      */
-    public function getLanguage(){
+    public function getLanguage()
+    {
         return $this->language;
     }
 
@@ -76,14 +77,14 @@ class Node
 
         if (isset($this->content->alias)) {
             $aliases = is_array($this->content->alias) ? $this->content->alias : [$this->content->alias];
-            $this->classes = array_merge($this->classes, $aliases); 
+            $this->classes = array_merge($this->classes, $aliases);
         }
 
         $span = $document->createElement($this->tag);
         
         foreach ($finalContent as $node) {
             $span->appendChild($document->importNode($node, true));
-        }    
+        }
 
         $span->setAttribute('class', implode(" ", $this->classes));
        

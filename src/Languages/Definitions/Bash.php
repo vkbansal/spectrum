@@ -6,7 +6,7 @@ use VKBansal\Prism\Languages\AbstractLanguage;
 class Bash extends AbstractLanguage
 {
     public function definition()
-    { 
+    {
         return $this->extend('clike', [
             'comment'=> [
                 "pattern"=> "/(^|[^\"{\\\\])(\#.*?(\r?\n|$))/",

@@ -15,7 +15,7 @@ class Hooks implements HookInterface
      */
     public function add($name, callable $callback)
     {
-        if (isset($this->hooks[$name])){
+        if (isset($this->hooks[$name])) {
             $this->hooks[$name][] = $callback;
         } else {
             $this->hooks[$name] = [$callback];
@@ -31,7 +31,7 @@ class Hooks implements HookInterface
             return;
         }
 
-        for ($i = 0 ; $i < count($this->hooks[$name]); $i++) {
+        for ($i = 0; $i < count($this->hooks[$name]); $i++) {
             call_user_func($this->hooks[$name][$i], $env);
         }
     }

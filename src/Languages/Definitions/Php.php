@@ -6,7 +6,7 @@ use VKBansal\Prism\Languages\AbstractLanguage;
 class Php extends AbstractLanguage
 {
     public function definition()
-    { 
+    {
         return $this->extend('clike', [
             'keyword' => "/\b(and|or|xor|array|as|break|case|cfunction|class|const|continue|declare|default|die|do|else|elseif|enddeclare|endfor|endforeach|endif|endswitch|endwhile|extends|for|foreach|function|include|include_once|global|if|new|return|static|switch|use|require|require_once|var|while|abstract|interface|public|implements|private|protected|parent|throw|null|echo|print|trait|namespace|final|yield|goto|instanceof|finally|try|catch)\b/i",
             'constant'=> "/\b[A-Z0-9_]{2,}\b/",
@@ -46,7 +46,7 @@ class Php extends AbstractLanguage
             /* Tokenize all inline PHP blocks that are wrapped in <?php ?>
              * This allows for easy PHP + markup highlighting
              */
-            $this->repository->addHook('before-highlight', function($env) {
+            $this->repository->addHook('before-highlight', function ($env) {
                 /*if (env.language !== 'php') {
                     return;
                 }
@@ -62,7 +62,7 @@ class Php extends AbstractLanguage
             });
 
             // Restore env.code for other plugins (e.g. line-numbers)
-            $this->repository->addHook('before-insert', function($env) {
+            $this->repository->addHook('before-insert', function ($env) {
                 // if (env.language === 'php') {
                 //     env.code = env.backupCode;
                 //     delete env.backupCode;
@@ -70,7 +70,7 @@ class Php extends AbstractLanguage
             });
 
             // Re-insert the tokens after highlighting
-            $this->repository->addHook('after-highlight', function($env) {
+            $this->repository->addHook('after-highlight', function ($env) {
                 // if (env.language !== 'php') {
                 //     return;
                 // }
