@@ -51,7 +51,7 @@ abstract class AbstractLanguage
      *                             If not provided, it will be appended.
      * @return void
      */
-    public function insertBefore($inside, $insert, $before = null)
+    public function insertBefore($inside, array $insert, $before = null)
     {
         $root =& $this->repository->referDefinition($inside);
 
