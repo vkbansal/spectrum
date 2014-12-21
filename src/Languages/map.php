@@ -15,6 +15,7 @@ return [
         'javascript' => 'VKBansal\Prism\Languages\Definitions\JavaScript',
         'markup'     => 'VKBansal\Prism\Languages\Definitions\Markup',
         'php'        => 'VKBansal\Prism\Languages\Definitions\Php',
+        'ruby'        => 'VKBansal\Prism\Languages\Definitions\Ruby',
         'sql'        => 'VKBansal\Prism\Languages\Definitions\Sql'
     ],
     

@@ -47,6 +47,7 @@
                             <option value="javascript">JavaScript</option>
                             <option value="markup">Markup</option>
                             <option value="php">PHP</option>
+                            <option value="ruby">Ruby</option>
                             <option value="sql">SQL</option>
                         </select>
         </div>
@@ -92,7 +93,7 @@ BE_VERBOSE<span class="token operator">=</span><span class="token boolean">false
 * Bubble Sort
 ***********************************************************/</span>
  
-#include<span class="token operator">&lt;</span>stdio<span class="token punctuation">.</span>h<span class="token operator">&gt;</span>
+<span class="token property">#include<span class="token string">&lt;stdio.h&gt;</span></span>
 <span class="token keyword">int</span> <span class="token function">main<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> temp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
  
@@ -264,6 +265,39 @@ __halt_compiler <span class="token punctuation">(</span><span class="token punct
 datahere
 datahere <span class="token operator">*</span><span class="token operator">/</span>
 datahere
+
+</code></pre>
+        </div>
+            <div id="ruby" class="definition">
+            <p>Default language reference: <b>ruby</b></p>
+                        <pre class="language-ruby"><code class="language-ruby"><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token operator">&lt;</span> <span class="token constant">B</span><span class="token punctuation">;</span> <span class="token keyword">def</span> <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">create<span class="token punctuation">(</span></span>object <span class="token operator">=</span> <span class="token constant">User</span><span class="token punctuation">)</span> object <span class="token keyword">end</span> <span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">Zebra</span><span class="token punctuation">;</span> <span class="token keyword">def</span> inspect<span class="token punctuation">;</span> "<span class="token constant">X</span><span class="token comment" spellcheck="true">#{2 + self.object_id}" end end
+</span>
+<span class="token keyword">module</span> <span class="token constant">ABC</span><span class="token punctuation">:</span><span class="token symbol">:DEF</span>
+  include <span class="token constant">Comparable</span>
+
+  <span class="token comment" spellcheck="true"># @param test
+</span>  <span class="token comment" spellcheck="true"># @return [String] nothing
+</span>  <span class="token keyword">def</span> <span class="token function">foo<span class="token punctuation">(</span></span>test<span class="token punctuation">)</span>
+    <span class="token builtin">Thread</span><span class="token punctuation">.</span><span class="token keyword">new</span> <span class="token class-name">do</span> <span class="token operator">|</span>blockvar<span class="token operator">|</span>
+      <span class="token constant">ABC</span><span class="token punctuation">:</span><span class="token symbol">:DEF</span><span class="token punctuation">.</span><span class="token function">reverse<span class="token punctuation">(</span></span><span class="token symbol">:a_symbol</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token string">'a symbol'</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token operator">&lt;=</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token string">'test'</span> <span class="token operator">+</span> <span class="token operator">?</span>\<span class="token number">012</span><span class="token punctuation">)</span>
+      answer <span class="token operator">=</span> valid<span class="token operator">?</span><span class="token number">4</span> <span class="token operator">&amp;&amp;</span> valid<span class="token operator">?</span><span class="token constant">CONST</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">?</span><span class="token constant">A</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">?</span><span class="token constant">A</span><span class="token punctuation">.</span>ord
+    <span class="token keyword">end</span><span class="token punctuation">.</span>join
+  <span class="token keyword">end</span>
+
+  <span class="token keyword">def</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span> <span class="token keyword">self</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token operator">==</span><span class="token punctuation">(</span>other<span class="token punctuation">)</span> other <span class="token operator">==</span> <span class="token keyword">self</span> <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Car</span> <span class="token operator">&lt;</span> <span class="token constant">ActiveRecord</span><span class="token punctuation">:</span><span class="token symbol">:Base</span>
+  has_many <span class="token symbol">:wheels</span><span class="token punctuation">,</span> class_name<span class="token punctuation">:</span> <span class="token string">'Wheel'</span><span class="token punctuation">,</span> foreign_key<span class="token punctuation">:</span> <span class="token string">'car_id'</span>
+  scope <span class="token symbol">:available</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span> <span class="token function">where<span class="token punctuation">(</span></span>available<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token keyword">end</span>
+
+hash <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'two'</span><span class="token punctuation">}</span>
+
+<span class="token number">2.0</span><span class="token punctuation">.</span>0p0 <span class="token punctuation">:</span><span class="token number">001</span> <span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token string">'some'</span><span class="token punctuation">]</span>
+ <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token string">"some"</span><span class="token punctuation">]</span>
 
 </code></pre>
         </div>
