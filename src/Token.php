@@ -40,7 +40,7 @@ class Token
      * @param  string|array|Token $content
      * @param  string             $language
      * @param  null|string        $parent
-     * @return DOMNode|[DOMNode]
+     * @return DOMNode|DOMNode[]
      */
     public static function detokenize($content, $language, $parent = null)
     {
@@ -75,7 +75,7 @@ class Token
      * @param array       $grammar
      * @param null|string $language
      */
-    public static function tokenize($text, $grammar, $language = null)
+    public static function tokenize($text, $grammar)
     {
         $strarr = [Util::decodeHTML($text)];
 

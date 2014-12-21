@@ -13,6 +13,8 @@ class Repository implements RepositoryInterface
 
     protected $map = [];
 
+    protected $aliases = [];
+
     protected $hooks;
 
     /**
@@ -63,7 +65,7 @@ class Repository implements RepositoryInterface
     }
 
     public function &referDefinition($language = null)
-    {    
+    {
         $language = $this->resolveAlias($language);
 
         if (is_null($language)) {
@@ -88,7 +90,7 @@ class Repository implements RepositoryInterface
     }
 
     public function getDefinition($language = null)
-    {    
+    {
         $language = $this->resolveAlias($language);
 
         if (is_null($language)) {
