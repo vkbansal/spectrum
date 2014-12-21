@@ -43,6 +43,7 @@
             <select id="lang-select" class="form-control">
                             <option value="bash">Bash</option>
                             <option value="c">C</option>
+                            <option value="markup">CoffeeScript</option>
                             <option value="css">Markup</option>
                             <option value="ini">INI</option>
                             <option value="java">Java</option>
@@ -130,6 +131,54 @@ BE_VERBOSE<span class="token operator">=</span><span class="token boolean">false
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
+
+</code></pre>
+        </div>
+            <div id="markup" class="definition">
+            <p>Default language reference: <b>markup</b></p>
+                            <p>Language aliases: <b>coffee, coffee-script</b></p>
+                        <pre class="language-markup"><code class="language-markup">grade <span class="token operator">=</span> <span class="token punctuation">(</span>student<span class="token punctuation">,</span> period<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">if</span> b<span class="token operator">?</span> <span class="token keyword">then</span> <span class="token number">7</span> <span class="token keyword">else</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">,</span> messages<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"A"</span><span class="token punctuation">:</span> <span class="token string">"Excellent"</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span>
+  <span class="token keyword">if</span> student<span class="token punctuation">.</span>excellentWork
+    <span class="token string">"A+"</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> student<span class="token punctuation">.</span>okayStuff
+    <span class="token keyword">if</span> student<span class="token punctuation">.</span>triedHard <span class="token keyword">then</span> <span class="token string">"B"</span> <span class="token keyword">else</span> <span class="token string">"B-"</span>
+  <span class="token keyword">else</span>
+    <span class="token string">"C"</span>
+
+square <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> x <span class="token operator">*</span> x
+
+two <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token number">2</span>
+
+math <span class="token operator">=</span>
+  <span class="token property">root</span><span class="token punctuation">:</span>   Math<span class="token punctuation">.</span>sqrt
+  <span class="token property">square</span><span class="token punctuation">:</span> square
+  <span class="token property">cube</span><span class="token punctuation">:</span>   <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> x <span class="token operator">*</span> square x
+
+race <span class="token operator">=</span> <span class="token punctuation">(</span>winner<span class="token punctuation">,</span> runners<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span>
+  print winner<span class="token punctuation">,</span> runners
+
+<span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token keyword">extends</span> <span class="token class-name">Being</span>
+  <span class="token property">constructor</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token class-member variable">@name</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span>
+
+  <span class="token property">move</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>meters<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span>
+    alert <span class="token class-member variable">@name</span> <span class="token operator">+</span> <span class="token string">" moved <span class="token interpolation variable">#{meters}</span>m."</span>
+
+hi <span class="token operator">=</span> <span class="token inline-javascript"><span class="token delimiter punctuation">`</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span>document<span class="token punctuation">.</span>title<span class="token punctuation">,</span> <span class="token string">"Hello JavaScript"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">": "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token delimiter punctuation">`</span></span>
+
+heredoc <span class="token operator">=</span> <span class="token multiline-string string">"""
+CoffeeScript subst test <span class="token interpolation variable">#{ 010 + 0xf / 0b10 + "nested string #{ /\n/ }</span>"}
+"""</span>
+
+<span class="token multiline-comment comment">###
+CoffeeScript Compiler v1.2.0
+Released under the MIT License
+###</span>
+
+OPERATOR <span class="token operator">=</span> <span class="token block-regex regex">/// ^ (
+?: [-=]&gt;             <span class="token comment" spellcheck="true"># function</span>
+) ///</span>
 
 </code></pre>
         </div>
