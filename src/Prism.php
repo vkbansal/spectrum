@@ -209,9 +209,8 @@ class Prism
      */
     protected function highlight($code, $grammar, $language)
     {
-        //$tokens = Token::tokenize($code, $grammar);
         $generator = new Generator($code, $grammar, $language);
-        $tokens = $generator->generate();
+        $generator->generate();
         $nodes = $generator->toNodes($this->document);
         return is_array($nodes) ? $nodes : [$nodes];
     }

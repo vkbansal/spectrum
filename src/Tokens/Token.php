@@ -1,10 +1,9 @@
 <?php
 namespace VKBansal\Prism\Tokens;
 
-use VKBansal\Prism\Util;
 /**
  * Token Class
- * @package VKBansal\Prism\Token
+ * @package VKBansal\Prism\Tokens\Token
  * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
@@ -17,7 +16,7 @@ class Token
     public $type;
 
     /**
-     * @var string|array<Token|string>
+     * @var string|Token|array<Token|string>
      */
     public $content;
 
@@ -26,6 +25,9 @@ class Token
      */
     public $alias;
 
+    /**
+     * @var string
+     */
     public $language;
 
     /**
@@ -34,20 +36,21 @@ class Token
     protected $tag = 'span';
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected $classes = ['token'];
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected $attributes = [];
 
     /**
      * Constructor
-     * @param string             $type
-     * @param string|array|Token $content
-     * @param null|string        $alias
+     * @param string                           $type
+     * @param string|Token|array<Token|string> $content
+     * @param string                           $language
+     * @param null|string                      $alias
      */
     public function __construct($type, $content, $language, $alias = null)
     {
@@ -59,14 +62,12 @@ class Token
     }
 
     /**
-     * Detokenize
-     * @param  string|array|Token $content
-     * @param  string             $language
-     * @param  null|string|array  $parent
-     * @return DOMElement|DOMText|array<DOMElement|DOMText>
+     * Converts Token to DOMElement
+     * @param  \DOMDocument $parent
+     * @return \DOMElement
      */
     public function toNode(\DOMDocument $parent)
-    {   
+    {
         $this->finalizeContent($parent);
 
         if ($this->type === 'comment') {
@@ -92,6 +93,11 @@ class Token
         return $span;
     }
 
+    /**
+     * Process content
+     * @param  \DOMDocument $parent
+     * @return array<\DOMText|\DOMElement>
+     */
     protected function finalizeContent(\DOMDocument $parent)
     {
         if (is_string($this->content)) {
@@ -103,18 +109,18 @@ class Token
             
             $count = count($this->content);
             
-            for ($i = 0; $i < $count ; $i++) {
-                $content = $this->content[$i]; 
+            for ($i = 0; $i < $count; $i++) {
+                $content = $this->content[$i];
                 
-                if(!$content){
+                if (!$content) {
                     continue;
                 }
                 
                 if ($content instanceof Token) {
                     $temp[] = $content->toNode($parent);
-                } else if (is_string($content)) {
+                } elseif (is_string($content)) {
                     $temp[] = $parent->createTextNode($content);
-                } else if ($content instanceof \DOMText) {
+                } elseif ($content instanceof \DOMText) {
                     $temp[] = $content;
                 }
             }

@@ -12,7 +12,7 @@ class Ini extends AbstractLanguage
             'important' => "/\[.*?\]/m",
             'constant'=> "/^\s*[^\s\=]+?(?=[ \t]*\=)/m",
             'attr-value'=> [
-                "pattern" => "/\=.*/m", 
+                "pattern" => "/\=.*/m",
                 "inside" => [
                     'punctuation'=> "/^[\=]/"
                 ]

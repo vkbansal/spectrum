@@ -97,7 +97,7 @@ abstract class AbstractLanguage
     /**
      * Extra setup after definition.
      * Override if needed in respective language definitions.
-     * @return boolean|void
+     * @return boolean
      */
     public function setup()
     {

@@ -4,8 +4,8 @@ namespace VKBansal\Prism\Tokens;
 use VKBansal\Prism\Util;
 
 /**
- * Token Class
- * @package VKBansal\Prism\Token
+ * Token Generator Class
+ * @package VKBansal\Prism\Tokens\Generator
  * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
@@ -36,6 +36,7 @@ class Generator
      * Constructor
      * @param string $text
      * @param array  $grammar
+     * @param string $language
      */
     public function __construct($text, array $grammar, $language)
     {
@@ -45,10 +46,8 @@ class Generator
     }
 
     /**
-     * Tokenize
-     * @param string      $text
-     * @param array       $grammar
-     * @return Token[]
+     * Generates Tokens
+     * @return array<Tokens|string>
      */
     public function generate()
     {
@@ -58,8 +57,6 @@ class Generator
             $patterns = is_string($regex) || Util::isAssoc($regex) ? [$regex] : $regex;
 
             foreach ($patterns as $pattern) {
-
-                $lookbehindLength = 0;
 
                 $resolvedPattern = $this->resolvePattern($pattern); 
 
@@ -87,6 +84,11 @@ class Generator
         return $this->tokens = $strarr;
     }
 
+    /**
+     * Converts Tokens to DOMElements
+     * @param  \DOMDocument $parent
+     * @return array<\DOMElement|\DOMText>
+     */
     public function toNodes(\DOMDocument $parent)
     {
         $temp = [];
@@ -126,7 +128,7 @@ class Generator
      */
     protected function resolvePattern($pattern)
     {
-        if (is_string($pattern)){
+        if (is_string($pattern)) {
             return [$pattern, false, false, null];
         }
         $alias = isset($pattern['alias']) ? $pattern['alias'] : null;
@@ -182,7 +184,7 @@ class Generator
             $content = $generator->generate();
         } else {
             $content = $match;
-        } 
+        }
         
         $wrapped = new Token($token, $content, $this->language, $alias);
         

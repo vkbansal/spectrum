@@ -7,7 +7,7 @@ class Sql extends AbstractLanguage
 {
     public function definition()
     {
-            return [ 
+            return [
             'comment'=> [
                 "pattern"=> "/(^|[^\\\\])(\/\*[\w\W]*?\*\/|((--)|(\/\/)|#).*?(\r?\n|$))/",
                 "lookbehind"=> true
