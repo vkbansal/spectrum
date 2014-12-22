@@ -1,59 +1,58 @@
 <?php
-use VKBansal\Prism\Token;
+use VKBansal\Prism\Tokens\Token;
 
-class TokenTest extends PHPUnit_Framework_TestCase {
-
-    protected $token;
+class TokenTest extends PHPUnit_Framework_TestCase
+{
+    protected $doc;
 
     public function setUp()
     {
-        $this->token = new Token('type', 'content');
+        $this->doc = new \DOMDocument();
     }
 
-    public function testDetokenize()
+    public function testStringToken()
     {
-        $case = ['lorem ipsum', $this->token, null];
-        $nodes = Token::detokenize($case, 'dummy');
+        $token = new Token('comment', 'some string', 'testlang', 'testalias');
+        $node = $token->toNode($this->doc);
 
-        $this->assertInstanceOf('DOMText', $nodes[0]);
-        $this->assertInstanceOf('DOMNode', $nodes[1]);
+        $this->doc->appendChild($node);
+
+        $this->assertInstanceOf('\DOMElement', $node);
+
+        $html = trim($node->ownerDocument->saveHTML());
+
+        $this->assertEquals("<span class=\"token comment testalias\" spellcheck=\"true\">some string</span>", $html);
     }
 
-    public function testTokenize()
+    public function testDomTextToken()
     {
-        $grammar = [
-            "tag"=> [
-                "pattern"=> "/<\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:(\"|')(\\\\?[\w\W])*?\g{1}|[^\s'\">=]+))?\s*)*\/?>/i",
-                "inside"=> [
-                    "tag"=> [
-                        "pattern"=> "/^<\/?[\w:-]+/i",
-                        "inside"=> [
-                            'punctuation'=> "/^<\/?/",
-                            'namespace'=> "/^[\w-]+?:/"
-                        ]
-                    ],
-                    'attr-value'=> [
-                        "pattern" => "/=(?:('|\")[\w\W]*?(\g{1})|[^\s>]+)/i",
-                        "inside" => [
-                            'punctuation'=> "/=|>|\"/"
-                        ]
-                    ],
-                    'punctuation'=> "/\/?>/",
-                    'attr-name'=> [
-                        "pattern"=> "/[\w:-]+/",
-                        "inside"=> [
-                            "namespace"=> "/^[\w-]+?:/"
-                        ]
-                    ]
-                ]
-            ]
-        ];
+        $text = $this->doc->createTextNode('some string');
+        $token = new Token('type', $text, 'testlang');
+        $node = $token->toNode($this->doc);
 
-        $text = "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"/>";
+        $this->doc->appendChild($node);
+        $this->doc->appendChild($text);
+        
+        $html = trim($node->ownerDocument->saveHTML());
+        $this->assertEquals("<span class=\"token type\"></span>some string", $html);
 
-        $token = Token::tokenize($text, $grammar);
+    }
 
-        $this->assertInstanceOf('VKBansal\Prism\Token', $token[0]);
+    public function testArrayToken()
+    {
+        $string = 'some string';
+        $token = new Token('type', 'some other string', 'testlang');
+        $text = $this->doc->createTextNode('break');
+
+        $arr = new Token('type2', [$string, $token, false, $text], 'testlang');
+
+        $node = $arr->toNode($this->doc);
+
+        $this->doc->appendChild($node);
+
+        $html = trim($node->ownerDocument->saveHTML());
+
+        $this->assertEquals("<span class=\"token type2\">some string<span class=\"token type\">some other string</span>break</span>", $html);
     }
     
 }

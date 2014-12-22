@@ -1,9 +1,7 @@
 <?php
 namespace VKBansal\Prism\Tokens;
 
-use DOMDocument;
 use VKBansal\Prism\Util;
-
 /**
  * Token Class
  * @package VKBansal\Prism\Token
@@ -54,6 +52,7 @@ class Token
     public function __construct($type, $content, $language, $alias = null)
     {
         $this->type = $type;
+        $this->classes[] = $type;
         $this->content = $content;
         $this->language = $language;
         $this->alias = $alias;
@@ -66,7 +65,7 @@ class Token
      * @param  null|string|array  $parent
      * @return DOMElement|DOMText|array<DOMElement|DOMText>
      */
-    public function toNode(DOMDocument $parent)
+    public function toNode(\DOMDocument $parent)
     {   
         $this->finalizeContent($parent);
 
@@ -74,7 +73,7 @@ class Token
             $this->attributes['spellcheck'] = "true";
         }
 
-        if (isset($this->alias)) {
+        if (!is_null($this->alias)) {
             $aliases = is_array($this->alias) ? $this->alias : [$this->alias];
             $this->classes = array_merge($this->classes, $aliases);
         }
@@ -93,7 +92,7 @@ class Token
         return $span;
     }
 
-    protected function finalizeContent(DOMDocument $parent)
+    protected function finalizeContent(\DOMDocument $parent)
     {
         if (is_string($this->content)) {
             return $this->content = [$parent->createTextNode($this->content)];
@@ -105,7 +104,6 @@ class Token
             $count = count($this->content);
             
             for ($i = 0; $i < $count ; $i++) {
-                
                 $content = $this->content[$i]; 
                 
                 if(!$content){
@@ -114,11 +112,11 @@ class Token
                 
                 if ($content instanceof Token) {
                     $temp[] = $content->toNode($parent);
-                } else {
-                    dump($this->content);
+                } else if (is_string($content)) {
                     $temp[] = $parent->createTextNode($content);
+                } else if ($content instanceof \DOMText) {
+                    $temp[] = $content;
                 }
-                $temp[] = $content->toNode($parent);
             }
 
             return $this->content = $temp;

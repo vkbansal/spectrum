@@ -43,9 +43,6 @@ class Prism
     {
         $hooks = new Hooks();
         $this->repo = new Repository($hooks, $path);
-        $this->document = new DOMDocument();
-        $this->document->encoding = 'utf-8';
-
     }
 
     /**
@@ -86,7 +83,10 @@ class Prism
      * @return string
      */
     public function highlightHTML($html, $encode = true, $decode = false)
-    {        
+    {
+        $this->document = new DOMDocument();
+        $this->document->encoding = 'utf-8';
+
         $html = $encode ? Util::encodeCodeBlocks($html) : $html;
         
         $this->document->loadHTML($html);
@@ -112,11 +112,14 @@ class Prism
      */
     public function highlightText($text, $language)
     {
+        $this->document = new DOMDocument();
+        $this->document->encoding = 'utf-8';
+
         $text = Util::encodeCodeBlocks($text);
         $grammar = $this->getGrammar($language);
         $nodes = $this->highlight($text, $grammar, $language);
+        
         foreach ($nodes as $node) {
-            //$node = $document->importNode($node, true);
             $this->document->appendChild($node);
         }
         return $this->document->saveHTML();
@@ -189,7 +192,6 @@ class Prism
         $this->repo->runHook('before.insert', $env);
 
         foreach ($nodes as $node) {
-            $node = $this->document->importNode($node, true);
             $element->appendChild($node);
         }
 

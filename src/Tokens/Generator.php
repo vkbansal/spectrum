@@ -84,7 +84,6 @@ class Generator
                 }
             }
         }
-        //dump($strarr);
         return $this->tokens = $strarr;
     }
 
@@ -130,10 +129,9 @@ class Generator
         if (is_string($pattern)){
             return [$pattern, false, false, null];
         }
+        $alias = isset($pattern['alias']) ? $pattern['alias'] : null;
 
         $inside = isset($pattern['inside']) ? $pattern['inside'] : false;
-
-        $alias = isset($pattern['alias']) ? $pattern['alias'] : null;
 
         $lookbehind = isset($pattern['lookbehind']) ? !!$pattern['lookbehind'] : false;
         
@@ -185,8 +183,8 @@ class Generator
         } else {
             $content = $match;
         } 
-
-        $wrapped = new Token($token, $content, $alias);
+        
+        $wrapped = new Token($token, $content, $this->language, $alias);
         
         $args[] = $wrapped;
 
