@@ -6,7 +6,7 @@ use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
 use VKBansal\Prism\Hooks\Hooks;
 use VKBansal\Prism\Languages\Repository;
-use VKBansal\Prism\Token;
+use VKBansal\Prism\Tokens\Generator;
 
 /**
  * Core Prism class for syntax highliting
@@ -43,6 +43,9 @@ class Prism
     {
         $hooks = new Hooks();
         $this->repo = new Repository($hooks, $path);
+        $this->document = new DOMDocument();
+        $this->document->encoding = 'utf-8';
+
     }
 
     /**
@@ -83,10 +86,7 @@ class Prism
      * @return string
      */
     public function highlightHTML($html, $encode = true, $decode = false)
-    {
-        $this->document = new DOMDocument();
-        $this->document->encoding = 'utf-8';
-        
+    {        
         $html = $encode ? Util::encodeCodeBlocks($html) : $html;
         
         $this->document->loadHTML($html);
@@ -115,14 +115,11 @@ class Prism
         $text = Util::encodeCodeBlocks($text);
         $grammar = $this->getGrammar($language);
         $nodes = $this->highlight($text, $grammar, $language);
-        $document = new DOMDocument();
-
         foreach ($nodes as $node) {
-            $node = $document->importNode($node, true);
-            $document->appendChild($node);
+            //$node = $document->importNode($node, true);
+            $this->document->appendChild($node);
         }
-
-        return $document->saveHTML();
+        return $this->document->saveHTML();
     }
 
     /**
@@ -210,8 +207,10 @@ class Prism
      */
     protected function highlight($code, $grammar, $language)
     {
-        $tokens = Token::tokenize($code, $grammar);
-        $nodes = Token::detokenize($tokens, $language);
+        //$tokens = Token::tokenize($code, $grammar);
+        $generator = new Generator($code, $grammar, $language);
+        $tokens = $generator->generate();
+        $nodes = $generator->toNodes($this->document);
         return is_array($nodes) ? $nodes : [$nodes];
     }
 
