@@ -19,7 +19,7 @@ class Token
     public $type;
 
     /**
-     * @var string|array|Token
+     * @var string|array<Token|string>
      */
     public $content;
 
@@ -68,26 +68,7 @@ class Token
      */
     public function toNode(DOMDocument $parent)
     {   
-        if (is_string($this->content)) {
-            return $parent->createTextNode($this->content);
-        }
-
-        if (is_array($this->content)) {
-            $temp = [];
-            
-            $count = count($this->content);
-            
-            for ($i = 0; $i < $count ; $i++) {
-                $content = $this->content[$i]; 
-                //var_dump($content);
-                if(!$content){
-                    continue;
-                }
-                $temp[] = $content->toNode($parent);
-            }
-
-            return $temp;
-        }
+        $this->finalizeContent($parent);
 
         if ($this->type === 'comment') {
             $this->attributes['spellcheck'] = "true";
@@ -105,8 +86,42 @@ class Token
             $span->setAttribute($key, $value);
         }
 
-        $span->nodeValue = $this->content;
+        foreach ($this->content as $content) {
+            $span->appendChild($content);
+        }
         
         return $span;
+    }
+
+    protected function finalizeContent(DOMDocument $parent)
+    {
+        if (is_string($this->content)) {
+            return $this->content = [$parent->createTextNode($this->content)];
+        }
+
+        if (is_array($this->content)) {
+            $temp = [];
+            
+            $count = count($this->content);
+            
+            for ($i = 0; $i < $count ; $i++) {
+                
+                $content = $this->content[$i]; 
+                
+                if(!$content){
+                    continue;
+                }
+                
+                if ($content instanceof Token) {
+                    $temp[] = $content->toNode($parent);
+                } else {
+                    dump($this->content);
+                    $temp[] = $parent->createTextNode($content);
+                }
+                $temp[] = $content->toNode($parent);
+            }
+
+            return $this->content = $temp;
+        }
     }
 }

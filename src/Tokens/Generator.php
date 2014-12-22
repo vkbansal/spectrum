@@ -84,6 +84,7 @@ class Generator
                 }
             }
         }
+        //dump($strarr);
         return $this->tokens = $strarr;
     }
 

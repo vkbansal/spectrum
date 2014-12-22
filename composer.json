@@ -18,7 +18,8 @@
         "symfony/finder": "2.6.*",
         "twig/twig": "1.16.*",
         "erusev/parsedown-extra": "*",
-        "vkbansal/frontmatter": "~1.3.0"
+        "vkbansal/frontmatter": "~1.3.0",
+        "symfony/var-dumper": "~2.6.1"
     },
 
     "autoload": {
