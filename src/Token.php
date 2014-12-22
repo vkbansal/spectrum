@@ -86,39 +86,16 @@ class Token
     {
         $strarr = [Util::decodeHTML($text)];
 
-        $rest = isset($grammar['rest']) ? $grammar['rest'] : [];
-
-        foreach ($rest as $key => $value) {
-            $grammar[$key] = $value;
-        }
-
-        unset($grammar['rest']);
+        $grammar = self::optimizeRegex($grammar);
 
         foreach ($grammar as $token => $regex) {
             $patterns = is_string($regex) || Util::isAssoc($regex) ? [$regex] : $regex;
 
             foreach ($patterns as $pattern) {
-                $inside = $alias = $lookbehind = null;
+
                 $lookbehindLength = 0;
 
-                if (is_array($pattern)) {
-
-                    if (isset($pattern['inside'])) {
-                        $inside = $pattern['inside'];
-                    }
-
-                    if (isset($pattern['alias'])) {
-                        $alias = $pattern['alias'];
-                    }
-
-                    if (isset($pattern['lookbehind'])) {
-                        $lookbehind = !!$pattern['lookbehind'];
-                    }
-
-                    if (isset($pattern['pattern'])) {
-                        $pattern = $pattern['pattern'];
-                    }
-                }
+                list($pattern, $lookbehind, $inside, $alias) = self::resolvePattern($pattern);
 
                 //Don't cache the array length as it keeps changing
                 for ($i = 0; $i < count($strarr); $i++) {
@@ -137,7 +114,7 @@ class Token
 
                     if ($index > 0) {
                             
-                        if (!is_null($lookbehind)) {
+                        if ($lookbehind) {
                             $lookbehindLength = strlen($matches[1][0]);
                         }
 
@@ -155,7 +132,7 @@ class Token
                             $args[] = $before;
                         }
 
-                        $content = !is_null($inside) ? self::Tokenize($match, $inside) : $match;
+                        $content = $inside ? self::Tokenize($match, $inside) : $match;
 
                         $wrapped = new Token($token, $content, $alias);
                         
@@ -171,5 +148,45 @@ class Token
             }
         }
         return $strarr;
+    }
+
+    /**
+     * Optimize Regex in grammar
+     * @param  array $grammar
+     * @return array
+     */
+    protected static function optimizeRegex($grammar)
+    {
+        $rest = isset($grammar['rest']) ? $grammar['rest'] : [];
+
+        foreach ($rest as $key => $value) {
+            $grammar[$key] = $value;
+        }
+
+        unset($grammar['rest']);
+
+        return $grammar;
+    }
+
+    /**
+     * Resolves given Pattern to find out pattern, lookbehind, inside and alias
+     * @param  array|string $pattern
+     * @return array
+     */
+    protected static function resolvePattern($pattern)
+    {
+        if (is_string($pattern)){
+            return [$pattern, false, false, null];
+        }
+
+        $inside = isset($pattern['inside']) ? $pattern['inside'] : false;
+
+        $alias = isset($pattern['alias']) ? $pattern['alias'] : null;
+
+        $lookbehind = isset($pattern['lookbehind']) ? !!$pattern['lookbehind'] : false;
+        
+        $pattern = $pattern['pattern'];
+
+        return [$pattern, $lookbehind, $inside, $alias];
     }
 }
