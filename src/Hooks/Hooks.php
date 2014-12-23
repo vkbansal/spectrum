@@ -32,15 +32,18 @@ class Hooks implements HookInterface
     /**
      * {@inheritdoc}
      */
-    public function run($name, array $env = [])
+    public function run($name)
     {
+        $arguments = func_get_args();
+        $name = array_shift($arguments);
+
         if (!isset($this->hooks[$name]) || count($this->hooks[$name]) < 1) {
             return;
         }
 
         $count = count($this->hooks[$name]);
         for ($i = 0; $i < $count; $i++) {
-            call_user_func($this->hooks[$name][$i], $env);
+            call_user_func_array($this->hooks[$name][$i], $arguments);
         }
     }
 }
