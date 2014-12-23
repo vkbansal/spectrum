@@ -46,47 +46,50 @@ class Php extends AbstractLanguage
             /* Tokenize all inline PHP blocks that are wrapped in <?php ?>
              * This allows for easy PHP + markup highlighting
              */
-            $this->repository->addHook('before-highlight', function ($env) {
-                /*if (env.language !== 'php') {
+            $this->repository->addHook('before.highlight', function (&$env) {
+                if ($env['language'] !== 'php') {
                     return;
                 }
 
-                env.tokenStack = [];
+                $env['tokenStack'] = [];
 
-                env.backupCode = env.code;
-                env.code = env.code.replace(/(?:<\?php|<\?)[\w\W]*?(?:\?>)/ig, function(match) {
-                    env.tokenStack.push(match);
+                $env['backupCode'] = $env['code'];
+                $env['code'] = preg_replace_callback("/(?:<\?php|<\?)[\w\W]*?(?:\?>)/i", function($match) use (&$env) {
+                    $env['tokenStack'][] = $match[0];
 
-                    return '{{{PHP' + env.tokenStack.length + '}}}';
-                });*/
+                    return '{{{PHP'.count($env['tokenStack']).'}}}';
+                }, $env['code']);
             });
 
             // Restore env.code for other plugins (e.g. line-numbers)
-            $this->repository->addHook('before-insert', function ($env) {
-                // if (env.language === 'php') {
-                //     env.code = env.backupCode;
-                //     delete env.backupCode;
-                // }
+            $this->repository->addHook('before.insert', function (&$env) {
+                if ($env['language'] === 'php') {
+                    $env['code'] = $env['backupCode'];
+                    unset($env['backupCode']);
+                }
             });
 
             // Re-insert the tokens after highlighting
-            $this->repository->addHook('after-highlight', function ($env) {
-                // if (env.language !== 'php') {
-                //     return;
-                // }
+            $this->repository->addHook('after.highlight', function (&$env) {
+                if ($env['language'] !== 'php') {
+                    return;
+                }
 
-                // for (var i = 0, t; t = env.tokenStack[i]; i++) {
-                //     env.highlightedCode = env.highlightedCode.replace('{{{PHP' + (i + 1) + '}}}', Prism.highlight(t, env.grammar, 'php'));
-                // }
+                $elements =& $env['element'];
+                $lenght = $elements->childNodes->length;
+                
+                for ($i = 0; $i < $lenght; $i++) {
+                    $element = $elements->childNodes->item($i);
+                    preg_replace_callback("/\{\{\{PHP([0-9]+)\}\}\}/", function($matches) use (&$env, &$element, $prism){
+                        $index = $matches[1] - 1;
+                        $element->nodeValue = "";
+                        // $nodes = $this->repository->prism->highlight($env['tokenStack'][$index], $env['grammar'], 'php');
+                        // foreach ($nodes as $node) {
+                        //     $element->appendChild($node);
+                        // }
 
-                // env.element.innerHTML = env.highlightedCode;
-            });
-
-            // Wrap tokens in classes that are missing them
-            $this->repository->addHook('wrap', function ($env) {
-                // if (env.language === 'php' && env.type === 'markup') {
-                //     env.content = env.content.replace(/(\{\{\{PHP[0-9]+\}\}\})/g, "<span class=\"token php\">$1</span>");
-                // }
+                    },$element->nodeValue);
+                }
             });
 
             // Add the rules before all others

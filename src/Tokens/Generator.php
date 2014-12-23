@@ -40,7 +40,7 @@ class Generator
      */
     public function __construct($text, array $grammar, $language)
     {
-        $this->text = Util::decodeHTML($text);
+        $this->text = $text;
         $this->grammar = $this->optimizeGrammar($grammar);
         $this->language = $language;
     }

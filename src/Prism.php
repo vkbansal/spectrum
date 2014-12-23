@@ -43,6 +43,8 @@ class Prism
     {
         $hooks = new Hooks();
         $this->repo = new Repository($hooks, $path);
+        $this->repo->prism = $this;
+        $this->loadDefaultLanguages();
     }
 
     /**
@@ -170,7 +172,7 @@ class Prism
             $parent->setAttribute('class', $className);
         }
 
-        $code = $this->getInnerHTML($element);
+        $code = Util::decodeHTML($this->getInnerHTML($element));
 
         if (!isset($code)) {
             return false;
@@ -180,7 +182,7 @@ class Prism
             'element' => &$element,
             'language' => $language,
             'grammar' => $grammar,
-            'code' => $code
+            'code' => &$code
         ];
 
         $this->repo->runHook('before.highlight', $env);
@@ -207,7 +209,7 @@ class Prism
      * @param  string $language
      * @return array
      */
-    protected function highlight($code, $grammar, $language)
+    public function highlight($code, $grammar, $language)
     {
         $generator = new Generator($code, $grammar, $language);
         $generator->generate();

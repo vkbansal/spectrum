@@ -21,7 +21,8 @@ interface HookInterface
     /**
      * Run a Hook
      * @param  string $name
+     * @param  array  $env
      * @return void
      */
-    public function run($name);
+    public function run($name, array &$env = []);
 }

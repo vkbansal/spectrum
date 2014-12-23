@@ -181,9 +181,9 @@ class Repository implements RepositoryInterface
      * @param  string $name
      * @return void
      */
-    public function runHook($name)
+    public function runHook($name, array &$env = [])
     {
-        $this->hooks->run($name);
+        $this->hooks->run($name, $env);
     }
 
     /**
