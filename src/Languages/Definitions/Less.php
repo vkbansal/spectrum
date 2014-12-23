@@ -7,7 +7,7 @@ class Less extends AbstractLanguage
 {
     public function definition()
     {
-        /* FIXME :
+        /*
          :extend() is not handled specifically : its highlighting is buggy.
          Mixin usage must be inside a ruleset to be highlighted.
          At-rules (e.g. import) containing interpolations are buggy.
