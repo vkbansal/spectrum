@@ -80,13 +80,13 @@ class Php extends AbstractLanguage
                 
                 for ($i = 0; $i < $lenght; $i++) {
                     $element = $elements->childNodes->item($i);
-                    preg_replace_callback("/\{\{\{PHP([0-9]+)\}\}\}/", function($matches) use (&$env, &$element, $prism){
+                    preg_replace_callback("/\{\{\{PHP([0-9]+)\}\}\}/", function($matches) use (&$env, &$element){
                         $index = $matches[1] - 1;
                         $element->nodeValue = "";
-                        // $nodes = $this->repository->prism->highlight($env['tokenStack'][$index], $env['grammar'], 'php');
-                        // foreach ($nodes as $node) {
-                        //     $element->appendChild($node);
-                        // }
+                        $nodes = $this->repository->prism->highlight($env['tokenStack'][$index], $env['grammar'], 'php');
+                        foreach ($nodes as $node) {
+                            $element->appendChild($node);
+                        }
 
                     },$element->nodeValue);
                 }
