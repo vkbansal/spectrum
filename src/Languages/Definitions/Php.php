@@ -21,7 +21,7 @@ class Php extends AbstractLanguage
     {
         $this->insertBefore('php', [
             'delimiter'=> "/(\?>|<\?php|<\?)/i",
-            'variable'=> "/(\$\w+)\b/i",
+            'variable'=> "/($\w+)\b/i",
             'package'=> [
                 "pattern" => "/(\\\\|namespace\s+|use\s+)[\w\\\\]+/",
                 "lookbehind"=> true,

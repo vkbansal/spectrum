@@ -18,6 +18,7 @@ return [
         'javascript'   => 'VKBansal\Prism\Languages\Definitions\JavaScript',
         'less'         => 'VKBansal\Prism\Languages\Definitions\Less',
         'markup'       => 'VKBansal\Prism\Languages\Definitions\Markup',
+        'perl'         => 'VKBansal\Prism\Languages\Definitions\Perl',
         'php'          => 'VKBansal\Prism\Languages\Definitions\Php',
         'python'       => 'VKBansal\Prism\Languages\Definitions\Python',
         'ruby'         => 'VKBansal\Prism\Languages\Definitions\Ruby',

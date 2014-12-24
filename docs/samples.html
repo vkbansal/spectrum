@@ -50,6 +50,7 @@
                             <option value="javascript">JavaScript</option>
                             <option value="less">LESS CSS</option>
                             <option value="markup">Markup</option>
+                            <option value="perl">Perl</option>
                             <option value="php">PHP</option>
                             <option value="python">Python</option>
                             <option value="ruby">Ruby</option>
@@ -345,16 +346,53 @@ have enough relevance hints for proper Less detection
 <span class="token doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span>body {width: 500px;}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token style language-css"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token selector">body </span><span class="token punctuation">{</span><span class="token property">width</span><span class="token punctuation">:</span> 500px<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>application/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  function $init() {return true;}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token script language-javascript"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>application/javascript<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token keyword">function</span> <span class="token function">$init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token keyword">true</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">checked</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>'title'</span><span class="token punctuation">&gt;</span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
   <span class="token comment" spellcheck="true">&lt;!-- here goes the rest of the page --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre>
+        </div>
+            <div id="perl" class="definition">
+            <p>Default language reference: <b>perl</b></p>
+                        <pre class="language-perl"><code class="language-perl"><span class="token comment" spellcheck="true"># loads object
+</span><span class="token function"><span class="token keyword">sub</span> load</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">my</span> <span class="token variable">$flds</span> <span class="token operator">=</span> <span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span>db_load<span class="token punctuation">(</span><span class="token variable">$id</span><span class="token punctuation">,</span><span class="token variable">@_</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token keyword">do</span> <span class="token punctuation">{</span>
+    Carp<span class="token punctuation">:</span><span class="token punctuation">:</span>carp <span class="token string">"Can`t load (class: $c, id: $id): '$!'"</span><span class="token punctuation">;</span> return <span class="token keyword">undef</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">my</span> <span class="token variable">$o</span> <span class="token operator">=</span> <span class="token variable">$c</span><span class="token operator">-</span><span class="token operator">&gt;</span>_perl_new<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$id12</span> <span class="token operator">=</span> <span class="token variable">$id</span> <span class="token operator">/</span> <span class="token number">24</span> <span class="token operator">/</span> <span class="token number">3600</span><span class="token punctuation">;</span>
+  <span class="token variable">$o</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token string">'ID'</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token variable">$id12</span> <span class="token operator">+</span> <span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">#$o-&gt;{'SHCUT'} = $flds-&gt;{'SHCUT'};
+</span>  <span class="token keyword">my</span> <span class="token variable">$p</span> <span class="token operator">=</span> <span class="token variable">$o</span><span class="token operator">-</span><span class="token operator">&gt;</span>props<span class="token punctuation">;</span>
+  <span class="token keyword">my</span> <span class="token variable">$vt</span><span class="token punctuation">;</span>
+  <span class="token variable">$string</span> <span class="token operator">=~</span> <span class="token regex">m/^sought_text$/</span><span class="token punctuation">;</span>
+  <span class="token variable">$items</span> <span class="token operator">=</span> split <span class="token regex">//</span><span class="token punctuation">,</span> <span class="token string">'abc'</span><span class="token punctuation">;</span>
+  <span class="token variable">$string</span> <span class="token regex">//</span><span class="token operator">=</span> <span class="token string">"bar"</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token keyword">my</span> <span class="token variable">$key</span> <span class="token punctuation">(</span>keys <span class="token variable">%$p</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$</span><span class="token punctuation">{</span><span class="token variable">$vt</span><span class="token operator">.</span><span class="token string">'::property'</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token variable">$o</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token variable">$key</span> <span class="token operator">.</span> <span class="token string">'_real'</span><span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token variable">$flds</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token variable">$key</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+      tie <span class="token variable">$o</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token variable">$key</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'CMSBuilder::Property'</span><span class="token punctuation">,</span> <span class="token variable">$o</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token variable">$o</span><span class="token operator">-</span><span class="token operator">&gt;</span>save <span class="token keyword">if</span> <span class="token keyword">delete</span> <span class="token variable">$o</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token string">'_save_after_load'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true"># GH-117
+</span>  <span class="token keyword">my</span> <span class="token variable">$g</span> <span class="token operator">=</span> glob<span class="token punctuation">(</span><span class="token string">"/usr/bin/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  return <span class="token variable">$o</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">=</span>head1 NAME
+POD till the end of file
 
 </code></pre>
         </div>
@@ -419,7 +457,7 @@ datahere
             <p>Default language reference: <b>python</b></p>
                         <pre class="language-python"><code class="language-python">@requires_authorization
 <span class="token keyword">def</span> somefunc<span class="token punctuation">(</span>param1<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> param2<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    r<span class="token string">''</span><span class="token string">'A docstring'</span><span class="token string">''</span>
+    r<span class="token string">'''A docstring'''</span>
     <span class="token keyword">if</span> param1 &gt; param2<span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># interesting
 </span>        <span class="token keyword">print</span> <span class="token string">'Gre\'ater'</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>param2 <span class="token operator">-</span> param1 <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">+</span> 0b10l<span class="token punctuation">)</span> <span class="token operator">or</span> None
@@ -427,8 +465,8 @@ datahere
 <span class="token keyword">class</span> SomeClass<span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 
-&gt;&gt;&gt; message <span class="token operator">=</span> <span class="token string">''</span>'interpreter
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> prompt<span class="token string">''</span>'
+&gt;&gt;&gt; message <span class="token operator">=</span> <span class="token string">'''interpreter
+... prompt'''</span>
 
 </code></pre>
         </div>
