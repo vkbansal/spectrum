@@ -1,8 +1,6 @@
 <?php
 namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Definition\AbstractLanguage;
-
 class Sql extends AbstractLanguage
 {
     public function definition()

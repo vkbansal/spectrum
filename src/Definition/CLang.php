@@ -1,7 +1,6 @@
 <?php
 namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Definition\AbstractLanguage;
 
 class CLang extends AbstractLanguage
 {

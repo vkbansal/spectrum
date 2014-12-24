@@ -1,8 +1,6 @@
 <?php
 namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Definition\AbstractLanguage;
-
 class Php extends AbstractLanguage
 {
     public function definition()
@@ -76,9 +74,9 @@ class Php extends AbstractLanguage
                 }
 
                 $elements =& $env['element'];
-                $lenght = $elements->childNodes->length;
+                $length = $elements->childNodes->length;
                 
-                for ($i = 0; $i < $lenght; $i++) {
+                for ($i = 0; $i < $length; $i++) {
                     $element = $elements->childNodes->item($i);
                     preg_replace_callback("/\{\{\{PHP([0-9]+)\}\}\}/", function ($matches) use (&$env, &$element) {
                         $index = $matches[1] - 1;
