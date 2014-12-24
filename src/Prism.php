@@ -30,7 +30,7 @@ class Prism
     /**
      * @var AssetManager
      */
-    protected $manger;
+    protected $manager;
 
     /**
      * Class Constructor
