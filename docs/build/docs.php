@@ -16,7 +16,7 @@ $finder->sortByName()->files()->name('*.txt')->in(__DIR__.'/../samples/');
 $data = [];
 
 $prism = new Prism();
-$prism->loadAllLanguages();
+$prism->loadAllDefinitions();
 
 foreach ($finder as $file) {
     $code = file_get_contents($file->getRealpath());

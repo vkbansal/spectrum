@@ -1,6 +1,6 @@
 <?php
-use VKBansal\Prism\Languages\Repository;
-use VKBansal\Prism\Hooks\Hooks;
+
+use VKBansal\Prism\Prism;
 
 class LanguageTest extends PHPUnit_Framework_TestCase {
 
@@ -8,7 +8,7 @@ class LanguageTest extends PHPUnit_Framework_TestCase {
     
     public function setUp()
     {
-        $this->repo = new Repository(new Hooks());
+        $this->repo = new Prism();
     }
 
     public function testInsertBefore()

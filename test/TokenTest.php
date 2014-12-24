@@ -1,5 +1,5 @@
 <?php
-use VKBansal\Prism\Tokens\Token;
+use VKBansal\Prism\Token\Token;
 
 class TokenTest extends PHPUnit_Framework_TestCase
 {

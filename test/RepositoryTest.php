@@ -1,6 +1,6 @@
 <?php
-use VKBansal\Prism\Languages\Repository;
-use VKBansal\Prism\Hooks\Hooks;
+
+use VKBansal\Prism\Prism;
 
 class RepositoryTest extends PHPUnit_Framework_TestCase {
 
@@ -8,7 +8,7 @@ class RepositoryTest extends PHPUnit_Framework_TestCase {
     
     public function setUp()
     {
-        $this->repo = new Repository(new Hooks());
+        $this->repo = new Prism();
         $this->repo->loadDefinition('markup');
     }
 
@@ -69,5 +69,15 @@ class RepositoryTest extends PHPUnit_Framework_TestCase {
         $this->assertArrayHasKey('punctuation', $test);
 
         unset($lang);
+    }
+
+    public function testloadAll()
+    {
+        $this->repo->loadAllDefinitions();
+    }
+
+    public function testloadDefault()
+    {
+        $this->repo->loadDefaultDefinitions();
     }
 }

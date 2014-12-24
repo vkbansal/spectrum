@@ -1,5 +1,9 @@
 <?php
-use VKBansal\Prism\Hooks\Hooks;
+use VKBansal\Prism\Hook\HookableTrait;
+
+class Hooks {
+    use HookableTrait;
+}
 
 class HooksTest extends PHPUnit_Framework_TestCase {
 
@@ -8,18 +12,18 @@ class HooksTest extends PHPUnit_Framework_TestCase {
         $counter = 0;
         $hooks = new Hooks();
 
-        $hooks->add('test', function(&$env){
+        $hooks->addHook('test', function(&$env){
             ++$env['counter'];
         });
 
-        $hooks->add('test', function(&$env){
+        $hooks->addHook('test', function(&$env){
             $env['counter']++; 
         });
 
         $env = ['counter' => &$counter];
 
-        $hooks->run('test', $env);
-        $hooks->run('test2');
+        $hooks->runHook('test', $env);
+        $hooks->runHook('test2');
 
         $this->assertEquals(2, $counter);
     }
