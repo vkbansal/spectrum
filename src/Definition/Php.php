@@ -54,7 +54,7 @@ class Php extends AbstractLanguage
                 $env['tokenStack'] = [];
 
                 $env['backupCode'] = $env['code'];
-                $env['code'] = preg_replace_callback("/(?:<\?php|<\?)[\w\W]*?(?:\?>)/i", function($match) use (&$env) {
+                $env['code'] = preg_replace_callback("/(?:<\?php|<\?)[\w\W]*?(?:\?>)/i", function ($match) use (&$env) {
                     $env['tokenStack'][] = $match[0];
 
                     return '{{{PHP'.count($env['tokenStack']).'}}}';
@@ -80,7 +80,7 @@ class Php extends AbstractLanguage
                 
                 for ($i = 0; $i < $lenght; $i++) {
                     $element = $elements->childNodes->item($i);
-                    preg_replace_callback("/\{\{\{PHP([0-9]+)\}\}\}/", function($matches) use (&$env, &$element){
+                    preg_replace_callback("/\{\{\{PHP([0-9]+)\}\}\}/", function ($matches) use (&$env, &$element) {
                         $index = $matches[1] - 1;
                         $element->nodeValue = "";
                         $nodes = $this->prism->highlight($env['tokenStack'][$index], $env['grammar'], 'php');
@@ -88,7 +88,7 @@ class Php extends AbstractLanguage
                             $element->appendChild($node);
                         }
 
-                    },$element->nodeValue);
+                    }, $element->nodeValue);
                 }
             });
 

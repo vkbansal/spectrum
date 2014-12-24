@@ -5,7 +5,7 @@ use VKBansal\Prism\Prism;
 
 /**
  * Abstract class for language definitions
- * @package VKBansal\Prism\Languages\AbstractLanguage
+ * @package VKBansal\Prism\Definition\AbstractLanguage
  * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
@@ -13,8 +13,8 @@ use VKBansal\Prism\Prism;
 abstract class AbstractLanguage
 {
     /**
-     * Repository
-     * @var RepositoryInterface
+     * Prism Instance
+     * @var \VKBansal\Prism\Prism
      */
     protected $prism;
 

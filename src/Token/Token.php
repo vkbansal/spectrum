@@ -36,7 +36,7 @@ class Token
     protected $tag = 'span';
 
     /**
-     * @var array<string>
+     * @var array
      */
     protected $classes = ['token'];
 

@@ -34,9 +34,9 @@ class Generator
 
     /**
      * Constructor
-     * @param string $text
-     * @param array  $grammar
-     * @param string $language
+     * @param string|array<Token|string> $text
+     * @param array                      $grammar
+     * @param string                     $language
      */
     public function __construct($text, array $grammar, $language)
     {
@@ -58,7 +58,7 @@ class Generator
 
             foreach ($patterns as $pattern) {
 
-                $resolvedPattern = $this->resolvePattern($pattern); 
+                $resolvedPattern = $this->resolvePattern($pattern);
 
                 //Don't cache the array length as it keeps changing
                 for ($i = 0; $i < count($strarr); $i++) {
