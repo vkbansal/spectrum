@@ -5,6 +5,7 @@ use DOMDocument;
 use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
 use VKBansal\Prism\Hook\HookableTrait;
+use VKBansal\Prism\Plugin\PluggableTrait;
 use VKBansal\Prism\Repository\RepositoryTrait;
 use VKBansal\Prism\Token\Generator;
 
@@ -18,6 +19,7 @@ use VKBansal\Prism\Token\Generator;
 class Prism
 {
     use HookableTrait;
+    use PluggableTrait;
     use RepositoryTrait;
 
     /**
