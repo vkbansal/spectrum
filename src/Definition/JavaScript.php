@@ -23,10 +23,10 @@ class JavaScript extends AbstractLanguage
             ]
         ], 'keyword');
         
-        $markup = $this->prism->hasDefinition('markup');
+        $markup = $this->manager->hasDefinition('markup');
         
         if ($markup) {
-            $inside = $this->prism->getDefinition('markup.tag.inside');
+            $inside = $this->manager->getDefinition('markup.tag.inside');
 
             $this->insertBefore('markup', [
                 "script"=> [

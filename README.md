@@ -28,10 +28,11 @@ It follows the [semantic approach](http://www.w3.org/TR/html5/text-level-semanti
 
 ```php
 <?php
-
+use VKBansal\Prism\AssetManger;
 use VKBansal\Prism\Prism;
 
-$prism = new Prism();
+$manger = new AssetManager;
+$prism = new Prism($manager);
 ```
 
 ###Highlighting HTML

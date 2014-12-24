@@ -34,8 +34,8 @@ class CoffeeScript extends AbstractLanguage
 
     public function setup()
     {
-        $comment = $this->prism->getDefinition('coffeescript.comment');
-        $interpolation = $this->prism->getDefinition('coffeescript.string')[1]['inside']['interpolation'];
+        $comment = $this->manager->getDefinition('coffeescript.comment');
+        $interpolation = $this->manager->getDefinition('coffeescript.string')[1]['inside']['interpolation'];
 
         $this->insertBefore('coffeescript', [
             'multiline-comment'=> [
@@ -61,7 +61,7 @@ class CoffeeScript extends AbstractLanguage
                         "pattern"=> "/^`|`$/",
                         "alias"=> 'punctuation'
                     ],
-                    "rest"=> $this->prism->getDefinition('javascript')
+                    "rest"=> $this->manager->getDefinition('javascript')
                 ]
             ],
             'multiline-string'=> [ // Block strings

@@ -1,7 +1,7 @@
 <?php
 namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Prism;
+use VKBansal\Prism\AssetManager;
 
 /**
  * Abstract class for language definitions
@@ -14,17 +14,17 @@ abstract class AbstractLanguage
 {
     /**
      * Prism Instance
-     * @var \VKBansal\Prism\Prism
+     * @var \VKBansal\Prism\AssetManager
      */
-    protected $prism;
+    protected $manager;
 
     /**
      * constructor
-     * @param \VKBansal\Prism\Prism $prism
+     * @param \VKBansal\Prism\AssetManager $manager
      */
-    public function __construct(Prism $prism)
+    public function __construct(AssetManager $manager)
     {
-        $this->prism = $prism;
+        $this->manager = $manager;
     }
 
     /**
@@ -35,8 +35,8 @@ abstract class AbstractLanguage
      */
     public function extend($id, $redef)
     {
-        $this->prism->loadDefinition($id);
-        $lang = $this->prism->getDefinition($id);
+        $this->manager->loadDefinition($id);
+        $lang = $this->manager->getDefinition($id);
 
         foreach ($redef as $key => $value) {
             $lang[$key] = $value;
@@ -51,11 +51,11 @@ abstract class AbstractLanguage
      * @param  array       $insert Definition to be inserted
      * @param  string|null $before Key before which definition should be inserted.
      *                             If not provided, it will be appended.
-     * @return void
+     * @return array
      */
     public function insertBefore($inside, array $insert, $before = null)
     {
-        $root =& $this->prism->referDefinition($inside);
+        $root =& $this->manager->referDefinition($inside);
 
         if (is_null($before)) {
             foreach ($insert as $key => $value) {
@@ -79,7 +79,7 @@ abstract class AbstractLanguage
         $temp = explode('.', $inside);
         $rootKey = array_shift($temp);
 
-        $def =& $this->prism->referDefinition();
+        $def =& $this->manager->referDefinition();
 
         array_walk_recursive($def, function (&$value, $key) use ($root, $rootKey, $ret) {
             if ($value === $root && $key !== $rootKey) {

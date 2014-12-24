@@ -18,8 +18,10 @@ trait HookableTrait
     /**
      * {@inheritdoc}
      */
-    public function addHook($name, callable $callback)
+    public function addHook($name, \Closure $callback)
     {
+        $callback = $callback->bindTo($this);
+        
         if (isset($this->hooks[$name])) {
             $this->hooks[$name][] = $callback;
         } else {

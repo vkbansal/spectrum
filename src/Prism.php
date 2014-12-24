@@ -4,13 +4,10 @@ namespace VKBansal\Prism;
 use DOMDocument;
 use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
-use VKBansal\Prism\Hook\HookableTrait;
-use VKBansal\Prism\Plugin\PluggableTrait;
-use VKBansal\Prism\Repository\RepositoryTrait;
 use VKBansal\Prism\Token\Generator;
 
 /**
- * Core Prism class for syntax highliting
+ * Core Prism class for syntax highlighting
  * @package VKBansal\Prism\Prism
  * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
@@ -18,10 +15,6 @@ use VKBansal\Prism\Token\Generator;
  */
 class Prism
 {
-    use HookableTrait;
-    use PluggableTrait;
-    use RepositoryTrait;
-
     /**
      * Stores HTML Document to be highlighted
      * @var DOMDocument
@@ -35,21 +28,17 @@ class Prism
     protected $langTest = "/\blang(?:uage)?-(?!\*)(\w+)\b/i";
 
     /**
-     * Class Constructor
-     * @param string|null path Path to language map
+     * @var AssetManager
      */
-    public function __construct($path = null)
-    {
-        if (is_null($path)) {
-            $path = __DIR__.'/Repository/map.php';
-        }
+    protected $manger;
 
-        if (file_exists($path)) {
-            $data = require $path;
-            $this->map = $data['map'];
-            $this->aliases = $data['aliases'];
-            $this->defaults = $data['defaults'];
-        }
+    /**
+     * Class Constructor
+     * @param AssetManager $manager
+     */
+    public function __construct(AssetManager $manager)
+    {
+        $this->manager = $manager;
     }
 
     /**
@@ -94,7 +83,7 @@ class Prism
         $this->document->encoding = 'utf-8';
 
         $text = Util::encodeCodeBlocks($text);
-        $grammar = $this->getDefinition($language);
+        $grammar = $this->manager->getDefinition($language);
         $nodes = $this->highlight($text, $grammar, $language);
         
         foreach ($nodes as $node) {
@@ -127,7 +116,7 @@ class Prism
                 $language = '';
             }
 
-            $grammar = $this->getDefinition($language);
+            $grammar = $this->manager->getDefinition($language);
         }
 
         if (!isset($grammar) || is_null($grammar)) {
@@ -161,19 +150,19 @@ class Prism
             'code' => &$code
         ];
 
-        $this->runHook('before.highlight', $env);
+        $this->manager->runHook('before.highlight', $env);
 
 
         $nodes = $this->highlight($code, $grammar, $language);
         $element->nodeValue = "";
 
-        $this->runHook('before.insert', $env);
+        $this->manager->runHook('before.insert', $env);
 
         foreach ($nodes as $node) {
             $element->appendChild($node);
         }
 
-        $this->runHook('after.highlight', $env);
+        $this->manager->runHook('after.highlight', $env);
 
         return $element->ownerDocument->saveHTML($element);
     }

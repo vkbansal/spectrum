@@ -3,7 +3,7 @@
 require __DIR__."/../../vendor/autoload.php";
 
 use Symfony\Component\Finder\Finder;
-use VKBansal\Prism\Util;
+use VKBansal\Prism\AssetManager;
 use VKBansal\Prism\Prism;
 use VKBansal\FrontMatter\Parser;
 
@@ -15,8 +15,9 @@ $finder->sortByName()->files()->name('*.txt')->in(__DIR__.'/../samples/');
 
 $data = [];
 
-$prism = new Prism();
-$prism->loadAllDefinitions();
+$manager = new AssetManager();
+$manager->loadAllDefinitions();
+$prism = new Prism($manager);
 
 foreach ($finder as $file) {
     $code = file_get_contents($file->getRealpath());

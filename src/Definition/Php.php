@@ -40,13 +40,13 @@ class Php extends AbstractLanguage
         ], 'operator');
 
         // Add HTML support of the markup language exists
-        $markup = $this->prism->hasDefinition('markup');
+        $markup = $this->manager->hasDefinition('markup');
         
         if ($markup) {
             /* Tokenize all inline PHP blocks that are wrapped in <?php ?>
              * This allows for easy PHP + markup highlighting
              */
-            $this->prism->addHook('before.highlight', function (&$env) {
+            $this->manager->addHook('before.highlight', function (&$env) {
                 if ($env['language'] !== 'php') {
                     return;
                 }
@@ -62,7 +62,7 @@ class Php extends AbstractLanguage
             });
 
             // Restore env.code for other plugins (e.g. line-numbers)
-            $this->prism->addHook('before.insert', function (&$env) {
+            $this->manager->addHook('before.insert', function (&$env) {
                 if ($env['language'] === 'php') {
                     $env['code'] = $env['backupCode'];
                     unset($env['backupCode']);
@@ -70,7 +70,7 @@ class Php extends AbstractLanguage
             });
 
             // Re-insert the tokens after highlighting
-            $this->prism->addHook('after.highlight', function (&$env) {
+            $this->manager->addHook('after.highlight', function (&$env) {
                 if ($env['language'] !== 'php') {
                     return;
                 }
@@ -83,7 +83,7 @@ class Php extends AbstractLanguage
                     preg_replace_callback("/\{\{\{PHP([0-9]+)\}\}\}/", function ($matches) use (&$env, &$element) {
                         $index = $matches[1] - 1;
                         $element->nodeValue = "";
-                        $nodes = $this->prism->highlight($env['tokenStack'][$index], $env['grammar'], 'php');
+                        $nodes = $this->highlight($env['tokenStack'][$index], $env['grammar'], 'php');
                         foreach ($nodes as $node) {
                             $element->appendChild($node);
                         }
@@ -96,7 +96,7 @@ class Php extends AbstractLanguage
             $this->insertBefore('php', [
                 'markup'=> [
                     "pattern"=> "/<[^?]\/?(.*?)>/",
-                    "inside"=> $this->prism->getDefinition('markup')
+                    "inside"=> $this->manager->getDefinition('markup')
                 ],
                 'php'=> "/\{\{\{PHP[0-9]+\}\}\}/"
             ], 'comment');

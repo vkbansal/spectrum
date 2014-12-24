@@ -1,6 +1,8 @@
 <?php
 namespace VKBansal\Prism\Repository;
 
+use VKBansal\Prism\Hook\HookableTrait;
+
 /**
  * Repository for language definitions
  * @package VKBansal\Prism\Repository

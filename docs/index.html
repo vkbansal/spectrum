@@ -58,10 +58,11 @@
 <span class="token punctuation">}</span></code></pre>
 <h2>Basic usage</h2>
 <pre class=" language-php"><code class=" language-php"><span class="token delimiter">&lt;?php</span>
-
+<span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>AssetManger</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Prism</span><span class="token punctuation">;</span>
 
-$prism <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prism</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+$manger <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AssetManager</span><span class="token punctuation">;</span>
+$prism <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prism</span><span class="token punctuation">(</span>$manager<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3>Highlighting HTML</h3>
 <p>For highlighting HTML, <code>code</code> blocks must have a <code>language-</code> prefixed <code>class</code> attribute. For example, if you want to highlight <code>HTML</code>, the code block must have a <code>language-html</code> class.</p>
 <p>Prism will auto-detect the language and apply highlighting if the language definition is found.</p>

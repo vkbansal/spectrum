@@ -34,7 +34,7 @@ class CLang extends AbstractLanguage
             ]
         ], 'string');
 
-        $lang =& $this->prism->referDefinition('c');
+        $lang =& $this->manager->referDefinition('c');
         unset($lang['boolean']);
         unset($lang['class-name']);
     }

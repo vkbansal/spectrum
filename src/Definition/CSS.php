@@ -36,7 +36,7 @@ class CSS extends AbstractLanguage
 
     public function setup()
     {
-        $markup = $this->prism->hasDefinition('markup');
+        $markup = $this->manager->hasDefinition('markup');
 
          $this->insertBefore('css', [
             'hexcode'=> "/\#[\da-f]{3,6}/i",
@@ -45,7 +45,7 @@ class CSS extends AbstractLanguage
         ], 'function');
         
         if ($markup) {
-            $inside = $this->prism->getDefinition('markup.tag.inside');
+            $inside = $this->manager->getDefinition('markup.tag.inside');
 
             $this->insertBefore('markup', [
                 'style' => [

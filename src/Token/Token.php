@@ -101,7 +101,7 @@ class Token
     protected function finalizeContent(\DOMDocument $parent)
     {
         if (is_string($this->content)) {
-            return $this->content = [$parent->createTextNode($this->content)];
+            $this->content = [$parent->createTextNode($this->content)];
         }
 
         if (is_array($this->content)) {
@@ -125,7 +125,9 @@ class Token
                 }
             }
 
-            return $this->content = $temp;
+            $this->content = $temp;
         }
+
+        return $this->content;
     }
 }

@@ -45,7 +45,7 @@ class Less extends AbstractLanguage
     public function setup()
     {
         // Invert function and punctuation positions
-        $function = $this->prism->getDefinition('less.function');
+        $function = $this->manager->getDefinition('less.function');
         
         $this->insertBefore('less', [
             'function'=> $function

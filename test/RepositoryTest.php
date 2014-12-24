@@ -1,14 +1,12 @@
 <?php
 
-use VKBansal\Prism\Prism;
-
 class RepositoryTest extends PHPUnit_Framework_TestCase {
 
     protected $repo;
     
     public function setUp()
     {
-        $this->repo = new Prism();
+        $this->repo = new \VKBansal\Prism\AssetManager();
         $this->repo->loadDefinition('markup');
     }
 
