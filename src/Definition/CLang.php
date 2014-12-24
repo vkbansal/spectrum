@@ -1,7 +1,7 @@
 <?php
-namespace VKBansal\Prism\Languages\Definitions;
+namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Languages\AbstractLanguage;
+use VKBansal\Prism\Definition\AbstractLanguage;
 
 class CLang extends AbstractLanguage
 {
@@ -34,7 +34,7 @@ class CLang extends AbstractLanguage
             ]
         ], 'string');
 
-        $lang =& $this->repository->referDefinition('c');
+        $lang =& $this->prism->referDefinition('c');
         unset($lang['boolean']);
         unset($lang['class-name']);
     }

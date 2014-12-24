@@ -1,7 +1,7 @@
 <?php
-namespace VKBansal\Prism\Languages\Definitions;
+namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Languages\AbstractLanguage;
+use VKBansal\Prism\Definition\AbstractLanguage;
 
 class JavaScript extends AbstractLanguage
 {
@@ -23,10 +23,10 @@ class JavaScript extends AbstractLanguage
             ]
         ], 'keyword');
         
-        $markup = $this->repository->hasDefinition('markup');
+        $markup = $this->prism->hasDefinition('markup');
         
         if ($markup) {
-            $inside = $this->repository->getDefinition('markup.tag.inside');
+            $inside = $this->prism->getDefinition('markup.tag.inside');
 
             $this->insertBefore('markup', [
                 "script"=> [

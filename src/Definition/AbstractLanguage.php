@@ -1,5 +1,7 @@
 <?php
-namespace VKBansal\Prism\Languages;
+namespace VKBansal\Prism\Definition;
+
+use VKBansal\Prism\Prism;
 
 /**
  * Abstract class for language definitions
@@ -14,15 +16,15 @@ abstract class AbstractLanguage
      * Repository
      * @var RepositoryInterface
      */
-    protected $repository;
+    protected $prism;
 
     /**
      * constructor
-     * @param RepositoryInterface $repository
+     * @param \VKBansal\Prism\Prism $prism
      */
-    public function __construct(RepositoryInterface $repository)
+    public function __construct(Prism $prism)
     {
-        $this->repository = $repository;
+        $this->prism = $prism;
     }
 
     /**
@@ -33,8 +35,8 @@ abstract class AbstractLanguage
      */
     public function extend($id, $redef)
     {
-        $this->repository->loadDefinition($id);
-        $lang = $this->repository->getDefinition($id);
+        $this->prism->loadDefinition($id);
+        $lang = $this->prism->getDefinition($id);
 
         foreach ($redef as $key => $value) {
             $lang[$key] = $value;
@@ -53,7 +55,7 @@ abstract class AbstractLanguage
      */
     public function insertBefore($inside, array $insert, $before = null)
     {
-        $root =& $this->repository->referDefinition($inside);
+        $root =& $this->prism->referDefinition($inside);
 
         if (is_null($before)) {
             foreach ($insert as $key => $value) {
@@ -77,7 +79,7 @@ abstract class AbstractLanguage
         $temp = explode('.', $inside);
         $rootKey = array_shift($temp);
 
-        $def =& $this->repository->referDefinition();
+        $def =& $this->prism->referDefinition();
 
         array_walk_recursive($def, function (&$value, $key) use ($root, $rootKey, $ret) {
             if ($value === $root && $key !== $rootKey) {

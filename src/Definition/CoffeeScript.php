@@ -1,7 +1,7 @@
 <?php
-namespace VKBansal\Prism\Languages\Definitions;
+namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Languages\AbstractLanguage;
+use VKBansal\Prism\Definition\AbstractLanguage;
 
 class CoffeeScript extends AbstractLanguage
 {
@@ -34,8 +34,8 @@ class CoffeeScript extends AbstractLanguage
 
     public function setup()
     {
-        $comment = $this->repository->getDefinition('coffeescript.comment');
-        $interpolation = $this->repository->getDefinition('coffeescript.string')[1]['inside']['interpolation'];
+        $comment = $this->prism->getDefinition('coffeescript.comment');
+        $interpolation = $this->prism->getDefinition('coffeescript.string')[1]['inside']['interpolation'];
 
         $this->insertBefore('coffeescript', [
             'multiline-comment'=> [
@@ -61,7 +61,7 @@ class CoffeeScript extends AbstractLanguage
                         "pattern"=> "/^`|`$/",
                         "alias"=> 'punctuation'
                     ],
-                    "rest"=> $this->repository->getDefinition('javascript')
+                    "rest"=> $this->prism->getDefinition('javascript')
                 ]
             ],
             'multiline-string'=> [ // Block strings

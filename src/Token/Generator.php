@@ -1,11 +1,11 @@
 <?php
-namespace VKBansal\Prism\Tokens;
+namespace VKBansal\Prism\Token;
 
 use VKBansal\Prism\Util;
 
 /**
  * Token Generator Class
- * @package VKBansal\Prism\Tokens\Generator
+ * @package VKBansal\Prism\Token\Generator
  * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT

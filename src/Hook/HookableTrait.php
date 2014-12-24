@@ -1,7 +1,5 @@
 <?php
-namespace VKBansal\Prism\Hooks;
-
-use VKBansal\Prism\Hooks\HookInterface;
+namespace VKBansal\Prism\Hook;
 
 /**
  * Hooks Implementation.
@@ -10,7 +8,7 @@ use VKBansal\Prism\Hooks\HookInterface;
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-class Hooks implements HookInterface
+trait HookableTrait
 {
     /**
      * @var array
@@ -20,7 +18,7 @@ class Hooks implements HookInterface
     /**
      * {@inheritdoc}
      */
-    public function add($name, callable $callback)
+    public function addHook($name, callable $callback)
     {
         if (isset($this->hooks[$name])) {
             $this->hooks[$name][] = $callback;
@@ -32,7 +30,7 @@ class Hooks implements HookInterface
     /**
      * {@inheritdoc}
      */
-    public function run($name, array &$env = [])
+    public function runHook($name, array &$env = [])
     {
         if (!isset($this->hooks[$name]) || count($this->hooks[$name]) < 1) {
             return;

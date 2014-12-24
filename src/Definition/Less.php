@@ -1,7 +1,7 @@
 <?php
-namespace VKBansal\Prism\Languages\Definitions;
+namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Languages\AbstractLanguage;
+use VKBansal\Prism\Definition\AbstractLanguage;
 
 class Less extends AbstractLanguage
 {
@@ -45,7 +45,7 @@ class Less extends AbstractLanguage
     public function setup()
     {
         // Invert function and punctuation positions
-        $function = $this->repository->getDefinition('less.function');
+        $function = $this->prism->getDefinition('less.function');
         
         $this->insertBefore('less', [
             'function'=> $function

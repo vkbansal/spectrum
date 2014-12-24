@@ -4,9 +4,9 @@ namespace VKBansal\Prism;
 use DOMDocument;
 use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
-use VKBansal\Prism\Hooks\Hooks;
-use VKBansal\Prism\Languages\Repository;
-use VKBansal\Prism\Tokens\Generator;
+use VKBansal\Prism\Hook\HookableTrait;
+use VKBansal\Prism\Repository\RepositoryTrait;
+use VKBansal\Prism\Token\Generator;
 
 /**
  * Core Prism class for syntax highliting
@@ -17,6 +17,9 @@ use VKBansal\Prism\Tokens\Generator;
  */
 class Prism
 {
+    use HookableTrait;
+    use RepositoryTrait;
+
     /**
      * Stores HTML Document to be highlighted
      * @var DOMDocument
@@ -30,50 +33,21 @@ class Prism
     protected $langTest = "/\blang(?:uage)?-(?!\*)(\w+)\b/i";
 
     /**
-     * Languages repository
-     * @var \VKBansal\Prism\Languages\Repository
-     */
-    protected $repo;
-
-    /**
      * Class Constructor
      * @param string|null path Path to language map
      */
     public function __construct($path = null)
     {
-        $hooks = new Hooks();
-        $this->repo = new Repository($hooks, $path);
-        $this->repo->prism = $this;
-        $this->loadDefaultLanguages();
-    }
-
-    /**
-     * Load default languages description]
-     * @return void
-     */
-    public function loadDefaultLanguages()
-    {
-        $this->repo->loadDefaultDefinitions();
-    }
-
-    /**
-     * Add specified languages
-     * @param string[] $langs
-     */
-    public function loadLanguages(array $langs)
-    {
-        foreach ($langs as $lang) {
-            $this->repo->loadDefinition($lang);
+        if (is_null($path)) {
+            $path = __DIR__.'/Repository/map.php';
         }
-    }
 
-    /**
-     * Load all languages defined in map
-     * @return void
-     */
-    public function loadAllLanguages()
-    {
-        $this->repo->loadAllDefinitions();
+        if (file_exists($path)) {
+            $data = require $path;
+            $this->map = $data['map'];
+            $this->aliases = $data['aliases'];
+            $this->defaults = $data['defaults'];
+        }
     }
 
     /**
@@ -118,7 +92,7 @@ class Prism
         $this->document->encoding = 'utf-8';
 
         $text = Util::encodeCodeBlocks($text);
-        $grammar = $this->getGrammar($language);
+        $grammar = $this->getDefinition($language);
         $nodes = $this->highlight($text, $grammar, $language);
         
         foreach ($nodes as $node) {
@@ -151,7 +125,7 @@ class Prism
                 $language = '';
             }
 
-            $grammar = $this->getGrammar($language);
+            $grammar = $this->getDefinition($language);
         }
 
         if (!isset($grammar) || is_null($grammar)) {
@@ -185,19 +159,19 @@ class Prism
             'code' => &$code
         ];
 
-        $this->repo->runHook('before.highlight', $env);
+        $this->runHook('before.highlight', $env);
 
 
         $nodes = $this->highlight($code, $grammar, $language);
         $element->nodeValue = "";
 
-        $this->repo->runHook('before.insert', $env);
+        $this->runHook('before.insert', $env);
 
         foreach ($nodes as $node) {
             $element->appendChild($node);
         }
 
-        $this->repo->runHook('after.highlight', $env);
+        $this->runHook('after.highlight', $env);
 
         return $element->ownerDocument->saveHTML($element);
     }
@@ -215,19 +189,6 @@ class Prism
         $generator->generate();
         $nodes = $generator->toNodes($this->document);
         return is_array($nodes) ? $nodes : [$nodes];
-    }
-
-    /**
-     * Gets Grammar for the  specified language
-     * @param  string
-     * @return array
-     */
-    public function getGrammar($language = null)
-    {
-        if (!is_null($language)) {
-            $this->repo->loadDefinition($language);
-        }
-        return $this->repo->getDefinition($language);
     }
 
     /**

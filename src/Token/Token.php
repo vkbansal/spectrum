@@ -1,9 +1,9 @@
 <?php
-namespace VKBansal\Prism\Tokens;
+namespace VKBansal\Prism\Token;
 
 /**
  * Token Class
- * @package VKBansal\Prism\Tokens\Token
+ * @package VKBansal\Prism\Token\Token
  * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT

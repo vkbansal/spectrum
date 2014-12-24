@@ -1,13 +1,13 @@
 <?php
-namespace VKBansal\Prism\Languages\Definitions;
+namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Languages\AbstractLanguage;
+use VKBansal\Prism\Definition\AbstractLanguage;
 
 class Sql extends AbstractLanguage
 {
     public function definition()
     {
-            return [
+        return [
             'comment'=> [
                 "pattern"=> "/(^|[^\\\\])(\/\*[\w\W]*?\*\/|((--)|(\/\/)|#).*?(\r?\n|$))/",
                 "lookbehind"=> true

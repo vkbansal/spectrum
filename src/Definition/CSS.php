@@ -1,7 +1,7 @@
 <?php
-namespace VKBansal\Prism\Languages\Definitions;
+namespace VKBansal\Prism\Definition;
 
-use VKBansal\Prism\Languages\AbstractLanguage;
+use VKBansal\Prism\Definition\AbstractLanguage;
 
 class CSS extends AbstractLanguage
 {
@@ -36,7 +36,7 @@ class CSS extends AbstractLanguage
 
     public function setup()
     {
-        $markup = $this->repository->hasDefinition('markup');
+        $markup = $this->prism->hasDefinition('markup');
 
          $this->insertBefore('css', [
             'hexcode'=> "/\#[\da-f]{3,6}/i",
@@ -45,7 +45,7 @@ class CSS extends AbstractLanguage
         ], 'function');
         
         if ($markup) {
-            $inside = $this->repository->getDefinition('markup.tag.inside');
+            $inside = $this->prism->getDefinition('markup.tag.inside');
 
             $this->insertBefore('markup', [
                 'style' => [

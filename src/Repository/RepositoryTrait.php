@@ -1,16 +1,14 @@
 <?php
-namespace VKBansal\Prism\Languages;
-
-use VKBansal\Prism\Hooks\HookInterface;
+namespace VKBansal\Prism\Repository;
 
 /**
  * Repository for language definitions
- * @package VKBansal\Prism\Languages\Repository
+ * @package VKBansal\Prism\Repository
  * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-class Repository implements RepositoryInterface
+trait RepositoryTrait
 {
     /**
      * Languages container
@@ -35,33 +33,6 @@ class Repository implements RepositoryInterface
      * @var [type]
      */
     protected $defaults = [];
-
-    /**
-     * Hooks container
-     * @var \VKBansal\Prism\Hooks\HookInterface
-     */
-    protected $hooks;
-
-    /**
-     * constructor
-     * @param \VKBansal\Prism\Hooks\HookInterface $hooks
-     * @param string|null                         $path
-     */
-    public function __construct(HookInterface $hooks, $path = null)
-    {
-        $this->hooks = $hooks;
-
-        if (is_null($path)) {
-            $path = __DIR__.'/map.php';
-        }
-
-        if (file_exists($path)) {
-            $data = require $path;
-            $this->map = $data['map'];
-            $this->aliases = $data['aliases'];
-            $this->defaults = $data['defaults'];
-        }
-    }
 
     /**
      * {@inheritdoc}
@@ -155,6 +126,7 @@ class Repository implements RepositoryInterface
         foreach ($segments as $segment) {
              $root = $root[$segment];
         }
+        
         return $root;
     }
 
@@ -164,26 +136,6 @@ class Repository implements RepositoryInterface
     public function hasDefinition($language)
     {
         return isset($this->languages[$language]);
-    }
-
-    /**
-     * Add Hook
-     * @param string   $name
-     * @param callable $callback
-     */
-    public function addHook($name, callable $callback)
-    {
-        $this->hooks->add($name, $callback);
-    }
-
-    /**
-     * Run Hooks
-     * @param  string $name
-     * @return void
-     */
-    public function runHook($name, array &$env = [])
-    {
-        $this->hooks->run($name, $env);
     }
 
     /**
