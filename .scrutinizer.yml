@@ -142,14 +142,6 @@ build_failure_conditions: {  }
 application:
     type: none
 
-tools:
-    php_sim: true
-    php_pdepend: true
-    php_analyzer: true
-filter:
-    excluded_paths:
-        - 'test/*'
-
 coding_style:
     php:
         indentation:
