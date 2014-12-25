@@ -30,9 +30,11 @@ trait PluggableTrait
     public function removePlugin($name)
     {
         if (isset($this->plugins[$name])) {
-            $this->removeHook($this->plugins[$name] ,$name);
+            $this->removeHook($this->plugins[$name], $name);
         } else {
             throw new PluginNotFoundException;
         }
     }
+
+    abstract function removeHook($name, $refer = null);
 }

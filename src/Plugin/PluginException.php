@@ -3,6 +3,7 @@ namespace VKBansal\Prism\Plugin;
 
 use UnexpectedValueException;
 
-class PluginException extends UnexpectedValueException{
+class PluginException extends UnexpectedValueException
+{
 
 }
