@@ -2,10 +2,8 @@
 namespace VKBansal\Prism\Definition;
 
 
-class CLang extends AbstractLanguage
-{
-    public function definition()
-    {
+class CLang extends AbstractLanguage {
+    public function definition() {
         return $this->extend('clike', [
     // allow for c multiline strings
             'string'=> "/(\"|')([^\n\\\1]|\\.|\\\r*\n)*?\g{1}/",
@@ -14,8 +12,7 @@ class CLang extends AbstractLanguage
         ]);
     }
 
-    public function setup()
-    {
+    public function setup() {
         $this->insertBefore('c', [
             // property class reused for macro statements
             'property'=> [

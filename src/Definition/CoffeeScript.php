@@ -1,10 +1,8 @@
 <?php
 namespace VKBansal\Prism\Definition;
 
-class CoffeeScript extends AbstractLanguage
-{
-    public function definition()
-    {
+class CoffeeScript extends AbstractLanguage {
+    public function definition() {
         return $this->extend('javascript', [
             // Ignore comments starting with { to privilege string interpolation highlighting
             'comment'=> "/#(?!\{).+/",
@@ -30,8 +28,7 @@ class CoffeeScript extends AbstractLanguage
         ]);
     }
 
-    public function setup()
-    {
+    public function setup() {
         $comment = $this->manager->getDefinition('coffeescript.comment');
         $interpolation = $this->manager->getDefinition('coffeescript.string')[1]['inside']['interpolation'];
 

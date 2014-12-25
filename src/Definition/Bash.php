@@ -1,10 +1,8 @@
 <?php
 namespace VKBansal\Prism\Definition;
 
-class Bash extends AbstractLanguage
-{
-    public function definition()
-    {
+class Bash extends AbstractLanguage {
+    public function definition() {
         return $this->extend('clike', [
             'comment'=> [
                 "pattern"=> "/(^|[^\"{\\\\])(\#.*?(\r?\n|$))/",
@@ -22,8 +20,7 @@ class Bash extends AbstractLanguage
         ]);
     }
 
-    public function setup()
-    {
+    public function setup() {
         $this->insertBefore('bash', [
             //'property' class reused for bash variables
             "property"=> "/\$([a-zA-Z0-9_#\?\-\*!@]+|\{[^}]+\})/"

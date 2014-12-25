@@ -10,8 +10,7 @@ use VKBansal\Prism\AssetManager;
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-abstract class AbstractLanguage
-{
+abstract class AbstractLanguage {
     /**
      * Prism Instance
      * @var \VKBansal\Prism\AssetManager
@@ -22,8 +21,7 @@ abstract class AbstractLanguage
      * constructor
      * @param \VKBansal\Prism\AssetManager $manager
      */
-    public function __construct(AssetManager $manager)
-    {
+    public function __construct(AssetManager $manager) {
         $this->manager = $manager;
     }
 
@@ -33,8 +31,7 @@ abstract class AbstractLanguage
      * @param  array  $redef Additional definitions
      * @return array
      */
-    public function extend($id, $redef)
-    {
+    public function extend($id, $redef) {
         $this->manager->loadDefinition($id);
         $lang = $this->manager->getDefinition($id);
 
@@ -53,8 +50,7 @@ abstract class AbstractLanguage
      *                             If not provided, it will be appended.
      * @return array
      */
-    public function insertBefore($inside, array $insert, $before = null)
-    {
+    public function insertBefore($inside, array $insert, $before = null) {
         $root =& $this->manager->referDefinition($inside);
 
         if (is_null($before)) {
@@ -101,8 +97,7 @@ abstract class AbstractLanguage
      * Override if needed in respective language definitions.
      * @return boolean
      */
-    public function setup()
-    {
+    public function setup() {
         return true;
     }
 }

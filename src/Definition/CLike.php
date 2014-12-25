@@ -1,10 +1,8 @@
 <?php
 namespace VKBansal\Prism\Definition;
 
-class CLike extends AbstractLanguage
-{
-    public function definition()
-    {
+class CLike extends AbstractLanguage {
+    public function definition() {
         return [
             'comment' => [
                 [

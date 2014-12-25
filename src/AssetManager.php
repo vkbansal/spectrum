@@ -5,14 +5,12 @@ use VKBansal\Prism\Hook\HookableTrait;
 use VKBansal\Prism\Repository\RepositoryTrait;
 use VKBansal\Prism\Plugin\PluggableTrait;
 
-class AssetManager
-{
+class AssetManager {
     use HookableTrait;
     use RepositoryTrait;
     use PluggableTrait;
 
-    public function __construct($path = null)
-    {
+    public function __construct($path = null) {
         if ($path === null) {
             $path = __DIR__."/Repository/map.php";
         }
