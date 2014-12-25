@@ -1,13 +1,4 @@
 <?php
-use VKBansal\Prism\Plugin\PluggableTrait;
-
-class Plug {
-    use PluggableTrait;
-
-    function removeHook(){
-        return true;
-    }
-}
 
 class PlugTest extends PHPUnit_Framework_TestCase{
 
@@ -18,7 +9,9 @@ class PlugTest extends PHPUnit_Framework_TestCase{
     {
         $this->plugin = $this->getMockBuilder('VKBansal\Prism\Plugin\PluginInterface')
                         ->getMock();
-        $this->plug = new Plug();
+        $this->plug = $this->getMockForTrait('VKBansal\Prism\Plugin\PluggableTrait');
+        $this->plug->method('removeHook')
+            ->will($this->returnValue(true));
     }
 
     /**
