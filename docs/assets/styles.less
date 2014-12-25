@@ -81,7 +81,7 @@
 @navmenu-default-link-hover-color:          #fff;
 @navmenu-default-link-hover-bg:             transparent;
 @navmenu-default-link-active-color:         #fff;
-@navmenu-default-link-active-bg:            darken(@navmenu-default-bg, 2%);
+@navmenu-default-link-active-bg:            darken(@navmenu-default-bg, 6.5%);
 @navmenu-default-link-disabled-color:       #ccc;
 @navmenu-default-link-disabled-bg:          transparent;
 
@@ -114,4 +114,60 @@ li.theme-switcher{
         display: block;
         margin: 10px 0 5px;
     }
+}
+.dropdown-menu.navmenu-nav > li > a {
+    padding: 10px 15px;
+}
+
+.navmenu-default,
+.navbar-default .navbar-offcanvas {
+
+    .navmenu-nav {
+        // Remove background color from open dropdown
+        > .open > a {
+            &,
+            &:hover,
+            &:focus {
+                background-color: darken(@navmenu-default-bg, 2%);
+                color: @navmenu-default-link-active-color;
+            }
+        }
+
+        &.dropdown-menu {
+            background-color: darken(@navmenu-default-bg, 2%);
+
+            & > .divider {
+                background-color: @navmenu-default-bg;
+            }
+            > .active > a {
+                &,
+                &:hover,
+                &:focus {
+                    background-color: darken(@navmenu-default-bg, 6.5%);
+                }
+            }
+        }
+    }
+}
+
+pre {
+    border-radius: @border-radius-base !important;
+}
+
+pre[class*='language-'] {
+    position: relative;
+}
+
+pre[class*='language-'] > code[data-language]::before {
+    content: attr(data-language);
+    color: #333333;
+    background-color: @gray;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.9em;
+    border-radius: 0 @border-radius-base 0 0;
+    padding: 0 0.5em;
+    text-shadow: none;
 }

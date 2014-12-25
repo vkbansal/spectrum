@@ -18,8 +18,20 @@
         <a class="navmenu-brand" href="#">Prism.php</a>
 
         <ul class="nav navmenu-nav">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="samples.html">Code Samples</a></li>
+            <li{% if active == 'home' %} class="active" {% endif %}>
+                <a href="./index.html">Home</a>
+            </li>
+            <li{% if active == 'samples' %} class="active" {% endif %}>
+                <a href="samples.html">Code Samples</a>
+            </li>
+            <li class="dropdown {% if active == 'show-language'%}open{% endif %}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugins <i class="caret"></i></a>
+                <ul class="dropdown-menu navmenu-nav" role="menu">
+                    <li{% if active == 'show-language'%} class="active"{% endif %}>
+                        <a href="show-language.html">Show Language</a>
+                    </li>
+                </ul>
+            </li>
             <li class="theme-switcher">
                 <span>Theme Switcher</span>
                 <select name="theme" id="theme-switcher" class="form-control">
@@ -51,9 +63,14 @@
             $("#theme-switcher").on('change', function(){
                 var id = $(this).val();
                 switchTheme(id);
-            })
+            });
 
             switchTheme('okaidia', true);
+
+            $('a.dropdown-toggle').on('click', function(){
+               $(this).closest('li').toggleClass('open');
+                return false;
+            });
         });
     </script>
     {% block js %}{% endblock %}

@@ -8,12 +8,18 @@
 [![Code Climate](https://img.shields.io/codeclimate/github/vkbansal/prism.php.svg?style=flat-square)](https://codeclimate.com/github/vkbansal/prism.php)
 #Prism.php (WIP)
 This is a php port of [prism.js](https://github.com/LeaVerou/prism) syntax highlighter originally written by [@LeaVerou](http://github.com/LeaVerou).
+ 
+##Feature list
+- All the processing done server side. Save browser redraws and repaints that may be caused due to javascript alternatives.
+- Makes highlighted code cacheable, which is not possible otherwise.
+- Encourages [semantic approach](http://www.w3.org/TR/html5/text-level-semantics.html#the-code-element) of using `language-xxx` class on code blocks specified by [W3C](http://www.w3.org/).
+- Very easy to define new languages. Only thing you need is a good understanding of regular expressions.
+- All styling is done through CSS, with sensible class names.
+- Wide browser support. Even the ancient IE6-8. If your browser supports `pre` and `code` tags and CSS, you are good to go.
+- Highlights nested languages (CSS in HTML, JavaScript in HTML).
 
-It follows the [semantic approach](http://www.w3.org/TR/html5/text-level-semantics.html#the-code-element) specified by [W3C](http://www.w3.org/).
-
-##Requirements
-- PHP >= 5.4
-- libxml >= 2.6.0
+##Limitations
+- Regex-based so it *will* fail on certain edge cases.
 
 ##Installation
 ```js
@@ -23,6 +29,9 @@ It follows the [semantic approach](http://www.w3.org/TR/html5/text-level-semanti
     }
 }
 ```
+##Requirements
+- PHP >= 5.4
+- libxml >= 2.6.0
 
 ##Basic usage
 
@@ -39,6 +48,7 @@ $prism = new Prism($manager);
 For highlighting HTML, `code` blocks must have a `language-` prefixed `class` attribute. For example, if you want to highlight `HTML`, the code block must have a `language-html` class.
 
 Prism will auto-detect the language and apply highlighting if the language definition is found.
+
 ```php
 $html = <<<HTML
 <html>
@@ -64,7 +74,9 @@ echo $prism->highlightHTML($html);
 ```
 
 ###Highlighting Text
-You can also highlight text directly, when you know the language.
+You can also highlight text directly, but you have to specify the language manually.
+
 ```php
 echo $prism->highlightText('<html>string</html>', 'html');
 ```
+
