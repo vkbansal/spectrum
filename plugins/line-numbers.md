@@ -9,13 +9,11 @@ Optionally, you can specify the `data-start` (Number) attribute on the `pre` ele
 ###PHP
 ```php
 <?php
-use VKBansal\Prism\AssetManger;
 use VKBansal\Prism\Plugin\LineNumbers;
 use VKBansal\Prism\Prism;
 
-$manger = new AssetManager;
-$manager->addPlugin(new LineNumbers());
-$prism = new Prism($manager);
+$prism = new Prism();
+$prism->addPlugin(new LineNumbers());
 ```
 
 ###CSS

@@ -4,13 +4,11 @@ Display the highlighted language in code blocks (inline code does not show the l
 ###PHP
 ```php
 <?php
-use VKBansal\Prism\AssetManger;
 use VKBansal\Prism\Plugin\ShowLanguage;
 use VKBansal\Prism\Prism;
 
-$manger = new AssetManager;
-$manager->addPlugin(new ShowLanguage());
-$prism = new Prism($manager);
+$prism = new Prism();
+$prism->addPlugin(new ShowLanguage());
 ```
 
 ###CSS

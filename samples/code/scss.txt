@@ -1,9 +1,9 @@
 ---
 name: SASS\SCSS
 lang:
-  ref: sass
+  ref: scss
   aliases:
-    - scss
+    - sass
 ---
 @import "compass/reset";
 
