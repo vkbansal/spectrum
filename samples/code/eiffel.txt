@@ -1,0 +1,61 @@
+---
+name: Eiffel
+lang:
+  ref: eiffel
+---
+class
+    TIME_OF_DAY
+            -- Absolute time within a day to the nearest minute
+
+feature
+    hour: INTEGER is
+            -- Hour of day, 00 to 23
+        do
+            Result := minutes // 60
+        end -- hour
+
+    minute: INTEGER is
+            -- Minute in hour, 00 to 59
+        do
+            Result := minutes \\ 60
+        end -- minute
+
+    set (hh: INTEGER, mm: INTEGER) is
+            -- A new time
+        require
+            0 <= hh and hh < 24
+            0 <= mm and mm < 60
+        do
+            minutes := hh * 60 + mm
+        ensure
+            hour = hh
+            minute = mm
+        end -- set
+
+    adjust (hh_by: INTEGER, mm_by: INTEGER) is
+            -- Advance (+) or retard (-)
+            -- either unit or both
+        do
+            minutes := minutes + hh_by * 60 + mm_by
+            normalise
+        end -- adjust
+
+feature {NONE}
+    minutes: INTEGER
+            -- Minutes since midnight
+
+    normalise is
+            -- Restore invariant after adjustment
+        do
+            minutes := minutes \\ 1440
+            if minutes < 0 then
+                minutes := minutes + 1440
+            end
+        end -- normalise
+
+invariant
+    0 <= hour and hour < 24
+    0 <= minute and minute < 60
+    0 <= minutes and minutes < 1440
+
+end -- class TIME_OF_DAY

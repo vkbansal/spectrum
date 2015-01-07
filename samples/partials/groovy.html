@@ -1,0 +1,59 @@
+<p>Default language reference: <b>groovy</b></p>
+<pre class="language-groovy"><code class="language-groovy"><span class="token shebang comment">#!/usr/bin/env groovy</span>
+<span class="token keyword">package</span> model
+
+<span class="token keyword">import</span> groovy<span class="token operator">.</span>transform<span class="token operator">.</span>CompileStatic
+<span class="token keyword">import</span> java<span class="token operator">.</span>util<span class="token operator">.</span>List <span class="token keyword">as</span> MyList
+
+<span class="token keyword">trait</span> <span class="token class-name">Distributable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">distribute<span class="token punctuation">(</span></span>String version<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation">@CompileStatic</span>
+<span class="token keyword">class</span> <span class="token class-name">Distribution</span> <span class="token keyword">implements</span> <span class="token class-name">Distributable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">double</span> number <span class="token operator">=</span> <span class="token number">1234.234</span> <span class="token operator">/</span> <span class="token number">567</span>
+    <span class="token keyword">def</span> otherNumber <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">/</span> <span class="token number">4</span>
+    <span class="token keyword">boolean</span> archivable <span class="token operator">=</span> condition <span class="token operator">?:</span> <span class="token boolean">true</span>
+    <span class="token keyword">def</span> ternary <span class="token operator">=</span> a <span class="token operator">?</span> b <span class="token punctuation">:</span> c
+    String name <span class="token operator">=</span> <span class="token string">"Guillaume"</span>
+    Closure description <span class="token operator">=</span> null
+    List<span class="token operator">&lt;</span>DownloadPackage<span class="token operator">&gt;</span> packages <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    String regex <span class="token operator">=</span> <span class="token operator">~</span><span class="token string">/.*foo.*/</span>
+    String multi <span class="token operator">=</span> <span class="token string">'''
+        multi line string
+    '''</span> <span class="token operator">+</span> <span class="token string">"""
+        now with double quotes and ${gstring}
+    """</span> <span class="token operator">+</span> <span class="token string">$/
+        even with dollar slashy strings
+    /$</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * description method
+     * @param cl the closure
+     */</span>
+    <span class="token keyword">void</span> <span class="token function">description<span class="token punctuation">(</span></span>Closure cl<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token operator">.</span>description <span class="token operator">=</span> cl <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">version<span class="token punctuation">(</span></span>String name<span class="token punctuation">,</span> Closure versionSpec<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">def</span> closure <span class="token operator">=</span> <span class="token punctuation">{</span> println <span class="token string">"hi"</span> <span class="token punctuation">}</span> <span class="token keyword">as</span> Runnable
+
+        MyList ml <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>a<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span>c <span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>ch <span class="token keyword">in</span> <span class="token string">"name"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">// single line comment
+</span>        DownloadPackage pkg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DownloadPackage</span><span class="token punctuation">(</span>version<span class="token punctuation">:</span> name<span class="token punctuation">)</span>
+
+        check that<span class="token punctuation">:</span> <span class="token boolean">true</span>
+
+        label<span class="token punctuation">:</span>
+        <span class="token keyword">def</span> clone <span class="token operator">=</span> versionSpec<span class="token operator">.</span><span class="token function">rehydrate<span class="token punctuation">(</span></span>pkg<span class="token punctuation">,</span> pkg<span class="token punctuation">,</span> pkg<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true">/*
+            now clone() in a multiline comment
+        */</span>
+        <span class="token function">clone<span class="token punctuation">(</span></span><span class="token punctuation">)</span>
+        packages<span class="token operator">.</span><span class="token function">add<span class="token punctuation">(</span></span>pkg<span class="token punctuation">)</span>
+
+        <span class="token keyword">assert</span> <span class="token number">4</span> <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">2</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>

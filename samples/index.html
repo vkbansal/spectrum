@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Prism.php</title>
+    <link rel="stylesheet" id="theme-basic" href="/prism.php/assets/css/prism-basic.css" disabled>
+    <link rel="stylesheet" id="theme-coy" href="/prism.php/assets/css/prism-coy.css" disabled>
+    <link rel="stylesheet" id="theme-dark" href="/prism.php/assets/css/prism-dark.css" disabled>
+    <link rel="stylesheet" id="theme-funky" href="/prism.php/assets/css/prism-funky.css" disabled>
+    <link rel="stylesheet" id="theme-okaidia" href="/prism.php/assets/css/prism-okaidia.css">
+    <link rel="stylesheet" id="theme-twilight" href="/prism.php/assets/css/prism-twilight.css" disabled>
+    <link rel="stylesheet" id="theme-tomorrow" href="/prism.php/assets/css/prism-tomorrow.css" disabled>
+    <link rel="stylesheet" href="/prism.php/assets/css/styles.css">
+</head>
+<body>
+    <nav class="navmenu navmenu-default navmenu-fixed-left" role="navigation">
+        <a class="navmenu-brand" href="#">Prism.php</a>
+
+        <ul class="nav navmenu-nav">
+            <li>
+                <a href="/prism.php/">Home</a>
+            </li>
+            <li class="active" >
+                <a href="/prism.php/samples/">Code Samples</a>
+            </li>
+            <li class="dropdown ">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugins <i class="caret"></i></a>
+                <ul class="dropdown-menu navmenu-nav" role="menu">
+                    <li>
+                        <a href="/prism.php/plugins/show-language/">Show Language</a>
+                    </li>
+                    <li>
+                        <a href="/prism.php/plugins/line-numbers/">Line Numbers</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="theme-switcher">
+                <span>Theme Switcher</span>
+                <select name="theme" id="theme-switcher" class="form-control">
+                    <option value="basic">Basic</option>
+                    <option value="coy">Coy</option>
+                    <option value="dark">Dark</option>
+                    <option value="funky">Funky</option>
+                    <option value="okaidia">Okaidia</option>
+                    <option value="twilight">Twilight</option>
+                    <option value="tomorrow">Tomorrow</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid">
+       <br>
+           <h1>Code Samples</h1>
+    <div class="row">
+        <div class="col-sm-3 form-group">
+            <label>Select a language</label>
+            <select id="lang-select" class="form-control">
+                            <option value="apacheconf">Apache Configuration</option>
+                            <option value="applescript">AppleScript</option>
+                            <option value="aspnet">ASP.NET</option>
+                            <option value="autohotkey">AutoHotkey</option>
+                            <option value="bash">Bash</option>
+                            <option value="c">C</option>
+                            <option value="coffeescript">CoffeeScript</option>
+                            <option value="cpp">C++</option>
+                            <option value="csharp">C#</option>
+                            <option value="css">CSS</option>
+                            <option value="dart">Dart</option>
+                            <option value="eiffel">Eiffel</option>
+                            <option value="erlang">Erlang</option>
+                            <option value="fortran">Fortran</option>
+                            <option value="gherkin">Gherkin</option>
+                            <option value="git">Git Diff</option>
+                            <option value="go">Go</option>
+                            <option value="groovy">Groovy</option>
+                            <option value="haml">HAML</option>
+                            <option value="handlebars">Handlebars</option>
+                            <option value="haskell">Haskell</option>
+                            <option value="http">HTTP</option>
+                            <option value="ini">INI</option>
+                            <option value="jade">Jade</option>
+                            <option value="java">Java</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="latex">LaTeX</option>
+                            <option value="less">LESS CSS</option>
+                            <option value="lolcode">LOLCODE</option>
+                            <option value="markup">Markup</option>
+                            <option value="matlab">MATLAB</option>
+                            <option value="nsis">NSIS</option>
+                            <option value="objectivec">Objective C</option>
+                            <option value="pascal">Pascal</option>
+                            <option value="perl">Perl</option>
+                            <option value="php">PHP</option>
+                            <option value="powershell">PowerShell</option>
+                            <option value="python">Python</option>
+                            <option value="r">R</option>
+                            <option value="rip">Rip</option>
+                            <option value="ruby">Ruby</option>
+                            <option value="rust">Rust</option>
+                            <option value="sass">SASS\SCSS</option>
+                            <option value="scala">Scala</option>
+                            <option value="scheme">Scheme</option>
+                            <option value="sql">SQL</option>
+                            <option value="swift">Swift</option>
+                            <option value="twig">Twig</option>
+                        </select>
+        </div>
+    </div>
+    <div id="lang-showcase"></div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            function switchTheme(id, select){
+                $('link[id^=theme]').attr('disabled', 'disabled');
+                $('link#theme-'+ id).removeAttr('disabled');
+                if (select) $('#theme-switcher').val(id);
+            }
+            
+            $("#theme-switcher").on('change', function(){
+                var id = $(this).val();
+                switchTheme(id);
+            });
+
+            switchTheme('okaidia', true);
+
+            $('a.dropdown-toggle').on('click', function(){
+               $(this).closest('li').toggleClass('open');
+                return false;
+            });
+        });
+    </script>
+     <script type="text/javascript">
+    $(document).ready(function(){
+
+        var treePath = 'https://api.github.com/repos/vkbansal/prism.php/git/trees/gh-pages',
+            rawPath = "65db084ae4bf0f79b5e9c9f3de2ca91ca4bc2c8a",
+            treePromise = $.get(treePath + "?recursive=1"),
+            cache = {};
+
+        function switchSample(id, source){
+            treePromise.done(function(data){
+                for(var i = 0, l = data.tree.length; i < l; i++){
+                    var file = data.tree[i];
+
+                    if (file.path === 'samples/partials/' + id + '.html'){
+                        if (cache[id]){
+                            $("#lang-showcase").html(cache[id]);
+                        } else {
+                            $.ajax({
+                                url: file.url, 
+                                headers:{
+                                    Accept: "application/vnd.github.VERSION.raw",
+                                    Authorization: "Basic NjVkYjA4NGFlNGJmMGY3OWI1ZTljOWYzZGUyY2E5MWNhNGJjMmM4YTo="
+                                },
+                                dataType: 'html',
+                                beforeSend: function(){
+                                    var span = $(document.createElement('div')).addClass('loader');
+                                    $("#lang-showcase").empty().append(span);
+                                }
+                            }).done(function(code){
+                                $("#lang-showcase").html(code);
+                                cache[id] = code;
+                            });
+                        }
+                        break;
+                    }
+                }
+                if (source === 'hash'){
+                    $("#lang-select").val(id);
+                } else if (source === 'select'){
+                    window.location.hash = "#" + id;
+                }
+            });
+        }
+        
+        $("#lang-select").on('change', function(){
+            var id = $(this).val();
+            switchSample(id, 'select');
+        });
+
+        var hash = window.location.hash.substring(1);
+
+        if(hash){
+            switchSample(hash, 'hash');
+        } else {
+            switchSample('markup', 'hash');
+            $("#lang-select").val('markup');
+        }
+    });
+</script>
+
+</body>
+</html>

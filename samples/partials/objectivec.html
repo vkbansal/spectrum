@@ -1,0 +1,46 @@
+<p>Default language reference: <b>objectivec</b></p>
+<pre class="language-objectivec"><code class="language-objectivec"><span class="token property">#import &lt;UIKit/UIKit.h&gt;</span>
+<span class="token property">#import "Dependency.h"</span>
+
+<span class="token keyword">@protocol</span> WorldDataSource
+<span class="token operator">@</span>optional
+<span class="token operator">-</span> <span class="token punctuation">(</span>NSString<span class="token operator">*</span><span class="token punctuation">)</span>worldName<span class="token punctuation">;</span>
+<span class="token operator">@</span>required
+<span class="token operator">-</span> <span class="token punctuation">(</span>BOOL<span class="token punctuation">)</span>allowsToLive<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
+
+<span class="token keyword">@interface</span> Test <span class="token punctuation">:</span> NSObject <span class="token operator">&lt;</span>HelloDelegate<span class="token punctuation">,</span> WorldDataSource<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  NSString <span class="token operator">*</span>_greeting<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@property</span> <span class="token punctuation">(</span>nonatomic<span class="token punctuation">,</span> readonly<span class="token punctuation">)</span> NSString <span class="token operator">*</span>greeting<span class="token punctuation">;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span>IBAction<span class="token punctuation">)</span> show<span class="token punctuation">;</span>
+<span class="token keyword">@end</span>
+
+<span class="token keyword">@implementation</span> Test
+
+<span class="token keyword">@synthesize</span> test<span class="token operator">=</span>_test<span class="token punctuation">;</span>
+
+<span class="token operator">+</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> test <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token keyword">self</span> testWithGreeting<span class="token punctuation">:</span><span class="token string">@"Hello, world!\nFoo bar!"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">+</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> testWithGreeting<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString<span class="token operator">*</span><span class="token punctuation">)</span>greeting <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">self</span> alloc<span class="token punctuation">]</span> initWithGreeting<span class="token punctuation">:</span>greeting<span class="token punctuation">]</span> autorelease<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span> initWithGreeting<span class="token punctuation">:</span><span class="token punctuation">(</span>NSString<span class="token operator">*</span><span class="token punctuation">)</span>greeting <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span><span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token keyword">super</span> init<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    _greeting <span class="token operator">=</span> <span class="token punctuation">[</span>greeting retain<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> dealloc <span class="token punctuation">{</span>
+  <span class="token punctuation">[</span>_greeting release<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">[</span><span class="token keyword">super</span> dealloc<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@end</span>
+
+</code></pre>

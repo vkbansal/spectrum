@@ -1,0 +1,55 @@
+<p>Default language reference: <b>php</b></p>
+<pre class="language-php"><code class="language-php"><span class="token keyword">require_once</span> <span class="token string">'Zend/Uri/Http.php'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token package">Location<span class="token punctuation">\</span>Web</span><span class="token punctuation">;</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">Factory</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">_factory<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">URI</span> <span class="token keyword">extends</span> <span class="token class-name">BaseURI</span> <span class="token keyword">implements</span> <span class="token class-name">Factory</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">abstract</span> <span class="token keyword">function</span> <span class="token function">test<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token variable">$st1</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token constant">ME</span> <span class="token operator">=</span> <span class="token string">"Yo"</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> <span class="token variable">$list</span> <span class="token operator">=</span> <span class="token keyword">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$var</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Returns a URI
+     *
+     * @return URI
+     */</span>
+    <span class="token keyword">static</span> <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">_factory<span class="token punctuation">(</span></span><span class="token variable">$stats</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token variable">$uri</span> <span class="token operator">=</span> <span class="token string">'http'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">echo</span> <span class="token constant">__METHOD__</span><span class="token punctuation">;</span>
+        <span class="token variable">$uri</span> <span class="token operator">=</span> <span class="token function">explode<span class="token punctuation">(</span></span><span class="token string">':'</span><span class="token punctuation">,</span> <span class="token variable">$uri</span><span class="token punctuation">,</span> 0b10<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$schemeSpecific</span> <span class="token operator">=</span> <span class="token function">isset<span class="token punctuation">(</span></span><span class="token variable">$uri</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$uri</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
+        <span class="token variable">$desc</span> <span class="token operator">=</span> 'Multi
+line description'<span class="token punctuation">;</span>
+
+       <span class="token comment" spellcheck="true"> // Security check
+</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">ctype_alnum<span class="token punctuation">(</span></span><span class="token variable">$scheme</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Zend_Uri_Exception</span><span class="token punctuation">(</span><span class="token string">'Illegal scheme'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token keyword">var</span> <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">-</span> <span class="token scope"><span class="token keyword">self</span><span class="token punctuation">::</span></span><span class="token variable">$st</span><span class="token punctuation">;</span>
+        <span class="token this">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">list</span> <span class="token operator">=</span> <span class="token function">list<span class="token punctuation">(</span></span><span class="token keyword">Array</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">=</span><span class="token operator">&gt;</span><span class="token scope"><span class="token keyword">self</span><span class="token punctuation">::</span></span><span class="token constant">ME</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>
+            <span class="token string">'uri'</span>   <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$uri</span><span class="token punctuation">,</span>
+            <span class="token string">'value'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">echo</span> <span class="token scope">URI<span class="token punctuation">::</span></span><span class="token constant">ME</span> <span class="token punctuation">.</span> <span class="token scope">URI<span class="token punctuation">::</span></span><span class="token variable">$st1</span><span class="token punctuation">;</span>
+
+__halt_compiler <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span> datahere
+datahere
+datahere <span class="token operator">*</span><span class="token operator">/</span>
+datahere
+
+</code></pre>

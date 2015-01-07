@@ -1,0 +1,18 @@
+<p>Default language reference: <b>powershell</b></p>
+<pre class="language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># This is a comment
+</span><span class="token comment" spellcheck="true">&lt;# This is a
+multi-line comment #&gt;</span>
+
+<span class="token variable">$Name</span> = <span class="token string">"Alice"</span>
+<span class="token function">Write-Host</span> <span class="token string">"Hello, my name is <span class="token variable">$Name</span>."</span>
+
+<span class="token keyword">Function</span> SayHello<span class="token punctuation">(</span><span class="token namespace">[string]</span><span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">Write-Host</span> <span class="token string">"Hello, <span class="token variable">$name</span>."</span>
+<span class="token punctuation">}</span>
+<span class="token variable">$Names</span> = @<span class="token punctuation">(</span><span class="token string">"Bob"</span><span class="token punctuation">,</span> <span class="token string">"Alice"</span><span class="token punctuation">)</span>
+
+<span class="token variable">$Names</span> <span class="token punctuation">|</span> <span class="token keyword">ForEach</span> <span class="token punctuation">{</span>
+    SayHello <span class="token variable">$_</span>
+<span class="token punctuation">}</span>
+
+</code></pre>

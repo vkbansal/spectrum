@@ -1,0 +1,38 @@
+<p>Default language reference: <b>r</b></p>
+<pre class="language-r"><code class="language-r"><span class="token comment" spellcheck="true"># This is a comment</span>
+
+<span class="token string">"foo \"bar\" baz"</span>
+<span class="token string">'foo \'bar\' baz'</span>
+
+<span class="token comment" spellcheck="true"># Goal: To make a latex table with results of an OLS regression.</span>
+
+<span class="token comment" spellcheck="true"># Get an OLS --</span>
+x1 <span class="token operator">=</span> runif<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+x2 <span class="token operator">=</span> runif<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token operator">*</span>x1 <span class="token operator">+</span> <span class="token number">4</span><span class="token operator">*</span>x2 <span class="token operator">+</span> rnorm<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+m <span class="token operator">=</span> lm<span class="token punctuation">(</span>y <span class="token operator">~</span> x1 <span class="token operator">+</span> x2<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># and print it out prettily --</span>
+library<span class="token punctuation">(</span>xtable<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Bare --</span>
+xtable<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+xtable<span class="token punctuation">(</span>anova<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Better --</span>
+print.xtable<span class="token punctuation">(</span>xtable<span class="token punctuation">(</span>m<span class="token punctuation">,</span> caption<span class="token operator">=</span><span class="token string">"My regression"</span><span class="token punctuation">,</span>
+                    label<span class="token operator">=</span><span class="token string">"t:mymodel"</span><span class="token punctuation">,</span>
+                    digits<span class="token operator">=</span>c<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+             type<span class="token operator">=</span><span class="token string">"latex"</span><span class="token punctuation">,</span>
+             file<span class="token operator">=</span><span class="token string">"xtable_demo_ols.tex"</span><span class="token punctuation">,</span>
+             table.placement <span class="token operator">=</span> <span class="token string">"tp"</span><span class="token punctuation">,</span>
+             latex.environments<span class="token operator">=</span>c<span class="token punctuation">(</span><span class="token string">"center"</span><span class="token punctuation">,</span> <span class="token string">"footnotesize"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+print.xtable<span class="token punctuation">(</span>xtable<span class="token punctuation">(</span>anova<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    caption<span class="token operator">=</span><span class="token string">"ANOVA of my regression"</span><span class="token punctuation">,</span>
+                    label<span class="token operator">=</span><span class="token string">"t:anova_mymodel"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+             type<span class="token operator">=</span><span class="token string">"latex"</span><span class="token punctuation">,</span>
+             file<span class="token operator">=</span><span class="token string">"xtable_demo_anova.tex"</span><span class="token punctuation">,</span>
+             table.placement <span class="token operator">=</span> <span class="token string">"tp"</span><span class="token punctuation">,</span>
+             latex.environments<span class="token operator">=</span>c<span class="token punctuation">(</span><span class="token string">"center"</span><span class="token punctuation">,</span> <span class="token string">"footnotesize"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>code<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>pre<span class="token operator">&gt;</span>
+
+</code></pre>

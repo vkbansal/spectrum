@@ -1,0 +1,77 @@
+<p>Default language reference: <b>sass</b></p>
+    <p>Language aliases: <b>scss</b></p>
+<pre class="language-sass"><code class="language-sass"><span class="token keyword">@import</span> <span class="token string">"compass/reset"</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// variables
+</span><span class="token variable">$colorGreen</span><span class="token punctuation">:</span> <span class="token hexcode">#008000</span><span class="token punctuation">;</span>
+<span class="token variable">$colorGreenDark</span><span class="token punctuation">:</span> <span class="token function">darken</span>(<span class="token variable">$colorGreen</span>, <span class="token number">10</span>)<span class="token punctuation">;</span>
+
+<span class="token keyword">@mixin</span><span class="token selector"> container </span><span class="token punctuation">{</span>
+    <span class="token property">max-width</span><span class="token punctuation">:</span> <span class="token number">980</span>px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// mixins with parameters
+</span><span class="token keyword">@mixin</span> <span class="token function">button</span>(<span class="token variable">$color</span><span class="token punctuation">:</span>green)<span class="token selector"> </span><span class="token punctuation">{</span>
+    <span class="token keyword">@if</span> (<span class="token variable">$color</span><span class="token operator"> == </span>green)<span class="token selector"> </span><span class="token punctuation">{</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#008000</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">@else if</span> (<span class="token variable">$color</span><span class="token operator"> == </span>red)<span class="token selector"> </span><span class="token punctuation">{</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#B22222</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token selector">
+
+button </span><span class="token punctuation">{</span>
+    <span class="token keyword">@include</span> <span class="token function">button</span>(red)<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token selector">
+
+div,
+.navbar,
+#header,
+input[type="input"] </span><span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Helvetica Neue"</span>, Arial, sans-serif<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> auto<span class="token punctuation">;</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token selector">
+
+.row-12 &gt; [class*="spans"] </span><span class="token punctuation">{</span>
+    <span class="token property">border-left</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid <span class="token hexcode">#B5C583</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// nested definitions
+</span><span class="token selector">ul </span><span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span><span class="token selector">
+    padding: </span><span class="token punctuation">{</span>
+        <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span> <span class="token property">right</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token selector">
+  li </span><span class="token punctuation">{</span>
+      <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span> <span class="token property">margin-right</span><span class="token punctuation">:</span> <span class="token number">10</span>px<span class="token punctuation">;</span><span class="token selector">
+      .home </span><span class="token punctuation">{</span>
+          <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url</span>('<span class="token property">http</span><span class="token punctuation">:</span><span class="token comment" spellcheck="true">//placehold.it/20') scroll no-repeat 0 0;
+</span>    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token selector">
+
+.banner </span><span class="token punctuation">{</span>
+    <span class="token keyword">@extend</span> <span class="token number">.</span>container<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token selector">
+
+a </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$colorGreen</span><span class="token punctuation">;</span><span class="token selector">
+  &amp;:hover </span><span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$colorGreenDark</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token selector">
+  &amp;:visited </span><span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#c458cb</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@for</span><span class="token selector"> $i from 1 through 5 </span><span class="token punctuation">{</span><span class="token selector">
+    .span#{$i} </span><span class="token punctuation">{</span>
+        <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">20</span>px*<span class="token variable">$i</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@mixin</span><span class="token selector"> mobile </span><span class="token punctuation">{</span>
+  @media screen and (<span class="token property">max-width</span> <span class="token punctuation">:</span> <span class="token number">600</span>px)<span class="token selector"> </span><span class="token punctuation">{</span>
+    <span class="token keyword">@content</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>

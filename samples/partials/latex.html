@@ -1,0 +1,49 @@
+<p>Default language reference: <b>latex</b></p>
+<pre class="language-latex"><code class="language-latex"><span class="token comment" spellcheck="true">% caption.tex - Examples of how Latex handles captions within floats</span>
+ 
+<span class="token comment" spellcheck="true">% Andrew Roberts - September 2003</span>
+ 
+<span class="token selector">\documentclass</span>[english]<span class="token punctuation">{</span>article<span class="token punctuation">}</span>
+ 
+<span class="token selector">\usepackage</span><span class="token punctuation">{</span>times<span class="token punctuation">}</span>
+<span class="token selector">\usepackage</span><span class="token punctuation">{</span>babel<span class="token punctuation">}</span>
+<span class="token selector">\usepackage</span><span class="token punctuation">{</span>graphicx<span class="token punctuation">}</span>
+ 
+<span class="token selector">\begin</span><span class="token punctuation">{</span>document<span class="token punctuation">}</span>
+ 
+<span class="token selector">\title</span><span class="token punctuation">{</span>Latex Tutorial 6 (Floats, Figures and Captions) Examples<span class="token punctuation">}</span>
+<span class="token selector">\author</span><span class="token punctuation">{</span>Andrew Roberts<span class="token punctuation">}</span>
+<span class="token selector">\maketitle</span>
+ 
+<span class="token selector">\begin</span><span class="token punctuation">{</span>figure<span class="token punctuation">}</span>[!htp]
+  <span class="token selector">\caption</span><span class="token punctuation">{</span>A picture of a toucan.<span class="token punctuation">}</span>
+  <span class="token selector">\begin</span><span class="token punctuation">{</span>center<span class="token punctuation">}</span>
+    <span class="token selector">\includegraphics</span><span class="token punctuation">{</span>toucan.eps<span class="token punctuation">}</span>
+  <span class="token selector">\end</span><span class="token punctuation">{</span>center<span class="token punctuation">}</span>
+<span class="token selector">\end</span><span class="token punctuation">{</span>figure<span class="token punctuation">}</span>
+ 
+<span class="token selector">\begin</span><span class="token punctuation">{</span>figure<span class="token punctuation">}</span>[hbp]
+  <span class="token selector">\begin</span><span class="token punctuation">{</span>center<span class="token punctuation">}</span>
+    <span class="token selector">\reflectbox</span><span class="token punctuation">{</span><span class="token selector">\includegraphics</span><span class="token punctuation">{</span>toucan.eps<span class="token punctuation">}</span><span class="token punctuation">}</span>
+  <span class="token selector">\end</span><span class="token punctuation">{</span>center<span class="token punctuation">}</span>
+  <span class="token selector">\caption</span><span class="token punctuation">{</span>A picture of the same toucan looking the other way!<span class="token punctuation">}</span>
+<span class="token selector">\end</span><span class="token punctuation">{</span>figure<span class="token punctuation">}</span>
+ 
+<span class="token selector">\begin</span><span class="token punctuation">{</span>table<span class="token punctuation">}</span>[htp]
+  <span class="token selector">\begin</span><span class="token punctuation">{</span>center<span class="token punctuation">}</span>
+    <span class="token selector">\begin</span><span class="token punctuation">{</span>tabular<span class="token punctuation">}</span><span class="token punctuation">{</span>| l c r |<span class="token punctuation">}</span>
+    <span class="token selector">\hline</span>
+    1 &amp; 2 &amp; 3 <span class="token selector">\</span><span class="token selector">\</span>
+    4 &amp; 5 &amp; 6 <span class="token selector">\</span><span class="token selector">\</span>
+    7 &amp; 8 &amp; 9 <span class="token selector">\</span><span class="token selector">\</span>
+    <span class="token selector">\hline</span>
+    <span class="token selector">\end</span><span class="token punctuation">{</span>tabular<span class="token punctuation">}</span>
+  <span class="token selector">\end</span><span class="token punctuation">{</span>center<span class="token punctuation">}</span>
+  <span class="token selector">\caption</span><span class="token punctuation">{</span>A simple table<span class="token punctuation">}</span>
+<span class="token selector">\end</span><span class="token punctuation">{</span>table<span class="token punctuation">}</span>
+ 
+Notice how the tables and figures have independent counters.
+ 
+<span class="token selector">\end</span><span class="token punctuation">{</span>document<span class="token punctuation">}</span>
+
+</code></pre>

@@ -1,0 +1,42 @@
+<p>Default language reference: <b>pascal</b></p>
+<pre class="language-pascal"><code class="language-pascal"><span class="token keyword">Type</span>
+    Str25    <span class="token operator">=</span> <span class="token keyword">String</span><span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    TBookRec <span class="token operator">=</span> <span class="token keyword">Record</span>
+                Title<span class="token punctuation">,</span> Author<span class="token punctuation">,</span>
+                ISBN  <span class="token punctuation">:</span> Str25<span class="token punctuation">;</span>
+                Price <span class="token punctuation">:</span> Real<span class="token punctuation">;</span>
+               <span class="token keyword">End</span><span class="token punctuation">;</span>
+
+<span class="token keyword">Procedure</span> EnterNewBook<span class="token punctuation">(</span><span class="token keyword">var</span> newBook <span class="token punctuation">:</span> TBookRec<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">Begin</span>
+ Writeln<span class="token punctuation">(</span><span class="token string">'Please enter the book details: '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">Write</span><span class="token punctuation">(</span><span class="token string">'Book Name: '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Readln<span class="token punctuation">(</span>newBook<span class="token punctuation">.</span>Title<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">Write</span><span class="token punctuation">(</span><span class="token string">'Author: '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Readln<span class="token punctuation">(</span>newBook<span class="token punctuation">.</span>Author<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">Write</span><span class="token punctuation">(</span><span class="token string">'ISBN: '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Readln<span class="token punctuation">(</span>newBook<span class="token punctuation">.</span>ISBN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">Write</span><span class="token punctuation">(</span><span class="token string">'Price: '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Readln<span class="token punctuation">(</span>newBook<span class="token punctuation">.</span>Price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">End</span><span class="token punctuation">;</span>
+
+<span class="token keyword">Var</span>
+    bookRecArray <span class="token punctuation">:</span> <span class="token keyword">Array</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token operator">..</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token keyword">of</span> TBookRec<span class="token punctuation">;</span>
+    i            <span class="token punctuation">:</span> <span class="token number">1</span><span class="token operator">..</span><span class="token number">10</span><span class="token punctuation">;</span>
+
+<span class="token keyword">Begin</span>
+ <span class="token keyword">For</span> i <span class="token operator">:=</span> <span class="token number">1</span> <span class="token keyword">to</span> <span class="token number">10</span> <span class="token keyword">do</span>
+  EnterNewBook<span class="token punctuation">(</span>bookRecArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Writeln<span class="token punctuation">(</span><span class="token string">'Thanks for entering the book details'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">Write</span><span class="token punctuation">(</span><span class="token string">'Now choose a record to display from 1 to 10: '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Readln<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Writeln<span class="token punctuation">(</span><span class="token string">'Here are the book details of record #'</span><span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Writeln<span class="token punctuation">;</span>
+ Writeln<span class="token punctuation">(</span><span class="token string">'Title:  '</span><span class="token punctuation">,</span> bookRecArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Title<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Writeln<span class="token punctuation">(</span><span class="token string">'Author: '</span><span class="token punctuation">,</span> bookRecArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Author<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Writeln<span class="token punctuation">(</span><span class="token string">'ISBN:   '</span><span class="token punctuation">,</span> bookRecArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>ISBN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Writeln<span class="token punctuation">(</span><span class="token string">'Price:  '</span><span class="token punctuation">,</span> bookRecArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>Price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ Readln<span class="token punctuation">;</span>
+<span class="token keyword">End</span><span class="token punctuation">.</span>
+
+</code></pre>

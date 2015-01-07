@@ -1,0 +1,18 @@
+<p>Default language reference: <b>cpp</b></p>
+<pre class="language-cpp"><code class="language-cpp"><span class="token property">#include <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token property">#define IABS(x) ((x) &lt; 0 ? -(x) : (x))</span>
+
+<span class="token keyword">int</span> <span class="token function">main<span class="token punctuation">(</span></span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">/* An annoying "Hello World" example */</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">0xFFFF</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Hello, World!"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+
+  <span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token string">'\n'</span><span class="token punctuation">;</span>
+  unordered_map <span class="token operator">&lt;</span>string<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">&gt;</span> <span class="token operator">&gt;</span> m<span class="token punctuation">;</span>
+  m<span class="token punctuation">[</span><span class="token string">"key"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"\\\\"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this is an error
+</span>
+  <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">2e3</span> <span class="token operator">+</span> 12l<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>

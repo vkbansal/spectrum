@@ -1,0 +1,29 @@
+---
+name: Twig
+lang:
+  ref: twig
+---
+{# Some comment
+on multiple lines
+with &lt;html>&lt;/html>
+inside #}
+
+{% if foo %} bar {% endif %}
+{% for key, value in arr if value %} {{ do_something() }} {% endfor %}
+{% include 'header.html' %}
+{% include 'template.html' with {'foo': 'bar'} %}
+
+{{ not a }}
+{{ 20 // 7 }}
+{{ b b-and c }}
+{% if phone matches '/^[\\d\\.]+$/' %} ... {% endif %}
+
+<div>
+{% if foo %}
+    <p>Foo!</p>
+{% else %}
+    <p>Not foo...</p>
+{% endif %}
+
+<div{% if foo %} class="bar"{% endif %}></div>
+<div class="{{ bar }}"></div>

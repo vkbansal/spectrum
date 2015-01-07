@@ -1,0 +1,22 @@
+<p>Default language reference: <b>sql</b></p>
+<pre class="language-sql"><code class="language-sql"><span class="token keyword">BEGIN</span><span class="token punctuation">;</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token string">"topic"</span> <span class="token punctuation">(</span>
+    <span class="token comment" spellcheck="true">-- This is the greatest table of all time
+</span>    <span class="token string">"id"</span> <span class="token keyword">serial</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
+    <span class="token string">"forum_id"</span> <span class="token keyword">integer</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+    <span class="token string">"subject"</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token comment" spellcheck="true">-- Because nobody likes an empty subject
+</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token string">"topic"</span> <span class="token keyword">ADD</span> <span class="token keyword">CONSTRAINT</span> forum_id <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token string">"forum_id"</span><span class="token punctuation">)</span> <span class="token keyword">REFERENCES</span> <span class="token string">"forum"</span> <span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- Initials
+</span><span class="token keyword">insert</span> <span class="token keyword">into</span> <span class="token string">"topic"</span> <span class="token punctuation">(</span><span class="token string">"forum_id"</span><span class="token punctuation">,</span> <span class="token string">"subject"</span><span class="token punctuation">)</span> <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'D'</span><span class="token string">'artagnian'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">select</span> <span class="token comment" spellcheck="true">/* comment */</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> cicero_forum<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">-- this line lacks ; at the end to allow people to be sloppy and omit it in one-liners
+</span><span class="token comment" spellcheck="true">/*
+but who cares?
+*/</span>
+<span class="token keyword">COMMIT</span>
+
+</code></pre>

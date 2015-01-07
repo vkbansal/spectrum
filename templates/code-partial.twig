@@ -1,0 +1,5 @@
+<p>Default language reference: <b>{{meta.lang.ref}}</b></p>
+{% if meta.lang.aliases %}
+    <p>Language aliases: <b>{{meta.lang.aliases|join(', ')}}</b></p>
+{% endif %}
+<pre class="language-{{meta.lang.ref}}"><code class="language-{{meta.lang.ref}}">{{ code|raw }}</code></pre>

@@ -1,0 +1,31 @@
+<p>Default language reference: <b>apacheconf</b></p>
+    <p>Language aliases: <b>htaccess</b></p>
+<pre class="language-apacheconf"><code class="language-apacheconf"><span class="token comment" spellcheck="true">## BASIC PASSWORD PROTECTION</span><span class="token directive-inline property">
+AuthType</span> basic
+<span class="token directive-inline property">AuthName</span> <span class="token string">"prompt"</span>
+<span class="token directive-inline property">AuthUserFile</span> /.htpasswd
+<span class="token directive-inline property">AuthGroupFile</span> /dev/null
+<span class="token directive-inline property">Require</span> valid-user
+
+<span class="token comment" spellcheck="true">## ALLOW FROM IP OR VALID PASSWORD</span><span class="token directive-inline property">
+Require</span> valid-user
+<span class="token directive-inline property">Allow</span> from 192.168.1.23
+<span class="token directive-inline property">Satisfy</span> Any
+
+<span class="token comment" spellcheck="true">## PROTECT FILES</span><span class="token directive-inline property">
+Order</span><span class="token directive-inline property"> Allow</span>,Deny
+<span class="token directive-inline property">Deny</span> from all
+
+<span class="token comment" spellcheck="true">## REQUIRE SUBDOMAIN</span><span class="token directive-inline property">
+RewriteCond</span> <span class="token variable">%{HTTP_HOST}</span><span class="token regex"> !^$</span>
+<span class="token directive-inline property">RewriteCond</span> <span class="token variable">%{HTTP_HOST}</span><span class="token regex"> !^subdomain\.domain\.tld$</span> <span class="token directive-flags keyword">[NC]</span>
+<span class="token directive-inline property">RewriteRule</span><span class="token regex"> ^/(.*)$</span> http://subdomain.domain.tld/<span class="token variable">$1</span> [L,R=301]
+<span class="token directive-inline property">
+ErrorDocument</span> 403 http://www.example.com/logo.gif
+<span class="token directive-inline property">ErrorDocument</span> 403 /images/you_bad_hotlinker.gif
+
+<span class="token comment" spellcheck="true">## REDIRECT UPLOADS</span><span class="token directive-inline property">
+RewriteCond</span> <span class="token variable">%{REQUEST_METHOD}</span><span class="token regex"> ^(PUT|POST)$</span> <span class="token directive-flags keyword">[NC]</span>
+<span class="token directive-inline property">RewriteRule</span><span class="token regex"> ^(.*)$</span> /cgi-bin/form-upload-processor.cgi?p=<span class="token variable">$1</span> <span class="token directive-flags keyword">[L,QSA]</span>
+
+</code></pre>

@@ -1,0 +1,27 @@
+<p>Default language reference: <b>autohotkey</b></p>
+<pre class="language-autohotkey"><code class="language-autohotkey"><span class="token comment" spellcheck="true">; hotkeys and hotstrings</span>
+#a<span class="token operator">:</span><span class="token operator">:</span><span class="token selector">WinSet</span>, <span class="token keyword">AlwaysOnTop</span>, Toggle, A
+#<span class="token symbol">Space</span><span class="token operator">:</span><span class="token operator">:</span>
+  <span class="token selector">MsgBox</span>, Percent sign <span class="token punctuation">(</span>`%<span class="token punctuation">)</span> need to be escaped.
+  <span class="token selector">Run</span> <span class="token string">"C:\Program Files\some\program.exe"</span>
+  <span class="token selector">Gosub</span>, label1
+<span class="token selector">return</span>
+<span class="token operator">:</span><span class="token operator">:</span>btw<span class="token operator">:</span><span class="token operator">:</span>by the way
+<span class="token comment" spellcheck="true">; volume</span>
+#<span class="token symbol">Numpad8</span><span class="token operator">:</span><span class="token operator">:</span><span class="token selector">Send</span> <span class="token punctuation">{</span><span class="token symbol">Volume_Up</span><span class="token punctuation">}</span>
+#<span class="token symbol">Numpad5</span><span class="token operator">:</span><span class="token operator">:</span><span class="token selector">Send</span> <span class="token punctuation">{</span><span class="token symbol">Volume_Mute</span><span class="token punctuation">}</span>
+#<span class="token symbol">Numpad2</span><span class="token operator">:</span><span class="token operator">:</span><span class="token selector">Send</span> <span class="token punctuation">{</span><span class="token symbol">Volume_Down</span><span class="token punctuation">}</span>
+
+<span class="token tag">label1</span><span class="token operator">:</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">Clipboard</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token selector">MsgBox</span>, , <span class="token constant">Clipboard</span>, Empty!
+  <span class="token punctuation">}</span>
+  <span class="token keyword">else</span>
+  <span class="token punctuation">{</span>
+    <span class="token selector">StringReplace</span>, temp, <span class="token constant">Clipboard</span>, old, new, <span class="token keyword">All</span>
+    <span class="token selector">MsgBox</span>, , <span class="token constant">Clipboard</span>, <span class="token variable">%temp%</span>
+  <span class="token punctuation">}</span>
+<span class="token selector">return</span>
+
+</code></pre>

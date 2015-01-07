@@ -1,0 +1,35 @@
+<p>Default language reference: <b>fortran</b></p>
+<pre class="language-fortran"><code class="language-fortran"><span class="token operator">*</span>     euclid.f <span class="token punctuation">(</span>FORTRAN <span class="token number">77</span><span class="token punctuation">)</span>
+<span class="token operator">*</span>     Find greatest <span class="token keyword">common</span> divisor using the Euclidean algorithm
+ 
+      <span class="token keyword">PROGRAM</span> EUCLID
+        <span class="token keyword">PRINT</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token string">'A?'</span>
+        <span class="token keyword">READ</span> <span class="token operator">*</span><span class="token punctuation">,</span> NA
+        <span class="token keyword">IF</span> <span class="token punctuation">(</span>NA.LE<span class="token number">.0</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+          <span class="token keyword">PRINT</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token string">'A must be a positive integer.'</span>
+          <span class="token keyword">STOP</span>
+        <span class="token keyword">END</span> <span class="token keyword">IF</span>
+        <span class="token keyword">PRINT</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token string">'B?'</span>
+        <span class="token keyword">READ</span> <span class="token operator">*</span><span class="token punctuation">,</span> NB
+        <span class="token keyword">IF</span> <span class="token punctuation">(</span>NB.LE<span class="token number">.0</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+          <span class="token keyword">PRINT</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token string">'B must be a positive integer.'</span>
+          <span class="token keyword">STOP</span>
+        <span class="token keyword">END</span> <span class="token keyword">IF</span>
+        <span class="token keyword">PRINT</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token string">'The GCD of'</span><span class="token punctuation">,</span> NA<span class="token punctuation">,</span> <span class="token string">' and'</span><span class="token punctuation">,</span> NB<span class="token punctuation">,</span> <span class="token string">' is'</span><span class="token punctuation">,</span> NGCD<span class="token punctuation">(</span>NA<span class="token punctuation">,</span> NB<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'.'</span>
+        <span class="token keyword">STOP</span>
+      <span class="token keyword">END</span>
+ 
+      <span class="token keyword">FUNCTION</span> NGCD<span class="token punctuation">(</span>NA<span class="token punctuation">,</span> NB<span class="token punctuation">)</span>
+        IA <span class="token operator">=</span> NA
+        IB <span class="token operator">=</span> NB
+    <span class="token number">1</span>   <span class="token keyword">IF</span> <span class="token punctuation">(</span>IB.NE<span class="token number">.0</span><span class="token punctuation">)</span> <span class="token keyword">THEN</span>
+          ITEMP <span class="token operator">=</span> IA
+          IA <span class="token operator">=</span> IB
+          IB <span class="token operator">=</span> MOD<span class="token punctuation">(</span>ITEMP<span class="token punctuation">,</span> IB<span class="token punctuation">)</span>
+          <span class="token keyword">GOTO</span> <span class="token number">1</span>
+        <span class="token keyword">END</span> <span class="token keyword">IF</span>
+        NGCD <span class="token operator">=</span> IA
+        <span class="token keyword">RETURN</span>
+      <span class="token keyword">END</span>
+
+</code></pre>

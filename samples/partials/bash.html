@@ -1,0 +1,33 @@
+<p>Default language reference: <b>bash</b></p>
+<pre class="language-bash"><code class="language-bash"><span class="token important">#!/bin/bash</span>
+
+<span class="token comment" spellcheck="true">###### BEGIN CONFIG
+</span>ACCEPTED_HOSTS<span class="token operator">=</span><span class="token string">"/root/.hag_accepted.conf"</span>
+BE_VERBOSE<span class="token operator">=</span><span class="token boolean">false</span>
+<span class="token comment" spellcheck="true">###### END CONFIG
+</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token property">$UID</span>"</span> <span class="token operator">-</span>ne <span class="token number">0</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+ <span class="token keyword">echo</span> <span class="token string">"Superuser rights is required"</span>
+ <span class="token keyword">echo</span> 'Printing the <span class="token comment" spellcheck="true"># sign'
+</span> <span class="token keyword">exit</span> <span class="token number">2</span>
+<span class="token keyword">fi</span>
+
+<span class="token keyword">if</span> test $<span class="token comment" spellcheck="true"># -eq 0
+</span><span class="token keyword">then</span>
+<span class="token keyword">elif</span> test <span class="token punctuation">[</span> <span class="token property">$1</span> <span class="token operator">==</span> <span class="token string">'start'</span> <span class="token punctuation">]</span>
+<span class="token keyword">else</span>
+<span class="token keyword">fi</span>
+
+<span class="token function">genApacheConf<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token property">$2</span>"</span> <span class="token operator">=</span> <span class="token string">"www"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span>
+ <span class="token keyword">then</span>
+  full_domain<span class="token operator">=</span><span class="token property">$1</span>
+ <span class="token keyword">else</span>
+  full_domain<span class="token operator">=</span><span class="token property">$2</span><span class="token punctuation">.</span><span class="token property">$1</span>
+ <span class="token keyword">fi</span>
+ host_root<span class="token operator">=</span><span class="token string">"<span class="token property">${APACHE_HOME_DIR}</span><span class="token property">$1</span>/<span class="token property">$2</span>/$(title)"</span>
+ <span class="token keyword">echo</span> <span class="token operator">-</span>e <span class="token string">"# Host <span class="token property">$1</span>/<span class="token property">$2</span> :"</span>
+<span class="token punctuation">}</span>
+
+</code></pre>

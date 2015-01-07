@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Prism.php</title><link rel="stylesheet" id="theme-basic" href="/prism.php/assets/css/prism-basic.css" disabled><link rel="stylesheet" id="theme-coy" href="/prism.php/assets/css/prism-coy.css" disabled><link rel="stylesheet" id="theme-dark" href="/prism.php/assets/css/prism-dark.css" disabled><link rel="stylesheet" id="theme-funky" href="/prism.php/assets/css/prism-funky.css" disabled><link rel="stylesheet" id="theme-okaidia" href="/prism.php/assets/css/prism-okaidia.css"><link rel="stylesheet" id="theme-twilight" href="/prism.php/assets/css/prism-twilight.css" disabled><link rel="stylesheet" id="theme-tomorrow" href="/prism.php/assets/css/prism-tomorrow.css" disabled><link rel="stylesheet" href="/prism.php/assets/css/styles.css"></head><body>
+    <nav class="navmenu navmenu-default navmenu-fixed-left" role="navigation"><a class="navmenu-brand" href="#">Prism.php</a>
+
+        <ul class="nav navmenu-nav"><li>
+                <a href="/prism.php/">Home</a>
+            </li>
+            <li>
+                <a href="/prism.php/samples/">Code Samples</a>
+            </li>
+            <li class="dropdown open">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugins <i class="caret"></i></a>
+                <ul class="dropdown-menu navmenu-nav" role="menu"><li>
+                        <a href="/prism.php/plugins/show-language/">Show Language</a>
+                    </li>
+                    <li class="active">
+                        <a href="/prism.php/plugins/line-numbers/">Line Numbers</a>
+                    </li>
+                </ul></li>
+            <li class="theme-switcher">
+                <span>Theme Switcher</span>
+                <select name="theme" id="theme-switcher" class="form-control"><option value="basic">Basic</option><option value="coy">Coy</option><option value="dark">Dark</option><option value="funky">Funky</option><option value="okaidia">Okaidia</option><option value="twilight">Twilight</option><option value="tomorrow">Tomorrow</option></select></li>
+        </ul></nav><div class="container-fluid">
+       <br><h1>Plugin: Line Numbers</h1>
+<p>Line number at the beginning of code lines.</p>
+<h2>Usage</h2>
+<p>This will work only for code blocks (<code>pre</code> &gt; <code>code</code>) and not for inline code.</p>
+<p>By default it adds line numbers to all code blocks. In case you don't want a specific block to have line numbers, just add <code>data-line-numbers="false"</code> to desired <code>pre</code> and the plugin will skip it.</p>
+<p>Optionally, you can specify the <code>data-start</code> (Number) attribute on the <code>pre</code> element to shift the line counter.</p>
+<h3>PHP</h3>
+<pre class=" language-php line-numbers"><code class=" language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>AssetManger</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Plugin<span class="token punctuation">\</span>LineNumbers</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Prism</span><span class="token punctuation">;</span>
+
+<span class="token variable">$manger</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AssetManager</span><span class="token punctuation">;</span>
+<span class="token variable">$manager</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addPlugin<span class="token punctuation">(</span></span><span class="token keyword">new</span> <span class="token class-name">LineNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$prism</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prism</span><span class="token punctuation">(</span><span class="token variable">$manager</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3>CSS</h3>
+<p>Following css must be included in order to make this plugin work.</p>
+<pre class=" language-css line-numbers"><code class=" language-css"><span class="token selector">pre<span class="token class">.line-numbers</span> </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token number">3.8</span>em<span class="token punctuation">;</span>
+    <span class="token property">counter-reset</span><span class="token punctuation">:</span> linenumber<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">pre<span class="token class">.line-numbers</span> &gt; code </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token class">.line-numbers</span> <span class="token class">.line-numbers-rows</span> </span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">pointer-events</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">top</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> -<span class="token number">3.8</span>em<span class="token punctuation">;</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">3</span>em<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* works for line-numbers below 1000 lines */</span>
+    <span class="token property">letter-spacing</span><span class="token punctuation">:</span> -<span class="token number">1</span>px<span class="token punctuation">;</span>
+    <span class="token property">border-right</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid <span class="token hexcode">#999</span><span class="token punctuation">;</span>
+
+    <span class="token property">-webkit-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">-moz-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">-ms-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+    <span class="token property">user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+    <span class="token selector"><span class="token class">.line-numbers-rows</span> &gt; span </span><span class="token punctuation">{</span>
+        <span class="token property">pointer-events</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+        <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+        <span class="token property">counter-increment</span><span class="token punctuation">:</span> linenumber<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+        <span class="token selector"><span class="token class">.line-numbers-rows</span> &gt; span<span class="token pseudo-element">:before</span> </span><span class="token punctuation">{</span>
+            <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">counter</span>(linenumber)<span class="token punctuation">;</span>
+            <span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#999</span><span class="token punctuation">;</span>
+            <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+            <span class="token property">padding-right</span><span class="token punctuation">:</span> <span class="token number">0.8</span>em<span class="token punctuation">;</span>
+            <span class="token property">text-align</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script type="text/javascript">
+        $(document).ready(function(){
+
+            function switchTheme(id, select){
+                $('link[id^=theme]').attr('disabled', 'disabled');
+                $('link#theme-'+ id).removeAttr('disabled');
+                if (select) $('#theme-switcher').val(id);
+            }
+            
+            $("#theme-switcher").on('change', function(){
+                var id = $(this).val();
+                switchTheme(id);
+            });
+
+            switchTheme('okaidia', true);
+
+            $('a.dropdown-toggle').on('click', function(){
+               $(this).closest('li').toggleClass('open');
+                return false;
+            });
+        });
+    </script></body></html>

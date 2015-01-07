@@ -1,0 +1,35 @@
+<p>Default language reference: <b>nsis</b></p>
+<pre class="language-nsis"><code class="language-nsis"><span class="token comment" spellcheck="true">/*
+  NSIS Scheme
+*/</span>
+<span class="token comment" spellcheck="true">
+; Includes
+</span><span class="token important">!include</span> MUI2<span class="token punctuation">.</span>nsh
+<span class="token comment" spellcheck="true">
+; Settings
+</span><span class="token keyword">Name</span> <span class="token string">"installer_name"</span>
+<span class="token keyword">OutFile</span> <span class="token string">"installer_name.exe"</span>
+<span class="token keyword">RequestExecutionLevel</span> <span class="token property">user</span>
+<span class="token keyword">CRCCheck</span> <span class="token property">on</span>
+<span class="token important">!ifdef</span> x64
+  <span class="token keyword">InstallDir</span> <span class="token string">"$PROGRAMFILES64\installer_name"</span>
+<span class="token important">!else</span>
+  <span class="token keyword">InstallDir</span> <span class="token string">"$PROGRAMFILES\installer_name"</span>
+<span class="token important">!endif</span>
+<span class="token comment" spellcheck="true">
+; Pages
+</span><span class="token important">!insertmacro</span> MUI_PAGE_INSTFILES
+<span class="token comment" spellcheck="true">
+; Sections
+</span><span class="token keyword">Section</span> <span class="token string">"section_name"</span> section_index
+ <span class="token comment" spellcheck="true"> # your code here
+</span><span class="token keyword">SectionEnd</span>
+<span class="token comment" spellcheck="true">
+; Functions
+</span>Function <span class="token punctuation">.</span>onInit
+
+  <span class="token keyword">MessageBox</span> <span class="token property">MB_OK</span> <span class="token string">"Here comes a$\n$\rline-break!"</span>
+
+FunctionEnd
+
+</code></pre>

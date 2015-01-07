@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Prism.php</title><link rel="stylesheet" id="theme-basic" href="/prism.php/assets/css/prism-basic.css" disabled><link rel="stylesheet" id="theme-coy" href="/prism.php/assets/css/prism-coy.css" disabled><link rel="stylesheet" id="theme-dark" href="/prism.php/assets/css/prism-dark.css" disabled><link rel="stylesheet" id="theme-funky" href="/prism.php/assets/css/prism-funky.css" disabled><link rel="stylesheet" id="theme-okaidia" href="/prism.php/assets/css/prism-okaidia.css"><link rel="stylesheet" id="theme-twilight" href="/prism.php/assets/css/prism-twilight.css" disabled><link rel="stylesheet" id="theme-tomorrow" href="/prism.php/assets/css/prism-tomorrow.css" disabled><link rel="stylesheet" href="/prism.php/assets/css/styles.css"></head><body>
+    <nav class="navmenu navmenu-default navmenu-fixed-left" role="navigation"><a class="navmenu-brand" href="#">Prism.php</a>
+
+        <ul class="nav navmenu-nav"><li class="active">
+                <a href="/prism.php/">Home</a>
+            </li>
+            <li>
+                <a href="/prism.php/samples/">Code Samples</a>
+            </li>
+            <li class="dropdown ">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugins <i class="caret"></i></a>
+                <ul class="dropdown-menu navmenu-nav" role="menu"><li>
+                        <a href="/prism.php/plugins/show-language/">Show Language</a>
+                    </li>
+                    <li>
+                        <a href="/prism.php/plugins/line-numbers/">Line Numbers</a>
+                    </li>
+                </ul></li>
+            <li class="theme-switcher">
+                <span>Theme Switcher</span>
+                <select name="theme" id="theme-switcher" class="form-control"><option value="basic">Basic</option><option value="coy">Coy</option><option value="dark">Dark</option><option value="funky">Funky</option><option value="okaidia">Okaidia</option><option value="twilight">Twilight</option><option value="tomorrow">Tomorrow</option></select></li>
+        </ul></nav><div class="container-fluid">
+       <br><p><a href="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b"><img alt="SensioLabsInsight" src="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b/big.png"></a></p>
+<p><a href="https://packagist.org/packages/vkbansal/prism.php"><img alt="Latest Version" src="https://img.shields.io/packagist/v/vkbansal/prism.php.svg?style=flat-square"></a>
+<a href="LICENSE"><img alt="Software License" src="http://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square"></a>
+<a href="https://travis-ci.org/vkbansal/prism.php"><img alt="Build Status" src="https://img.shields.io/travis/vkbansal/prism.php.svg?style=flat-square"></a>
+<a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img alt="Scrutinizer Code Quality" src="https://img.shields.io/scrutinizer/g/vkbansal/prism.php.svg?style=flat-square"></a>
+<a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img alt="Code Coverage" src="https://img.shields.io/scrutinizer/coverage/g/vkbansal/prism.php.svg?style=flat-square"></a>
+<a href="https://codeclimate.com/github/vkbansal/prism.php"><img alt="Code Climate" src="https://img.shields.io/codeclimate/github/vkbansal/prism.php.svg?style=flat-square"></a></p>
+<h1>Prism.php (WIP)</h1>
+<p>This is a php port of <a href="https://github.com/LeaVerou/prism">prism.js</a> syntax highlighter originally written by <a href="http://github.com/LeaVerou">@LeaVerou</a>.</p>
+<h2>Feature list</h2>
+<ul><li>All the processing done server side. Save browser redraws and repaints that may be caused due to javascript alternatives.</li>
+<li>Makes highlighted code cacheable, which is not possible otherwise.</li>
+<li>Encourages <a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-code-element">semantic approach</a> of using <code>language-xxx</code> class on code blocks specified by <a href="http://www.w3.org/">W3C</a>.</li>
+<li>Very easy to define new languages. Only thing you need is a good understanding of regular expressions.</li>
+<li>All styling is done through CSS, with sensible class names.</li>
+<li>Wide browser support. Even the ancient IE6-8. If your browser supports <code>pre</code> and <code>code</code> tags and CSS, you are good to go.</li>
+<li>Highlights nested languages (CSS in HTML, JavaScript in HTML).</li>
+</ul><h2>Limitations</h2>
+<ul><li>Regex-based so it <em>will</em> fail on certain edge cases.</li>
+</ul><h2>Installation</h2>
+<pre><code class="language-js">{
+    "require" : {
+        "vkbansal/prism" : "dev-master"
+    }
+}</code></pre>
+<h2>Requirements</h2>
+<ul><li>PHP &gt;= 5.4</li>
+<li>libxml &gt;= 2.6.0</li>
+</ul><h2>Basic usage</h2>
+<pre class=" language-php"><code class=" language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Prism</span><span class="token punctuation">;</span>
+<span class="token variable">$prism</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prism</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3>Highlighting HTML</h3>
+<p>For highlighting HTML, <code>code</code> blocks must have a <code>language-</code> prefixed <code>class</code> attribute. For example, if you want to highlight <code>HTML</code>, the code block must have a <code>language-html</code> class.</p>
+<p>Prism will auto-detect the language and apply highlighting if the language definition is found.</p>
+<pre class=" language-php"><code class=" language-php"><span class="token variable">$html</span> <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token constant">HTML</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>prism.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span></span>Test<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span></span>Lorem ipsum dolor sit amet<span class="token punctuation">,</span> consectetur adipisicing elit<span class="token punctuation">.</span> Inventore laboriosam<span class="token punctuation">,</span> magni facilis accusantium officia tenetur <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span></span>voluptatum<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span></span> voluptatem incidunt minus<span class="token punctuation">,</span> corporis vel in sed veniam architecto<span class="token operator">?</span> Doloremque nam excepturi pariatur<span class="token punctuation">,</span> harum<span class="token operator">?</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>language-html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span></span>
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span></span>
+            <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span></span>Title goes here<span class="token operator">!</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span></span>
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span></span>
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></span>
+    <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span></span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span></span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></span>
+<span class="token constant">HTML</span><span class="token punctuation">;</span>
+
+<span class="token keyword">echo</span> <span class="token variable">$prism</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">highlightHTML<span class="token punctuation">(</span></span><span class="token variable">$html</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3>Highlighting Text</h3>
+<p>You can also highlight text directly, but you have to specify the language manually.</p>
+<pre class=" language-php"><code class=" language-php"><span class="token keyword">echo</span> <span class="token variable">$prism</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">highlightText<span class="token punctuation">(</span></span>'<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span></span>string<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></span><span class="token string">', '</span>html'<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script type="text/javascript">
+        $(document).ready(function(){
+
+            function switchTheme(id, select){
+                $('link[id^=theme]').attr('disabled', 'disabled');
+                $('link#theme-'+ id).removeAttr('disabled');
+                if (select) $('#theme-switcher').val(id);
+            }
+            
+            $("#theme-switcher").on('change', function(){
+                var id = $(this).val();
+                switchTheme(id);
+            });
+
+            switchTheme('okaidia', true);
+
+            $('a.dropdown-toggle').on('click', function(){
+               $(this).closest('li').toggleClass('open');
+                return false;
+            });
+        });
+    </script></body></html>

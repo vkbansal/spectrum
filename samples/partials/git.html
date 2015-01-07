@@ -1,0 +1,34 @@
+<p>Default language reference: <b>git</b></p>
+    <p>Language aliases: <b>diff</b></p>
+<pre class="language-git"><code class="language-git">Index: languages/ini.js
+===================================================================
+--- languages/ini.js    (revision 199)
++++ languages/ini.js    (revision 200)
+<span class="token coord">@@ -1,8 +1,7 @@</span>
+ hljs.LANGUAGES.ini =
+ {
+   case_insensitive: true,
+<span class="token deleted">-  defaultMode:</span>
+<span class="token deleted">-  {</span>
+<span class="token inserted">+  defaultMode: {</span>
+     contains: [<span class="token string">'comment'</span>, <span class="token string">'title'</span>, <span class="token string">'setting'</span>],
+     illegal: <span class="token string">'[^\\s]'</span>
+   },
+
+*** /path/to/original timestamp
+--- /path/to/new      timestamp
+***************
+*** 1,3 ****
+--- 1,9 ----
+<span class="token inserted">+ This is an important</span>
+<span class="token inserted">+ notice! It should</span>
+<span class="token inserted">+ therefore be located at</span>
+<span class="token inserted">+ the beginning of this</span>
+<span class="token inserted">+ document!</span>
+
+! compress the size of the
+! changes.
+
+  It is important to spell
+
+</code></pre>

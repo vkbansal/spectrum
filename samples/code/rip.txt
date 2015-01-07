@@ -1,0 +1,12 @@
+---
+name: Rip
+lang:
+  ref: rip
+---
+# This is a comment</code></pre>
+
+"foo \"bar\" baz"
+'foo \'bar\' baz'
+
+regular_expression = /abc/
+string_symbol = :rip

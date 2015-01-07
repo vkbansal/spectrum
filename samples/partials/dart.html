@@ -1,0 +1,35 @@
+<p>Default language reference: <b>dart</b></p>
+<pre class="language-dart"><code class="language-dart"><span class="token keyword">library</span> app<span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'dart:html'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">part</span> <span class="token string">'app2.dart'</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * Class description and [link](http://dartlang.org/).
+ */</span>
+<span class="token metadata symbol">@Awesome</span><span class="token punctuation">(</span><span class="token string">'it works!'</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">SomeClass</span><span class="token operator">&lt;</span>S <span class="token keyword">extends</span> <span class="token class-name">Iterable</span><span class="token operator">&gt;</span> <span class="token keyword">extends</span> <span class="token class-name">BaseClass</span><span class="token operator">&lt;</span>S<span class="token operator">&gt;</span> <span class="token keyword">implements</span> <span class="token class-name">Comparable</span> <span class="token punctuation">{</span>
+  <span class="token keyword">factory</span> <span class="token function">SomeClass<span class="token punctuation">(</span></span>num param<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  SomeClass<span class="token punctuation">.</span><span class="token function">_internal<span class="token punctuation">(</span></span>int q<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">assert</span><span class="token punctuation">(</span>q <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    double z <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">/// **Sum** function
+</span>  int <span class="token function">sum<span class="token punctuation">(</span></span>int a<span class="token punctuation">,</span> int b<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+
+  ElementList <span class="token function">els<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">querySelectorAll<span class="token punctuation">(</span></span><span class="token string">'.dart'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+String str <span class="token operator">=</span> <span class="token string">' (${'</span>paramete<span class="token string">r' + '</span>zxc<span class="token string">'})'</span><span class="token punctuation">;</span>
+String str <span class="token operator">=</span> <span class="token string">" (${true ? 2 + 2 / 2 : null})"</span><span class="token punctuation">;</span>
+String str <span class="token operator">=</span> <span class="token string">r'\nraw\'</span><span class="token punctuation">;</span>
+String str <span class="token operator">=</span> <span class="token string">r"\nraw\"</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'''
+Something ${2+3}
+'''</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">r"""
+Something ${2+3}
+"""</span><span class="token punctuation">;</span>
+
+</code></pre>

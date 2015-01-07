@@ -1,0 +1,59 @@
+<p>Default language reference: <b>eiffel</b></p>
+<pre class="language-eiffel"><code class="language-eiffel"><span class="token keyword">class</span>
+    TIME_OF_DAY
+            <span class="token comment" spellcheck="true">-- Absolute time within a day to the nearest minute</span>
+
+<span class="token keyword">feature</span>
+    hour<span class="token punctuation">:</span> INTEGER is
+            <span class="token comment" spellcheck="true">-- Hour of day, 00 to 23</span>
+        <span class="token keyword">do</span>
+            <span class="token keyword">Result</span> <span class="token punctuation">:=</span> minutes <span class="token operator">//</span> <span class="token number">60</span>
+        <span class="token keyword">end</span> <span class="token comment" spellcheck="true">-- hour</span>
+
+    minute<span class="token punctuation">:</span> INTEGER is
+            <span class="token comment" spellcheck="true">-- Minute in hour, 00 to 59</span>
+        <span class="token keyword">do</span>
+            <span class="token keyword">Result</span> <span class="token punctuation">:=</span> minutes <span class="token operator">\\</span> <span class="token number">60</span>
+        <span class="token keyword">end</span> <span class="token comment" spellcheck="true">-- minute</span>
+
+    set <span class="token punctuation">(</span>hh<span class="token punctuation">:</span> INTEGER<span class="token punctuation">,</span> mm<span class="token punctuation">:</span> INTEGER<span class="token punctuation">)</span> is
+            <span class="token comment" spellcheck="true">-- A new time</span>
+        <span class="token keyword">require</span>
+            <span class="token number">0</span> <span class="token operator">&lt;=</span> hh <span class="token keyword">and</span> hh <span class="token operator">&lt;</span> <span class="token number">24</span>
+            <span class="token number">0</span> <span class="token operator">&lt;=</span> mm <span class="token keyword">and</span> mm <span class="token operator">&lt;</span> <span class="token number">60</span>
+        <span class="token keyword">do</span>
+            minutes <span class="token punctuation">:=</span> hh <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> mm
+        <span class="token keyword">ensure</span>
+            hour <span class="token operator">=</span> hh
+            minute <span class="token operator">=</span> mm
+        <span class="token keyword">end</span> <span class="token comment" spellcheck="true">-- set</span>
+
+    adjust <span class="token punctuation">(</span>hh_by<span class="token punctuation">:</span> INTEGER<span class="token punctuation">,</span> mm_by<span class="token punctuation">:</span> INTEGER<span class="token punctuation">)</span> is
+            <span class="token comment" spellcheck="true">-- Advance (+) or retard (-)</span>
+            <span class="token comment" spellcheck="true">-- either unit or both</span>
+        <span class="token keyword">do</span>
+            minutes <span class="token punctuation">:=</span> minutes <span class="token operator">+</span> hh_by <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">+</span> mm_by
+            normalise
+        <span class="token keyword">end</span> <span class="token comment" spellcheck="true">-- adjust</span>
+
+<span class="token keyword">feature</span> <span class="token punctuation">{</span>NONE<span class="token punctuation">}</span>
+    minutes<span class="token punctuation">:</span> INTEGER
+            <span class="token comment" spellcheck="true">-- Minutes since midnight</span>
+
+    normalise is
+            <span class="token comment" spellcheck="true">-- Restore invariant after adjustment</span>
+        <span class="token keyword">do</span>
+            minutes <span class="token punctuation">:=</span> minutes <span class="token operator">\\</span> <span class="token number">1440</span>
+            <span class="token keyword">if</span> minutes <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token keyword">then</span>
+                minutes <span class="token punctuation">:=</span> minutes <span class="token operator">+</span> <span class="token number">1440</span>
+            <span class="token keyword">end</span>
+        <span class="token keyword">end</span> <span class="token comment" spellcheck="true">-- normalise</span>
+
+<span class="token keyword">invariant</span>
+    <span class="token number">0</span> <span class="token operator">&lt;=</span> hour <span class="token keyword">and</span> hour <span class="token operator">&lt;</span> <span class="token number">24</span>
+    <span class="token number">0</span> <span class="token operator">&lt;=</span> minute <span class="token keyword">and</span> minute <span class="token operator">&lt;</span> <span class="token number">60</span>
+    <span class="token number">0</span> <span class="token operator">&lt;=</span> minutes <span class="token keyword">and</span> minutes <span class="token operator">&lt;</span> <span class="token number">1440</span>
+
+<span class="token keyword">end</span> <span class="token comment" spellcheck="true">-- class TIME_OF_DAY</span>
+
+</code></pre>

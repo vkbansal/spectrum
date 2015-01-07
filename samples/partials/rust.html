@@ -1,0 +1,58 @@
+<p>Default language reference: <b>rust</b></p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> std<span class="token punctuation">;</span>
+
+<span class="token attribute attr-name">#![warn(unstable)]</span>
+
+<span class="token comment" spellcheck="true">/* Factorial */</span>
+<span class="token keyword">fn</span> <span class="token function">fac</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> int <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> s<span class="token punctuation">:</span> str <span class="token operator">=</span> "This is
+a multi<span class="token operator">-</span>line string<span class="token punctuation">.</span>
+
+It ends with an unescaped <span class="token string">'\"'</span><span class="token punctuation">.</span>"<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> c<span class="token punctuation">:</span> char <span class="token operator">=</span> <span class="token string">'&#1060;'</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> r<span class="token punctuation">:</span> str <span class="token operator">=</span> <span class="token string">r##" raw string "##</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> n <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// No parens around the condition
+</span>        result <span class="token operator">*</span><span class="token operator">=</span> i<span class="token punctuation">;</span>
+        i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    ret result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">pure</span> <span class="token keyword">fn</span> pure_length<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span>ls<span class="token punctuation">:</span> list<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> uint <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* ... */</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">type</span> t <span class="token operator">=</span> map<span class="token punctuation">:</span><span class="token punctuation">:</span>hashtbl<span class="token operator">&lt;</span>int<span class="token punctuation">,</span>str<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> x <span class="token operator">=</span> id<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">&lt;</span>int<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Define some modules.
+</span>#<span class="token punctuation">[</span>path <span class="token operator">=</span> <span class="token string">"foo.rs"</span><span class="token punctuation">]</span>
+<span class="token keyword">mod</span> foo<span class="token punctuation">;</span>
+
+<span class="token keyword">impl</span> <span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> Seq<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> <span class="token keyword">for</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token keyword">fn</span> <span class="token function">len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> uint <span class="token punctuation">{</span> vec<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">len</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+    <span class="token keyword">fn</span> <span class="token function">iter</span><span class="token punctuation">(</span>b<span class="token punctuation">:</span> <span class="token keyword">fn</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> elt <span class="token keyword">in</span> <span class="token keyword">self</span> <span class="token punctuation">{</span> <span class="token function">b</span><span class="token punctuation">(</span>elt<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">enum</span> list<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    Nil<span class="token punctuation">;</span>
+    <span class="token function">Cons</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> @list<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> a<span class="token punctuation">:</span> list<span class="token operator">&lt;</span>int<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token function">Cons</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> @<span class="token function">cons</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span> @nil<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> Baz<span class="token operator">&lt;</span>'a<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    baz<span class="token punctuation">:</span> <span class="token operator">&amp;</span>'a str<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+'h<span class="token punctuation">:</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token function">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    'g<span class="token punctuation">:</span> <span class="token keyword">loop</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span> <span class="token keyword">continue</span> 'h<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">9</span> <span class="token punctuation">{</span> <span class="token keyword">break</span> 'h<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token keyword">break</span> 'g<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>

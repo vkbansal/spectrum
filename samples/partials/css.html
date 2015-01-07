@@ -1,0 +1,28 @@
+<p>Default language reference: <b>css</b></p>
+<pre class="language-css"><code class="language-css"><span class="token atrule">@media screen and (-webkit-min-device-pixel-ratio<span class="token punctuation">:</span> 0)</span> <span class="token punctuation">{</span>
+  <span class="token selector">body<span class="token pseudo-class">:first-of-type</span> pre<span class="token pseudo-element">::after</span> </span><span class="token punctuation">{</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> '<span class="token property">highlight</span><span class="token punctuation">:</span> ' <span class="token function">attr</span>(class)<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">body </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span>(<span class="token number">45</span>deg, blue, red)<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule">@import url('print.css')<span class="token punctuation">;</span></span>
+<span class="token atrule">@page<span class="token punctuation">:</span>right</span> <span class="token punctuation">{</span>
+ <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">1</span>cm <span class="token number">2</span>cm <span class="token number">1.3</span>cm <span class="token number">4</span>cm<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule">@font-face</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> Chunkfive<span class="token punctuation">;</span> <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url('Chunkfive.otf')</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">div<span class="token class">.text</span>,
+<span class="token id">#content</span>,
+li[lang=ru] </span><span class="token punctuation">{</span>
+  <span class="token property">font</span><span class="token punctuation">:</span> Tahoma, Chunkfive, sans-serif<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url('hatch.png')</span> <span class="token comment" spellcheck="true">/* wtf? */</span><span class="token punctuation">;</span>  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#F0F0F0</span> <span class="token important">!important</span><span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>

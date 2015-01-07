@@ -1,0 +1,37 @@
+<p>Default language reference: <b>go</b></p>
+<pre class="language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token operator">(</span>
+    <span class="token string">"fmt"</span>
+    <span class="token string">"os"</span>
+<span class="token operator">)</span>
+
+<span class="token keyword">const</span> <span class="token operator">(</span>
+    Sunday <span class="token operator">=</span> <span class="token boolean">iota</span>
+    numberOfDays  <span class="token comment" spellcheck="true">// this constant is not exported
+</span><span class="token operator">)</span>
+
+<span class="token keyword">type</span> Foo <span class="token keyword">interface</span> <span class="token operator">{</span>
+    <span class="token function">FooFunc<span class="token punctuation">(</span></span><span class="token builtin">int</span><span class="token operator">,</span> <span class="token builtin">float32</span><span class="token operator">)</span> <span class="token operator">(</span><span class="token builtin">complex128</span><span class="token operator">,</span> <span class="token operator">[</span><span class="token operator">]</span><span class="token builtin">int</span><span class="token operator">)</span>
+<span class="token operator">}</span>
+
+<span class="token keyword">type</span> Bar <span class="token keyword">struct</span> <span class="token operator">{</span>
+    os<span class="token operator">.</span>File <span class="token comment" spellcheck="true">/* multi-line
+               comment */</span>
+    PublicData <span class="token keyword">chan</span> <span class="token builtin">int</span>
+<span class="token operator">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main<span class="token punctuation">(</span></span><span class="token operator">)</span> <span class="token operator">{</span>
+    ch <span class="token operator">:=</span> <span class="token function">make<span class="token punctuation">(</span></span><span class="token keyword">chan</span> <span class="token builtin">int</span><span class="token operator">)</span>
+    ch <span class="token operator">&lt;-</span> <span class="token number">1</span>
+    x<span class="token operator">,</span> ok <span class="token operator">:=</span> <span class="token operator">&lt;-</span> ch
+    ok <span class="token operator">=</span> <span class="token boolean">true</span>
+    float_var <span class="token operator">:=</span> <span class="token number">1.0e10</span>
+    <span class="token keyword">defer</span> fmt<span class="token operator">.</span><span class="token function">Println<span class="token punctuation">(</span></span><span class="token string">'\''</span><span class="token operator">)</span>
+    <span class="token keyword">defer</span> fmt<span class="token operator">.</span><span class="token function">Println<span class="token punctuation">(</span></span><span class="token string">`exitting now\`</span><span class="token operator">)</span>
+    <span class="token keyword">var</span> fv1 <span class="token builtin">float64</span> <span class="token operator">=</span> <span class="token number">0.75</span>
+    <span class="token keyword">go</span> <span class="token function">println<span class="token punctuation">(</span></span><span class="token function">len<span class="token punctuation">(</span></span><span class="token string">"hello world!"</span><span class="token operator">)</span><span class="token operator">)</span>
+    <span class="token keyword">return</span>
+<span class="token operator">}</span>
+
+</code></pre>

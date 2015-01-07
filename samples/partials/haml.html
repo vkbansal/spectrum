@@ -1,0 +1,17 @@
+<p>Default language reference: <b>haml</b></p>
+<pre class="language-haml"><code class="language-haml"><span class="token doctype">!!! XML</span>
+<span class="token tag">%html</span>
+  <span class="token tag">%body</span>
+    <span class="token tag">%h1.jumbo<span class="token attributes">{:id=&gt;"a", :style=&gt;'font-weight: normal', :title=&gt;title}</span></span> highlight.js
+    <span class="token multiline-comment comment">/html comment</span>
+    <span class="token multiline-comment comment">-# ignore this line</span>
+    <span class="token tag">%ul<span class="token attributes"><span class="token punctuation">(</span><span class="token attr-name">style</span><span class="token punctuation">=</span><span class="token attr-value">'margin:</span> 0'<span class="token punctuation">)</span></span></span>
+    <span class="token punctuation">-</span><span class="token multiline-code">items.each do |i|</span>
+      <span class="token tag">%i</span><span class="token punctuation">=</span><span class="token code"> i</span>
+    <span class="token punctuation">=</span><span class="token code"> variable</span>
+    <span class="token punctuation">=</span><span class="token code">variable2</span>
+    <span class="token punctuation">~</span><span class="token code"> variable3</span>
+    <span class="token punctuation">~</span><span class="token code">variable4</span>
+    The current year is <span class="token interpolation"><span class="token delimiter punctuation">#{</span>DataTime.now.year<span class="token delimiter punctuation">}</span></span>.
+
+</code></pre>

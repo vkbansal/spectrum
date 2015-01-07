@@ -1,0 +1,28 @@
+<p>Default language reference: <b>gherkin</b></p>
+<pre class="language-gherkin"><code class="language-gherkin"><span class="token comment" spellcheck="true"># language: en
+</span><span class="token keyword">Feature</span>: Addition
+  <span class="token atrule">In order to</span> avoid silly mistakes
+  <span class="token atrule">As a</span> math idiot
+  <span class="token atrule">I want to</span> be told the sum of two numbers
+
+  @this_is_a_tag
+  <span class="token keyword">Scenario Outline</span>: Add two numbers
+    * I have a calculator
+    <span class="token atrule">Given</span> I have entered &lt;input_1&gt; into the calculator
+    <span class="token atrule">And</span> I have entered &lt;input_2&gt; into the calculator
+    <span class="token atrule">When</span> I press &lt;button&gt;
+    <span class="token atrule">Then</span> the result should be &lt;output&gt; on the screen
+    <span class="token atrule">And</span> I have a string like
+    <span class="token string">""</span>"
+    Here is
+    some
+    multiline text
+    <span class="token string">""</span>"
+
+  Examples:
+    | input_1 | input_2 | button | output |
+    | 20      | 30      | add    | 50     |
+    | 2       | 5       | add    | 7      |
+    | 0       | 40      | add    | 40     |
+
+</code></pre>

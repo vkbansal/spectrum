@@ -1,0 +1,17 @@
+<p>Default language reference: <b>applescript</b></p>
+<pre class="language-applescript"><code class="language-applescript"><span class="token keyword">repeat</span> <span class="token number">5</span> <span class="token keyword">times</span>
+    <span class="token keyword">if</span> foo <span class="token operator">is greater than</span> bar <span class="token keyword">then</span>
+        display dialog <span class="token string">"Hello there"</span>
+    <span class="token keyword">else</span>
+        beep
+    <span class="token keyword">end</span> <span class="token keyword">if</span>
+<span class="token keyword">end</span> <span class="token keyword">repeat</span>
+
+<span class="token comment" spellcheck="true">(* comment (*nested comment*)</span> <span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">on</span> do_something<span class="token punctuation">(</span>s<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>s <span class="token operator">+</span> pi<span class="token punctuation">,</span> y <span class="token operator">mod</span> <span class="token number">4</span><span class="token punctuation">}</span>
+<span class="token keyword">end</span> do_something
+
+do shell <span class="token keyword">script</span> <span class="token string">"/bin/echo 'hello'"</span>
+
+</code></pre>

@@ -1,0 +1,29 @@
+---
+name: Handlebars
+lang:
+  ref: handlebars
+---
+{{! This is a comment with <p>some markup</p> in it }}
+
+<p>{{ text }}</p>
+<h1>{{article.title}}</h1>
+{{{ triple_slash_is_supported }}}
+{{articles.[10].[#comments]}}
+
+{{{link "See more..." story.url}}}
+{{ true }}
+{{ custom_helper 42 href="somepage.html" false }}
+
+<div class="body">
+    {{#bold}}{{body}}{{/bold}}
+</div>
+{{#with story}}
+    <div class="intro">{{{intro}}}</div>
+    <div class="body">{{{body}}}</div>
+{{/with}}
+<div class="{{#if test}}foo{{else}}bar{{/if}}"></div>
+{{#list array}}
+  {{@index}}. {{title}}
+{{/list}}
+
+<div{{#if test}} class="test"{{/if}}></div>

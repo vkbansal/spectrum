@@ -1,0 +1,38 @@
+<p>Default language reference: <b>java</b></p>
+<pre class="language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * @author John Smith &lt;john.smith@example.com&gt;
+ * @version 1.0
+*/</span>
+<span class="token keyword">package</span> l2f<span class="token punctuation">.</span>gameserver<span class="token punctuation">.</span>model<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">L2Character</span> <span class="token keyword">extends</span> <span class="token class-name">L2Object</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Short ABNORMAL_EFFECT_BLEEDING <span class="token operator">=</span> 0x0_0_0_1<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// not sure
+</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">moveTo<span class="token punctuation">(</span></span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> z<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    _ai <span class="token operator">=</span> null<span class="token punctuation">;</span>
+    _log<span class="token punctuation">.</span><span class="token function">warning<span class="token punctuation">(</span></span><span class="token string">"Should not be called"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">/** Task of AI notification */</span>
+  @<span class="token function">SuppressWarnings<span class="token punctuation">(</span></span> <span class="token punctuation">{</span> <span class="token string">"nls"</span><span class="token punctuation">,</span> <span class="token string">"unqualified-field-access"</span><span class="token punctuation">,</span> <span class="token string">"boxing"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NotifyAITask</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> CtrlEvent _evt<span class="token punctuation">;</span>
+
+    List<span class="token operator">&lt;</span>String<span class="token operator">&gt;</span> mList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>String<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token function">getAI<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">notifyEvent<span class="token punctuation">(</span></span>_evt<span class="token punctuation">,</span> _evt<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        t<span class="token punctuation">.</span><span class="token function">printStackTrace<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
