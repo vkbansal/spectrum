@@ -25,7 +25,7 @@ class SCSS extends AbstractDefinition
      */
     public function aliases()
     {
-        return 'scss';
+        return 'sass';
     }
     /**
      * {@inheritdoc}

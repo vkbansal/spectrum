@@ -33,7 +33,22 @@ class Markup extends AbstractDefinition
      */
     public function aliases()
     {
-        return ['xml', 'html'];
+        return [
+            'xml',
+            'html',
+            'atom',
+            'epub',
+            'mathml',
+            'musicxml',
+            'rss',
+            'soap',
+            'svg',
+            'webfeed',
+            'xform',
+            'xhtml',
+            'xpath',
+            'xquery'
+        ];
     }
 
     /**

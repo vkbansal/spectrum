@@ -23,6 +23,14 @@ class JavaScript extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function aliases()
+    {
+        return 'js';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return $this->extend('clike', [
