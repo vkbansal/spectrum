@@ -6,9 +6,7 @@ use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
 use VKBansal\Prism\Token\Generator;
 use VKBansal\Prism\Hook\HookInterface;
-use VKBansal\Prism\Hook\HookableTrait;
 use VKBansal\Prism\Language\DefinitionInterface;
-use VKBansal\Prism\Language\RepositoryTrait;
 
 /**
  * Core Prism class for syntax highlighting
@@ -19,8 +17,9 @@ use VKBansal\Prism\Language\RepositoryTrait;
  */
 class Prism implements HookInterface, DefinitionInterface
 {
-    use HookableTrait;
+    use Hook\HookableTrait;
     use Language\RepositoryTrait;
+    use Plugin\PluggableTrait;
 
     /**
      * Stores HTML Document to be highlighted
@@ -39,12 +38,12 @@ class Prism implements HookInterface, DefinitionInterface
      */
     public function __construct($path = null)
     {
-        $file = is_null($path) ? __DIR__."/.lang.map.php" : $path;
+        $file = is_null($path) ? __DIR__."/.lang.map.json" : $path;
 
         if (!file_exists($file)) {
             $mapping = $this->saveMap($file);
         } else {
-            $mapping = require_once $file;
+            $mapping = $this->loadMap($file);
         }
 
         $this->map = $mapping['map'];
@@ -260,5 +259,10 @@ class Prism implements HookInterface, DefinitionInterface
         $map = $mapper->getMap();
         $mapper->saveMap($path, $map);
         return $map;
+    }
+
+    protected function loadMap($path)
+    {
+       return json_decode(file_get_contents($path), true);
     }
 }

@@ -2,6 +2,6 @@
 bower_components/
 docs/
 node_modules/
-src/.lang.map.php
+src/.lang.map.*
 vendor/
 composer.lock

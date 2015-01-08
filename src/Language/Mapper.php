@@ -67,8 +67,6 @@ class Mapper {
         if (is_null($map)) {
             $map = $this->getMap();
         }
-        $arr = var_export($map, true);
-        $contents = "<?php\nreturn {$arr};";
-        file_put_contents($path, $contents);
+        file_put_contents($path, json_encode($map, JSON_PRETTY_PRINT));
     }
 }
