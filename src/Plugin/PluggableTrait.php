@@ -56,6 +56,13 @@ trait PluggableTrait
         }
     }
 
+    public function resetPlugins()
+    {
+        foreach ($this->plugins as $name => $hook) {
+            $this->removeHook($hook, $name);
+        }
+    }
+
     /**
      * Abstract method for hook
      * @param  string      $name

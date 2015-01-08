@@ -57,6 +57,18 @@ trait RepositoryTrait
     }
 
     /**
+     * Load language definitions
+     * @param  array $languages
+     * @return void
+     */
+    public function loadDefinitions(array $languages)
+    {
+        foreach ($languages as $language) {
+            $this->loadDefinition($language);
+        }
+    }
+
+    /**
      * Loads All Definitions
      * @return void
      */
