@@ -19,7 +19,8 @@
         "twig/twig": "1.16.*",
         "erusev/parsedown-extra": "*",
         "vkbansal/frontmatter": "~1.3.0",
-        "symfony/var-dumper": "~2.6.1"
+        "symfony/var-dumper": "~2.6.1",
+        "league/climate": "~2.6.0"
     },
 
     "autoload": {
