@@ -1,0 +1,7 @@
+.idea/
+bower_components/
+docs/
+node_modules/
+src/.lang.map.php
+vendor/
+composer.lock
