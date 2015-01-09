@@ -11,7 +11,7 @@ class Mapper {
 
     public function __construct()
     {
-        $this->definitions = __DIR__."/../Definition";
+        $this->definitions = __DIR__."/../Components/Definition";
         $this->finder = new Finder();
     }
 
@@ -29,7 +29,7 @@ class Mapper {
         $newClasses = array_diff( $classesAfter, $classesBefore);
 
         return array_filter($newClasses, function($class){
-            return preg_match("/^VKBansal\\\\Prism\\\\Definition\\\\\\w+/", $class);
+            return preg_match("/^VKBansal\\\\Prism\\\\Components\\\\Definition\\\\\\w+/", $class);
         });
     }
 
