@@ -82,15 +82,13 @@ class AspNet extends AbstractDefinition
 
         // Hacks to fix eager tag matching finishing too early: <script src="<% Foo.Bar %>"> => <script src="<% Foo.Bar %>
         if ($this->hasDefinition('aspnet.style')) {
-            $style =& $this->getDefinition('aspnet.style');
-            $style["inside"] = [];
+            $style =& $this->getDefinition('aspnet.style', []);
             $style["inside"]["tag"] = [];
             $style["inside"]["tag"]["pattern"] = "/<\/?style\s*(?:\s+[\w:-]+(?:=(?:(\"|')(\\\\?[\w\W])*?\g{1}|\w+))?\s*)*\/?>/i";
             $style["inside"]["tag"]["inside"] = $this->getDefinition('aspnet.tag.inside');
         }
         if ($this->hasDefinition('aspnet.script')) {
-            $script =& $this->getDefinition('aspnet.script');
-            $script["inside"] = [];
+            $script =& $this->getDefinition('aspnet.script', []);
             $script["inside"]["tag"] = [];
             $script["inside"]["tag"]["pattern"] = $this->getDefinition('aspnet')['asp script']['inside']['tag']['pattern'];
             $script["inside"]["tag"]["inside"] = $this->getDefinition('aspnet.tag.inside');

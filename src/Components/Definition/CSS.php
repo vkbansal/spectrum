@@ -36,7 +36,7 @@ class CSS extends AbstractDefinition
         return [
             "comment" => "/\/\*[\w\W]*?\*\//",
             "atrule" => [
-                "pattern" => "/@[\w-]+?.*?(;|(?=\s*{))/i",
+                "pattern" => "/@[\w-]+?.*?(;|(?=\s*\{))/i",
                 "inside" => [
                     "punctuation" => "/[;:]/"
                 ]
@@ -80,7 +80,7 @@ class CSS extends AbstractDefinition
                 "inside" => [
                     'tag'=> [
                         "pattern" => "/<style[\w\W]*?>|<\/style>/i",
-                        "inside" => $inside
+                        "inside" => $this->getDefinition('markup.tag.inside')
                     ],
                     "rest" => $this->getDefinition('css')
                 ],
@@ -94,7 +94,7 @@ class CSS extends AbstractDefinition
                 "inside"=> [
                     "attr-name"=> [
                         "pattern"=> "/^\s*style/i",
-                        "inside" => $inside
+                        "inside" => $this->getDefinition('markup.tag.inside')
                     ],
                     'punctuation' => "/^\s*=\s*['\"]|['\"]\s*$/",
                     'attr-value'=> [

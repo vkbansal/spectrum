@@ -28,11 +28,11 @@ class Ini extends AbstractDefinition
         return [
             'comment' => "/^\s*;.*$/m",
             'important' => "/\[.*?\]/m",
-            'constant'=> "/^\s*[^\s\=]+?(?=[ \\t]*\=)/m",
+            'constant'=> "/^\s*[^\s=]+?(?=[ \\t]*=)/m",
             'attr-value'=> [
-                "pattern" => "/\=.*/m",
+                "pattern" => "/=.*/m",
                 "inside" => [
-                    'punctuation'=> "/^[\=]/"
+                    'punctuation'=> "/^[=]/"
                 ]
             ]
         ];

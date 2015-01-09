@@ -77,7 +77,7 @@ abstract class AbstractDefinition implements DefinitionInterface, HookInterface
         }
 
         $temp = explode('.', $inside);
-        $rootKey = array_shift($temp);
+        $rootKey = array_pop($temp);
 
         $def =& $this->getDefinition();
 

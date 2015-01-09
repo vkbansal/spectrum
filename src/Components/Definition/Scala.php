@@ -49,5 +49,6 @@ class Scala extends AbstractDefinition
     {
         $scala =& $this->getDefinition('scala');
         unset($scala['function']);
+        unset($scala['class-name']);
     }
 }

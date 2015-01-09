@@ -86,7 +86,7 @@ class Markup extends AbstractDefinition
                     ]
                 ]
             ],
-            'entity'=> "/\&#?[\da-z]{1,8};/i"
+            'entity'=> "/&#?[\da-z]{1,8};/i"
         ];
     }
 }

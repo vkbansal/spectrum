@@ -57,7 +57,7 @@ class SCSS extends AbstractDefinition
             // the end of a selector is found when there is no rules in it ( {} or {\s}) or if there is a property (because an interpolated var
             // can "pass" as a selector- e.g: proper#{$erty})
             // this one was ard to do, so please be careful if you edit this one :)
-            'selector' => "/([^@;\{\}\(\)]?([^@;\{\}\(\)]|&|\#\{\\$[-_\w]+\})+)(?=\s*\{(\}|\s|[^\}]+(:|\{)[^\}]+))/m"
+            'selector' => "/([^@;\{\}\(\)]?([^@;\{\}\(\)]|&|#\{\\$[-_\w]+\})+)(?=\s*\{(\}|\s|[^\}]+(:|\{)[^\}]+))/m"
         ]);
     }
 
@@ -80,7 +80,7 @@ class SCSS extends AbstractDefinition
             'statement' => "/\B!(default|optional)\b/i",
             'boolean' => "/\b(true|false)\b/",
             'null' => "/\b(null)\b/",
-            'operator' => "/\s+([-+]{1,2}|={1,2}|!=|\|?\||\?|\*|\/|\%)\s+/"
+            'operator' => "/\s+([-+]{1,2}|={1,2}|!=|\|?\||\?|\*|\/|%)\s+/"
         ], 'function');
     }
 }

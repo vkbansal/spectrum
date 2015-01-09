@@ -38,7 +38,7 @@ class Scheme extends AbstractDefinition
             ],
             'string' =>  "/([\"])(?:(?=(\\\\?))\g{2}.)*?\g{1}|'[^('|\s)]+/", //thanks http://stackoverflow.com/questions/171480/regex-grabbing-values-between-quotation-marks
             'number' => "/(\s|\))[-+]?[0-9]*\.?[0-9]+((\s*)[-+]{1}(\s*)[0-9]*\.?[0-9]+i)?/",
-            'operator' => "/(\*|\+|\-|\%|\/|<=|=>|>=|<|=|>)/",
+            'operator' => "/(\*|\+|\-|%|\/|<=|=>|>=|<|=|>)/",
             'function' => [
                 'pattern' => "/([(])[^(\s|\))]*\s/",
                 'lookbehind' => true
