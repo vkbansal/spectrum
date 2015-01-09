@@ -1,28 +1,24 @@
 <?php
 namespace VKBansal\Prism\Language;
 
-use Symfony\Component\Finder\Finder;
-
 class Mapper {
 
-    protected $finder;
-
-    protected $definitions;
+    protected $files;
 
     public function __construct()
     {
-        $this->definitions = __DIR__."/../Components/Definition";
-        $this->finder = new Finder();
+        $pattern = __DIR__."/../Components/Definition/*.php";
+        $this->files = glob($pattern);
     }
 
     public function getDefinitionClasses()
     {
         $classesBefore = get_declared_classes();
-        $this->finder->files()->in($this->definitions)->name("/\w+?\.php/");
 
-        foreach ($this->finder as $file) {
-            $filePath = $file->getRealPath();
-            require_once $filePath;
+        foreach ($this->files as $file) {
+            if ($filePath = realpath($file)) {
+                require_once $filePath;
+            }
         }
 
         $classesAfter = get_declared_classes();
