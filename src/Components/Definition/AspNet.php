@@ -23,6 +23,14 @@ class AspNet extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['markup', 'csharp', 'css', 'javascript'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return $this->extend('markup', [
@@ -81,7 +89,7 @@ class AspNet extends AbstractDefinition
             $style["inside"]["tag"]["inside"] = $this->getDefinition('aspnet.tag.inside');
         }
         if ($this->hasDefinition('aspnet.script')) {
-            $script =& $this->getDefinition('aspnet.style');
+            $script =& $this->getDefinition('aspnet.script');
             $script["inside"] = [];
             $script["inside"]["tag"] = [];
             $script["inside"]["tag"]["pattern"] = $this->getDefinition('aspnet')['asp script']['inside']['tag']['pattern'];

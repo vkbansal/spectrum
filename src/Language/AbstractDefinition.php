@@ -153,6 +153,15 @@ abstract class AbstractDefinition implements DefinitionInterface, HookInterface
     }
 
     /**
+     * Dependencies for this language
+     * @return array<string>
+     */
+    public function requires()
+    {
+        return [];
+    }
+
+    /**
      * Extra setup after definition.
      * Override if needed in respective language definitions.
      * @return boolean

@@ -144,9 +144,16 @@ trait RepositoryTrait
         return $language;
     }
 
+    /**
+     * Add Language Definition
+     * @param AbstractDefinition $language
+     */
     public function addLanguage(AbstractDefinition $language)
     {
         $language->injectPrism($this);
+        if ($requires = $language->requires()) {
+            $this->loadDefinitions($requires);
+        }
         $this->languages[$language->getName()] = $language->definition();
         $language->setup();
     }

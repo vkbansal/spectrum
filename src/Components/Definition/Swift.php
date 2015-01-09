@@ -23,6 +23,14 @@ class Swift extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['clike'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         // issues: nested multiline comments, highlighting inside string interpolations

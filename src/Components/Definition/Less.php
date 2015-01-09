@@ -23,6 +23,14 @@ class Less extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['css'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         /*

@@ -31,6 +31,14 @@ class CoffeeScript extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['javascript'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return $this->extend('javascript', [

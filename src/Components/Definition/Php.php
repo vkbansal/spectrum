@@ -12,13 +12,6 @@ use VKBansal\Prism\Language\AbstractTemplateDefinition;
  */
 class Php extends AbstractTemplateDefinition
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'php';
-    }
 
     /**
      * {@inheritdoc}
@@ -44,6 +37,22 @@ class Php extends AbstractTemplateDefinition
      * {@inheritdoc}
      */
     protected $grammarName = "php";
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return 'php';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function requires()
+    {
+        return ['clike', 'markup'];
+    }
 
     /**
      * {@inheritdoc}
@@ -85,31 +94,27 @@ class Php extends AbstractTemplateDefinition
             ]
         ], 'operator');
 
-        // Add HTML support of the markup language exists
-        $markup = $this->hasDefinition('markup');
+        // Add HTML support for the markup language
+        // Add the rules before all others
+        $this->insertBefore('php', [
+            'markup'=> [
+                "pattern"=> "/<[^?]\/?(.*?)>/",
+                "inside"=> $this->getDefinition('markup')
+            ],
+            'php'=> "/\{\{\{PHP[0-9]+\}\}\}/"
+        ], 'comment');
 
-        if ($markup) {
-            // Add the rules before all others
-            $this->insertBefore('php', [
-                'markup'=> [
-                    "pattern"=> "/<[^?]\/?(.*?)>/",
-                    "inside"=> $this->getDefinition('markup')
-                ],
-                'php'=> "/\{\{\{PHP[0-9]+\}\}\}/"
-            ], 'comment');
-
-            //PHP Extras
-            $this->insertBefore('php', [
-                'this' => '/\\$this/',
-                'global'=> '/\\$_?(GLOBALS|SERVER|GET|POST|FILES|REQUEST|SESSION|ENV|COOKIE|HTTP_RAW_POST_DATA|argc|argv|php_errormsg|http_response_header)/',
-                'scope'=> [
-                    "pattern" => "/\b[\w\\\\]+::/",
-                    "inside"=> [
-                        "keyword"=> "/(static|self|parent)/",
-                        "punctuation"=> "/(::|\\\\)/"
-                    ]
+        //PHP Extras
+        $this->insertBefore('php', [
+            'this' => '/\\$this/',
+            'global'=> '/\\$_?(GLOBALS|SERVER|GET|POST|FILES|REQUEST|SESSION|ENV|COOKIE|HTTP_RAW_POST_DATA|argc|argv|php_errormsg|http_response_header)/',
+            'scope'=> [
+                "pattern" => "/\b[\w\\\\]+::/",
+                "inside"=> [
+                    "keyword"=> "/(static|self|parent)/",
+                    "punctuation"=> "/(::|\\\\)/"
                 ]
-            ], 'variable');
-        }
+            ]
+        ], 'variable');
     }
 }

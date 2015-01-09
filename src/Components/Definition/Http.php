@@ -23,6 +23,14 @@ class Http extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['markup', 'javascript'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return [

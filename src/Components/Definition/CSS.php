@@ -23,6 +23,14 @@ class CSS extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['markup'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return [
@@ -34,7 +42,6 @@ class CSS extends AbstractDefinition
                 ]
             ],
             "url" => "/url\(([\"']?).*?\g{1}\)/i",
-            //"selector" => "/[^\{\}\s][^\{\};]*(?=\s*\{)/",
             "selector" => [
                 "pattern" => "/[^\{\}\s][^\{\}]*(?=\s*\{)/",
                 "inside" => [
@@ -65,40 +72,38 @@ class CSS extends AbstractDefinition
             'number' => "/[\d%\.]+/"
         ], 'function');
 
-        if ($markup) {
-            $inside = $this->getDefinition('markup.tag.inside');
+        $inside = $this->getDefinition('markup.tag.inside');
 
-            $this->insertBefore('markup', [
-                'style' => [
-                    "pattern" => "/<style[\w\W]*?>[\w\W]*?<\/style>/i",
-                    "inside" => [
-                        'tag'=> [
-                            "pattern" => "/<style[\w\W]*?>|<\/style>/i",
-                            "inside" => $inside
-                        ],
-                        "rest" => $this->getDefinition('css')
+        $this->insertBefore('markup', [
+            'style' => [
+                "pattern" => "/<style[\w\W]*?>[\w\W]*?<\/style>/i",
+                "inside" => [
+                    'tag'=> [
+                        "pattern" => "/<style[\w\W]*?>|<\/style>/i",
+                        "inside" => $inside
                     ],
-                    "alias" => 'language-css'
-                ]
-            ], 'tag');
+                    "rest" => $this->getDefinition('css')
+                ],
+                "alias" => 'language-css'
+            ]
+        ], 'tag');
 
-            $this->insertBefore('markup.tag.inside', [
-                'style-attr'=> [
-                    "pattern"=> "/\s*style=(\"|').+?\g{1}/i",
-                    "inside"=> [
-                        "attr-name"=> [
-                            "pattern"=> "/^\s*style/i",
-                            "inside" => $inside
-                        ],
-                        'punctuation' => "/^\s*=\s*['\"]|['\"]\s*$/",
-                        'attr-value'=> [
-                            "pattern"=> "/.+/i",
-                            "inside" => $this->getDefinition('css')
-                        ]
+        $this->insertBefore('markup.tag.inside', [
+            'style-attr'=> [
+                "pattern"=> "/\s*style=(\"|').+?\g{1}/i",
+                "inside"=> [
+                    "attr-name"=> [
+                        "pattern"=> "/^\s*style/i",
+                        "inside" => $inside
                     ],
-                    "alias" => 'language-css'
-                ]
-            ], 'attr-value');
-        }
+                    'punctuation' => "/^\s*=\s*['\"]|['\"]\s*$/",
+                    'attr-value'=> [
+                        "pattern"=> "/.+/i",
+                        "inside" => $this->getDefinition('css')
+                    ]
+                ],
+                "alias" => 'language-css'
+            ]
+        ], 'attr-value');
     }
 }

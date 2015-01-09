@@ -23,6 +23,14 @@ class Haml extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['ruby', 'markup', 'css', 'javascript'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         /*

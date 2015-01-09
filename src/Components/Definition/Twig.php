@@ -23,6 +23,14 @@ class Twig extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['markup'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return [

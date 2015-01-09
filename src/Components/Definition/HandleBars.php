@@ -48,6 +48,14 @@ class Handlebars extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['markup'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return $this->extend('markup', [

@@ -23,6 +23,14 @@ class Csharp extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['clike'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return $this->extend('clike', [

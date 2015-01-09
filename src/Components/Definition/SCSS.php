@@ -23,6 +23,14 @@ class SCSS extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['css'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function aliases()
     {
         return 'sass';

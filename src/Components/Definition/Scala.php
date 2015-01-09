@@ -23,6 +23,14 @@ class Scala extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['java'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
             return $this->extend('java', [

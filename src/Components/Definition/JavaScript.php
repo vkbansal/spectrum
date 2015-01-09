@@ -31,6 +31,14 @@ class JavaScript extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
+    public function requires()
+    {
+        return ['clike', 'markup'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function definition()
     {
         return $this->extend('clike', [
@@ -52,24 +60,18 @@ class JavaScript extends AbstractDefinition
             ]
         ], 'keyword');
 
-        $markup = $this->hasDefinition('markup');
-
-        if ($markup) {
-            $inside = $this->getDefinition('markup.tag.inside');
-
-            $this->insertBefore('markup', [
-                "script"=> [
-                    "pattern"=> "/<script[\w\W]*?>[\w\W]*?<\/script>/i",
-                    "inside"=> [
-                        'tag'=> [
-                            "pattern"=> "/<script[\w\W]*?>|<\/script>/i",
-                            "inside"=> $inside
-                        ],
-                        "rest" => $this->getDefinition('javascript')
+        $this->insertBefore('markup', [
+            "script" => [
+                "pattern" => "/<script[\w\W]*?>[\w\W]*?<\/script>/i",
+                "inside" => [
+                    'tag' => [
+                        "pattern" => "/<script[\w\W]*?>|<\/script>/i",
+                        "inside" =>  $this->getDefinition('markup.tag.inside')
                     ],
-                    "alias"=> 'language-javascript'
-                ]
-            ], 'tag');
-        }
+                    "rest" => $this->getDefinition('javascript')
+                ],
+                "alias" => 'language-javascript'
+            ]
+        ], 'tag');
     }
 }
