@@ -1,6 +1,5 @@
-/vendor/
-composer.lock
 .idea/
 bower_components/
 node_modules/
-docs/
+vendor/
+composer.lock
