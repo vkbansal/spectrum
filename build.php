@@ -1,10 +1,11 @@
 <?php
 
 require __DIR__."/../prism.php/vendor/autoload.php";
+require __DIR__."/vendor/autoload.php";
 
 use Symfony\Component\Finder\Finder;
 use VKBansal\Prism\Prism;
-use VKBansal\Prism\Plugin;
+use VKBansal\Prism\Components\Plugin;
 use VKBansal\FrontMatter\Parser;
 use League\CLImate\CLImate;
 
