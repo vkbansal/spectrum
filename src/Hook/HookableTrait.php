@@ -25,7 +25,7 @@ trait HookableTrait
     public function addHook($name, \Closure $callback, $refer = null)
     {
         $callback = $callback->bindTo($this);
-        
+
         if (isset($this->hooks[$name])) {
             if ($refer !== null) {
                 $this->hooks[$name][$refer] = $callback;
@@ -43,11 +43,11 @@ trait HookableTrait
 
         return [$name, $refer];
     }
-    
+
     /**
      * Run Hook
      * @param  string $name
-     * @param  array  $refer
+     * @param  array  $env
      * @return void
      */
     public function runHook($name, array &$env = [])
@@ -60,7 +60,7 @@ trait HookableTrait
             $callback($env);
         }
     }
-    
+
     /**
      * Remove Hook description]
      * @param  string      $name

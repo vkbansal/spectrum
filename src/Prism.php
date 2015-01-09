@@ -4,9 +4,9 @@ namespace VKBansal\Prism;
 use DOMDocument;
 use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
-use VKBansal\Prism\Token\Generator;
 use VKBansal\Prism\Hook\HookInterface;
 use VKBansal\Prism\Language\DefinitionInterface;
+use VKBansal\Prism\Token\Generator;
 
 /**
  * Core Prism class for syntax highlighting

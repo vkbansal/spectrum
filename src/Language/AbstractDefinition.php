@@ -1,8 +1,8 @@
 <?php
 namespace VKBansal\Prism\Language;
 
-use VKBansal\Prism\Language\DefinitionInterface;
 use VKBansal\Prism\Hook\HookInterface;
+use VKBansal\Prism\Language\DefinitionInterface;
 use VKBansal\Prism\Prism;
 
 /**
@@ -145,11 +145,11 @@ abstract class AbstractDefinition implements DefinitionInterface, HookInterface
 
     /**
      * Aliases for this language
-     * @return boolean|string|string[]
+     * @return string|array<string>
      */
     public function aliases()
     {
-        return false;
+        return "";
     }
 
     /**

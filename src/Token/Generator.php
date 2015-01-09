@@ -67,7 +67,7 @@ class Generator
 
     /**
      * Converts Tokens to DOMElements
-     * @param  \DOMDocument $parent
+     * @param  \VKBansal\Prism\Prism $prism
      * @return array<\DOMElement|\DOMText>
      */
     public function toNodes(Prism $prism)
@@ -104,9 +104,9 @@ class Generator
 
     /**
      * Convert matching patterns to tokens
-     * @param  array        &$strarr [description]
-     * @param  string|array $pattern [description]
-     * @param  string       $token   [description]
+     * @param  array        &$strarr
+     * @param  string|array $pattern
+     * @param  string       $token
      * @return void
      */
     protected function tokenize(&$strarr, $pattern, $token)
@@ -150,7 +150,7 @@ class Generator
         $inside = isset($pattern['inside']) ? $pattern['inside'] : false;
 
         $lookbehind = isset($pattern['lookbehind']) ? !!$pattern['lookbehind'] : false;
-        
+
         $pattern = $pattern['pattern'];
 
         return [$pattern, $lookbehind, $inside, $alias];
@@ -175,7 +175,7 @@ class Generator
         if (!$index) {
             return false;
         }
-                            
+
         if ($lookbehind) {
             $lookbehindLength = strlen($matches[1][0]);
         }
@@ -187,9 +187,9 @@ class Generator
 
         $before = substr($str, 0, $from);
         $after = substr($str, $to);
-        
+
         $args = [];
-        
+
         if ($before) {
             $args[] = $before;
         }
@@ -200,9 +200,9 @@ class Generator
         } else {
             $content = $match;
         }
-        
+
         $wrapped = new Token($token, $content, $this->language, $alias);
-        
+
         $args[] = $wrapped;
 
         if ($after) {
