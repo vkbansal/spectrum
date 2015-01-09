@@ -1,5 +1,6 @@
 .idea/
 bower_components/
+build/
 docs/
 node_modules/
 src/.lang.map.*

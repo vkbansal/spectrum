@@ -1,38 +1,39 @@
 {
     "name": "vkbansal/prism",
     "description": "Implementation of prismjs syntax highlighter in php",
-    "keywords": ["syntax", "highlighter", "syntax-highlighter"],
-    "require": {
-        "php" : ">=5.4.0",
-        "symfony/dom-crawler": "~2.6.0",
-        "symfony/css-selector": "~2.6.0",
-        "symfony/finder": "~2.6.0"
-    },
-    "repositories": [
+    "keywords": [
+        "syntax",
+        "highlighter",
+        "syntax-highlighter"
+    ],
+    "homepage": "https://github.com/vkbansal/prism.php",
+    "license": "MIT",
+    "authors": [
         {
-            "type": "vcs",
-            "url": "https://github.com/vkbansal/prism.php"
+            "name": "Vivek Kumar Bansal",
+            "email": "contact@vkbansal.me",
+            "homepage": "http://vkbansal.me",
+            "role": "Developer"
         }
     ],
+    "require": {
+        "php" : ">=5.4.0",
+        "symfony/dom-crawler": "2.6.*",
+        "symfony/css-selector": "2.6.*",
+        "symfony/finder": "2.6.*"
+    },
     "require-dev": {
         "phpunit/phpunit": "4.3.*",
-        "twig/twig": "1.16.*",
-        "erusev/parsedown-extra": "*",
-        "vkbansal/frontmatter": "~1.3.0",
-        "symfony/var-dumper": "~2.6.1",
-        "league/climate": "~2.6.0"
+        "symfony/var-dumper": "2.6.*"
     },
-
     "autoload": {
         "psr-4" : {
             "VKBansal\\Prism\\": "src/"
         }
     },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Vivek Kumar Bansal",
-            "email": "vkb0310@gmail.com"
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
         }
-    ]
+    }
 }

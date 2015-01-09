@@ -28,11 +28,15 @@ class GeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testToNodes()
     {
-        $this->markTestSkipped();
+        // $this->markTestSkipped();
         $document = new DOMDocument();
 
+        $prism = $this->getMockBuilder('VKBansal\Prism\Prism')->getMock();
+
+        $prism->method('getDocument')->will($this->returnValue($document));
+
         $this->generator->generate();
-        $node = $this->generator->toNodes($document);
+        $node = $this->generator->toNodes($prism);
         $html = $node[0]->ownerDocument->saveHTML($node[0]);
 
         $this->assertEquals('<span class="token token1">dummy <span class="token token2">text</span></span>', $html);
