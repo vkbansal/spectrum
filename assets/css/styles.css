@@ -4331,3 +4331,23 @@ pre.line-numbers .line-numbers-rows > span:before {
     height: 5em;
   }
 }
+.token.tab:not(:empty):before,
+.token.cr:before,
+.token.lf:before {
+  color: #e0d7d1;
+}
+.token.tab:not(:empty) {
+  width: 0;
+}
+.token.tab:not(:empty):before {
+  content: '\21E5';
+}
+.token.cr:before {
+  content: '\240D';
+}
+.token.crlf:before {
+  content: '\240D\240A';
+}
+.token.lf:before {
+  content: '\240A';
+}
