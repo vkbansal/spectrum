@@ -141,7 +141,7 @@ class Prism implements HookInterface, DefinitionInterface
         $env = [
             'element' => &$element,
             'language' => $language,
-            'grammar' => $grammar,
+            'grammar' => &$grammar,
             'code' => &$code
         ];
 
