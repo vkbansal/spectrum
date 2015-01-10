@@ -72,6 +72,10 @@ foreach ($finder as $file) {
             $prism->addPlugin(new Plugin\LineNumbers);
             $console->out("<light_green>Building</light_green> <bold><light_cyan>Line Numbers Plugin<light_cyan></bold>");
             break;
+        case 'show-invisibles':
+            $prism->addPlugin(new Plugin\ShowInvisibles);
+            $console->out("<light_green>Building</light_green> <bold><light_cyan>Show Invisibles Plugin<light_cyan></bold>");
+            break;
     }
     $path = __DIR__ . '/plugins/'.$name;
     if(!is_dir($path)){

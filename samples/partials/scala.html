@@ -4,7 +4,7 @@
 <span class="token keyword">object</span> lazyLib <span class="token punctuation">{</span>
 
   <span class="token comment" spellcheck="true">/** Delay the evaluation of an expression until it is needed. */</span>
-  <span class="token keyword">def</span> delay<span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token keyword">=&gt;</span> A<span class="token punctuation">)</span><span class="token operator">:</span> Susp<span class="token punctuation">[</span>A<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SuspImpl</span><span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+  <span class="token keyword">def</span> delay<span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token keyword">=&gt;</span> A<span class="token punctuation">)</span><span class="token operator">:</span> Susp<span class="token punctuation">[</span>A<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> SuspImpl<span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
 
   <span class="token comment" spellcheck="true">/** Get the value of a delayed expression. */</span>
   <span class="token keyword">implicit</span> <span class="token keyword">def</span> force<span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">(</span>s<span class="token operator">:</span> Susp<span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> A <span class="token operator">=</span> s<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -12,13 +12,13 @@
   <span class="token comment" spellcheck="true">/**
    * Data type of suspended computations. (The name froms from ML.)
    */</span>
-  <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Susp</span><span class="token punctuation">[</span><span class="token operator">+</span>A<span class="token punctuation">]</span> <span class="token keyword">extends</span> <span class="token class-name">Function0</span><span class="token punctuation">[</span>A<span class="token punctuation">]</span>
+  <span class="token keyword">abstract</span> <span class="token keyword">class</span> Susp<span class="token punctuation">[</span><span class="token operator">+</span>A<span class="token punctuation">]</span> <span class="token keyword">extends</span> Function0<span class="token punctuation">[</span>A<span class="token punctuation">]</span>
 
   <span class="token comment" spellcheck="true">/**
    * Implementation of suspended computations, separated from the
    * abstract class so that the type parameter can be invariant.
    */</span>
-  <span class="token keyword">class</span> <span class="token class-name">SuspImpl</span><span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">(</span>lazyValue<span class="token operator">:</span> <span class="token keyword">=&gt;</span> A<span class="token punctuation">)</span> <span class="token keyword">extends</span> <span class="token class-name">Susp</span><span class="token punctuation">[</span>A<span class="token punctuation">]</span> <span class="token punctuation">{</span>
+  <span class="token keyword">class</span> SuspImpl<span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">(</span>lazyValue<span class="token operator">:</span> <span class="token keyword">=&gt;</span> A<span class="token punctuation">)</span> <span class="token keyword">extends</span> Susp<span class="token punctuation">[</span>A<span class="token punctuation">]</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token keyword">var</span> maybeValue<span class="token operator">:</span> Option<span class="token punctuation">[</span>A<span class="token punctuation">]</span> <span class="token operator">=</span> None
 
     <span class="token keyword">override</span> <span class="token keyword">def</span> apply<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> maybeValue <span class="token keyword">match</span> <span class="token punctuation">{</span>
