@@ -1,0 +1,71 @@
+<p>Default language reference: <b>markdown</b></p>
+<pre class="language-markdown"><code class="language-markdown"><span class="token title important">Title 1
+<span class="token punctuation">==</span></span>
+
+<span class="token title important">Title 2
+<span class="token punctuation">-------</span></span>
+
+<span class="token title important"><span class="token punctuation">#</span> Title 1</span>
+<span class="token title important"><span class="token punctuation">##</span> Title 2</span>
+<span class="token title important"><span class="token punctuation">###</span> Title 3</span>
+<span class="token title important"><span class="token punctuation">####</span> Title 4</span>
+<span class="token title important"><span class="token punctuation">#####</span> Title 5</span>
+<span class="token title important"><span class="token punctuation">######</span> Title 6</span>
+
+<span class="token italic"><span class="token punctuation">*</span>Italic<span class="token punctuation">*</span></span>
+<span class="token bold"><span class="token punctuation">**</span>Bold on
+multiple lines<span class="token punctuation">**</span></span>
+<span class="token italic"><span class="token punctuation">*</span>Italic on
+multiple lines too<span class="token punctuation">*</span></span>
+<span class="token bold"><span class="token punctuation">__</span>It also works with underscores<span class="token punctuation">__</span></span>
+<span class="token italic"><span class="token punctuation">_</span>It also works with underscores<span class="token punctuation">_</span></span>
+
+__An empty line
+
+is not allowed__
+<span class="token url">[Prism](http://www.prismjs.com)</span>
+<span class="token url">[Prism](http://www.prismjs.com <span class="token string">"Prism"</span>)</span>
+
+<span class="token url-reference url"><span class="token punctuation">[</span><span class="token variable">prism link</span><span class="token punctuation">]</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//www.prismjs.com <span class="token string">(Prism)</span></span>
+<span class="token url">[Prism] [<span class="token variable">prism link</span>]</span>
+
+<span class="token list punctuation">*</span> This is
+<span class="token list punctuation">*</span> an unordered list
+
+<span class="token list punctuation">1.</span> This is an
+<span class="token list punctuation">2.</span> ordered list
+
+<span class="token list punctuation">*</span> <span class="token italic"><span class="token punctuation">*</span>List item in italic<span class="token punctuation">*</span></span>
+<span class="token list punctuation">*</span> <span class="token bold"><span class="token punctuation">**</span>List item in bold<span class="token punctuation">**</span></span>
+<span class="token list punctuation">*</span> <span class="token url">[List item as a link](http://example.com <span class="token string">"This is an example"</span>)</span>
+
+<span class="token blockquote punctuation">&gt;</span> This is a quotation
+<span class="token blockquote punctuation">&gt;&gt;</span> With another quotation inside
+<span class="token blockquote punctuation">&gt;</span> <span class="token italic"><span class="token punctuation">_</span>italic here<span class="token punctuation">_</span></span>, <span class="token bold"><span class="token punctuation">__</span>bold there<span class="token punctuation">__</span></span>
+<span class="token blockquote punctuation">&gt;</span> And a <span class="token url">[link](http://example.com)</span>
+
+Inline code between backticks <span class="token code keyword">`&lt;p&gt;Paragraph&lt;/p&gt;`</span>
+
+<span class="token code keyword">    some_code(); /* Indented</span>
+<span class="token code keyword">    with four spaces */</span>
+
+<span class="token code keyword">    some_code(); /* Indented</span>
+<span class="token code keyword">    with a tab */</span>
+
+<span class="token blockquote punctuation">&gt;</span> This is a quotation
+<span class="token blockquote punctuation">&gt;</span> Containing <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>raw HTML<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token italic"><span class="token punctuation">*</span>Italic text inside HTML tag<span class="token punctuation">*</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+_ <span class="token bold"><span class="token punctuation">**</span>bold<span class="token punctuation">**</span></span> inside italic DOESN'T work _
+<span class="token bold"><span class="token punctuation">__</span> but <span class="token italic"><span class="token punctuation">*</span>italic<span class="token punctuation">*</span></span> inside bold DOES work <span class="token punctuation">__</span></span>
+
+[Link partially <span class="token italic"><span class="token punctuation">*</span>italic<span class="token punctuation">*</span></span> DOESN'T work](http://example.com)
+<span class="token italic"><span class="token punctuation">_</span> <span class="token url">[But link inside italic DOES work](http://example.com)</span> <span class="token punctuation">_</span></span>
+
+[Link partially <span class="token bold"><span class="token punctuation">**</span>bold<span class="token punctuation">**</span></span> DOESN'T work](http://example.com)
+<span class="token bold"><span class="token punctuation">__</span> <span class="token url">[But link inside bold DOES work](http://example.com)</span> <span class="token punctuation">__</span></span>
+
+&lt;p class="<span class="token italic"><span class="token punctuation">_</span>test<span class="token punctuation">_</span></span>"&gt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre>
