@@ -54,14 +54,14 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
     public function setup()
     {
         $this->templateSetup();
-         $markup = $this->prism->hasDefinition('markup');
+        $markup = $this->prism->hasDefinition('markup');
         
         if ($markup) {
 
             $delimiter = $this->delimiterRegex;
             $start = $this->placeholderStart;
             $end = $this->placeholderEnd;
-            $grammarName = $this->grammarName;
+            $grammarName = $this->getName();
             $placeholder = $this->placeholderRegex;
 
             $this->prism->addHook('before.highlight', function (&$env) use ($delimiter, $start, $end, $grammarName) {

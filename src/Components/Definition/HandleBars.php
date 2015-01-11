@@ -35,11 +35,6 @@ class Handlebars extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    protected $grammarName = "handlebars";
-
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'handlebars';

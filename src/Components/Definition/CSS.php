@@ -64,15 +64,11 @@ class CSS extends AbstractDefinition
      */
     public function setup()
     {
-        $markup = $this->hasDefinition('markup');
-
-         $this->insertBefore('css', [
+        $this->insertBefore('css', [
             'hexcode'=> "/#[\da-f]{3,6}/i",
             'entity' => "/\\\\[\da-f]{1,8}/i",
             'number' => "/[\d%\.]+/"
         ], 'function');
-
-        $inside = $this->getDefinition('markup.tag.inside');
 
         $this->insertBefore('markup', [
             'style' => [

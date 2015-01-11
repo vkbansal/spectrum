@@ -36,11 +36,6 @@ class Php extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    protected $grammarName = "php";
-
-    /**
-     * {@inheritdoc}
-     */
     public function getName()
     {
         return 'php';
