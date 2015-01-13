@@ -44,7 +44,7 @@ class CLike extends AbstractDefinition
                     'lookbehind' => true
                 ]
             ],
-            'string'=> '/("|\')(\\\\?.)*?\g{1}/',
+            'string'=> '/("|\')(\\\\\n|\\\\?.)*?\g{1}/',
             'class-name'=> [
                 "pattern" => "/((?:(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\\\]+/i",
                 "lookbehind" => true,

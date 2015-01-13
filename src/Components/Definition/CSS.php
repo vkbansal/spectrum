@@ -52,7 +52,7 @@ class CSS extends AbstractDefinition
                 ]
             ],
             "property" => "/(\b|\B)[\w-]+(?=\s*:)/i",
-            "string" => "/(\"|')(\\\\?.)*?\g{1}/",
+            "string" => "/(\"|')(\\\\\\n|\\\\?.)*?\g{1}/",
             "important" => "/\B!important\b/i",
             "punctuation" => "/[\{\};:]/",
             "function" => "/[-a-z0-9]+(?=\()/i",
