@@ -70,22 +70,19 @@ class Groovy extends AbstractDefinition
 
          $this->addHook('wrap', 'groovy-wrap',function(&$env) {
              if ($env['language'] === 'groovy' && $env['type'] === 'string') {
-                 $delimiter = $env['content']; //Verify this condition
-                 //dump($delimiter);
-//                 if ($delimiter != "'") {
-//                     $pattern = "/([^\\\\])(\\$(\{.*?\}|[\w\.]+))/";
-//                     if ($delimiter === '$') {
-//                         $pattern = "/([^\\$])(\\$(\{.*?\}|[\w\.]+))/";
-//                     }
-//                     $env['content'] = $this->highlight($env['content'], [
-//                         'expression' => [
-//                             "pattern" => $pattern,
-//                             "lookbehind" => true,
-//                             "inside" => $this->getDefinition('groovy')
-//                         ]
-//                     ], 'groovy');
-//                     $env['classes'][] = $delimiter === '/' ? 'regex' : 'gstring';
-//                 }
+                 $text = $env['content'][0]->nodeValue; //Verify this condition
+                 $delimiter = $text[0];
+                if ($delimiter !== "'") {
+                    $pattern = ($delimiter === '$') ? "/([^\\$])(\\$(\{.*?\}|[\w\.]+))/" : "/([^\\\\])(\\$(\{.*?\}|[\w\.]+))/";
+                    $env['content'] = $this->highlight($text, [
+                        'expression' => [
+                            "pattern" => $pattern,
+                            "lookbehind" => true,
+                            "inside" => $this->getDefinition('groovy')
+                        ]
+                    ], 'groovy');
+                    $env['classes'][] = ($delimiter === "/") ? 'regex' : 'gstring';
+                }
              }
          });
     }

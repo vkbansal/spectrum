@@ -82,7 +82,6 @@ class Token
         }
 
         $span = $prism->getDocument()->createElement($this->tag);
-        $span->setAttribute('class', implode(" ", $this->classes));
 
         $env = [
             "type" => $this->type,
@@ -95,7 +94,9 @@ class Token
         ];
 
         $prism->runHook('wrap', $env);
-        
+
+        $span->setAttribute('class', implode(" ", $this->classes));
+
         foreach ($this->attributes as $key => $value) {
             $span->setAttribute($key, $value);
         }
@@ -103,7 +104,7 @@ class Token
         foreach ($this->content as $content) {
             $span->appendChild($content);
         }
-        
+
         return $span;
     }
 
@@ -138,7 +139,7 @@ class Token
             if (!$content) {
                 continue;
             }
-            
+
             if ($content instanceof Token) {
                 $temp[] = $content->toNode($prism);
             } elseif (is_string($content)) {
