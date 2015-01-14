@@ -95,6 +95,7 @@ class Prism implements HookInterface, DefinitionInterface
         $this->document->encoding = 'utf-8';
 
         $text = Util::encodeCodeBlocks($text);
+        $this->loadDefinition($language);
         $grammar = $this->getDefinition($language);
         $nodes = $this->highlight($text, $grammar, $language);
 
@@ -117,6 +118,7 @@ class Prism implements HookInterface, DefinitionInterface
 
         if ($parent) {
             $language = $this->detectLanguage($element);
+            $this->loadDefinition($language);
             $grammar = $this->getDefinition($language);
         }
 
