@@ -17,31 +17,20 @@ trait HookableTrait
 
     /**
      * Add a Hook
+     * @param  string        $event
      * @param  string        $name
      * @param  \Closure      $callback
-     * @param  string|null   $refer
-     * @return array
+     * @return void
      */
-    public function addHook($name, \Closure $callback, $refer = null)
+    public function addHook($event, $name, \Closure $callback)
     {
         $callback = $callback->bindTo($this);
 
-        if (isset($this->hooks[$name])) {
-            if ($refer !== null) {
-                $this->hooks[$name][$refer] = $callback;
-            } else {
-                $this->hooks[$name][] = $callback;
-            }
-        } else {
-            if ($refer !== null) {
-                $this->hooks[$name] = [];
-                $this->hooks[$name][$refer] = $callback;
-            } else {
-                $this->hooks[$name] = [$callback];
-            }
+        if (!isset($this->hooks[$event])) {
+            $this->hooks[$event] = [];
         }
 
-        return [$name, $refer];
+        $this->hooks[$event][$name] = $callback;
     }
 
     /**
@@ -62,17 +51,13 @@ trait HookableTrait
     }
 
     /**
-     * Remove Hook description]
+     * Remove Hook
+     * @param  string      $event
      * @param  string      $name
-     * @param  string|null $refer
      * @return void
      */
-    public function removeHook($name, $refer = null)
+    public function removeHook($event, $name)
     {
-        if ($refer === null) {
-            unset($this->hooks[$name]);
-        } else {
-            unset($this->hooks[$name][$refer]);
-        }
+        unset($this->hooks[$event][$name]);
     }
 }

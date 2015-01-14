@@ -2,6 +2,7 @@
 namespace VKBansal\Prism\Language;
 
 use VKBansal\Prism\Hook\HookInterface;
+use VKBansal\Prism\InjectorInterface;
 use VKBansal\Prism\Language\DefinitionInterface;
 use VKBansal\Prism\Prism;
 
@@ -12,7 +13,7 @@ use VKBansal\Prism\Prism;
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-abstract class AbstractDefinition implements DefinitionInterface, HookInterface
+abstract class AbstractDefinition implements DefinitionInterface, HookInterface, InjectorInterface
 {
     /**
      * Prism Instance
@@ -117,9 +118,17 @@ abstract class AbstractDefinition implements DefinitionInterface, HookInterface
     /**
      * {@inheritdoc}
      */
-    public function addHook($name, \Closure $callback, $refer = null)
+    public function addHook($event, $name, \Closure $callback)
     {
-        $this->prism->addHook($name, $callback, $refer);
+        $this->prism->addHook($event, $name, $callback);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeHook($event, $name)
+    {
+        $this->prism->removeHook($event, $name);
     }
 
     /**

@@ -11,6 +11,7 @@ namespace VKBansal\Prism\Plugin;
 trait PluggableTrait
 {
     /**
+     * List of active plugins
      * @var array
      */
     protected $plugins = [];
@@ -19,26 +20,12 @@ trait PluggableTrait
      * Add Plugin
      * @param PluginInterface $plugin
      * @return void
-     * @throws PluginException
      */
-    public function addPlugin(PluginInterface $plugin)
+    public function addPlugin(AbstractPlugin $plugin)
     {
-        $handle = $plugin->handle();
-        if (!is_callable($handle) || ! $handle instanceof \Closure) {
-            throw new PluginException("Plugin handle must return a closure");
-        }
-        $handle = $handle->bindTo($this);
-        list($hook, $name) = $handle();
-
-        if (!is_string($hook)) {
-            throw new PluginException("The closure must return the return value from hook");
-        }
-
-        if (!is_string($name)) {
-            throw new PluginException("Plugin must have name");
-        }
-
-        $this->plugins[$name] = $hook;
+        $plugin->injectPrism($this);
+        $this->plugins[$plugin->getName()] = $plugin;
+        $plugin->add();
     }
 
     /**
@@ -50,7 +37,8 @@ trait PluggableTrait
     public function removePlugin($name)
     {
         if (isset($this->plugins[$name])) {
-            $this->removeHook($this->plugins[$name], $name);
+            $this->plugins[$name]->remove();
+            unset($this->plugins[$name]);
         } else {
             throw new PluginNotFoundException;
         }
@@ -58,16 +46,8 @@ trait PluggableTrait
 
     public function resetPlugins()
     {
-        foreach ($this->plugins as $name => $hook) {
-            $this->removeHook($hook, $name);
+        foreach ($this->plugins as $name => $plugin) {
+            $this->removePlugin($name);
         }
     }
-
-    /**
-     * Abstract method for hook
-     * @param  string      $name
-     * @param  string|null $refer
-     * @return void
-     */
-    abstract function removeHook($name, $refer = null);
 }

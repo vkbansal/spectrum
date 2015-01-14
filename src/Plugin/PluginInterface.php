@@ -11,9 +11,20 @@ namespace VKBansal\Prism\Plugin;
 interface PluginInterface
 {
     /**
-     * Plugin definition as a closure.
-     * Closure will be bound to VKBansal\Prism\Prism.
-     * @return \Closure
+     * Name of the plugin
+     * @return string
      */
-    public function handle();
+    public function getName();
+
+    /**
+     * Plugin definition
+     * @return void
+     */
+    public function add();
+
+    /**
+     * Plugin cleanup
+     * @return void
+     */
+    public function remove();
 }

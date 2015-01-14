@@ -68,7 +68,7 @@ class Groovy extends AbstractDefinition
             ]
         ], 'function');
 
-         $this->addHook('wrap', function(&$env) {
+         $this->addHook('wrap', 'groovy-wrap',function(&$env) {
              if ($env['language'] === 'groovy' && $env['type'] === 'string') {
                  $delimiter = $env['content']; //Verify this condition
                  //dump($delimiter);

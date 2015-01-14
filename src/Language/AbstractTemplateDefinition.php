@@ -18,19 +18,19 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
      * @var string
      */
     protected $delimiterRegex;
-    
+
     /**
      * Placeholder beigns with
      * @var string
      */
     protected $placeholderStart;
-    
+
     /**
      * Placeholder ends with
      * @var string
      */
     protected $placeholderEnd;
-    
+
     /**
      * Placeholder Regex
      * @var string
@@ -42,7 +42,7 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
      * @var string
      */
     protected $grammarName;
-    
+
     /**
      * Template setup
      */
@@ -55,7 +55,7 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
     {
         $this->templateSetup();
         $markup = $this->prism->hasDefinition('markup');
-        
+
         if ($markup) {
 
             $delimiter = $this->delimiterRegex;
@@ -64,7 +64,7 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
             $grammarName = $this->getName();
             $placeholder = $this->placeholderRegex;
 
-            $this->prism->addHook('before.highlight', function (&$env) use ($delimiter, $start, $end, $grammarName) {
+            $this->prism->addHook('before.highlight', $grammarName.'-replace-token', function (&$env) use ($delimiter, $start, $end, $grammarName) {
                 if ($env['language'] !== $grammarName) {
                     return;
                 }
@@ -80,7 +80,7 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
             });
 
             // Restore env.code for other plugins (e.g. line-numbers)
-            $this->prism->addHook('before.insert', function (&$env) use ($grammarName) {
+            $this->prism->addHook('before.insert', $grammarName.'-restore-code', function (&$env) use ($grammarName) {
                 if ($env['language'] === $grammarName) {
                     $env['code'] = $env['backupCode'];
                     unset($env['backupCode']);
@@ -89,7 +89,7 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
 
             // Re-insert the tokens after highlighting
             // and highlight them with defined grammar
-            $this->prism->addHook('after.highlight', function (&$env) use ($grammarName, $placeholder) {
+            $this->prism->addHook('after.highlight', $grammarName.'-insert-token', function (&$env) use ($grammarName, $placeholder) {
                 if ($env['language'] !== $grammarName) {
                     return;
                 }
