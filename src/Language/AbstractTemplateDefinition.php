@@ -20,19 +20,13 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
     protected $delimiterRegex;
 
     /**
-     * Placeholder beigns with
+     * Placeholder for the code
      * @var string
      */
-    protected $placeholderStart;
+    protected $placeholder;
 
     /**
-     * Placeholder ends with
-     * @var string
-     */
-    protected $placeholderEnd;
-
-    /**
-     * Placeholder Regex
+     * Placeholder for the code
      * @var string
      */
     protected $placeholderRegex;
@@ -49,6 +43,14 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
     abstract public function templateSetup();
 
     /**
+     * 
+     */
+    public function __construct()
+    {
+        $this->placeholderRegex = "/".str_replace("~", "([0-9]+)", preg_quote($this->placeholder))."/";
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function setup()
@@ -58,13 +60,12 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
 
         if ($markup) {
 
-            $delimiter = $this->delimiterRegex;
-            $start = $this->placeholderStart;
-            $end = $this->placeholderEnd;
             $grammarName = $this->getName();
-            $placeholder = $this->placeholderRegex;
+            $delimiter = $this->delimiterRegex;
+            $placeholder = $this->placeholder;
+            $regex = $this->placeholderRegex;
 
-            $this->prism->addHook('before.highlight', $grammarName.'-replace-token', function (&$env) use ($delimiter, $start, $end, $grammarName) {
+            $this->prism->addHook('before.highlight', $grammarName.'-replace-token', function (&$env) use ($delimiter, $placeholder, $grammarName) {
                 if ($env['language'] !== $grammarName) {
                     return;
                 }
@@ -72,10 +73,10 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
                 $env['tokenStack'] = [];
 
                 $env['backupCode'] = $env['code'];
-                $env['code'] = preg_replace_callback($delimiter, function ($match) use (&$env, $start, $end) {
+                $env['code'] = preg_replace_callback($delimiter, function ($match) use (&$env, $placeholder) {
                     $env['tokenStack'][] = $match[0];
 
-                    return $start.count($env['tokenStack']).$end;
+                    return str_replace("~", count($env['tokenStack']), $placeholder);
                 }, $env['code']);
             });
 
@@ -89,7 +90,7 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
 
             // Re-insert the tokens after highlighting
             // and highlight them with defined grammar
-            $this->prism->addHook('after.highlight', $grammarName.'-insert-token', function (&$env) use ($grammarName, $placeholder) {
+            $this->prism->addHook('after.highlight', $grammarName.'-insert-token', function (&$env) use ($grammarName, $regex) {
                 if ($env['language'] !== $grammarName) {
                     return;
                 }
@@ -99,7 +100,7 @@ abstract class AbstractTemplateDefinition extends AbstractDefinition
 
                 for ($i = 0; $i < $length; $i++) {
                     $element = $elements->childNodes->item($i);
-                    preg_replace_callback($placeholder, function ($matches) use (&$env, &$element, $grammarName) {
+                    preg_replace_callback($regex, function ($matches) use (&$env, &$element, $grammarName) {
                         $index = $matches[1] - 1;
                         $element->nodeValue = "";
                         $nodes = $this->highlight($env['tokenStack'][$index], $env['grammar'], $grammarName);

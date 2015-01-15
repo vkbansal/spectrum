@@ -20,17 +20,7 @@ class Smarty extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    protected $placeholderRegex = "/___SMARTY([0-9]+)___/";
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $placeholderStart = "___SMARTY";
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $placeholderEnd = "___";
+    protected $placeholderStart = "___SMARTY~___";
 
     /**
      * {@inheritdoc}

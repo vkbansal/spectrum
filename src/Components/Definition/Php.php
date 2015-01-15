@@ -21,17 +21,7 @@ class Php extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    protected $placeholderRegex = "/\{\{\{PHP([0-9]+)\}\}\}/";
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $placeholderStart = "{{{PHP";
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $placeholderEnd = "}}}";
+    protected $placeholder = "{{{PHP~}}}";
 
     /**
      * {@inheritdoc}

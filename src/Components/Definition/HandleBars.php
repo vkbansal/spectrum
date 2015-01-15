@@ -20,17 +20,7 @@ class Handlebars extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    protected $placeholderRegex = "/___HANDLEBARS([0-9]+)___/";
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $placeholderStart = "___HANDLEBARS";
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $placeholderEnd = "___";
+    protected $placeholder = "___HANDLEBARS~___";
 
     /**
      * {@inheritdoc}
