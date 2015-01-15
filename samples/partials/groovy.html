@@ -15,15 +15,15 @@
     <span class="token keyword">def</span> otherNumber <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">/</span> <span class="token number">4</span>
     <span class="token keyword">boolean</span> archivable <span class="token operator">=</span> condition <span class="token operator">?:</span> <span class="token boolean">true</span>
     <span class="token keyword">def</span> ternary <span class="token operator">=</span> a <span class="token operator">?</span> b <span class="token punctuation">:</span> c
-    String name <span class="token operator">=</span> <span class="token string">"Guillaume"</span>
+    String name <span class="token operator">=</span> <span class="token string gstring">"Guillaume"</span>
     Closure description <span class="token operator">=</span> null
     List<span class="token operator">&lt;</span>DownloadPackage<span class="token operator">&gt;</span> packages <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    String regex <span class="token operator">=</span> <span class="token operator">~</span><span class="token string">/.*foo.*/</span>
+    String regex <span class="token operator">=</span> <span class="token operator">~</span><span class="token string regex">/.*foo.*/</span>
     String multi <span class="token operator">=</span> <span class="token string">'''
         multi line string
-    '''</span> <span class="token operator">+</span> <span class="token string">"""
-        now with double quotes and ${gstring}
-    """</span> <span class="token operator">+</span> <span class="token string">$/
+    '''</span> <span class="token operator">+</span> <span class="token string gstring">"""
+        now with double quotes and <span class="token expression"><span class="token punctuation">$</span><span class="token punctuation">{</span>gstring<span class="token punctuation">}</span></span>
+    """</span> <span class="token operator">+</span> <span class="token string gstring">$/
         even with dollar slashy strings
     /$</span>
 
@@ -34,10 +34,10 @@
     <span class="token keyword">void</span> <span class="token function">description<span class="token punctuation">(</span></span>Closure cl<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token operator">.</span>description <span class="token operator">=</span> cl <span class="token punctuation">}</span>
 
     <span class="token keyword">void</span> <span class="token function">version<span class="token punctuation">(</span></span>String name<span class="token punctuation">,</span> Closure versionSpec<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">def</span> closure <span class="token operator">=</span> <span class="token punctuation">{</span> println <span class="token string">"hi"</span> <span class="token punctuation">}</span> <span class="token keyword">as</span> Runnable
+        <span class="token keyword">def</span> closure <span class="token operator">=</span> <span class="token punctuation">{</span> println <span class="token string gstring">"hi"</span> <span class="token punctuation">}</span> <span class="token keyword">as</span> Runnable
 
         MyList ml <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>a<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span>c <span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>ch <span class="token keyword">in</span> <span class="token string">"name"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>ch <span class="token keyword">in</span> <span class="token string gstring">"name"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
         <span class="token comment" spellcheck="true">// single line comment
 </span>        DownloadPackage pkg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DownloadPackage</span><span class="token punctuation">(</span>version<span class="token punctuation">:</span> name<span class="token punctuation">)</span>

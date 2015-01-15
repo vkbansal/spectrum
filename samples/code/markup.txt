@@ -5,6 +5,18 @@ lang:
   aliases:
     - xml
     - html
+    - atom
+    - epub
+    - mathml
+    - musicxml
+    - rss
+    - soap
+    - svg
+    - webfeed
+    - xform
+    - xhtml
+    - xpath
+    - xquery
 ---
 <?xml version="1.0"?>
 <response value="ok" xml:lang="en">
