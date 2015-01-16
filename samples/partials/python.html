@@ -2,14 +2,14 @@
 <pre class="language-python"><code class="language-python">@requires_authorization
 <span class="token keyword">def</span> somefunc<span class="token punctuation">(</span>param1<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">,</span> param2<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     r<span class="token string">'''A docstring'''</span>
-    <span class="token keyword">if</span> param1 &gt; param2<span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># interesting
+    <span class="token keyword">if</span> param1 <span class="token operator">&gt;</span> param2<span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># interesting
 </span>        <span class="token keyword">print</span> <span class="token string">'Gre\'ater'</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>param2 <span class="token operator">-</span> param1 <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">+</span> 0b10l<span class="token punctuation">)</span> <span class="token operator">or</span> None
 
 <span class="token keyword">class</span> SomeClass<span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 
-&gt;&gt;&gt; message <span class="token operator">=</span> <span class="token string">'''interpreter
+<span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span> message <span class="token operator">=</span> <span class="token string">'''interpreter
 ... prompt'''</span>
 
 </code></pre>
