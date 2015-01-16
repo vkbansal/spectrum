@@ -27,12 +27,12 @@ class Eiffel extends AbstractDefinition
     {
         return [
             'string' => [
+                // Single-line string
+                "/\"(?:%\s+%|%\"|.)*?\"/",
                 // Aligned-verbatim-strings
                 "/\"([^[]*)\[[\s\S]+?\]\g{1}\"/",
                 // Non-aligned-verbatim-strings
-                "/\"([^{]*)\{[\s\S]+?\}\g{1}\"/",
-                // Single-line string
-                "/\"(?:%\s+%|%\"|.)*?\"/"
+                "/\"([^{]*)\{[\s\S]+?\}\g{1}\"/"
             ],
             // (comments including quoted strings not supported)
             'comment' => "/--.*/",
