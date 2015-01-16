@@ -8,7 +8,7 @@
             <li>
                 <a href="/prism.php/samples/">Code Samples</a>
             </li>
-            <li class="dropdown ">
+            <li class="dropdown             ">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugins <i class="caret"></i></a>
                 <ul class="dropdown-menu navmenu-nav" role="menu"><li>
                         <a href="/prism.php/plugins/show-language/">Show Language</a>
@@ -19,18 +19,21 @@
                     <li>
                         <a href="/prism.php/plugins/show-invisibles/">Show Invisibles</a>
                     </li>
+                    <li>
+                        <a href="/prism.php/plugins/trim-code/">Trim Code</a>
+                    </li>
                 </ul></li>
             <li class="theme-switcher">
                 <span>Theme Switcher</span>
                 <select name="theme" id="theme-switcher" class="form-control"><option value="basic">Basic</option><option value="coy">Coy</option><option value="dark">Dark</option><option value="funky">Funky</option><option value="okaidia">Okaidia</option><option value="twilight">Twilight</option><option value="tomorrow">Tomorrow</option></select></li>
         </ul></nav><div class="container-fluid">
-       <br><p><a href="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b"><img alt="SensioLabsInsight" src="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b/big.png"></a></p>
-<p><a href="https://packagist.org/packages/vkbansal/prism.php"><img alt="Latest Version" src="https://img.shields.io/packagist/v/vkbansal/prism.php.svg?style=flat-square"></a>
-<a href="LICENSE"><img alt="Software License" src="http://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square"></a>
-<a href="https://travis-ci.org/vkbansal/prism.php"><img alt="Build Status" src="https://img.shields.io/travis/vkbansal/prism.php.svg?style=flat-square"></a>
-<a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img alt="Scrutinizer Code Quality" src="https://img.shields.io/scrutinizer/g/vkbansal/prism.php.svg?style=flat-square"></a>
-<a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img alt="Code Coverage" src="https://img.shields.io/scrutinizer/coverage/g/vkbansal/prism.php.svg?style=flat-square"></a>
-<a href="https://codeclimate.com/github/vkbansal/prism.php"><img alt="Code Climate" src="https://img.shields.io/codeclimate/github/vkbansal/prism.php.svg?style=flat-square"></a></p>
+       <br><p><a href="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b"><img src="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b/big.png" alt="SensioLabsInsight"></a></p>
+<p><a href="https://packagist.org/packages/vkbansal/prism.php"><img src="https://img.shields.io/packagist/v/vkbansal/prism.php.svg?style=flat-square" alt="Latest Version"></a>
+<a href="LICENSE"><img src="http://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square" alt="Software License"></a>
+<a href="https://travis-ci.org/vkbansal/prism.php"><img src="https://img.shields.io/travis/vkbansal/prism.php.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img src="https://img.shields.io/scrutinizer/g/vkbansal/prism.php.svg?style=flat-square" alt="Scrutinizer Code Quality"></a>
+<a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img src="https://img.shields.io/scrutinizer/coverage/g/vkbansal/prism.php.svg?style=flat-square" alt="Code Coverage"></a>
+<a href="https://codeclimate.com/github/vkbansal/prism.php"><img src="https://img.shields.io/codeclimate/github/vkbansal/prism.php.svg?style=flat-square" alt="Code Climate"></a></p>
 <h1>Prism.php (WIP)</h1>
 <p>This is a php port of <a href="https://github.com/LeaVerou/prism">prism.js</a> syntax highlighter originally written by <a href="http://github.com/LeaVerou">@LeaVerou</a>.</p>
 <h2>Feature list</h2>
@@ -92,7 +95,7 @@
                 $('link#theme-'+ id).removeAttr('disabled');
                 if (select) $('#theme-switcher').val(id);
             }
-            
+
             $("#theme-switcher").on('change', function(){
                 var id = $(this).val();
                 switchTheme(id);

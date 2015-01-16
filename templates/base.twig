@@ -24,7 +24,14 @@
             <li{% if active == 'samples' %} class="active" {% endif %}>
                 <a href="{{ base }}samples/">Code Samples</a>
             </li>
-            <li class="dropdown {% if active == 'show-language' or active == 'line-numbers' or active == 'show-invisibles'%}open{% endif %}">
+            <li class="dropdown {%  if active == 'show-language'
+                                    or active == 'line-numbers'
+                                    or active == 'show-invisibles'
+                                    or active == 'trim-code'
+                                %}
+                                open
+                                {% endif %}
+            ">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugins <i class="caret"></i></a>
                 <ul class="dropdown-menu navmenu-nav" role="menu">
                     <li{% if active == 'show-language'%} class="active"{% endif %}>
@@ -35,6 +42,9 @@
                     </li>
                     <li{% if active == 'show-invisibles'%} class="active"{% endif %}>
                         <a href="{{ base }}plugins/show-invisibles/">Show Invisibles</a>
+                    </li>
+                    <li{% if active == 'trim-code'%} class="active"{% endif %}>
+                        <a href="{{ base }}plugins/trim-code/">Trim Code</a>
                     </li>
                 </ul>
             </li>
@@ -65,7 +75,7 @@
                 $('link#theme-'+ id).removeAttr('disabled');
                 if (select) $('#theme-switcher').val(id);
             }
-            
+
             $("#theme-switcher").on('change', function(){
                 var id = $(this).val();
                 switchTheme(id);
