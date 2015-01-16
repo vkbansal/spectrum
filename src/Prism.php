@@ -114,10 +114,10 @@ class Prism implements HookInterface, DefinitionInterface
     {
         $language = null;
         $grammar = null;
-        $parent = $this->getParent($element);
+        $parent = Util::getParent($element);
 
         if ($parent) {
-            $language = $this->detectLanguage($element);
+            $language = Util::detectLanguage($element);
             $this->loadDefinition($language);
             $grammar = $this->getDefinition($language);
         }
@@ -126,15 +126,17 @@ class Prism implements HookInterface, DefinitionInterface
             return false;
         }
 
-        $this->addClass($element, 'language-'.$language);
+        Util::removeClass($element, $this->langTest, true);
+        Util::addClass($element, 'language-'.$language);
 
         $parent = $element->parentNode;
 
-        if (preg_match("/pre/i", $parent->nodeName) === 1) {
-            $this->addClass($parent, 'language-'.$language);
+        if (Util::isPre($parent)) {
+            Util::removeClass($parent, $this->langTest, true);
+            Util::addClass($parent, 'language-'.$language);
         }
 
-        $code = Util::decodeHTML($this->getInnerHTML($element));
+        $code = Util::decodeHTML(Util::getInnerHTML($element));
 
         if (!$code) {
             return false;
@@ -153,7 +155,7 @@ class Prism implements HookInterface, DefinitionInterface
 
         $this->runHook('before.insert', $env);
 
-        $this->setInnerHtml($element, $nodes);
+        Util::setInnerHTML($element, $nodes);
 
         $this->runHook('after.highlight', $env);
 
@@ -178,81 +180,6 @@ class Prism implements HookInterface, DefinitionInterface
     public function getDocument()
     {
         return $this->document;
-    }
-
-    /**
-     * Gets Inner HTML
-     * @param  DOMElement $node
-     * @return string
-     */
-    protected function getInnerHTML(DOMElement $node)
-    {
-        $children = $node->childNodes;
-        $innerHTML = "";
-
-        foreach ($children as $child) {
-            $innerHTML .= $child->ownerDocument->saveHTML($child);
-        }
-
-        return $innerHTML;
-    }
-
-    /**
-     * Set Inner HTML
-     * @param DOMElement $element
-     * @param array      $nodes
-     */
-    protected function setInnerHtml(DOMElement $element, array $nodes)
-    {
-        $element->nodeValue = "";
-
-        foreach ($nodes as $node) {
-            $element->appendChild($node);
-        }
-
-        return $element;
-    }
-
-    /**
-     * Add class to an element
-     * @param DOMElement $element
-     * @param string     $newClassNames
-     */
-    protected function addClass(DOMElement $element, $newClassNames)
-    {
-        $className = $element->getAttribute('class');
-        $className = preg_replace($this->langTest, '', $className);
-        $className = preg_replace("/\s+/", ' ', $className).' '.$newClassNames;
-        $element->setAttribute('class', $className);
-    }
-
-    /**
-     * Detect language from class name in form of "language-{name}"
-     * @param  DOMElement $element
-     * @return string
-     */
-    protected function detectLanguage(DOMElement $element)
-    {
-        $class = $element->getAttribute('class');
-
-        if (preg_match($this->langTest, $class, $matches) === 1) {
-            return $matches[1];
-        }
-
-        return '';
-    }
-
-    /**
-     * Get parent which has class name in form of "language-{name}"
-     * @param  DOMElement $element
-     * @return \DOMNode
-     */
-    protected function &getParent(DOMElement $element)
-    {
-        while ($element && preg_match($this->langTest, $element->getAttribute('class')) !== 1) {
-            $element = $element->parentNode;
-        }
-        return $element;
     }
 
     protected function saveMap($path)

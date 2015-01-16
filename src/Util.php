@@ -17,6 +17,12 @@ class Util
     protected static $codeTagRegex = "/(\<code.*?>)(.*?)(\<\/code>)/is";
 
     /**
+     * Regex for testing language classes
+     * @var string
+     */
+    protected static $langTest = "/\blang(?:uage)?-(?!\*)(\w+)\b/i";
+
+    /**
      * Check if given array is associative
      * @param  array   $arr
      * @return boolean
@@ -68,5 +74,115 @@ class Util
     public static function decodeHTML($code)
     {
         return preg_replace(["/\&amp;/", "/\&lt;/", "/\&gt;/"], ["&", "<", ">"], $code);
+    }
+
+    /**
+     * Gets Inner HTML
+     * @param  DOMElement $node
+     * @return string
+     */
+    public static function getInnerHTML(\DOMElement $node)
+    {
+        $children = $node->childNodes;
+        $innerHTML = "";
+
+        foreach ($children as $child) {
+            $innerHTML .= $child->ownerDocument->saveHTML($child);
+        }
+
+        return $innerHTML;
+    }
+
+    /**
+     * Set Inner HTML
+     * @param DOMElement $element
+     * @param array      $nodes
+     */
+    public static function setInnerHtml(\DOMElement $element, array $nodes)
+    {
+        $element->nodeValue = "";
+
+        foreach ($nodes as $node) {
+            $element->appendChild($node);
+        }
+
+        return $element;
+    }
+
+    /**
+     * Add class to an element
+     * @param DOMElement $element
+     * @param string     $newClassNames
+     */
+    public static function addClass(\DOMElement $element, $newClassNames)
+    {
+        $className = $element->getAttribute('class');
+        $className .= " {$newClassNames}";
+        $className = trim($className);
+        $element->setAttribute('class', $className);
+    }
+
+    /**
+     * Remove class from an element
+     * @param  \DOMElement $element
+     * @param  string      $classes
+     * @param  boolean     $isRegex
+     * @return void
+     */
+    public static function removeClass(\DOMElement $element, $classes, $isRegex = false)
+    {
+        $classList = $element->getAttribute('class');
+
+        if ($isRegex) {
+            $classList = preg_replace($classes, "", $classList);
+        } else {
+            $classList = explode(" ", $classList);
+            $classes = explode(" ", $classes);
+            $classList = array_diff($classList, $classes);
+            $classList = implode(" ", $classList);
+        }
+
+        $classList = preg_replace("/\s+/", ' ', $classList);
+        $classList = trim($classList);
+        $element->setAttribute('class', $classList);
+    }
+
+    /**
+     * Detect language from class name in form of "language-{name}"
+     * @param  DOMElement $element
+     * @return string
+     */
+    public static function detectLanguage(\DOMElement $element)
+    {
+        $class = $element->getAttribute('class');
+
+        if (preg_match(self::$langTest, $class, $matches) === 1) {
+            return $matches[1];
+        }
+
+        return '';
+    }
+
+    /**
+     * Get parent which has class name in form of "language-{name}"
+     * @param  DOMElement $element
+     * @return \DOMNode
+     */
+    public static function &getParent(\DOMElement $element)
+    {
+        while ($element && preg_match(self::$langTest, $element->getAttribute('class')) !== 1) {
+            $element = $element->parentNode;
+        }
+        return $element;
+    }
+
+    /**
+     * Check if given element is 'pre'
+     * @param  \DOMElement $element
+     * @return boolean
+     */
+    public static function isPre (\DOMElement $element)
+    {
+        return preg_match("/pre/i", $element->nodeName) === 1;
     }
 }

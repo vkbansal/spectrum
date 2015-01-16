@@ -2,6 +2,7 @@
 namespace VKBansal\Prism\Components\Plugin;
 
 use VKBansal\Prism\Plugin\AbstractPlugin;
+use VKBansal\Prism\Util;
 
 /**
  * Plugin for striping extra spaces in code tag
@@ -30,7 +31,7 @@ class TrimCode extends AbstractPlugin
             $elem =& $env['element'];
             $pre = $elem->parentNode;
 
-            if (preg_match("/pre/i", $pre->nodeName) !== 1 || $pre->getAttribute('data-trim') === "false") {
+            if (!Util::isPre($pre) || $pre->getAttribute('data-trim') === "false") {
                 return false;
             }
 

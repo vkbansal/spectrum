@@ -2,6 +2,7 @@
 namespace VKBansal\Prism\Components\Plugin;
 
 use VKBansal\Prism\Plugin\AbstractPlugin;
+use VKBansal\Prism\Util;
 
 /**
  * Plugin for showing line numbers in code blocks
@@ -29,18 +30,16 @@ class LineNumbers extends AbstractPlugin
             $elem =& $env['element'];
             $pre = $elem->parentNode;
 
-            if (preg_match("/pre/i", $pre->nodeName) !== 1 || $pre->getAttribute('data-line-numbers') === "false") {
+            if (!Util::isPre($pre) || $pre->getAttribute('data-line-numbers') === "false") {
                 return false;
             }
 
-            $className = $pre->getAttribute('class');
-            $className .= " line-numbers";
-            $pre->setAttribute('class', $className);
+            Util::addClass($pre, 'line-numbers');
 
             $lineNum = count(explode("\n", $env['code']));
             $document = $elem->ownerDocument;
             $linesNumWrapper = $document->createElement('span');
-            $linesNumWrapper->setAttribute('class', 'line-numbers-rows');
+            Util::addClass($linesNumWrapper, 'line-numbers-rows');
 
             for ($i = 1; $i <= $lineNum; $i++) {
                 $lines = $document->createElement('span');
