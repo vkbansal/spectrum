@@ -1,0 +1,55 @@
+#List of available language Definitions
+- [x] Actionscript
+- [x] apacheconf (**aliases**: htaccess)
+- [x] AppleScript
+- [x] ASP.Net
+- [x] AutoHotkey
+- [x] bash
+- [x] C
+- [x] CLike
+- [x] CoffeeScript
+- [x] CSS
+- [x] C++
+- [x] C#
+- [x] Dart
+- [x] Eiffel
+- [x] Erlang
+- [x] Fortran
+- [x] Gherkin
+- [x] Git
+- [x] Go
+- [x] Groovy
+- [x] HAML
+- [x] Handlebars
+- [x] Haskell
+- [x] HTTP
+- [x] INI
+- [x] Jade
+- [x] JAVA
+- [x] JavaScript (**aliases**: js)
+- [x] Julia
+- [x] Latex  **(needs fix)**
+- [x] LESS
+- [x] LOLCODE
+- [x] Markup (**aliases**: xml, html, atom, epub, mathml, musicxml, rss, soap, svg, webfeed, xform, xhtml, xpath, xquery)
+- [x] Markdown
+- [x] MATLAB
+- [x] Nasm
+- [x] Nsis
+- [x] Objective-C
+- [x] Pascal
+- [x] Perl
+- [x] PHP
+- [x] Powershell
+- [x] Python
+- [x] R
+- [x] Rip
+- [x] Ruby
+- [x] Rust
+- [x] Scala
+- [x] Scheme
+- [x] SASS\SCSS
+- [x] Smarty
+- [x] SQL
+- [x] Swift
+- [x] Twig
