@@ -1,6 +1,6 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b/big.png)](https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b)
 
-[![Latest Version](https://img.shields.io/packagist/v/vkbansal/prism.php.svg?style=flat-square)](https://packagist.org/packages/vkbansal/prism.php)
+[![Latest Version](https://img.shields.io/packagist/v/vkbansal/prism.svg?style=flat-square)](https://packagist.org/packages/vkbansal/prism.php)
 [![Software License](http://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/travis/vkbansal/prism.php.svg?style=flat-square)](https://travis-ci.org/vkbansal/prism.php)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/vkbansal/prism.php.svg?style=flat-square)](https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master)
