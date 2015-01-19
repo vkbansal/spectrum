@@ -27,6 +27,7 @@
 - [x] Jade
 - [x] JAVA
 - [x] JavaScript (**aliases**: js)
+- [x] JSX (ReactJS)
 - [x] Julia
 - [x] Latex  **(needs fix)**
 - [x] LESS
