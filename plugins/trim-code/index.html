@@ -31,13 +31,13 @@
        <br><h1>Plugin: Trim Code</h1>
 <p>This plugin is based on <a href="https://github.com/leeoniya/preCode.js">preCode.js</a> by <a href="https://github.com/leeoniya">@leeoniya</a></p>
 <p>Instead of writing this</p>
-<pre class=" language-markup"><code class=" language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+<pre class="language-markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>function hellWorld() {
     console.log("Hello World!");
 }<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
 <p>Write this</p>
-<pre class=" language-markup"><code class=" language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+<pre class="language-markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>
     function hellWorld() {
         console.log("Hello World!");
@@ -48,7 +48,7 @@
 <p>This will work only for code blocks (<code>pre</code> &gt; <code>code</code>) and not for inline code.</p>
 <p>By default it adds works on all code blocks. In case you don't want a specific block to be trimmed, just add <code>data-trim="false"</code> to desired <code>pre</code> and the plugin will skip it.</p>
 <h3>PHP</h3>
-<pre class=" language-php"><code class=" language-php"><span class="token delimiter">&lt;?php</span>
+<pre class="language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Plugin<span class="token punctuation">\</span>TrimCode</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Prism</span><span class="token punctuation">;</span>
 

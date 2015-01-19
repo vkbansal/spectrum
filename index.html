@@ -28,7 +28,7 @@
                 <select name="theme" id="theme-switcher" class="form-control"><option value="basic">Basic</option><option value="coy">Coy</option><option value="dark">Dark</option><option value="funky">Funky</option><option value="okaidia">Okaidia</option><option value="twilight">Twilight</option><option value="tomorrow">Tomorrow</option></select></li>
         </ul></nav><div class="container-fluid">
        <br><p><a href="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b"><img src="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b/big.png" alt="SensioLabsInsight"></a></p>
-<p><a href="https://packagist.org/packages/vkbansal/prism.php"><img src="https://img.shields.io/packagist/v/vkbansal/prism.php.svg?style=flat-square" alt="Latest Version"></a>
+<p><a href="https://packagist.org/packages/vkbansal/prism.php"><img src="https://img.shields.io/packagist/v/vkbansal/prism.svg?style=flat-square" alt="Latest Version"></a>
 <a href="LICENSE"><img src="http://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square" alt="Software License"></a>
 <a href="https://travis-ci.org/vkbansal/prism.php"><img src="https://img.shields.io/travis/vkbansal/prism.php.svg?style=flat-square" alt="Build Status"></a>
 <a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img src="https://img.shields.io/scrutinizer/g/vkbansal/prism.php.svg?style=flat-square" alt="Scrutinizer Code Quality"></a>
@@ -47,7 +47,7 @@
 </ul><h2>Limitations</h2>
 <ul><li>Regex-based so it <em>will</em> fail on certain edge cases.</li>
 </ul><h2>Installation</h2>
-<pre class=" language-js"><code class=" language-js"><span class="token punctuation">{</span>
+<pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
     <span class="token string">"require"</span> <span class="token punctuation">:</span> <span class="token punctuation">{</span>
         <span class="token string">"vkbansal/prism"</span> <span class="token punctuation">:</span> <span class="token string">"dev-master"</span>
     <span class="token punctuation">}</span>
@@ -56,13 +56,13 @@
 <ul><li>PHP &gt;= 5.4</li>
 <li>libxml &gt;= 2.6.0</li>
 </ul><h2>Basic usage</h2>
-<pre class=" language-php"><code class=" language-php"><span class="token delimiter">&lt;?php</span>
+<pre class="language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 <span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Prism</span><span class="token punctuation">;</span>
 <span class="token variable">$prism</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prism</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3>Highlighting HTML</h3>
 <p>For highlighting HTML, <code>code</code> blocks must have a <code>language-</code> prefixed <code>class</code> attribute. For example, if you want to highlight <code>HTML</code>, the code block must have a <code>language-html</code> class.</p>
 <p>Prism will auto-detect the language and apply highlighting if the language definition is found.</p>
-<pre class=" language-php"><code class=" language-php"><span class="token variable">$html</span> <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token constant">HTML</span>
+<pre class="language-php"><code class="language-php"><span class="token variable">$html</span> <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token constant">HTML</span>
 <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span></span>
 <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span></span>
     <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>prism.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></span>
@@ -85,7 +85,7 @@
 <span class="token keyword">echo</span> <span class="token variable">$prism</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">highlightHTML<span class="token punctuation">(</span></span><span class="token variable">$html</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3>Highlighting Text</h3>
 <p>You can also highlight text directly, but you have to specify the language manually.</p>
-<pre class=" language-php"><code class=" language-php"><span class="token keyword">echo</span> <span class="token variable">$prism</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">highlightText<span class="token punctuation">(</span></span>'<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span></span>string<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></span><span class="token string">', '</span>html'<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-php"><code class="language-php"><span class="token keyword">echo</span> <span class="token variable">$prism</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">highlightText<span class="token punctuation">(</span></span>'<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span></span>string<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></span><span class="token string">', '</span>html'<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script type="text/javascript">
         $(document).ready(function(){
