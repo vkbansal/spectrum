@@ -1,0 +1,50 @@
+<p>Default language reference: <b>nasm</b></p>
+<pre class="language-nasm"><code class="language-nasm"><span class="token keyword">global _start
+</span><span class="token keyword">
+section .data</span>
+<span class="token label function">
+    query_string:</span>       db  <span class="token string">"Enter a character:  "</span><span class="token label function">
+    query_string_len:</span>   equ <span class="token operator">$</span> <span class="token operator">-</span> query_string
+<span class="token label function">    out_string:</span>         db  <span class="token string">"You have input:  "</span><span class="token label function">
+    out_string_len:</span>     equ <span class="token operator">$</span> <span class="token operator">-</span> out_string
+<span class="token keyword">
+section .bss</span>
+<span class="token label function">
+    in_char:</span>            resw <span class="token number">4</span>
+<span class="token keyword">
+section .text</span>
+<span class="token label function">
+_start:</span>
+
+    mov <span class="token register variable">rax</span>, <span class="token number">0x2000004</span>      <span class="token comment" spellcheck="true">; put the write-system-call-code into register rax</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">1</span>              <span class="token comment" spellcheck="true">; tell kernel to use stdout</span>
+    mov <span class="token register variable">rsi</span>, query_string   <span class="token comment" spellcheck="true">; rsi is where the kernel expects to find the address of the message</span>
+    mov <span class="token register variable">rdx</span>, query_string_len   <span class="token comment" spellcheck="true">; and rdx is where the kernel expects to find the length of the message</span>
+    syscall
+
+    <span class="token comment" spellcheck="true">; read in the character</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">0x2000003</span>      <span class="token comment" spellcheck="true">; read system call</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">0</span>              <span class="token comment" spellcheck="true">; stdin</span>
+    mov <span class="token register variable">rsi</span>, in_char        <span class="token comment" spellcheck="true">; address for storage, declared in section .bss</span>
+    mov <span class="token register variable">rdx</span>, <span class="token number">2</span>              <span class="token comment" spellcheck="true">; get 2 bytes from the kernel's buffer (one for the carriage return)</span>
+    syscall
+
+    <span class="token comment" spellcheck="true">; show user the output</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">0x2000004</span>      <span class="token comment" spellcheck="true">; write system call</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">1</span>              <span class="token comment" spellcheck="true">; stdout</span>
+    mov <span class="token register variable">rsi</span>, out_string
+    mov <span class="token register variable">rdx</span>, out_string_len
+    syscall
+
+    mov <span class="token register variable">rax</span>, <span class="token number">0x2000004</span>      <span class="token comment" spellcheck="true">; write system call</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">1</span>              <span class="token comment" spellcheck="true">; stdout</span>
+    mov <span class="token register variable">rsi</span>, in_char
+    mov <span class="token register variable">rdx</span>, <span class="token number">2</span>              <span class="token comment" spellcheck="true">; the second byte is to apply the carriage return expected in the string</span>
+    syscall
+
+    <span class="token comment" spellcheck="true">; exit system call</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">0x2000001</span>      <span class="token comment" spellcheck="true">; exit system call</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">0</span>
+    syscall
+
+</code></pre>
