@@ -3,11 +3,11 @@
 ##master
 - Added `autoload.php` for autolading files without composer
 
-###Languages
+###languages
 - React JSX
 - TypeScript
 
-##Plugins
+###plugins
 -  Highlight Keyword
 
 ##v0.1.0
