@@ -17,6 +17,9 @@ $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 $mark = new ParsedownExtra();
 
+libxml_use_internal_errors(true);
 include 'build/indexPage.php';
 include 'build/samplesPage.php';
 include 'build/pluginsPage.php';
+include 'build/changelogPage.php';
+libxml_use_internal_errors(false);

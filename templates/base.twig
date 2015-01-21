@@ -48,6 +48,9 @@
                     </li>
                 </ul>
             </li>
+            <li{% if active == 'changelog' %} class="active" {% endif %}>
+                <a href="{{ base }}changelog.html">Changelog</a>
+            </li>
             <li class="theme-switcher">
                 <span>Theme Switcher</span>
                 <select name="theme" id="theme-switcher" class="form-control">
