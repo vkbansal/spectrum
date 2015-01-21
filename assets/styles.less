@@ -93,14 +93,110 @@
 
 body {
     padding-left: @navmenu-width;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.25;
+    font-family: "Open Sans", sans-serif;
+    overflow-x: hidden
+    text-rendering optimizeLegibility;
+
+    @media (min-width: @screen-md) {
+        line-height: 1.375;
+    }
 }
 
-h1, h2, h3{
-    font-weight: bold;
-    border-bottom: 1px solid @gray-light;
-    padding-bottom: 0.3em;
-    margin-top: 1em;
-    margin-bottom: 16px;
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Roboto Slab", sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    line-height: 1.25;
+    margin: 0.9375rem auto 0.3125rem;
+
+    @media (min-width: @screen-md) {
+        font-size: 2.5rem;
+        letter-spacing: normal;
+        line-height: 1.125;
+        margin: 0.73333334rem auto 0.24444445rem;
+    }
+
+    @media (min-width: @screen-lg) {
+        font-size: 3rem;
+        line-height: 1.05;
+        margin-top: 0.6875rem auto 0.22916667rem;
+    }
+}
+
+
+h2 {
+    font-size: 1.625rem;
+    line-height: 1.15384615;
+    margin: 1.15384616rem auto 0.38461539rem;
+
+    @media (min-width: @screen-md) {
+        font-size: 2rem;
+        line-height: 1.25;
+        margin: 1.03125rem auto 0.34375rem;
+    }
+
+    @media (min-width: @screen-lg) {
+        font-size: 2.25rem;
+    }
+}
+
+h3 {
+    font-size: 1.375rem;
+    line-height: 1.13636364;
+    margin: 1.36363637rem auto 0.45454546rem;
+
+    @media (min-width: @screen-md) {
+        font-size: 1.5rem;
+        line-height: 1.25;
+        margin: 1.37500001rem auto 0.45833334rem;
+    }
+
+    @media (min-width: @screen-lg) {
+        font-size: 1.75rem;
+        line-height: 1.25;
+        margin: 1.37500001rem auto 0.45833334rem;
+    }
+}
+
+h4 {
+    font-size: 1.125rem;
+    line-height: 1.11111111;
+    margin: 1.66666667rem auto 0.55555556rem;
+
+
+    @media (min-width: @screen-md) {
+        font-size: 1.5rem;
+        line-height: 1.22222222;
+        margin: 1.83333333rem auto  0.61111111rem;
+    }
+
+    @media (min-width: @screen-lg) {
+        font-size: 1.75rem;
+        line-height: 1.25;
+        margin: 1.37500001rem auto 0.45833334rem;
+    }
+}
+
+h5 {
+    font-size: 0.83rem;
+    margin: 1.67rem 0;
+}
+
+h6 {
+    font-size: 0.67rem;
+    margin: 2.33rem 0;
+}
+
+p {
+    font-size: 1.0625rem;
+    line-height: 1.625;
+    margin: 0 0 1em;
 }
 
 body h1:first-of-type {
@@ -117,7 +213,7 @@ li.theme-switcher{
     }
 }
 .dropdown-menu.navmenu-nav > li > a {
-    padding: 10px 15px;
+    padding: 5px 15px;
 }
 
 .navmenu-default,
@@ -224,7 +320,7 @@ pre.line-numbers {
     transform: translateZ(0);
     -webkit-animation-delay:-0.16s;
     animation-delay:-0.16s;
-    
+
     &, &:before, &:after {
       background: @loader-color;
       -webkit-animation:load 1s infinite ease-in-out;
@@ -232,7 +328,7 @@ pre.line-numbers {
       width:1em;
       height:4em;
     }
-    
+
     &:before, &:after {
       position:absolute;
       top:0;
@@ -244,8 +340,8 @@ pre.line-numbers {
       -webkit-animation-delay:-0.32s;
       animation-delay:-0.32s;
     }
-  
-    
+
+
     &:after {
       left:1.5em;
       -webkit-animation-delay: 0.32s;
