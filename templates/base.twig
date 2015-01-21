@@ -28,6 +28,7 @@
                                     or active == 'line-numbers'
                                     or active == 'show-invisibles'
                                     or active == 'trim-code'
+                                    or active == 'highlight-keyword'
                                 %}
                                 open
                                 {% endif %}
@@ -45,6 +46,9 @@
                     </li>
                     <li{% if active == 'trim-code'%} class="active"{% endif %}>
                         <a href="{{ base }}plugins/trim-code/">Trim Code</a>
+                    </li>
+                    <li{% if active == 'highlight-keyword'%} class="active"{% endif %}>
+                        <a href="{{ base }}plugins/highlight-keyword/">Show Language</a>
                     </li>
                 </ul>
             </li>

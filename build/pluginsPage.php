@@ -12,18 +12,16 @@ $finder->sortByName()->files()->name('*.md')->in($baseDir);
 foreach ($finder as $file) {
     $name = $file->getBasename('.md');
     $prism->resetPlugins();
+    $console->out("<light_green>Building</light_green> <bold><light_cyan>{$name} plugin<light_cyan></bold>");
     switch($name){
         case 'show-language':
             $prism->addPlugin(new Plugin\ShowLanguage);
-            $console->out("<light_green>Building</light_green> <bold><light_cyan>Show Language Plugin<light_cyan></bold>");
             break;
         case 'line-numbers':
             $prism->addPlugin(new Plugin\LineNumbers);
-            $console->out("<light_green>Building</light_green> <bold><light_cyan>Line Numbers Plugin<light_cyan></bold>");
             break;
         case 'show-invisibles':
             $prism->addPlugin(new Plugin\ShowInvisibles);
-            $console->out("<light_green>Building</light_green> <bold><light_cyan>Show Invisibles Plugin<light_cyan></bold>");
             break;
     }
     $path = $baseDir.$name;

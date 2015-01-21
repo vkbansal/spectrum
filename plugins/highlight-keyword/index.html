@@ -20,10 +20,10 @@
                     <li>
                         <a href="/prism.php/plugins/show-invisibles/">Show Invisibles</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="/prism.php/plugins/trim-code/">Trim Code</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="/prism.php/plugins/highlight-keyword/">Show Language</a>
                     </li>
                 </ul></li>
@@ -34,32 +34,16 @@
                 <span>Theme Switcher</span>
                 <select name="theme" id="theme-switcher" class="form-control"><option value="basic">Basic</option><option value="coy">Coy</option><option value="dark">Dark</option><option value="funky">Funky</option><option value="okaidia">Okaidia</option><option value="twilight">Twilight</option><option value="tomorrow">Tomorrow</option></select></li>
         </ul></nav><div class="container-fluid">
-       <br><h1>Plugin: Trim Code</h1>
-<p>This plugin is based on <a href="https://github.com/leeoniya/preCode.js">preCode.js</a> by <a href="https://github.com/leeoniya">@leeoniya</a></p>
-<p>Instead of writing this</p>
-<pre class="language-markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>function hellWorld() {
-    console.log("Hello World!");
-}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
-<p>Write this</p>
-<pre class="language-markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>code</span><span class="token punctuation">&gt;</span></span>
-    function hellWorld() {
-        console.log("Hello World!");
-    }
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>code</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+       <br><h1>Plugin: Show Language</h1>
+<p>This plugin adds 'keyword-*' class to allow a fine-grained control over keywords highlighting. For example, it will add a class <code>keyword-if</code> to <code>if</code> keyword.</p>
 <h2>Usage</h2>
-<p>This will work only for code blocks (<code>pre</code> &gt; <code>code</code>) and not for inline code.</p>
-<p>By default it adds works on all code blocks. In case you don't want a specific block to be trimmed, just add <code>data-trim="false"</code> to desired <code>pre</code> and the plugin will skip it.</p>
 <h3>PHP</h3>
 <pre class="language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
-<span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Plugin<span class="token punctuation">\</span>TrimCode</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Plugin<span class="token punctuation">\</span>HighlightKeyword</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> <span class="token package">VKBansal<span class="token punctuation">\</span>Prism<span class="token punctuation">\</span>Prism</span><span class="token punctuation">;</span>
 
 <span class="token variable">$prism</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prism</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$prism</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addPlugin<span class="token punctuation">(</span></span><span class="token keyword">new</span> <span class="token class-name">TrimCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token variable">$prism</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addPlugin<span class="token punctuation">(</span></span><span class="token keyword">new</span> <span class="token class-name">HighlightKeyword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script type="text/javascript">
         $(document).ready(function(){
