@@ -5,6 +5,7 @@
 
 ###Languages
 - React JSX
+- TypeScript
 
 ##Plugins
 -  Highlight Keyword
