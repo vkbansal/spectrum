@@ -3,6 +3,7 @@ namespace VKBansal\Prism;
 
 use DOMDocument;
 use DOMElement;
+use Pimple\Container;
 use Symfony\Component\DomCrawler\Crawler;
 use VKBansal\Prism\Hook\HookInterface;
 use VKBansal\Prism\Language\DefinitionInterface;
@@ -33,24 +34,16 @@ class Prism implements HookInterface, DefinitionInterface
      */
     protected $langTest = "/\blang(?:uage)?-(?!\*)(\w+)\b/i";
 
+    protected $container;
+
     /**
      * Class Constructor
      */
     public function __construct($path = null)
     {
-        $file = is_null($path) ? __DIR__."/.lang.map.json" : $path;
-
-        if (!file_exists($file)) {
-            $mapping = $this->saveMap($file);
-        } else {
-            $mapping = $this->loadMap($file);
-        }
-
-        $this->map = $mapping['map'];
-        $this->aliases = $mapping['aliases'];
-        $this->defaults = $mapping['defaults'];
-
-        $this->loadDefaultDefinitions();
+        $this->container = new Container();
+        $this->container->register(new Providers\DefinitionsMapProvider());
+        //$this->container['prism'] = $this;
     }
 
     /**
@@ -180,18 +173,5 @@ class Prism implements HookInterface, DefinitionInterface
     public function getDocument()
     {
         return $this->document;
-    }
-
-    protected function saveMap($path)
-    {
-        $mapper = new Language\Mapper();
-        $map = $mapper->getMap();
-        $mapper->saveMap($path, $map);
-        return $map;
-    }
-
-    protected function loadMap($path)
-    {
-       return json_decode(file_get_contents($path), true);
     }
 }

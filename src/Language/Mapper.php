@@ -3,19 +3,15 @@ namespace VKBansal\Prism\Language;
 
 class Mapper {
 
-    protected $files;
 
-    public function __construct()
-    {
-        $pattern = __DIR__."/../Components/Definition/*.php";
-        $this->files = glob($pattern);
-    }
-
-    public function getDefinitionClasses()
+    public static function  getDefinitionClasses()
     {
         $classesBefore = get_declared_classes();
 
-        foreach ($this->files as $file) {
+        $pattern = __DIR__."/../Components/Definition/*.php";
+        $files = glob($pattern);
+
+        foreach ($files as $file) {
             if ($filePath = realpath($file)) {
                 require_once $filePath;
             }
@@ -29,9 +25,9 @@ class Mapper {
         });
     }
 
-    public function getMap()
+    public static function getMap()
     {
-        $definitions = $this->getDefinitionClasses();
+        $definitions = self::getDefinitionClasses();
 
         $map = [];
         $aliasesMap = [];
@@ -53,14 +49,6 @@ class Mapper {
                 $defaults[] = $name;
             }
         }
-        return ['map' => $map, 'aliases' => $aliasesMap, 'defaults' => $defaults];
-    }
-
-    public function saveMap($path, $map = null)
-    {
-        if (is_null($map)) {
-            $map = $this->getMap();
-        }
-        file_put_contents($path, json_encode($map, JSON_PRETTY_PRINT));
+        return [ $map, $aliasesMap, $defaults];
     }
 }

@@ -19,24 +19,6 @@ trait RepositoryTrait
     protected $languages = [];
 
     /**
-     * Language map container
-     * @var array
-     */
-    protected $map = [];
-
-    /**
-     * Language aliases container
-     * @var array
-     */
-    protected $aliases = [];
-
-    /**
-     * Default languages to be loaded
-     * @var array
-     */
-    protected $defaults = [];
-
-    /**
      * Load language definition
      * @param  string $language
      * @return void
@@ -49,10 +31,9 @@ trait RepositoryTrait
             return;
         }
 
-        if (isset($this->map[$language])) {
-            $class = $this->map[$language];
-            $def = new $class();
-            $this->addLanguage($def);
+        if (isset($this->container['language-map'][$language])) {
+            $class = $this->container['language-map'][$language];
+            $this->addLanguage(new $class());
         }
     }
 
@@ -74,8 +55,9 @@ trait RepositoryTrait
      */
     public function loadAllDefinitions()
     {
-        foreach ($this->map as $key => $value) {
-            $this->loadDefinition($key);
+        $languages = $this->container['language-map'];
+        foreach ($languages as $language => $class) {
+            $this->addLanguage(new $class());
         }
     }
 
@@ -85,8 +67,9 @@ trait RepositoryTrait
      */
     public function loadDefaultDefinitions()
     {
-        foreach ($this->defaults as $key) {
-            $this->loadDefinition($key);
+        $defaults = $this->container['default-languages'];
+        foreach ($defaults as $default) {
+            $this->loadDefinition($default);
         }
     }
 
@@ -138,8 +121,8 @@ trait RepositoryTrait
      */
     public function resolveAlias($language)
     {
-        if (isset($this->aliases[$language])) {
-            $language = $this->aliases[$language];
+        if (isset($this->container['language-aliases'][$language])) {
+            $language = $this->container['language-aliases'][$language];
         }
         return $language;
     }
