@@ -15,18 +15,12 @@ class ObjectiveC extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'objectivec';
-    }
+    protected static $name = 'objectivec';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['c'];
-    }
+    protected static $requires = ['c'];
 
     /**
      * {@inheritdoc}

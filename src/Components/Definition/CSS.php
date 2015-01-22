@@ -15,18 +15,12 @@ class CSS extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'css';
-    }
+    protected static $name = 'css';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['markup'];
-    }
+    protected static $requires = ['markup'];
 
     /**
      * {@inheritdoc}

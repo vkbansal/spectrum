@@ -15,10 +15,7 @@ class PowerShell extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'powershell';
-    }
+    protected static $name = 'powershell';
 
     /**
      * {@inheritdoc}

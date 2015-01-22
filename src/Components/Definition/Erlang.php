@@ -15,10 +15,7 @@ class Erlang extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'erlang';
-    }
+    protected static $name = 'erlang';
 
     /**
      * {@inheritdoc}

@@ -15,18 +15,12 @@ class ActionScript extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'actionscript';
-    }
+    protected static $name = 'actionscript';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['javascript', 'markup'];
-    }
+    protected static $requires = ['javascript', 'markup'];
 
     /**
      * {@inheritdoc}
@@ -52,7 +46,7 @@ class ActionScript extends AbstractDefinition
                 ]
             ]
         ], 'operator');
-        
+
         $actionscript =& $this->getDefinition('actionscript');
         $actionscript['class-name']['alias'] = 'function';
     }

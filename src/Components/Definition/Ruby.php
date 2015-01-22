@@ -15,18 +15,12 @@ class Ruby extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'ruby';
-    }
+    protected static $name = 'ruby';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['clike'];
-    }
+    protected static $requires = ['clike'];
 
     /**
      * {@inheritdoc}

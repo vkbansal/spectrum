@@ -15,18 +15,12 @@ class Http extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'http';
-    }
+    protected static $name = 'http';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['markup', 'javascript'];
-    }
+    protected static $requires = ['markup', 'javascript'];
 
     /**
      * {@inheritdoc}

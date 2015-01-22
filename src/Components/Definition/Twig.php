@@ -15,18 +15,12 @@ class Twig extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'twig';
-    }
+    protected static $name = 'twig';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['markup'];
-    }
+    protected static $requires = ['markup'];
 
     /**
      * {@inheritdoc}

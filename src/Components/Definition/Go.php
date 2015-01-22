@@ -15,18 +15,12 @@ class Go extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'go';
-    }
+    protected static $name = 'go';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['clike'];
-    }
+    protected static $requires = ['clike'];
 
     /**
      * {@inheritdoc}

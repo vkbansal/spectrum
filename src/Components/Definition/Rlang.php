@@ -15,10 +15,7 @@ class Rlang extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'r';
-    }
+    protected static $name = 'r';
 
     /**
      * {@inheritdoc}

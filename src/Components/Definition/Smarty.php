@@ -25,18 +25,12 @@ class Smarty extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'smarty';
-    }
+    protected static $name = 'smarty';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['markup'];
-    }
+    protected static $requires = ['markup'];
 
     /**
      * {@inheritdoc}

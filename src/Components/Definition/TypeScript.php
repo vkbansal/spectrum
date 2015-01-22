@@ -15,18 +15,12 @@ class TypeScript extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'typescript';
-    }
+    protected static $name = 'typescript';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['javascript'];
-    }
+    protected static $requires = ['javascript'];
 
     /**
      * {@inheritdoc}

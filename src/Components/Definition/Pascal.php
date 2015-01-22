@@ -15,10 +15,7 @@ class Pascal extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'pascal';
-    }
+    protected static $name = 'pascal';
 
     /**
      * {@inheritdoc}

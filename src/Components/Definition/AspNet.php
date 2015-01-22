@@ -15,18 +15,12 @@ class AspNet extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'aspnet';
-    }
+    protected static $name = 'aspnet';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['markup', 'csharp', 'css', 'javascript'];
-    }
+    protected static $requires = ['markup', 'csharp', 'css', 'javascript'];
 
     /**
      * {@inheritdoc}

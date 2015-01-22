@@ -15,18 +15,12 @@ class Java extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'java';
-    }
+    protected static $name = 'java';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['clike'];
-    }
+    protected static $requires = ['clike'];
 
     /**
      * {@inheritdoc}

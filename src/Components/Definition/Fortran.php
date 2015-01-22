@@ -15,10 +15,7 @@ class Fortran extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'fortran';
-    }
+    protected static $name = 'fortran';
 
     /**
      * {@inheritdoc}

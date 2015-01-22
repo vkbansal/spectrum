@@ -15,10 +15,7 @@ class Rust extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'rust';
-    }
+    protected static $name = 'rust';
 
     /**
      * {@inheritdoc}

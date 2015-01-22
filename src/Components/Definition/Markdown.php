@@ -15,18 +15,12 @@ class Markdown extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'markdown';
-    }
+    protected static $name = 'markdown';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['markup'];
-    }
+    protected static $requires = ['markup'];
 
     /**
      * {@inheritdoc}
@@ -157,7 +151,7 @@ class Markdown extends AbstractDefinition
                 ]
             ]
         ];
-        
+
         $this->insertBefore('markdown', $markdown, 'prolog');
 
         $lang = &$this->getDefinition('markdown');

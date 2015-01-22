@@ -15,18 +15,12 @@ class Haml extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'haml';
-    }
+    protected static $name = 'haml';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['ruby', 'markup', 'css', 'javascript'];
-    }
+    protected static $requires = ['ruby', 'markup', 'css', 'javascript'];
 
     /**
      * {@inheritdoc}

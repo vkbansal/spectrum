@@ -15,26 +15,18 @@ class SCSS extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'scss';
-    }
+    protected static $name = 'scss';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['css'];
-    }
+    protected static $aliases = ['sass'];
 
     /**
      * {@inheritdoc}
      */
-    public function aliases()
-    {
-        return 'sass';
-    }
+    protected static $requires = ['css'];
+
     /**
      * {@inheritdoc}
      */

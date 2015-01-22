@@ -1,7 +1,8 @@
 #Changelog
 
-##master
+##v0.2.0
 - Added `autoload.php` for autolading files without composer
+- Refactored languages to use static properties for better mapping
 
 ###languages
 - React JSX

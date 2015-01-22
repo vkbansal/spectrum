@@ -15,10 +15,7 @@ class Gherkin extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'gherkin';
-    }
+    protected static $name = 'gherkin';
 
     /**
      * {@inheritdoc}

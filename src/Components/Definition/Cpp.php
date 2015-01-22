@@ -15,18 +15,12 @@ class Cpp extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'cpp';
-    }
+    protected static $name = 'cpp';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['c'];
-    }
+    protected static $requires = ['c'];
 
     /**
      * {@inheritdoc}

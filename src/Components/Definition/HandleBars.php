@@ -25,18 +25,12 @@ class Handlebars extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'handlebars';
-    }
+    protected static $name = 'handlebars';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['markup'];
-    }
+    protected static $requires = ['markup'];
 
     /**
      * {@inheritdoc}

@@ -15,10 +15,7 @@ class LolCode extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'lolcode';
-    }
+    protected static $name = 'lolcode';
 
     /**
      * {@inheritdoc}

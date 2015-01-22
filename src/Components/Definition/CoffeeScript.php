@@ -15,26 +15,17 @@ class CoffeeScript extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'coffeescript';
-    }
+    protected static $name = 'coffeescript';
 
     /**
      * {@inheritdoc}
      */
-    public function aliases()
-    {
-        return 'coffee';
-    }
+    protected static $aliases = ['coffee'];
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['javascript'];
-    }
+    protected static $requires = ['javascript'];
 
     /**
      * {@inheritdoc}

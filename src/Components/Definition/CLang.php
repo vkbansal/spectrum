@@ -15,18 +15,12 @@ class CLang extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'c';
-    }
+    protected static $name = 'c';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['clike'];
-    }
+    protected static $requires = ['clike'];
 
     /**
      * {@inheritdoc}

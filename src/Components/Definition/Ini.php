@@ -15,10 +15,7 @@ class Ini extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'ini';
-    }
+    protected static $name = 'ini';
 
     /**
      * {@inheritdoc}

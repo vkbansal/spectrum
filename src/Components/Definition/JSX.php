@@ -15,18 +15,12 @@ class JSX extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'jsx';
-    }
+    protected static $name = 'jsx';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['markup', 'javascript'];
-    }
+    protected static $requires = ['markup', 'javascript'];
 
     /**
      * {@inheritdoc}

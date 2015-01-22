@@ -15,10 +15,7 @@ class AppleScript extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'applescript';
-    }
+    protected static $name = 'applescript';
 
     /**
      * {@inheritdoc}

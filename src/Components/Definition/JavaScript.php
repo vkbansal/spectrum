@@ -15,26 +15,17 @@ class JavaScript extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'javascript';
-    }
+    protected static $name = 'javascript';
 
     /**
      * {@inheritdoc}
      */
-    public function aliases()
-    {
-        return 'js';
-    }
+    protected static $aliases = ['js'];
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['clike', 'markup'];
-    }
+    protected static $requires = ['clike', 'markup'];
 
     /**
      * {@inheritdoc}

@@ -15,10 +15,7 @@ class Haskell extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'haskell';
-    }
+    protected static $name = 'haskell';
 
     /**
      * {@inheritdoc}

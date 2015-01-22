@@ -15,10 +15,7 @@ class Python extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'python';
-    }
+    protected static $name = 'python';
 
     /**
      * {@inheritdoc}

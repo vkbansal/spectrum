@@ -15,10 +15,7 @@ class Nasm extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'nasm';
-    }
+    protected static $name = 'nasm';
 
     /**
      * {@inheritdoc}

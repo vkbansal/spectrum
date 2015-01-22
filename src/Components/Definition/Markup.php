@@ -15,25 +15,17 @@ class Markup extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'markup';
-    }
+    protected static $name = 'markup';
 
     /**
      * {@inheritdoc}
      */
-    public function isDefault()
-    {
-        return true;
-    }
+    protected static $default = true;
 
     /**
      * {@inheritdoc}
      */
-    public function aliases()
-    {
-        return [
+    protected static $aliases = [
             'xml',
             'html',
             'atom',
@@ -49,7 +41,6 @@ class Markup extends AbstractDefinition
             'xpath',
             'xquery'
         ];
-    }
 
     /**
      * {@inheritdoc}

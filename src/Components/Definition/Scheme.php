@@ -15,10 +15,7 @@ class Scheme extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'scheme';
-    }
+    protected static $name = 'scheme';
 
     /**
      * {@inheritdoc}

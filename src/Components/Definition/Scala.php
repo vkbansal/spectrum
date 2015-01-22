@@ -15,18 +15,12 @@ class Scala extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'scala';
-    }
+    protected static $name = 'scala';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['java'];
-    }
+    protected static $requires = ['java'];
 
     /**
      * {@inheritdoc}

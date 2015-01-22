@@ -15,10 +15,7 @@ class Jade extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'jade';
-    }
+    protected static $name = 'jade';
 
     /**
      * {@inheritdoc}

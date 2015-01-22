@@ -15,10 +15,7 @@ class Bash extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'bash';
-    }
+    protected static $name = 'bash';
 
     /**
      * {@inheritdoc}

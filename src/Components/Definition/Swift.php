@@ -15,18 +15,12 @@ class Swift extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'swift';
-    }
+    protected static $name = 'swift';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['clike'];
-    }
+    protected static $requires = ['clike'];
 
     /**
      * {@inheritdoc}

@@ -15,10 +15,7 @@ class Git extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'git';
-    }
+    protected static $name = 'git';
 
     /**
      * {@inheritdoc}

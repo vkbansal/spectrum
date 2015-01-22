@@ -15,10 +15,7 @@ class Latex extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'latex';
-    }
+    protected static $name = 'latex';
 
     /**
      * {@inheritdoc}

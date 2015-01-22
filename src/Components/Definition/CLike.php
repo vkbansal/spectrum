@@ -15,18 +15,12 @@ class CLike extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'clike';
-    }
+    protected static $name = 'clike';
 
     /**
      * {@inheritdoc}
      */
-    public function isDefault()
-    {
-        return true;
-    }
+    protected static $default = true;
 
     /**
      * {@inheritdoc}

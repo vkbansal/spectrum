@@ -15,10 +15,7 @@ class Perl extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'perl';
-    }
+    protected static $name = 'perl';
 
     /**
      * {@inheritdoc}

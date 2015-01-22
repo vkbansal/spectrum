@@ -15,10 +15,7 @@ class AutoHotkey extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'autohotkey';
-    }
+    protected static $name = 'autohotkey';
 
     /**
      * {@inheritdoc}

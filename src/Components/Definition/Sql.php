@@ -15,10 +15,7 @@ class Sql extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'sql';
-    }
+    protected static $name = 'sql';
 
     /**
      * {@inheritdoc}

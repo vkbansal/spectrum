@@ -15,10 +15,7 @@ class Nsis extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'nsis';
-    }
+    protected static $name = 'nsis';
 
     /**
      * {@inheritdoc}

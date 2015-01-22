@@ -15,18 +15,12 @@ class ApacheConf extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'apacheconf';
-    }
+    protected static $name = 'apacheconf';
 
     /**
      * {@inheritdoc}
      */
-    public function aliases()
-    {
-        return 'htaccess';
-    }
+    protected static $requires = ['htaccess'];
 
     /**
      * {@inheritdoc}

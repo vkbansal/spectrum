@@ -15,10 +15,7 @@ class Matlab extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'matlab';
-    }
+    protected static $name = 'matlab';
 
     /**
      * {@inheritdoc}

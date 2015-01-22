@@ -48,7 +48,7 @@ trait RepositoryTrait
         if (isset($this->languages[$language])) {
             return;
         }
-        
+
         if (isset($this->map[$language])) {
             $class = $this->map[$language];
             $def = new $class();
@@ -104,7 +104,7 @@ trait RepositoryTrait
         if (isset($this->languages[$language])) {
             return $this->languages[$language];
         }
-        
+
         $segments = explode('.', $language);
 
         $root =& $this->languages;
@@ -154,7 +154,7 @@ trait RepositoryTrait
         if ($requires = $language->requires()) {
             $this->loadDefinitions($requires);
         }
-        $this->languages[$language->getName()] = $language->definition();
+        $this->languages[$language::getName()] = $language->definition();
         $language->setup();
     }
 }

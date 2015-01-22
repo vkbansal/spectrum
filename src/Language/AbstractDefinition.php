@@ -22,6 +22,67 @@ abstract class AbstractDefinition implements DefinitionInterface, HookInterface,
     protected $prism;
 
     /**
+     * Name of the language
+     * @var string
+     */
+    protected static $name;
+
+    /**
+     * Does this language needed to loaded as default
+     * @var boolean
+     */
+    protected static $default = false;
+
+    /**
+     * Aliases for language
+     * @var array<string>
+     */
+    protected static $aliases = [];
+
+    /**
+     * language dependencies
+     * @var array<string>
+     */
+    protected static $requires = [];
+
+
+    /**
+     * Get name for language
+     * @return string
+     */
+    public static function getName()
+    {
+        return static::$name;
+    }
+
+    /**
+     * Get default
+     * @return boolean
+     */
+    public static function isDefault()
+    {
+        return static::$default;
+    }
+
+    /**
+     * Get aliases
+     * @return array<string>
+     */
+    public static function getAliases()
+    {
+        return static::$aliases;
+    }
+
+    /**
+     * Get language dependencies
+     * @return array<string>
+     */
+    public static function requires()
+    {
+        return static::$requires;
+    }
+
+    /**
      * Set Manager
      * @param \VKBansal\Prism\Prism $prism
      */
@@ -136,39 +197,6 @@ abstract class AbstractDefinition implements DefinitionInterface, HookInterface,
      * @return array
      */
     abstract public function definition();
-
-    /**
-     * Get name for language
-     * @return string
-     */
-    abstract public function getName();
-
-    /**
-     * Does this language needed to lodaed as default
-     * @return boolean
-     */
-    public function isDefault()
-    {
-        return false;
-    }
-
-    /**
-     * Aliases for this language
-     * @return string|array<string>
-     */
-    public function aliases()
-    {
-        return "";
-    }
-
-    /**
-     * Dependencies for this language
-     * @return array<string>
-     */
-    public function requires()
-    {
-        return [];
-    }
 
     /**
      * Extra setup after definition.

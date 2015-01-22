@@ -15,10 +15,7 @@ class Rip extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'rip';
-    }
+    protected static $name = 'rip';
 
     /**
      * {@inheritdoc}

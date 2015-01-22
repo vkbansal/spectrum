@@ -15,18 +15,12 @@ class Less extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'less';
-    }
+    protected static $name = 'less';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['css'];
-    }
+    protected static $requires = ['css'];
 
     /**
      * {@inheritdoc}

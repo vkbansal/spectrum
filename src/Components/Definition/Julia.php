@@ -15,10 +15,7 @@ class Julia extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'julia';
-    }
+    protected static $name = 'julia';
 
     /**
      * {@inheritdoc}

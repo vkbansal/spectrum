@@ -26,18 +26,12 @@ class Php extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'php';
-    }
+    protected static $name = 'php';
 
     /**
      * {@inheritdoc}
      */
-    public function requires()
-    {
-        return ['clike', 'markup'];
-    }
+    protected static $requires = ['clike', 'markup'];
 
     /**
      * {@inheritdoc}

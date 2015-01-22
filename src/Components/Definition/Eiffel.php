@@ -15,10 +15,7 @@ class Eiffel extends AbstractDefinition
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
-        return 'eiffel';
-    }
+    protected static $name = 'eiffel';
 
     /**
      * {@inheritdoc}

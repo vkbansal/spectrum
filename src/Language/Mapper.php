@@ -38,20 +38,18 @@ class Mapper {
         $defaults = [];
 
         foreach ($definitions as $class) {
-            $def = new $class();
 
-            $name = $def->getName();
+            $name = $class::getName();
             $map[$name] = $class;
 
-            if ($def->aliases()) {
-                $aliases = $def->aliases();
-                $aliases = is_array($aliases) ? $aliases : [$aliases];
+            if ($class::getAliases()) {
+                $aliases = $class::getAliases();
                 foreach ($aliases as $alias) {
                     $aliasesMap[$alias] = $name;
                 }
             }
 
-            if ($def->isDefault()) {
+            if ($class::isDefault()) {
                 $defaults[] = $name;
             }
         }
