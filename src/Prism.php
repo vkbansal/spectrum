@@ -38,18 +38,7 @@ class Prism implements HookInterface, DefinitionInterface
      */
     public function __construct($path = null)
     {
-        $file = is_null($path) ? __DIR__."/.lang.map.json" : $path;
-
-        if (!file_exists($file)) {
-            $mapping = $this->saveMap($file);
-        } else {
-            $mapping = $this->loadMap($file);
-        }
-
-        $this->map = $mapping['map'];
-        $this->aliases = $mapping['aliases'];
-        $this->defaults = $mapping['defaults'];
-
+        list($this->map, $this->aliases, $this->defaults) = Language\Mapper::getMap();
         $this->loadDefaultDefinitions();
     }
 
@@ -180,18 +169,5 @@ class Prism implements HookInterface, DefinitionInterface
     public function getDocument()
     {
         return $this->document;
-    }
-
-    protected function saveMap($path)
-    {
-        $mapper = new Language\Mapper();
-        $map = $mapper->getMap();
-        $mapper->saveMap($path, $map);
-        return $map;
-    }
-
-    protected function loadMap($path)
-    {
-       return json_decode(file_get_contents($path), true);
     }
 }

@@ -3,16 +3,9 @@ use VKBansal\Prism\Language\Mapper;
 
 class MapperTest extends PHPUnit_Framework_TestCase {
 
-    protected $mapper;
-
-    public function setUp()
-    {
-        $this->mapper = new Mapper();
-    }
-
     public function testGetDefinitionClasses()
     {
-        $classes = $this->mapper->getDefinitionClasses();
+        $classes = Mapper::getDefinitionClasses();
 
         $this->assertTrue(is_array($classes));
         foreach ($classes as $key => $value) {
@@ -22,11 +15,7 @@ class MapperTest extends PHPUnit_Framework_TestCase {
 
     public function testGetMap()
     {
-        $map = $this->mapper->getMap();
-
+        $map = Mapper::getMap();
         $this->assertTrue(is_array($map));
-        $this->assertTrue(is_array($map['map']));
-        $this->assertTrue(is_array($map['aliases']));
-        $this->assertTrue(is_array($map['defaults']));
     }    
 }
