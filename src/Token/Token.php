@@ -133,21 +133,16 @@ class Token
      */
     protected function processContentAsArray(Prism $prism)
     {
-        $temp = [];
+        $contents= array_filter($this->content);
 
-        foreach ($this->content as $content) {
-            if (!$content) {
-                continue;
-            }
-
+        return array_map(function($content) use ($prism) {
             if ($content instanceof Token) {
-                $temp[] = $content->toNode($prism);
+                return $content->toNode($prism);
             } elseif (is_string($content)) {
-                $temp[] = $prism->getDocument()->createTextNode($content);
+                return $prism->getDocument()->createTextNode($content);
             } elseif ($content instanceof \DOMText) {
-                $temp[] = $content;
+                return $content;
             }
-        }
-        return $temp;
+        }, $contents);
     }
 }

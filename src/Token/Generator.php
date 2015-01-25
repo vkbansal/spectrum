@@ -72,16 +72,12 @@ class Generator
      */
     public function toNodes(Prism $prism)
     {
-        $temp = [];
-
-        foreach ($this->tokens as $token) {
+        return array_map(function($token) use ($prism){
             if ($token instanceof Token) {
-                $temp[] = $token->toNode($prism);
-            } else {
-                $temp[] = $prism->getDocument()->createTextNode($token);
+                return $token->toNode($prism);
             }
-        }
-        return $temp;
+            return $prism->getDocument()->createTextNode($token);
+        },$this->tokens);
     }
 
     /**
