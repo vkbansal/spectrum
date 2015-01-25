@@ -185,4 +185,17 @@ class Util
     {
         return preg_match("/pre/i", $element->nodeName) === 1;
     }
+
+    /**
+     * Checks if given array has the key.
+     * If found returns the value else the set default value
+     * @param  array   $arr
+     * @param  string  $key
+     * @param  mixed   $default
+     * @return mixed
+     */
+    public static function hasValue(array $arr, $key, $default = null)
+    {
+        return isset($arr[$key]) ? $arr[$key] : $default;
+    }
 }

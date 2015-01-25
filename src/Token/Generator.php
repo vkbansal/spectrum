@@ -141,12 +141,10 @@ class Generator
         if (is_string($pattern)) {
             return [$pattern, false, false, null];
         }
-        $alias = isset($pattern['alias']) ? $pattern['alias'] : null;
 
-        $inside = isset($pattern['inside']) ? $pattern['inside'] : false;
-
-        $lookbehind = isset($pattern['lookbehind']) ? !!$pattern['lookbehind'] : false;
-
+        $alias = Util::hasValue($pattern, 'alias');
+        $inside = Util::hasValue($pattern, 'inside', false);
+        $lookbehind = !!Util::hasValue($pattern, 'lookbehind', false);
         $pattern = $pattern['pattern'];
 
         return [$pattern, $lookbehind, $inside, $alias];
