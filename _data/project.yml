@@ -1,3 +1,4 @@
 title: "Prism.php"
 tagline: "PHP Code Highlighter"
 description: ""
+base: "/prism.php"
