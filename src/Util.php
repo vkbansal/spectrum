@@ -78,7 +78,7 @@ class Util
 
     /**
      * Gets Inner HTML
-     * @param  DOMElement $node
+     * @param  \DOMElement $node
      * @return string
      */
     public static function getInnerHTML(\DOMElement $node)
@@ -95,7 +95,7 @@ class Util
 
     /**
      * Set Inner HTML
-     * @param DOMElement $element
+     * @param \DOMElement $element
      * @param array      $nodes
      */
     public static function setInnerHtml(\DOMElement $element, array $nodes)
@@ -111,7 +111,7 @@ class Util
 
     /**
      * Add class to an element
-     * @param DOMElement $element
+     * @param \DOMElement $element
      * @param string     $newClassNames
      */
     public static function addClass(\DOMElement $element, $newClassNames)
@@ -148,8 +148,21 @@ class Util
     }
 
     /**
+     * Set Attributes on an element
+     * @param \DOMElement $element
+     * @param array       $attrs
+     */
+    public static function setAttr(\DOMElement $element, array $attrs)
+    {
+        foreach ($attrs as $key => $value) {
+            $element->setAttribute($key, $value);
+        }
+        return $element;
+    }
+
+    /**
      * Detect language from class name in form of "language-{name}"
-     * @param  DOMElement $element
+     * @param  \DOMElement $element
      * @return string
      */
     public static function detectLanguage(\DOMElement $element)
@@ -165,7 +178,7 @@ class Util
 
     /**
      * Get parent which has class name in form of "language-{name}"
-     * @param  DOMElement $element
+     * @param  \DOMElement $element
      * @return \DOMNode
      */
     public static function &getParent(\DOMElement $element)

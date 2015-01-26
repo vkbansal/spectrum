@@ -6,9 +6,7 @@ class RepositoryTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-        $this->markTestSkipped();
-        $this->repo = new \VKBansal\Prism\Prism();
-        $this->repo->loadDefinition('markup');
+        $this->repo = $this->getMockForTrait('\VKBansal\Prism\Language\RepositoryTrait');
     }
 
     public function testLoadDefinition()

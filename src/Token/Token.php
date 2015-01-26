@@ -2,6 +2,7 @@
 namespace VKBansal\Prism\Token;
 
 use VKBansal\Prism\Prism;
+use VKBansal\Prism\Util;
 
 /**
  * Token Class
@@ -95,15 +96,9 @@ class Token
 
         $prism->runHook('wrap', $env);
 
-        $span->setAttribute('class', implode(" ", $this->classes));
-
-        foreach ($this->attributes as $key => $value) {
-            $span->setAttribute($key, $value);
-        }
-
-        foreach ($this->content as $content) {
-            $span->appendChild($content);
-        }
+        Util::addClass($span, implode(" ", $this->classes));
+        Util::setAttr($span , $this->attributes);
+        Util::setInnerHTML($span, $this->content);
 
         return $span;
     }
