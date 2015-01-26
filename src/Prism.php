@@ -6,7 +6,7 @@ use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
 use VKBansal\Prism\Hook\HookInterface;
 use VKBansal\Prism\Language\DefinitionInterface;
-use VKBansal\Prism\Token\Generator;
+use VKBansal\Prism\Token\TokenFactory;
 
 /**
  * Core Prism class for syntax highlighting
@@ -160,9 +160,9 @@ class Prism implements HookInterface, DefinitionInterface
      */
     public function highlight($code, $grammar, $language)
     {
-        $generator = new Generator($code, $grammar, $language);
-        $generator->generate();
-        $nodes = $generator->toNodes($this);
+        $factory = new TokenFactory($code, $grammar, $language);
+        $factory->makeTokens();
+        $nodes = $factory->toNodes($this);
         return is_array($nodes) ? $nodes : [$nodes];
     }
 

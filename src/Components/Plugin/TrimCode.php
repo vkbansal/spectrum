@@ -39,20 +39,22 @@ class TrimCode extends AbstractPlugin
             $code = preg_replace("/^[\\r\\n]+/", "", $code);
             $code = preg_replace("/\s+$/", "", $code);
 
-            if (!preg_match("/^\S/m", $code)) {
-                $min  = 1e3;
-                preg_match_all("/^[\\t\s]+/m", $code, $matches);
-                foreach ($matches[0] as $match) {
-                    //dump($match);
-                    if (strlen($match) < $min) {
-                        $min = strlen($match);
-                        $pattern = $match;
-                    }
+            if (preg_match("/^\S/m", $code)) {
+                return false;
+            }
+            
+            $min  = 1e3;
+            preg_match_all("/^[\\t\s]+/m", $code, $matches);
+            
+            foreach ($matches[0] as $match) {
+                if (strlen($match) < $min) {
+                    $min = strlen($match);
+                    $pattern = $match;
                 }
+            }
 
-                if ($min != 1e3) {
-                    $code = preg_replace("/^{$pattern}/m", "", $code);
-                }
+            if ($min != 1e3) {
+                $code = preg_replace("/^{$pattern}/m", "", $code);
             }
             $env['code'] = $code;
         });

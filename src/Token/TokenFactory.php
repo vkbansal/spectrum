@@ -5,13 +5,13 @@ use VKBansal\Prism\Prism;
 use VKBansal\Prism\Util;
 
 /**
- * Token Generator Class
- * @package VKBansal\Prism\Token\Generator
+ * Token Factory Class
+ * @package VKBansal\Prism\Token\TokenFactory
  * @version 0.1.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-class Generator
+class TokenFactory
 {
     /**
      * @var string|array<Token|string>
@@ -50,19 +50,22 @@ class Generator
      * Generates Tokens
      * @return array<Token|string>
      */
-    public function generate()
+    public function makeTokens()
     {
         $strarr = [$this->text];
 
         foreach ($this->grammar as $token => $regex) {
-
-            $patterns = is_string($regex) || Util::isAssoc($regex) ? [$regex] : $regex;
-
-            foreach ($patterns as $pattern) {
-                $this->tokenize($strarr, $pattern, $token);
-            }
+            $this->traversePatterns($strarr, $token, $regex);
         }
         return $this->tokens = $strarr;
+    }
+
+    public function traversePatterns(&$strarr, $token, $regex)
+    {
+        $patterns = is_string($regex) || Util::isAssoc($regex) ? [$regex] : $regex;
+        foreach ($patterns as $pattern) {
+            $this->tokenize($strarr, $pattern, $token);
+        }
     }
 
     /**
@@ -107,22 +110,26 @@ class Generator
      */
     protected function tokenize(&$strarr, $pattern, $token)
     {
-        $resolvedPattern = $this->resolvePattern($pattern);
-
         $count = count($strarr);
 
         for ($i = 0; $i < $count; $i++) {
             $str = $strarr[$i];
 
             if (count($strarr) > strlen($this->text)) {
-                throw new GeneratorException("Something went teribbly wrong with generator, aborting!");
+                throw new GeneratorException("Something went terribly wrong with generator, aborting!");
             }
 
             if ($str instanceof Token) {
                 continue;
             }
 
-            $args = $this->matchPatterns($token, $resolvedPattern, $str);
+            $matches = $this->matchPatterns($pattern, $str);
+
+            if (!$matches) {
+                continue;
+            }
+
+            $args = $this->parseMatches($matches, $pattern, $token);
 
             if ($args) {
                 array_splice($strarr, $i, 1, $args);
@@ -153,14 +160,13 @@ class Generator
 
     /**
      * Match Patterns
-     * @param  string $token
-     * @param  array  $resolvedPattern
-     * @param  string $str
-     * @return array<Token|string>
+     * @param  array|string  $patterns
+     * @param  string        $str
+     * @return array|boolean
      */
-    protected function matchPatterns($token, $resolvedPattern, $str)
+    protected function matchPatterns($patterns, $str)
     {
-        list($pattern, $lookbehind, $inside, $alias) = $resolvedPattern;
+        list($pattern, $lookbehind) =  $this->resolvePattern($patterns);
 
         $lookbehindLength = 0;
 
@@ -177,10 +183,25 @@ class Generator
         $matches = array_slice($matches, 0, 1);
         $from = $matches[0][1] + $lookbehindLength;
         $match = substr($matches[0][0], $lookbehindLength);
-        $to = $from + strlen($match);
+        $upto = $from + strlen($match);
 
         $before = substr($str, 0, $from);
-        $after = substr($str, $to);
+        $after = substr($str, $upto);
+
+        return [$match, $before, $after];
+    }
+
+    /**
+     * Parse Matches
+     * @param  array        $matches
+     * @param  array|string $patterns
+     * @param  string       $token
+     * @return array
+     */
+    protected function parseMatches($matches, $patterns, $token)
+    {
+        list($match, $before, $after) = $matches;
+        list($inside, $alias) =  array_slice($this->resolvePattern($patterns), 2);
 
         $args = [];
 
@@ -189,8 +210,8 @@ class Generator
         }
 
         if ($inside) {
-            $generator = new Generator($match, $inside, $this->language);
-            $content = $generator->generate();
+            $factory = new TokenFactory($match, $inside, $this->language);
+            $content = $factory->makeTokens();
         } else {
             $content = $match;
         }

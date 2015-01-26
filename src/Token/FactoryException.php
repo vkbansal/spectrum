@@ -10,7 +10,7 @@ use LogicException;
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-class GeneratorException extends LogicException
+class FactoryException extends LogicException
 {
 
 }

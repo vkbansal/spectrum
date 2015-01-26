@@ -38,6 +38,7 @@ class Mapper {
                 $defaults[] = $name;
             }
         }
+
         return [$map, $aliasesMap, $defaults];
     }
 }

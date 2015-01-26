@@ -101,4 +101,15 @@ class UtilTest extends PHPUnit_Framework_TestCase {
         $this->assertTrue(Util::isPre($elem));
     }
 
+    public function testHasValue()
+    {
+        $dummy = [
+            'key' => 'value'
+        ];
+        $default = microtime(true);
+
+        $this->assertEquals($dummy['key'], Util::hasValue($dummy, 'key'));
+        $this->assertEquals($default, Util::hasValue($dummy, 'otherkey', $default));
+    }
+
 }

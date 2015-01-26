@@ -1,7 +1,7 @@
 <?php
-use VKBansal\Prism\Token\Generator;
+use VKBansal\Prism\Token\TokenFactory;
 
-class GeneratorTest extends PHPUnit_Framework_TestCase
+class TokenFactoryTest extends PHPUnit_Framework_TestCase
 {
     protected $generator;
 
@@ -16,11 +16,11 @@ class GeneratorTest extends PHPUnit_Framework_TestCase
                 ]
             ]
         ];
-        $this->generator = new Generator('dummy text', $grammar, 'lang');
+        $this->generator = new TokenFactory('dummy text', $grammar, 'lang');
     }
 
     public function testGenerate(){
-        $nodes = $this->generator->generate();
+        $nodes = $this->generator->makeTokens();
         $token = $nodes[0];
         $this->assertInstanceOf('VKBansal\Prism\Token\Token', $token);
         $this->assertInstanceOf('VKBansal\Prism\Token\Token', $token->content[1]);
@@ -35,7 +35,7 @@ class GeneratorTest extends PHPUnit_Framework_TestCase
 
         $prism->method('getDocument')->will($this->returnValue($document));
 
-        $this->generator->generate();
+        $this->generator->makeTokens();
         $node = $this->generator->toNodes($prism);
         $html = $node[0]->ownerDocument->saveHTML($node[0]);
 
