@@ -116,7 +116,7 @@ class TokenFactory
             $str = $strarr[$i];
 
             if (count($strarr) > strlen($this->text)) {
-                throw new GeneratorException("Something went terribly wrong with generator, aborting!");
+                throw new FactoryException("Something went terribly wrong with generator, aborting!");
             }
 
             if ($str instanceof Token) {
