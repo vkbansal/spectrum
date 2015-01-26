@@ -1,0 +1,16 @@
+Getting Started:
+    Introduction: '/'
+    Basic Usage: '/basic-usage/'
+    Features: "/features/"
+
+Plugins:
+    Show Language: "/plugins/show-language/"
+    Line Numbers: "/plugins/line-numbers/"
+    Show Invisibles: "/plugins/show-invisibles/"
+    Trim Code: "/plugins/trim-code/"
+    Highlight Keyword : "/plugins/highlight-keyword/"
+
+Misc:
+    Code Samples: '/samples/'
+    Changelog: '/changelog/'
+

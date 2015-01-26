@@ -68,8 +68,8 @@
 // @import "../bower_components/jasby-bootstrap/less/rowlink.less";
 // @import "../bower_components/jasby-bootstrap/less/fileinput.less";
 
-@import "../bower_components/bootswatch/paper/variables.less";
-@import "../bower_components/bootswatch/paper/bootswatch.less";
+@import "../bower_components/bootswatch/sandstone/variables.less";
+@import "../bower_components/bootswatch/sandstone/bootswatch.less";
 
 //Navmenu
 @navmenu-width: 300px;
@@ -78,8 +78,8 @@
 @navmenu-default-border:            @gray-darker;
 
 // Navmenu links
-@navmenu-default-link-color:                @navbar-inverse-link-color;
-@navmenu-default-link-hover-color:          @navbar-inverse-link-hover-color;
+@navmenu-default-link-color:                @navbar-default-link-hover-color;
+@navmenu-default-link-hover-color:          @navbar-default-link-hover-color;
 @navmenu-default-link-hover-bg:             transparent;
 @navmenu-default-link-active-color:         #fff;
 @navmenu-default-link-active-bg:            darken(@navmenu-default-bg, 6.5%);
@@ -91,19 +91,21 @@
 @navmenu-default-brand-hover-color:         #fff;
 @navmenu-default-brand-hover-bg:            transparent;
 
+@link-color: @brand-primary;
+
 html {
     font-size: 16px;
     line-height: 1.25;
 }
 
 body {
-    padding-left: @navmenu-width;
     color: #333;
     font-size: 16px;
     line-height: 1.25;
     font-family: "Open Sans", sans-serif;
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
+    background: @brand-primary;
 
     @media (min-width: @screen-md) {
         line-height: 1.375;
@@ -116,13 +118,17 @@ body {
     }
 }
 
+.body-wrapper {
+    overflow: hidden;
+}
+
+
 h2 {
     padding-bottom: 21.5px;
     border-bottom: 1px solid #eeeeee;
 }
 
 li.theme-switcher{
-
     padding: 0 15px;
 
     span {
@@ -131,22 +137,93 @@ li.theme-switcher{
         margin: 10px 0 5px;
     }
 }
-.dropdown-menu.navmenu-nav > li > a {
-    padding: 5px 15px;
-    font-size: 15px;
+
+.navbar-primary {
+  background-color: darken(@brand-primary,5%);
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+
+  .navbar-brand {
+    color: @brand-warning;
+    padding: 10px 15px;
+    font-size: 30px;
+    line-height: 40px;
+    &:hover,
+    &:focus {
+      color: @brand-warning;
+      background-color: @navbar-default-brand-hover-bg;
+    }
+    small {
+        font-size: 0.45em;
+        color: @brand-success;
+    }
+  }
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: @navbar-default-link-color;
+    &:hover {
+      color: @navbar-default-link-hover-color;
+    }
+  }
+
+  .btn-link {
+    color: @navbar-default-link-color;
+    &:hover,
+    &:focus {
+      color: @navbar-default-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-disabled-color;
+      }
+    }
+  }
+}
+
+.sidebar {
+    @media (min-width:@screen-sm){
+        float: left;
+        height: 100%;
+    }
+}
+.main-body{
+    overflow: hidden;
+    padding: 0 15px;
+    background: #fff;
 }
 
 .navmenu-default,
 .navbar-default .navbar-offcanvas {
 
+    border: none;
+    border-radius: 0;
+
+    .navmenu-section {
+        font-size: 22px;
+        padding:0 15px;
+        border: none;
+        color: @brand-warning;
+    }
+
     .navmenu-nav {
         // Remove background color from open dropdown
-        > .open > a {
-            &,
-            &:hover,
-            &:focus {
-                background-color: darken(@navmenu-default-bg, 2%);
-                color: @navmenu-default-link-active-color;
+        font-size: 15px;
+        line-height: auto;
+        text-transform: none;
+        font-weight: normal;
+        
+        a {
+            transition: all 0.2s ease;
+            padding: 5px 15px; 
+            &:hover {
+                transform: translateX(10px);
             }
         }
 
@@ -169,6 +246,10 @@ li.theme-switcher{
 
 pre {
     border-radius: @border-radius-base !important;
+
+    code {
+        font-size: 14px;
+    }
 }
 
 pre[class*='language-'] {

@@ -1,4 +1,4 @@
-#Plugin: Show Language
+#Plugin: Highlight Keyword
 This plugin adds 'keyword-*' class to allow a fine-grained control over keywords highlighting. For example, it will add a class `keyword-if` to `if` keyword.
 ##Usage
 ###PHP

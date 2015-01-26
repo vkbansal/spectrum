@@ -1,40 +1,27 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Prism.php</title><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700%20%7C%20Roboto+Slab" rel="stylesheet" type="text/css"><link rel="stylesheet" id="theme-basic" href="/prism.php/assets/css/prism-basic.css" disabled><link rel="stylesheet" id="theme-coy" href="/prism.php/assets/css/prism-coy.css" disabled><link rel="stylesheet" id="theme-dark" href="/prism.php/assets/css/prism-dark.css" disabled><link rel="stylesheet" id="theme-funky" href="/prism.php/assets/css/prism-funky.css" disabled><link rel="stylesheet" id="theme-okaidia" href="/prism.php/assets/css/prism-okaidia.css"><link rel="stylesheet" id="theme-twilight" href="/prism.php/assets/css/prism-twilight.css" disabled><link rel="stylesheet" id="theme-tomorrow" href="/prism.php/assets/css/prism-tomorrow.css" disabled><link rel="stylesheet" href="/prism.php/assets/css/styles.css"></head><body>
-    <nav class="navmenu navmenu-default navmenu-fixed-left" role="navigation"><a class="navmenu-brand" href="#">Prism.php</a>
-
-        <ul class="nav navmenu-nav"><li>
-                <a href="/prism.php/">Home</a>
-            </li>
-            <li>
-                <a href="/prism.php/samples/">Code Samples</a>
-            </li>
-            <li class="dropdown                                 open
-                                            ">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Plugins <i class="caret"></i></a>
-                <ul class="dropdown-menu navmenu-nav" role="menu"><li>
-                        <a href="/prism.php/plugins/show-language/">Show Language</a>
-                    </li>
-                    <li>
-                        <a href="/prism.php/plugins/line-numbers/">Line Numbers</a>
-                    </li>
-                    <li>
-                        <a href="/prism.php/plugins/show-invisibles/">Show Invisibles</a>
-                    </li>
-                    <li>
-                        <a href="/prism.php/plugins/trim-code/">Trim Code</a>
-                    </li>
-                    <li class="active">
-                        <a href="/prism.php/plugins/highlight-keyword/">Highlight Keyword</a>
-                    </li>
-                </ul></li>
-            <li>
-                <a href="/prism.php/changelog.html">Changelog</a>
-            </li>
-            <li class="theme-switcher">
-                <span>Theme Switcher</span>
-                <select name="theme" id="theme-switcher" class="form-control"><option value="basic">Basic</option><option value="coy">Coy</option><option value="dark">Dark</option><option value="funky">Funky</option><option value="okaidia">Okaidia</option><option value="twilight">Twilight</option><option value="tomorrow">Tomorrow</option></select></li>
-        </ul></nav><div class="container-fluid">
-           <h1>Plugin: Show Language</h1>
+<html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Prism.php</title><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700%20%7C%20Roboto+Slab" rel="stylesheet" type="text/css"><link rel="stylesheet" id="theme-basic" href="/assets/css/prism-basic.css" disabled><link rel="stylesheet" id="theme-coy" href="/assets/css/prism-coy.css" disabled><link rel="stylesheet" id="theme-dark" href="/assets/css/prism-dark.css" disabled><link rel="stylesheet" id="theme-funky" href="/assets/css/prism-funky.css" disabled><link rel="stylesheet" id="theme-okaidia" href="/assets/css/prism-okaidia.css"><link rel="stylesheet" id="theme-twilight" href="/assets/css/prism-twilight.css" disabled><link rel="stylesheet" id="theme-tomorrow" href="/assets/css/prism-tomorrow.css" disabled><link rel="stylesheet" href="/assets/css/styles.css"></head><body>
+    <nav class="navbar navbar-primary" role="navigation"><!-- Brand and toggle get grouped for better mobile display --><div class="navbar-header">
+            <a class="navbar-brand" href="/">Prism.php <small>PHP Code Highlighter</small></a>
+        </div>
+    </nav><div class="body-wrapper">
+        <nav class="navmenu navmenu-default sidebar" role="navigation"><h2 class="navmenu-section">Getting Started</h2>
+                <ul class="nav navmenu-nav"><li><a href="/">Introduction</a></li>
+                                    <li><a href="/basic-usage/">Basic Usage</a></li>
+                                    <li><a href="/features/">Features</a></li>
+                                </ul><h2 class="navmenu-section">Plugins</h2>
+                <ul class="nav navmenu-nav"><li><a href="/plugins/show-language/">Show Language</a></li>
+                                    <li><a href="/plugins/line-numbers/">Line Numbers</a></li>
+                                    <li><a href="/plugins/show-invisibles/">Show Invisibles</a></li>
+                                    <li><a href="/plugins/trim-code/">Trim Code</a></li>
+                                    <li><a href="/plugins/highlight-keyword/">Highlight Keyword</a></li>
+                                </ul><h2 class="navmenu-section">Misc</h2>
+                <ul class="nav navmenu-nav"><li><a href="/samples/">Code Samples</a></li>
+                                    <li><a href="/changelog/">Changelog</a></li>
+                                </ul><h2 class="navmenu-section">Theme Switcher</h2>
+            <ul class="nav navmenu-nav"><li class="theme-switcher">
+                    <select name="theme" id="theme-switcher" class="form-control"><option value="basic">Basic</option><option value="coy">Coy</option><option value="dark">Dark</option><option value="funky">Funky</option><option value="okaidia">Okaidia</option><option value="twilight">Twilight</option><option value="tomorrow">Tomorrow</option></select></li>
+            </ul></nav><div class="main-body">
+               <h1>Plugin: Highlight Keyword</h1>
 <p>This plugin adds 'keyword-*' class to allow a fine-grained control over keywords highlighting. For example, it will add a class <code>keyword-if</code> to <code>if</code> keyword.</p>
 <h2>Usage</h2>
 <h3>PHP</h3>
@@ -44,6 +31,7 @@
 
 <span class="token variable">$prism</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Prism</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token variable">$prism</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addPlugin<span class="token punctuation">(</span></span><span class="token keyword">new</span> <span class="token class-name">HighlightKeyword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+        </div>
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script type="text/javascript">
         $(document).ready(function(){
