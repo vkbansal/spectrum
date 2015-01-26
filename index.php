@@ -6,7 +6,7 @@
     <body>
 <?php
 
-require '../prism.php/vendor/autoload.php';
+require '../prism.php/autoload.php';
 require 'vendor/autoload.php';
 
 use VKBansal\Prism\Prism;
