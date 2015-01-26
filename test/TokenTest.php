@@ -31,7 +31,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
     public function testDomTextToken()
     {
         $text = $this->doc->createTextNode('some string');
-        $token = new Token('type', $text, 'testlang');
+        $token = new Token('type', [$text], 'testlang');
         $node = $token->toNode($this->prism);
 
         $this->doc->appendChild($node);
