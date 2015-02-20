@@ -152,8 +152,7 @@
      <script type="text/javascript">
     $(document).ready(function(){
 
-        var treePath = 'https://api.github.com/repos/vkbansal/prism.php/git/trees/gh-pages',
-            rawPath = "65db084ae4bf0f79b5e9c9f3de2ca91ca4bc2c8a",
+        var treePath = 'https://api.github.com/repos/vkbansal/spectrum/git/trees/gh-pages',
             treePromise = $.get(treePath + "?recursive=1"),
             cache = {};
 
@@ -167,7 +166,7 @@
                             $("#lang-showcase").html(cache[id]);
                         } else {
                             $.ajax({
-                                url: file.url, 
+                                url: file.url,
                                 headers:{
                                     Accept: "application/vnd.github.VERSION.raw",
                                     Authorization: "Basic NjVkYjA4NGFlNGJmMGY3OWI1ZTljOWYzZGUyY2E5MWNhNGJjMmM4YTo="
@@ -192,7 +191,7 @@
                 }
             });
         }
-        
+
         $("#lang-select").on('change', function(){
             var id = $(this).val();
             switchSample(id, 'select');
