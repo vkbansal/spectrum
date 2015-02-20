@@ -3,44 +3,44 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Prism.php</title>
+    <title>Spectrum</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700 | Roboto+Slab' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" id="theme-basic" href="/prism.php/assets/css/prism-basic.css" disabled>
-    <link rel="stylesheet" id="theme-coy" href="/prism.php/assets/css/prism-coy.css" disabled>
-    <link rel="stylesheet" id="theme-dark" href="/prism.php/assets/css/prism-dark.css" disabled>
-    <link rel="stylesheet" id="theme-funky" href="/prism.php/assets/css/prism-funky.css" disabled>
-    <link rel="stylesheet" id="theme-okaidia" href="/prism.php/assets/css/prism-okaidia.css">
-    <link rel="stylesheet" id="theme-twilight" href="/prism.php/assets/css/prism-twilight.css" disabled>
-    <link rel="stylesheet" id="theme-tomorrow" href="/prism.php/assets/css/prism-tomorrow.css" disabled>
-    <link rel="stylesheet" href="/prism.php/assets/css/styles.css">
+    <link rel="stylesheet" id="theme-basic" href="/spectrum/assets/css/prism-basic.css" disabled>
+    <link rel="stylesheet" id="theme-coy" href="/spectrum/assets/css/prism-coy.css" disabled>
+    <link rel="stylesheet" id="theme-dark" href="/spectrum/assets/css/prism-dark.css" disabled>
+    <link rel="stylesheet" id="theme-funky" href="/spectrum/assets/css/prism-funky.css" disabled>
+    <link rel="stylesheet" id="theme-okaidia" href="/spectrum/assets/css/prism-okaidia.css">
+    <link rel="stylesheet" id="theme-twilight" href="/spectrum/assets/css/prism-twilight.css" disabled>
+    <link rel="stylesheet" id="theme-tomorrow" href="/spectrum/assets/css/prism-tomorrow.css" disabled>
+    <link rel="stylesheet" href="/spectrum/assets/css/styles.css">
 </head>
 <body>
     <nav class="navbar navbar-primary" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Prism.php <small>PHP Code Highlighter</small></a>
+            <a class="navbar-brand" href="/">Spectrum <small>PHP Code Highlighter</small></a>
         </div>
     </nav>
     <div class="body-wrapper">
         <nav class="navmenu navmenu-default sidebar" role="navigation">
                             <h2 class="navmenu-section">Getting Started</h2>
                 <ul class="nav navmenu-nav">
-                                    <li><a href="/prism.php/">Introduction</a></li>
-                                    <li><a href="/prism.php/basic-usage/">Basic Usage</a></li>
-                                    <li><a href="/prism.php/features/">Features</a></li>
+                                    <li><a href="/spectrum/">Introduction</a></li>
+                                    <li><a href="/spectrum/basic-usage/">Basic Usage</a></li>
+                                    <li><a href="/spectrum/features/">Features</a></li>
                                 </ul>
                             <h2 class="navmenu-section">Plugins</h2>
                 <ul class="nav navmenu-nav">
-                                    <li><a href="/prism.php/plugins/show-language/">Show Language</a></li>
-                                    <li><a href="/prism.php/plugins/line-numbers/">Line Numbers</a></li>
-                                    <li><a href="/prism.php/plugins/show-invisibles/">Show Invisibles</a></li>
-                                    <li><a href="/prism.php/plugins/trim-code/">Trim Code</a></li>
-                                    <li><a href="/prism.php/plugins/highlight-keyword/">Highlight Keyword</a></li>
+                                    <li><a href="/spectrum/plugins/show-language/">Show Language</a></li>
+                                    <li><a href="/spectrum/plugins/line-numbers/">Line Numbers</a></li>
+                                    <li><a href="/spectrum/plugins/show-invisibles/">Show Invisibles</a></li>
+                                    <li><a href="/spectrum/plugins/trim-code/">Trim Code</a></li>
+                                    <li><a href="/spectrum/plugins/highlight-keyword/">Highlight Keyword</a></li>
                                 </ul>
                             <h2 class="navmenu-section">Misc</h2>
                 <ul class="nav navmenu-nav">
-                                    <li><a href="/prism.php/samples/">Code Samples</a></li>
-                                    <li><a href="/prism.php/changelog/">Changelog</a></li>
+                                    <li><a href="/spectrum/samples/">Code Samples</a></li>
+                                    <li><a href="/spectrum/changelog/">Changelog</a></li>
                                 </ul>
                         <h2 class="navmenu-section">Theme Switcher</h2>
             <ul class="nav navmenu-nav">
@@ -59,19 +59,20 @@
         </nav>
         <div class="main-body">
                <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><body><h1>Prism.php (WIP)</h1>
-<p><a href="https://packagist.org/packages/vkbansal/prism.php"><img alt="Latest Version" src="https://img.shields.io/packagist/v/vkbansal/prism.svg?style=flat-square"></a>
-<a href="LICENSE"><img alt="Software License" src="http://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square"></a>
-<a href="https://travis-ci.org/vkbansal/prism.php"><img alt="Build Status" src="https://img.shields.io/travis/vkbansal/prism.php.svg?style=flat-square"></a>
-<a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img alt="Scrutinizer Code Quality" src="https://img.shields.io/scrutinizer/g/vkbansal/prism.php.svg?style=flat-square"></a>
-<a href="https://scrutinizer-ci.com/g/vkbansal/prism.php/?branch=master"><img alt="Code Coverage" src="https://img.shields.io/scrutinizer/coverage/g/vkbansal/prism.php.svg?style=flat-square"></a>
-<a href="https://codeclimate.com/github/vkbansal/prism.php"><img alt="Code Climate" src="https://img.shields.io/codeclimate/github/vkbansal/prism.php.svg?style=flat-square"></a></p>
-<p>This is a php port of <a href="https://github.com/LeaVerou/prism">prism.js</a> syntax highlighter originally written by <a href="http://github.com/LeaVerou">@LeaVerou</a>.</p>
+<html><body><h1>Spectrum (WIP)</h1>
+<p><a href="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b"><img src="https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b/big.png" alt="SensioLabsInsight"></a></p>
+<p><a href="https://packagist.org/packages/vkbansal/spectrum"><img src="https://img.shields.io/packagist/v/vkbansal/spectrum.svg?style=flat-square" alt="Latest Version"></a>
+<a href="LICENSE"><img src="http://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square" alt="Software License"></a>
+<a href="https://travis-ci.org/vkbansal/spectrum"><img src="https://img.shields.io/travis/vkbansal/spectrum.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://scrutinizer-ci.com/g/vkbansal/spectrum/?branch=master"><img src="https://img.shields.io/scrutinizer/g/vkbansal/spectrum.svg?style=flat-square" alt="Scrutinizer Code Quality"></a>
+<a href="https://scrutinizer-ci.com/g/vkbansal/spectrum/?branch=master"><img src="https://img.shields.io/scrutinizer/coverage/g/vkbansal/spectrum.svg?style=flat-square" alt="Code Coverage"></a>
+<a href="https://codeclimate.com/github/vkbansal/spectrum"><img src="https://img.shields.io/codeclimate/github/vkbansal/spectrum.svg?style=flat-square" alt="Code Climate"></a></p>
+<p>A syntax highlighter written in php. This project is inspired from <a href="https://github.com/LeaVerou/prism">prism.js</a> by <a href="http://github.com/LeaVerou">@LeaVerou</a>.</p>
 <h2>Requirements</h2>
 <ul><li>PHP &gt;= 5.4</li>
 <li>libxml &gt;= 2.6.0</li>
 </ul><h2>Installation</h2>
-<pre class="language-bash"><code class="language-bash">composer require vkbansal<span class="token operator">/</span>prism</code></pre></body></html>
+<pre class="language-bash"><code class="language-bash">composer require vkbansal<span class="token operator">/</span>spectrum</code></pre></body></html>
 
         </div>
     </div>

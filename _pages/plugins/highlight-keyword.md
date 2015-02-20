@@ -4,9 +4,9 @@ This plugin adds 'keyword-*' class to allow a fine-grained control over keywords
 ###PHP
 ```php
 <?php
-use VKBansal\Prism\Plugin\HighlightKeyword;
-use VKBansal\Prism\Prism;
+use VKBansal\Spectrum\Plugin\HighlightKeyword;
+use VKBansal\Spectrum\Spectrum;
 
-$prism = new Prism();
-$prism->addPlugin(new HighlightKeyword());
+$highlighter = new Spectrum();
+$highlighter->addPlugin(new HighlightKeyword());
 ```

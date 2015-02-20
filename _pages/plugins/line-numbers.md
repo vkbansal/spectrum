@@ -9,11 +9,11 @@ Optionally, you can specify the `data-start` (Number) attribute on the `pre` ele
 ###PHP
 ```php
 <?php
-use VKBansal\Prism\Plugin\LineNumbers;
-use VKBansal\Prism\Prism;
+use VKBansal\Spectrum\Plugin\LineNumbers;
+use VKBansal\Spectrum\Spectrum;
 
-$prism = new Prism();
-$prism->addPlugin(new LineNumbers());
+$highlighter = new Spectrum();
+$highlighter->addPlugin(new LineNumbers());
 ```
 
 ###CSS

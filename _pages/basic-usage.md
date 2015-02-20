@@ -1,14 +1,14 @@
 #Basic usage
 ```php
 <?php
-use VKBansal\Prism\Prism;
-$prism = new Prism();
+use VKBansal\Spectrum\Spectrum;
+$highlighter = new Spectrum();
 ```
 
 ##Highlighting HTML
 For highlighting HTML, `code` blocks must have a `language-` prefixed `class` attribute. For example, if you want to highlight `HTML`, the code block must have a `language-html` class.
 
-Prism will auto-detect the language and apply highlighting if the language definition is found.
+Spectrum will auto-detect the language and apply highlighting if the language definition is found.
 
 ```php
 $html = <<<HTML
@@ -31,13 +31,13 @@ $html = <<<HTML
 </html>
 HTML;
 
-echo $prism->highlightHTML($html);
+echo $highlighter->highlightHTML($html);
 ```
 
 ##Highlighting Text
 You can also highlight text directly, but you have to specify the language manually.
 
 ```php
-echo $prism->highlightText('<html>string</html>', 'html');
+echo $highlighter->highlightText('<html>string</html>', 'html');
 ```
 

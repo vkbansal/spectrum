@@ -29,9 +29,9 @@ By default it adds works on all code blocks. In case you don't want a specific b
 ###PHP
 ```php
 <?php
-use VKBansal\Prism\Plugin\TrimCode;
-use VKBansal\Prism\Prism;
+use VKBansal\Spectrum\Plugin\TrimCode;
+use VKBansal\Spectrum\Spectrum;
 
-$prism = new Prism();
-$prism->addPlugin(new TrimCode());
+$highlighter = new Spectrum();
+$highlighter->addPlugin(new TrimCode());
 ```

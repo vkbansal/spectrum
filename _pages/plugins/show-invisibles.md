@@ -4,11 +4,11 @@ Display tabs and line endings.
 ###PHP
 ```php
 <?php
-use VKBansal\Prism\Plugin\ShowInvisibles;
-use VKBansal\Prism\Prism;
+use VKBansal\Spectrum\Plugin\ShowInvisibles;
+use VKBansal\Spectrum\Spectrum;
 
-$prism = new Prism();
-$prism->addPlugin(new ShowInvisibles());
+$highlighter = new Spectrum();
+$highlighter->addPlugin(new ShowInvisibles());
 ```
 
 ###CSS

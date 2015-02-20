@@ -1,18 +1,18 @@
 <?php
 
-require __DIR__."/../prism.php/vendor/autoload.php";
+require __DIR__."/../spectrum/vendor/autoload.php";
 require __DIR__."/vendor/autoload.php";
 
 use League\CLImate\CLImate;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Yaml\Yaml;
 use VKBansal\FrontMatter\Parser;
-use VKBansal\Prism\Components\Plugin;
-use VKBansal\Prism\Prism;
+use VKBansal\Spectrum\Components\Plugin;
+use VKBansal\Spectrum\Spectrum;
 
 $console = new CLImate();
 
-$prism = new Prism();
+$prism = new Spectrum();
 $prism->loadAllDefinitions();
 $prism->loadDefinitions(['php', 'css', 'javascript']);
 
@@ -44,7 +44,7 @@ foreach ($pages as $page) {
     $txt = $prism->highlightHTML($txt);
     $txt = $twig->render('page.twig', ['content'=> $txt, 'active' => 'introduction', 'data' => $data]);
     $console->out("<light_green>Building</light_green> <bold><light_cyan>{$base}<light_cyan></bold>");
-    
+
     if ($base == "index") {
         file_put_contents(__DIR__.'/index.html', $txt);
     } else {
@@ -107,7 +107,5 @@ foreach ($finder as $file) {
 $console->out("<light_green>Building</light_green> <bold><light_cyan>Sample Pages<light_cyan></bold>");
 $txt = $twig->render('samples.twig', ['active' => 'samples', 'data' => $data]);
 file_put_contents(__DIR__."/samples/index.html", $txt);
-
-
 
 libxml_use_internal_errors(false);

@@ -4,11 +4,11 @@ Display the highlighted language in code blocks (inline code does not show the l
 ###PHP
 ```php
 <?php
-use VKBansal\Prism\Plugin\ShowLanguage;
-use VKBansal\Prism\Prism;
+use VKBansal\Spectrum\Plugin\ShowLanguage;
+use VKBansal\Spectrum\Spectrum;
 
-$prism = new Prism();
-$prism->addPlugin(new ShowLanguage());
+$highlighter = new Spectrum();
+$highlighter->addPlugin(new ShowLanguage());
 ```
 
 ###CSS
