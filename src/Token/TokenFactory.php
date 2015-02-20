@@ -1,13 +1,13 @@
 <?php
-namespace VKBansal\Prism\Token;
+namespace VKBansal\Spectrum\Token;
 
-use VKBansal\Prism\Prism;
-use VKBansal\Prism\Util;
+use VKBansal\Spectrum\Spectrum;
+use VKBansal\Spectrum\Util;
 
 /**
  * Token Factory Class
- * @package VKBansal\Prism\Token\TokenFactory
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Token\TokenFactory
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
@@ -70,10 +70,10 @@ class TokenFactory
 
     /**
      * Converts Tokens to DOMElements
-     * @param  \VKBansal\Prism\Prism $prism
+     * @param  \VKBansal\Spectrum\Spectrum $prism
      * @return array<\DOMElement|\DOMText>
      */
-    public function toNodes(Prism $prism)
+    public function toNodes(Spectrum $prism)
     {
         return array_map(function($token) use ($prism){
             if ($token instanceof Token) {

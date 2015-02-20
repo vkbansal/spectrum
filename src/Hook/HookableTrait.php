@@ -1,10 +1,10 @@
 <?php
-namespace VKBansal\Prism\Hook;
+namespace VKBansal\Spectrum\Hook;
 
 /**
  * Hooks Implementation.
- * @package VKBansal\Prism\Hooks\Hooks
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Hooks\HookableTrait
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

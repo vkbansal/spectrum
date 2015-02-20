@@ -1,10 +1,10 @@
 <?php
-namespace VKBansal\Prism\Language;
+namespace VKBansal\Spectrum\Language;
 
 /**
- * Common interface for Prism and a language definition
- * @package VKBansal\Prism\DefinitionInterface
- * @version 0.1.0
+ * Common interface for Spectrum and a language definition
+ * @package VKBansal\Spectrum\Language\DefinitionInterface
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

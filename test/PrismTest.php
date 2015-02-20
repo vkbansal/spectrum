@@ -1,16 +1,16 @@
 <?php
-use VKBansal\Prism\Prism;
-use VKBansal\Prism\Node;
+use VKBansal\Spectrum\Spectrum;
+use VKBansal\Spectrum\Node;
 
-class PrismTest extends PHPUnit_Framework_TestCase {
+class SpectrumTest extends PHPUnit_Framework_TestCase {
 
     protected $prism;
 
     public function setUp()
     {
-        //$this->prism = new Prism();
+        //$this->prism = new Spectrum();
     }
 
     public function testDummy()
-    {}    
+    {}
 }

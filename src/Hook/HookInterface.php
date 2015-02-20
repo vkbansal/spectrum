@@ -1,10 +1,10 @@
 <?php
-namespace VKBansal\Prism\Hook;
+namespace VKBansal\Spectrum\Hook;
 
 /**
- * Common interface for Prism and a language definition
- * @package VKBansal\Prism\DefinitionInterface
- * @version 0.1.0
+ * Interface for Hook
+ * @package VKBansal\Spectrum\Hook\HookInterface
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

@@ -8,7 +8,7 @@ class PlugTest extends \PHPUnit_Framework_TestCase{
 
     public function setUp()
     {
-        $this->plugin = $this->getMockForAbstractClass('VKBansal\Prism\Plugin\AbstractPlugin');
+        $this->plugin = $this->getMockForAbstractClass('VKBansal\Spectrum\Plugin\AbstractPlugin');
         $this->plugin
             ->method('getName')->will($this->returnValue('test-plugin'));
         $this->plugin
@@ -16,11 +16,11 @@ class PlugTest extends \PHPUnit_Framework_TestCase{
         $this->plugin
             ->method('remove')->will($this->returnValue(true));
 
-        $this->plug = $this->getMockForTrait('VKBansal\Prism\Plugin\PluggableTrait', [], 'Prism');
+        $this->plug = $this->getMockForTrait('VKBansal\Spectrum\Plugin\PluggableTrait', [], 'Spectrum');
     }
 
     /**
-     * @expectedException           VKBansal\Prism\Plugin\PluginNotFoundException
+     * @expectedException           VKBansal\Spectrum\Plugin\PluginNotFoundException
      */
     public function testRemoveException()
     {

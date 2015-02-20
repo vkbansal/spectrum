@@ -1,12 +1,12 @@
 <?php
-namespace VKBansal\Prism\Components\Plugin;
+namespace VKBansal\Spectrum\Components\Plugin;
 
-use VKBansal\Prism\Plugin\AbstractPlugin;
+use VKBansal\Spectrum\Plugin\AbstractPlugin;
 
 /**
  * Plugin for showing tab and new line characters
- * @package VKBansal\Prism\Components\Plugin\ShowLanguage
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Components\Plugin\ShowLanguage
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

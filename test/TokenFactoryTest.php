@@ -1,5 +1,5 @@
 <?php
-use VKBansal\Prism\Token\TokenFactory;
+use VKBansal\Spectrum\Token\TokenFactory;
 
 class TokenFactoryTest extends PHPUnit_Framework_TestCase
 {
@@ -22,8 +22,8 @@ class TokenFactoryTest extends PHPUnit_Framework_TestCase
     public function testGenerate(){
         $nodes = $this->generator->makeTokens();
         $token = $nodes[0];
-        $this->assertInstanceOf('VKBansal\Prism\Token\Token', $token);
-        $this->assertInstanceOf('VKBansal\Prism\Token\Token', $token->content[1]);
+        $this->assertInstanceOf('VKBansal\Spectrum\Token\Token', $token);
+        $this->assertInstanceOf('VKBansal\Spectrum\Token\Token', $token->content[1]);
     }
 
     public function testToNodes()
@@ -31,7 +31,7 @@ class TokenFactoryTest extends PHPUnit_Framework_TestCase
         // $this->markTestSkipped();
         $document = new DOMDocument();
 
-        $prism = $this->getMockBuilder('VKBansal\Prism\Prism')->getMock();
+        $prism = $this->getMockBuilder('VKBansal\Spectrum\Spectrum')->getMock();
 
         $prism->method('getDocument')->will($this->returnValue($document));
 

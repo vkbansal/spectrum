@@ -1,12 +1,12 @@
 <?php
-namespace VKBansal\Prism\Components\Definition;
+namespace VKBansal\Spectrum\Components\Definition;
 
-use VKBansal\Prism\Language\AbstractTemplateDefinition;
+use VKBansal\Spectrum\Language\AbstractTemplateDefinition;
 
 /**
  * PHP definition
- * @package VKBansal\Prism\Definition\Php
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Definition\Php
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

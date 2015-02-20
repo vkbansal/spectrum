@@ -7,7 +7,7 @@ class AbstractDefinitionTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-        $this->def = $this->getMockBuilder('VKBansal\Prism\Language\AbstractDefinition')
+        $this->def = $this->getMockBuilder('VKBansal\Spectrum\Language\AbstractDefinition')
             ->setMethods(['getDefinition', 'definition', 'getName', 'loadDefinition'])
             ->getMock();
         $lang = [

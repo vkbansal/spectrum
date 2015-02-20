@@ -1,12 +1,12 @@
 <?php
-namespace VKBansal\Prism\Language;
+namespace VKBansal\Spectrum\Language;
 
-use VKBansal\Prism\Language\AbstractDefinition;
+use VKBansal\Spectrum\Language\AbstractDefinition;
 
 /**
  * Repository for language definitions
- * @package VKBansal\Prism\Repository
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Repository
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
@@ -150,7 +150,7 @@ trait RepositoryTrait
      */
     public function addLanguage(AbstractDefinition $language)
     {
-        $language->injectPrism($this);
+        $language->injectSpectrum($this);
         if ($requires = $language->requires()) {
             $this->loadDefinitions($requires);
         }

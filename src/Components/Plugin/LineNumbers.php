@@ -1,13 +1,13 @@
 <?php
-namespace VKBansal\Prism\Components\Plugin;
+namespace VKBansal\Spectrum\Components\Plugin;
 
-use VKBansal\Prism\Plugin\AbstractPlugin;
-use VKBansal\Prism\Util;
+use VKBansal\Spectrum\Plugin\AbstractPlugin;
+use VKBansal\Spectrum\Util;
 
 /**
  * Plugin for showing line numbers in code blocks
- * @package VKBansal\Prism\Components\Plugin\LineNumbers
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Components\Plugin\LineNumbers
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

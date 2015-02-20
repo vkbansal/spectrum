@@ -6,7 +6,7 @@ class HooksTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-        $this->hooks = $this->getMockForTrait('VKBansal\Prism\Hook\HookableTrait');
+        $this->hooks = $this->getMockForTrait('VKBansal\Spectrum\Hook\HookableTrait');
     }
 
     public function testHooks()

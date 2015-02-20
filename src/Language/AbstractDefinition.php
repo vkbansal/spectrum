@@ -1,23 +1,23 @@
 <?php
-namespace VKBansal\Prism\Language;
+namespace VKBansal\Spectrum\Language;
 
-use VKBansal\Prism\Hook\HookInterface;
-use VKBansal\Prism\InjectorInterface;
-use VKBansal\Prism\Language\DefinitionInterface;
-use VKBansal\Prism\Prism;
+use VKBansal\Spectrum\Hook\HookInterface;
+use VKBansal\Spectrum\InjectorInterface;
+use VKBansal\Spectrum\Language\DefinitionInterface;
+use VKBansal\Spectrum\Spectrum;
 
 /**
  * Abstract class for language definitions
- * @package VKBansal\Prism\Language\AbstractDefinition
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Language\AbstractDefinition
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
 abstract class AbstractDefinition implements DefinitionInterface, HookInterface, InjectorInterface
 {
     /**
-     * Prism Instance
-     * @var \VKBansal\Prism\Prism
+     * Spectrum Instance
+     * @var \VKBansal\Spectrum\Spectrum
      */
     protected $prism;
 
@@ -84,9 +84,9 @@ abstract class AbstractDefinition implements DefinitionInterface, HookInterface,
 
     /**
      * Set Manager
-     * @param \VKBansal\Prism\Prism $prism
+     * @param \VKBansal\Spectrum\Spectrum $prism
      */
-    public function injectPrism(Prism $prism)
+    public function injectSpectrum(Spectrum $prism)
     {
         $this->prism = $prism;
     }

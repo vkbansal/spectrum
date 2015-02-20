@@ -1,8 +1,19 @@
 <?php
-namespace VKBansal\Prism\Language;
+namespace VKBansal\Spectrum\Language;
 
+/**
+ * Language class mapper
+ * @package VKBansal\Spectrum\Language\Mapper
+ * @version 0.3.0
+ * @author Vivek Kumar Bansal <contact@vkbansal.me>
+ * @license MIT
+ */
 class Mapper {
 
+    /**
+     * Get language definition classes
+     * @return array
+     */
     public static function getDefinitionClasses()
     {
         $pattern = __DIR__."/../Components/Definition/*.php";
@@ -10,10 +21,14 @@ class Mapper {
 
         //Since we are using PSR-4, we can safely prepend namespace
         return array_map(function($file){
-            return "VKBansal\\Prism\\Components\\Definition\\".basename($file, ".php");
+            return "VKBansal\\Spectrum\\Components\\Definition\\".basename($file, ".php");
         }, $files);
     }
 
+    /**
+     * Get Mapping of language name and its class
+     * @return array [Map, Aliases, Default languages]
+     */
     public static function getMap()
     {
         $definitions = static::getDefinitionClasses();

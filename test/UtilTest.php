@@ -1,5 +1,5 @@
 <?php
-use VKBansal\Prism\Util;
+use VKBansal\Spectrum\Util;
 
 class UtilTest extends PHPUnit_Framework_TestCase {
 

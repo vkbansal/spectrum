@@ -1,12 +1,12 @@
 <?php
-namespace VKBansal\Prism\Components\Definition;
+namespace VKBansal\Spectrum\Components\Definition;
 
-use VKBansal\Prism\Language\AbstractDefinition;
+use VKBansal\Spectrum\Language\AbstractDefinition;
 
 /**
  * R definition
- * @package VKBansal\Prism\Definition\Rlang
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Definition\Rlang
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

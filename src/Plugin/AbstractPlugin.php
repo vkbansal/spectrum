@@ -1,28 +1,28 @@
 <?php
-namespace VKBansal\Prism\Plugin;
+namespace VKBansal\Spectrum\Plugin;
 
-use VKBansal\Prism\Prism;
-use VKBansal\Prism\InjectorInterface;
-use VKBansal\Prism\Hook\HookInterface;
+use VKBansal\Spectrum\Spectrum;
+use VKBansal\Spectrum\InjectorInterface;
+use VKBansal\Spectrum\Hook\HookInterface;
 /**
- * Interface for plugin for Prism
- * @package VKBansal\Prism\Plugin\PluginInterface
- * @version 0.1.0
+ * Base class for plugin
+ * @package VKBansal\Spectrum\Plugin\PluginInterface
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
 abstract class AbstractPlugin implements InjectorInterface, HookInterface
 {
     /**
-     * Prism Instance
-     * @var \VKBansal\Prism\Prism
+     * Spectrum Instance
+     * @var \VKBansal\Spectrum\Spectrum
      */
     protected $prism;
 
     /**
      * {@inheritdoc}
      */
-    public function injectPrism(Prism $prism)
+    public function injectSpectrum(Spectrum $prism)
     {
         $this->prism = $prism;
     }

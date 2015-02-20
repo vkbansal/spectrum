@@ -1,12 +1,12 @@
 <?php
-namespace VKBansal\Prism\Components\Definition;
+namespace VKBansal\Spectrum\Components\Definition;
 
-use VKBansal\Prism\Language\AbstractDefinition;
+use VKBansal\Spectrum\Language\AbstractDefinition;
 
 /**
  * Perl definition
- * @package VKBansal\Prism\Definition\Perl
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Definition\Perl
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

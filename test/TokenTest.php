@@ -1,6 +1,6 @@
 <?php
-use VKBansal\Prism\Token\Token;
-use VKBansal\Prism\AssetManager;
+use VKBansal\Spectrum\Token\Token;
+use VKBansal\Spectrum\AssetManager;
 
 class TokenTest extends PHPUnit_Framework_TestCase
 {
@@ -10,7 +10,7 @@ class TokenTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->doc = new \DOMDocument();
-        $this->prism = $this->getMockBuilder('VKBansal\Prism\Prism')->getMock();
+        $this->prism = $this->getMockBuilder('VKBansal\Spectrum\Spectrum')->getMock();
         $this->prism->method('getDocument')->will($this->returnValue($this->doc));
     }
 

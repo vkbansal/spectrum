@@ -1,21 +1,21 @@
 <?php
-namespace VKBansal\Prism;
+namespace VKBansal\Spectrum;
 
 use DOMDocument;
 use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
-use VKBansal\Prism\Hook\HookInterface;
-use VKBansal\Prism\Language\DefinitionInterface;
-use VKBansal\Prism\Token\TokenFactory;
+use VKBansal\Spectrum\Hook\HookInterface;
+use VKBansal\Spectrum\Language\DefinitionInterface;
+use VKBansal\Spectrum\Token\TokenFactory;
 
 /**
- * Core Prism class for syntax highlighting
- * @package VKBansal\Prism\Prism
- * @version 0.1.0
+ * Core Spectrum class for syntax highlighting
+ * @package VKBansal\Spectrum\Spectrum
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-class Prism implements HookInterface, DefinitionInterface
+class Spectrum implements HookInterface, DefinitionInterface
 {
     use Hook\HookableTrait;
     use Language\RepositoryTrait;

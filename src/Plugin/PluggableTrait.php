@@ -1,10 +1,10 @@
 <?php
-namespace VKBansal\Prism\Plugin;
+namespace VKBansal\Spectrum\Plugin;
 
 /**
- * Trait for adding plugin functionality to Prism
- * @package VKBansal\Prism\Plugin\PluggableTrait
- * @version 0.1.0
+ * Trait for adding plugin functionality to Spectrum
+ * @package VKBansal\Spectrum\Plugin\PluggableTrait
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
@@ -23,7 +23,7 @@ trait PluggableTrait
      */
     public function addPlugin(AbstractPlugin $plugin)
     {
-        $plugin->injectPrism($this);
+        $plugin->injectSpectrum($this);
         $this->plugins[$plugin->getName()] = $plugin;
         $plugin->add();
     }

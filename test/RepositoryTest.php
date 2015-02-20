@@ -6,7 +6,7 @@ class RepositoryTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-        $this->repo = $this->getMockForTrait('\VKBansal\Prism\Language\RepositoryTrait');
+        $this->repo = $this->getMockForTrait('\VKBansal\Spectrum\Language\RepositoryTrait');
     }
 
     public function testLoadDefinition()

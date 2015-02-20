@@ -1,10 +1,10 @@
 <?php
-namespace VKBansal\Prism;
+namespace VKBansal\Spectrum;
 
 /**
  * Utility Class
- * @package VKBansal\Prism\Languages\Repository
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Util
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

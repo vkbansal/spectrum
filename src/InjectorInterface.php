@@ -1,10 +1,10 @@
 <?php
-namespace VKBansal\Prism;
+namespace VKBansal\Spectrum;
 
 /**
- * Interface for injecting Prism
- * @package VKBansal\Prism\DefinitionInterface
- * @version 0.1.0
+ * Interface for injecting Spectrum
+ * @package VKBansal\Spectrum\InjectorInterface
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
@@ -12,8 +12,8 @@ interface InjectorInterface
 {
     /**
      * Injects prism
-     * @param  Prism $prism
+     * @param  Spectrum $prism
      * @return void
      */
-    public function injectPrism(Prism $prism);
+    public function injectSpectrum(Spectrum $prism);
 }

@@ -1,13 +1,13 @@
 <?php
-namespace VKBansal\Prism\Token;
+namespace VKBansal\Spectrum\Token;
 
-use VKBansal\Prism\Prism;
-use VKBansal\Prism\Util;
+use VKBansal\Spectrum\Spectrum;
+use VKBansal\Spectrum\Util;
 
 /**
  * Token Class
- * @package VKBansal\Prism\Token\Token
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Token\Token
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
@@ -66,10 +66,10 @@ class Token
 
     /**
      * Converts Token to DOMElement
-     * @param  \VKBansal\Prism\Prism $prism
+     * @param  \VKBansal\Spectrum\Spectrum $prism
      * @return \DOMElement
      */
-    public function toNode(Prism $prism)
+    public function toNode(Spectrum $prism)
     {
         $this->finalizeContent($prism);
 
@@ -105,10 +105,10 @@ class Token
 
     /**
      * Process content
-     * @param  \VKBansal\Prism\Prism $prism
+     * @param  \VKBansal\Spectrum\Spectrum $prism
      * @return array<\DOMText|\DOMElement>
      */
-    protected function finalizeContent(Prism $prism)
+    protected function finalizeContent(Spectrum $prism)
     {
         if (is_string($this->content)) {
              return $this->content = [$prism->getDocument()->createTextNode($this->content)];
@@ -123,10 +123,10 @@ class Token
 
     /**
      * Process content as array
-     * @param  \VKBansal\Prism\Prism $prism
+     * @param  \VKBansal\Spectrum\Spectrum $prism
      * @return array
      */
-    protected function processContentAsArray(Prism $prism)
+    protected function processContentAsArray(Spectrum $prism)
     {
         $contents= array_filter($this->content);
 

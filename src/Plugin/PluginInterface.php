@@ -1,10 +1,10 @@
 <?php
-namespace VKBansal\Prism\Plugin;
+namespace VKBansal\Spectrum\Plugin;
 
 /**
- * Interface for plugin for Prism
- * @package VKBansal\Prism\Plugin\PluginInterface
- * @version 0.1.0
+ * Interface for plugin
+ * @package VKBansal\Spectrum\Plugin\PluginInterface
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

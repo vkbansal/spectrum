@@ -1,14 +1,14 @@
 <?php
-namespace VKBansal\Prism\Components\Plugin;
+namespace VKBansal\Spectrum\Components\Plugin;
 
-use VKBansal\Prism\Plugin\AbstractPlugin;
-use VKBansal\Prism\Util;
+use VKBansal\Spectrum\Plugin\AbstractPlugin;
+use VKBansal\Spectrum\Util;
 
 /**
  * Plugin for striping extra spaces in code tag
  * Based on https://github.com/leeoniya/preCode.js
- * @package VKBansal\Prism\Plugin\TrimCode
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Plugin\TrimCode
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
@@ -42,10 +42,10 @@ class TrimCode extends AbstractPlugin
             if (preg_match("/^\S/m", $code)) {
                 return false;
             }
-            
+
             $min  = 1e3;
             preg_match_all("/^[\\t\s]+/m", $code, $matches);
-            
+
             foreach ($matches[0] as $match) {
                 if (strlen($match) < $min) {
                     $min = strlen($match);

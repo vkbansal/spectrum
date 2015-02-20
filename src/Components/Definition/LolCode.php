@@ -1,12 +1,12 @@
 <?php
-namespace VKBansal\Prism\Components\Definition;
+namespace VKBansal\Spectrum\Components\Definition;
 
-use VKBansal\Prism\Language\AbstractDefinition;
+use VKBansal\Spectrum\Language\AbstractDefinition;
 
 /**
  * Definition for markup like HTML and XML
- * @package VKBansal\Prism\Definition\LolCode
- * @version 0.1.0
+ * @package VKBansal\Spectrum\Definition\LolCode
+ * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
