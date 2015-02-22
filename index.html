@@ -6,8 +6,8 @@
     </nav><div class="body-wrapper">
         <nav class="navmenu navmenu-default sidebar" role="navigation"><h2 class="navmenu-section">Getting Started</h2>
                 <ul class="nav navmenu-nav"><li><a href="/spectrum/">Introduction</a></li>
+                                    <li><a href="/spectrum/installation/">Installation</a></li>
                                     <li><a href="/spectrum/basic-usage/">Basic Usage</a></li>
-                                    <li><a href="/spectrum/features/">Features</a></li>
                                 </ul><h2 class="navmenu-section">Plugins</h2>
                 <ul class="nav navmenu-nav"><li><a href="/spectrum/plugins/show-language/">Show Language</a></li>
                                     <li><a href="/spectrum/plugins/line-numbers/">Line Numbers</a></li>
@@ -30,9 +30,17 @@
 <h2>Requirements</h2>
 <ul><li>PHP &gt;= 5.4</li>
 <li>libxml &gt;= 2.6.0</li>
-</ul><h2>Installation</h2>
-<pre class="language-bash"><code class="language-bash">composer require vkbansal<span class="token operator">/</span>spectrum</code></pre>
-                </div>
+</ul><h2>Features</h2>
+<ul><li>All the processing done server side. Save browser redraws and repaints that may be caused due to javascript alternatives.</li>
+<li>Makes highlighted code cacheable, which is not possible otherwise.</li>
+<li>Encourages <a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-code-element">semantic approach</a> of using <code>language-xxx</code> class on code blocks specified by <a href="http://www.w3.org/">W3C</a>.</li>
+<li>Very easy to define new languages. Only thing you need is a good understanding of regular expressions.</li>
+<li>All styling is done through CSS, with sensible class names.</li>
+<li>Wide browser support. Even the ancient IE6-8. If your browser supports <code>pre</code> and <code>code</code> tags and CSS, you are good to go.</li>
+<li>Highlights nested languages (CSS in HTML, JavaScript in HTML).</li>
+</ul><h2>Limitations</h2>
+<ul><li>Regex-based so it <em>will</em> fail on certain edge cases.</li>
+</ul></div>
     </div>
     <footer class="page-footer"><div class="container-fluid">
             <p><small>&copy; 2015 Copyright <a href="http://vkbansal.me">Vivek Kumar Bansal</a>. Site design by <a href="http://vkbansal.me">Vivek Kumar Bansal</a>.</small></p>

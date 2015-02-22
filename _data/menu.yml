@@ -1,7 +1,7 @@
 Getting Started:
-    Introduction: '/'
-    Basic Usage: '/basic-usage/'
-    Features: "/features/"
+    Introduction: "/"
+    Installation: "/installation/"
+    Basic Usage: "/basic-usage/"
 
 Plugins:
     Show Language: "/plugins/show-language/"
