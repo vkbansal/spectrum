@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__."/../spectrum-src/vendor/autoload.php";
+require __DIR__."/../spectrum/vendor/autoload.php";
 require __DIR__."/vendor/autoload.php";
 
 use League\CLImate\CLImate;

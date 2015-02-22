@@ -5,20 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Spectrum</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700 | Roboto+Slab' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" id="theme-basic" href="/spectrum/assets/css/prism-basic.css" disabled>
-    <link rel="stylesheet" id="theme-coy" href="/spectrum/assets/css/prism-coy.css" disabled>
-    <link rel="stylesheet" id="theme-dark" href="/spectrum/assets/css/prism-dark.css" disabled>
-    <link rel="stylesheet" id="theme-funky" href="/spectrum/assets/css/prism-funky.css" disabled>
-    <link rel="stylesheet" id="theme-okaidia" href="/spectrum/assets/css/prism-okaidia.css">
-    <link rel="stylesheet" id="theme-twilight" href="/spectrum/assets/css/prism-twilight.css" disabled>
-    <link rel="stylesheet" id="theme-tomorrow" href="/spectrum/assets/css/prism-tomorrow.css" disabled>
     <link rel="stylesheet" href="/spectrum/assets/css/styles.css">
+        <link rel="stylesheet" href="/spectrum/assets/css/styles.css">
+    <link rel="stylesheet" id="theme-okaidia"  href="/spectrum/assets/css/prism/okaidia.css"  disabled>
+    <link rel="stylesheet" id="theme-tomorrow" href="/spectrum/assets/css/prism/tomorrow.css" disabled>
+    <link rel="stylesheet" id="theme-twilight" href="/spectrum/assets/css/prism/twilight.css" disabled>
 </head>
 <body>
     <nav class="navbar navbar-primary" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Spectrum <small>PHP Code Highlighter</small></a>
+            <a class="navbar-brand" href="/spectrum">Spectrum <small>PHP Code Highlighter</small></a>
         </div>
     </nav>
     <div class="body-wrapper">
@@ -42,29 +39,13 @@
                                     <li><a href="/spectrum/samples/">Code Samples</a></li>
                                     <li><a href="/spectrum/changelog/">Changelog</a></li>
                                 </ul>
-                        <h2 class="navmenu-section">Theme Switcher</h2>
-            <ul class="nav navmenu-nav">
-                <li class="theme-switcher">
-                    <select name="theme" id="theme-switcher" class="form-control">
-                        <option value="basic">Basic</option>
-                        <option value="coy">Coy</option>
-                        <option value="dark">Dark</option>
-                        <option value="funky">Funky</option>
-                        <option value="okaidia">Okaidia</option>
-                        <option value="twilight">Twilight</option>
-                        <option value="tomorrow">Tomorrow</option>
-                    </select>
-                </li>
-            </ul>
-        </nav>
+                    </nav>
         <div class="main-body">
-               <h1>Code Samples</h1>
+            <h1>Code Samples</h1>
     <div class="row">
         <div class="col-sm-3 form-group">
             <label>Select a language</label>
             <select id="lang-select" class="form-control">
-                            <option value=""></option>
-                            <option value=""></option>
                             <option value="actionscript">ActionScript</option>
                             <option value="apacheconf">Apache Configuration</option>
                             <option value="applescript">AppleScript</option>
@@ -122,37 +103,30 @@
                             <option value="typescript">TypeScript</option>
                         </select>
         </div>
+        <div class="col-sm-3 form-group">
+            <label>Theme</label>
+            <select id="theme-select" class="form-control">
+                <option value="default">Default</option>
+                <option value="okaidia">Okaidia</option>
+                <option value="tomorrow">Tomorrow</option>
+                <option value="twilight">Twilight</option>
+            </select>
+        </div>
     </div>
     <div id="lang-showcase"></div>
         </div>
     </div>
+    <footer class="page-footer">
+        <div class="container-fluid">
+            <p><small>&copy; 2015 Copyright <a href="http://vkbansal.me">Vivek Kumar Bansal</a>. Site design by <a href="http://vkbansal.me">Vivek Kumar Bansal</a>.</small></p>
+        </div>
+    </footer>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-            function switchTheme(id, select){
-                $('link[id^=theme]').attr('disabled', 'disabled');
-                $('link#theme-'+ id).removeAttr('disabled');
-                if (select) $('#theme-switcher').val(id);
-            }
-
-            $("#theme-switcher").on('change', function(){
-                var id = $(this).val();
-                switchTheme(id);
-            });
-
-            switchTheme('okaidia', true);
-
-            $('a.dropdown-toggle').on('click', function(){
-               $(this).closest('li').toggleClass('open');
-                return false;
-            });
-        });
-    </script>
      <script type="text/javascript">
     $(document).ready(function(){
 
         var treePath = 'https://api.github.com/repos/vkbansal/spectrum/git/trees/gh-pages',
+            token = "TkRVME5UQTFOV1V3TXpVNU5HUTJPRFl6WXpRNU9UYzBaR1F4WTJOa05qSmhOalZrTlRRd1lnPT0=",
             treePromise = $.get(treePath + "?recursive=1"),
             cache = {};
 
@@ -169,7 +143,7 @@
                                 url: file.url,
                                 headers:{
                                     Accept: "application/vnd.github.VERSION.raw",
-                                    Authorization: "Basic NjVkYjA4NGFlNGJmMGY3OWI1ZTljOWYzZGUyY2E5MWNhNGJjMmM4YTo="
+                                    Authorization: "Basic " + atob(token)
                                 },
                                 dataType: 'html',
                                 beforeSend: function(){
@@ -192,19 +166,27 @@
             });
         }
 
-        $("#lang-select").on('change', function(){
+        $("#lang-select").on('change', function () {
             var id = $(this).val();
             switchSample(id, 'select');
         });
 
         var hash = window.location.hash.substring(1);
 
-        if(hash){
+        if (hash) {
             switchSample(hash, 'hash');
         } else {
             switchSample('markup', 'hash');
             $("#lang-select").val('markup');
         }
+
+        $("#theme-select").on('change', function(){
+            var theme = $(this).val();
+            $('#theme-okaidia, #theme-tomorrow, #theme-twilight').attr('disabled', true);
+            if (theme !== "default") {
+                $("#theme-"+theme).attr("disabled", null);
+            }
+        })
     });
 </script>
 

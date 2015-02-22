@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ site.data.project.title }}</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700 | Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-primary" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ site.baseurl }}">{{ site.data.project.title }} <small>{{ site.data.project.tagline }}</small></a>
+        </div>
+    </nav>
+    <div class="body-wrapper">
+        <nav class="navmenu navmenu-default sidebar" role="navigation">
+            {% for section,links in site.data.menu %}
+                <h2 class="navmenu-section">{{ section }}</h2>
+                <ul class="nav navmenu-nav">
+                {% for link,name in links %}
+                    <li><a href="{{ site.baseurl }}{{ name }}">{{ link }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </nav>
+        <div class="main-body">
+        {% block content %}
+           {{ content|raw }}
+        {% endblock %}
+        </div>
+    </div>
+    <footer class="page-footer">
+        <div class="container-fluid">
+            <p><small>&copy; 2015 Copyright <a href="http://vkbansal.me">Vivek Kumar Bansal</a>. Site design by <a href="http://vkbansal.me">Vivek Kumar Bansal</a>.</small></p>
+        </div>
+    </footer>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

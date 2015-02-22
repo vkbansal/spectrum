@@ -1,0 +1,103 @@
+{% extends 'default.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+    <link rel="stylesheet" id="theme-okaidia"  href="{{ site.baseurl }}/assets/css/prism/okaidia.css"  disabled>
+    <link rel="stylesheet" id="theme-tomorrow" href="{{ site.baseurl }}/assets/css/prism/tomorrow.css" disabled>
+    <link rel="stylesheet" id="theme-twilight" href="{{ site.baseurl }}/assets/css/prism/twilight.css" disabled>
+{% endblock %}
+
+{% block content %}
+    <h1>Code Samples</h1>
+    <div class="row">
+        <div class="col-sm-3 form-group">
+            <label>Select a language</label>
+            <select id="lang-select" class="form-control">
+            {% for def in meta %}
+                <option value="{{def.lang.ref}}">{{ def.name }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-3 form-group">
+            <label>Theme</label>
+            <select id="theme-select" class="form-control">
+                <option value="default">Default</option>
+                <option value="okaidia">Okaidia</option>
+                <option value="tomorrow">Tomorrow</option>
+                <option value="twilight">Twilight</option>
+            </select>
+        </div>
+    </div>
+    <div id="lang-showcase"></div>
+{% endblock %}
+
+{% block js %}
+ <script type="text/javascript">
+    $(document).ready(function(){
+
+        var treePath = 'https://api.github.com/repos/vkbansal{{site.baseurl}}/git/trees/gh-pages',
+            token = "{{ site.data.project.access_token }}",
+            treePromise = $.get(treePath + "?recursive=1"),
+            cache = {};
+
+        function switchSample(id, source){
+            treePromise.done(function(data){
+                for(var i = 0, l = data.tree.length; i < l; i++){
+                    var file = data.tree[i];
+
+                    if (file.path === 'samples/partials/' + id + '.html'){
+                        if (cache[id]){
+                            $("#lang-showcase").html(cache[id]);
+                        } else {
+                            $.ajax({
+                                url: file.url,
+                                headers:{
+                                    Accept: "application/vnd.github.VERSION.raw",
+                                    Authorization: "Basic " + atob(token)
+                                },
+                                dataType: 'html',
+                                beforeSend: function(){
+                                    var span = $(document.createElement('div')).addClass('loader');
+                                    $("#lang-showcase").empty().append(span);
+                                }
+                            }).done(function(code){
+                                $("#lang-showcase").html(code);
+                                cache[id] = code;
+                            });
+                        }
+                        break;
+                    }
+                }
+                if (source === 'hash'){
+                    $("#lang-select").val(id);
+                } else if (source === 'select'){
+                    window.location.hash = "#" + id;
+                }
+            });
+        }
+
+        $("#lang-select").on('change', function () {
+            var id = $(this).val();
+            switchSample(id, 'select');
+        });
+
+        var hash = window.location.hash.substring(1);
+
+        if (hash) {
+            switchSample(hash, 'hash');
+        } else {
+            switchSample('markup', 'hash');
+            $("#lang-select").val('markup');
+        }
+
+        $("#theme-select").on('change', function(){
+            var theme = $(this).val();
+            $('#theme-okaidia, #theme-tomorrow, #theme-twilight').attr('disabled', true);
+            if (theme !== "default") {
+                $("#theme-"+theme).attr("disabled", null);
+            }
+        })
+    });
+</script>
+
+{% endblock %}
