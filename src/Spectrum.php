@@ -170,4 +170,17 @@ class Spectrum implements HookInterface, DefinitionInterface
     {
         return $this->document;
     }
+
+    public static function autoload()
+    {
+        spl_autoload_register(function ($class) {
+            if (!preg_match("/^VKBansal\\\\Spectrum\\\\\\w+/", $class)) {
+                return false;
+            }
+            
+            $file = str_replace("VKBansal\Spectrum", "", $class);
+            $file = realpath(__DIR__."{$file}.php");
+            require_once($file);
+        });
+    }
 }
