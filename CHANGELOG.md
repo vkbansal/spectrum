@@ -1,5 +1,17 @@
 #Changelog
 
+##v0.3.1
+### updated
+ - C#
+ - CSS
+ - PHP
+
+### added
+ - F#
+
+### removed
+- `autoload.php`
+
 ##v0.3.0
 - Renamed to Spectrum
 

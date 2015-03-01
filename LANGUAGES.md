@@ -15,6 +15,7 @@
 - [x] Eiffel
 - [x] Erlang
 - [x] Fortran
+- [x] F#
 - [x] Gherkin
 - [x] Git
 - [x] Go
