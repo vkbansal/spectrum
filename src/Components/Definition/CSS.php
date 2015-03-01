@@ -35,7 +35,7 @@ class CSS extends AbstractDefinition
                     "punctuation" => "/[;:]/"
                 ]
             ],
-            "url" => "/url\(([\"']?).*?\g{1}\)/i",
+            "url" => "/url\\((?:([\"'])(\\\\\\n|\\\\?.)*?\\g{1}|.*?)\\)/i",
             "selector" => [
                 "pattern" => "/[^\{\}\s][^\{\}]*(?=\s*\{)/",
                 "inside" => [
@@ -80,7 +80,7 @@ class CSS extends AbstractDefinition
 
         $this->insertBefore('markup.tag.inside', [
             'style-attr'=> [
-                "pattern"=> "/\s*style=(\"|').+?\g{1}/i",
+                "pattern"=> "/\s*style=(\"|').*?\g{1}/i",
                 "inside"=> [
                     "attr-name"=> [
                         "pattern"=> "/^\s*style/i",
