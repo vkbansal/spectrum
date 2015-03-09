@@ -1,12 +1,12 @@
 {
-    "name": "vkbansal/prism",
-    "description": "Implementation of prismjs syntax highlighter in php",
+    "name": "vkbansal/spectrum-doc",
+    "description": "Documentation for spectrum",
     "keywords": [
         "syntax",
         "highlighter",
         "syntax-highlighter"
     ],
-    "homepage": "https://github.com/vkbansal/prism.php",
+    "homepage": "https://github.com/vkbansal/spectrum",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
         "php" : ">=5.4.0",
         "erusev/parsedown-extra": "*",
         "league/flysystem": "1.*",
-        "league/climate": "~2.6.0",
+        "league/climate": "~3.0.0",
         "symfony/var-dumper": "2.6.*",
         "symfony/yaml": "2.6.*",
         "twig/twig": "1.18.*",
