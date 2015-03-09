@@ -23,17 +23,20 @@ $highlighter = new Spectrum();
 $highlighter->loadAllDefinitions();
 libxml_use_internal_errors(true);
 
+function filter_dirs($file) {
+    return $file['type'] !== 'dir';
+}
+
 /**************************************************************
  Load meta data
  **************************************************************/
 $site = Yaml::parse($fs->read('_config.yml'));
 
 $ymls = $fs->listContents("/_data");
+$ymls = array_filter($ymls, 'filter_dirs');
 $site['data'] = [];
+
 foreach ($ymls as $yml) {
-    if ($yml['type'] == "dir") {
-        continue;
-    }
     $site['data'][$yml['filename']] = Yaml::parse($fs->read($yml['path']));
 }
 
@@ -41,14 +44,11 @@ foreach ($ymls as $yml) {
  First level pages
  **************************************************************/
 $pages = $fs->listContents("/_pages");
+$pages = array_filter($pages, 'filter_dirs');
 
 foreach ($pages as $page) {
-    if ($page['type'] == "dir") {
-        continue;
-    }
-
     $active = $page['filename'];
-    
+
     $content = $parsedown->text($fs->read($page['path']));
     $content = $twig->render('default.html', compact('content', 'active', 'site'));
     $content = $highlighter->highlightHTML($content);
@@ -65,11 +65,8 @@ foreach ($pages as $page) {
  * Plugin pages
  **************************************************************/
 $plugins = $fs->listContents("/_pages/plugins");
-
+$plugins = array_filter($plugins, 'filter_dirs');
 foreach ($plugins as $plugin) {
-    if ($plugin['type'] == "dir") {
-        continue;
-    }
     $active = $plugin['filename'];
     $highlighter->resetPlugins();
     $console->out("<light_green>Building</light_green> <bold><light_cyan>{$active} plugin<light_cyan></bold>");
@@ -95,15 +92,13 @@ foreach ($plugins as $plugin) {
  **************************************************************/
 $samples = $fs->listContents('/_data/code/');
 $meta = [];
-foreach ($samples as $sample) {
-    if ($sample['type'] === "dir") {
-        continue;
-    }
 
+$samples =  array_filter($samples, 'filter_dirs');
+
+foreach ($samples as $sample) {
     $lang = $sample['filename'];
-    
     $console->out("<light_green>Building</light_green> <bold><light_cyan>{$lang}<light_cyan></bold>");
-    
+
     $doc = Parser::parse($fs->read($sample['path']));
     $meta[] = $doc->getConfig();
     $code = $highlighter->highlightText($doc->getContent(), $lang);
