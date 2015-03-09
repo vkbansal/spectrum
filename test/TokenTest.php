@@ -1,5 +1,5 @@
 <?php
-use VKBansal\Spectrum\Token\Token;
+use VKBansal\Spectrum\Token;
 use VKBansal\Spectrum\AssetManager;
 
 class TokenTest extends PHPUnit_Framework_TestCase

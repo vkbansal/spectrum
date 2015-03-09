@@ -6,7 +6,6 @@ use DOMElement;
 use Symfony\Component\DomCrawler\Crawler;
 use VKBansal\Spectrum\Hook\HookInterface;
 use VKBansal\Spectrum\Language\DefinitionInterface;
-use VKBansal\Spectrum\Token\TokenFactory;
 
 /**
  * Core Spectrum class for syntax highlighting
@@ -25,13 +24,13 @@ class Spectrum implements HookInterface, DefinitionInterface
      * Stores HTML Document to be highlighted
      * @var DOMDocument
      */
-    protected $document;
+    private $document;
 
     /**
      * Regex for testing classes
      * @var string
      */
-    protected $langTest = "/\blang(?:uage)?-(?!\*)(\w+)\b/i";
+    private $langTest = "/\blang(?:uage)?-(?!\*)(\w+)\b/i";
 
     /**
      * Class Constructor
@@ -160,9 +159,9 @@ class Spectrum implements HookInterface, DefinitionInterface
      */
     public function highlight($code, $grammar, $language)
     {
-        $factory = new TokenFactory($code, $grammar, $language);
-        $factory->makeTokens();
-        $nodes = $factory->toNodes($this);
+        $lexer = new Lexer($code, $grammar, $language);
+        $tokens = $lexer->tokenize();
+        $nodes = $lexer->toNodes($this);
         return is_array($nodes) ? $nodes : [$nodes];
     }
 
@@ -177,7 +176,7 @@ class Spectrum implements HookInterface, DefinitionInterface
             if (!preg_match("/^VKBansal\\\\Spectrum\\\\\\w+/", $class)) {
                 return false;
             }
-            
+
             $file = str_replace("VKBansal\Spectrum", "", $class);
             $file = realpath(__DIR__."{$file}.php");
             require_once($file);

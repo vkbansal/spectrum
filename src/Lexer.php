@@ -1,37 +1,34 @@
 <?php
-namespace VKBansal\Spectrum\Token;
-
-use VKBansal\Spectrum\Spectrum;
-use VKBansal\Spectrum\Util;
+namespace VKBansal\Spectrum;
 
 /**
  * Token Factory Class
- * @package VKBansal\Spectrum\Token\TokenFactory
+ * @package VKBansal\Spectrum\Lexer
  * @version 0.3.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-class TokenFactory
+class Lexer
 {
     /**
      * @var string|array<Token|string>
      */
-    protected $text;
+    private $text;
 
     /**
      * @var array
      */
-    protected $grammar;
+    private $grammar;
 
     /**
      * @var string
      */
-    protected $language;
+    private $language;
 
     /**
      * @var array<Token|string>
      */
-    protected $tokens = [];
+    private $tokens = [];
 
     /**
      * Constructor
@@ -50,21 +47,27 @@ class TokenFactory
      * Generates Tokens
      * @return array<Token|string>
      */
-    public function makeTokens()
+    public function tokenize()
     {
         $strarr = [$this->text];
 
         foreach ($this->grammar as $token => $regex) {
-            $this->traversePatterns($strarr, $token, $regex);
+            $this->patternWalk($strarr, $token, $regex);
         }
         return $this->tokens = $strarr;
     }
 
-    public function traversePatterns(&$strarr, $token, $regex)
+    /**
+     * Walk over patterns for lexing
+     * @param  array       &$strarr
+     * @param  string      $token
+     * @param  strin|array $regex
+     */
+    private function patternWalk(array &$strarr, $token, $regex)
     {
         $patterns = is_string($regex) || Util::isAssoc($regex) ? [$regex] : $regex;
         foreach ($patterns as $pattern) {
-            $this->tokenize($strarr, $pattern, $token);
+            $this->lex($strarr, $pattern, $token);
         }
     }
 
@@ -88,7 +91,7 @@ class TokenFactory
      * @param  array $grammar
      * @return array
      */
-    protected function optimizeGrammar($grammar)
+    private function optimizeGrammar($grammar)
     {
         $rest = isset($grammar['rest']) ? $grammar['rest'] : [];
 
@@ -108,7 +111,7 @@ class TokenFactory
      * @param  string       $token
      * @return void
      */
-    protected function tokenize(&$strarr, $pattern, $token)
+    private function lex(array &$strarr, $pattern, $token)
     {
         $count = count($strarr);
 
@@ -116,7 +119,7 @@ class TokenFactory
             $str = $strarr[$i];
 
             if (count($strarr) > strlen($this->text)) {
-                throw new FactoryException("Something went terribly wrong with generator, aborting!");
+                throw new LexerException("Something went terribly wrong with generator, aborting!");
             }
 
             if ($str instanceof Token) {
@@ -143,7 +146,7 @@ class TokenFactory
      * @param  array|string $pattern
      * @return array
      */
-    protected function resolvePattern($pattern)
+    private function resolvePattern($pattern)
     {
         if (is_string($pattern)) {
             return [$pattern, false, false, null];
@@ -164,7 +167,7 @@ class TokenFactory
      * @param  string        $str
      * @return array|boolean
      */
-    protected function matchPatterns($patterns, $str)
+    private function matchPatterns($patterns, $str)
     {
         list($pattern, $lookbehind) =  $this->resolvePattern($patterns);
 
@@ -198,7 +201,7 @@ class TokenFactory
      * @param  string       $token
      * @return array
      */
-    protected function parseMatches($matches, $patterns, $token)
+    private function parseMatches(array $matches, $patterns, $token)
     {
         list($match, $before, $after) = $matches;
         list($inside, $alias) =  array_slice($this->resolvePattern($patterns), 2);
@@ -210,8 +213,8 @@ class TokenFactory
         }
 
         if ($inside) {
-            $factory = new TokenFactory($match, $inside, $this->language);
-            $content = $factory->makeTokens();
+            $factory = new self($match, $inside, $this->language);
+            $content = $factory->tokenize();
         } else {
             $content = $match;
         }
