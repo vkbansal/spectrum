@@ -1,4 +1,6 @@
 #Changelog
+##v0.4.0
+ - Renamed `NodeFactory` to `Lexer`
 
 ##v0.3.1
 ### updated
