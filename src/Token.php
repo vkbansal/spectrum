@@ -101,6 +101,15 @@ class Token
     }
 
     /**
+     * Getter for Content
+     * @return string|Token|array<Token|string|\DOMText>
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
      * Process content
      * @param  \VKBansal\Spectrum\Spectrum $prism
      * @return array<\DOMText|\DOMElement>

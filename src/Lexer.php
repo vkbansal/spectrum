@@ -8,7 +8,7 @@ namespace VKBansal\Spectrum;
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
-class Lexer implements InjectorInterface
+class Lexer
 {
     /**
      * @var string|array<Token|string>
@@ -213,8 +213,8 @@ class Lexer implements InjectorInterface
         }
 
         if ($inside) {
-            $factory = new TokenFactory($match, $inside, $this->language);
-            $content = $factory->makeTokens();
+            $factory = new self($match, $inside, $this->language);
+            $content = $factory->tokenize();
         } else {
             $content = $match;
         }
