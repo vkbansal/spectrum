@@ -6,7 +6,7 @@ use LogicException;
 /**
  * Generator Exception Class
  * @package VKBansal\Spectrum\LexerException
- * @version 0.3.0
+ * @version 0.4.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

@@ -7,7 +7,7 @@ use VKBansal\Spectrum\Hook\HookInterface;
 /**
  * Base class for plugin
  * @package VKBansal\Spectrum\Plugin\PluginInterface
- * @version 0.3.0
+ * @version 0.4.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

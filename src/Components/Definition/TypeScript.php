@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Language\AbstractDefinition;
 /**
  * TypeScript definition
  * @package VKBansal\Spectrum\Definition\TypeScript
- * @version 0.3.0
+ * @version 0.4.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

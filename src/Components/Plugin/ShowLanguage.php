@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Plugin\AbstractPlugin;
 /**
  * Plugin for showing language
  * @package VKBansal\Spectrum\Components\Plugin\ShowLanguage
- * @version 0.3.0
+ * @version 0.4.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

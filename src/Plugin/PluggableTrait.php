@@ -4,7 +4,7 @@ namespace VKBansal\Spectrum\Plugin;
 /**
  * Trait for adding plugin functionality to Spectrum
  * @package VKBansal\Spectrum\Plugin\PluggableTrait
- * @version 0.3.0
+ * @version 0.4.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

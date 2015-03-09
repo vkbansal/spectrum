@@ -9,7 +9,7 @@ use VKBansal\Spectrum\Spectrum;
 /**
  * Abstract class for language definitions
  * @package VKBansal\Spectrum\Language\AbstractDefinition
- * @version 0.3.0
+ * @version 0.4.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

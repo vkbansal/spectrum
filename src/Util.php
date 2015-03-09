@@ -4,7 +4,7 @@ namespace VKBansal\Spectrum;
 /**
  * Utility Class
  * @package VKBansal\Spectrum\Util
- * @version 0.3.0
+ * @version 0.4.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
