@@ -160,7 +160,7 @@ class Spectrum implements HookInterface, DefinitionInterface
     public function highlight($code, $grammar, $language)
     {
         $lexer = new Lexer($code, $grammar, $language);
-        $tokens = $lexer->tokenize();
+        $lexer->tokenize();
         $nodes = $lexer->toNodes($this);
         return is_array($nodes) ? $nodes : [$nodes];
     }
