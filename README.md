@@ -17,7 +17,7 @@ composer require vkbansal/spectrum
 ```
 ##Requirements
 - PHP >= 5.4
-- libxml >= 2.6.0
+- [DOM extension](http://php.net/manual/en/book.dom.php)
 
 ##Basic usage
 
