@@ -6,6 +6,8 @@
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/vkbansal/spectrum.svg?style=flat-square)](https://scrutinizer-ci.com/g/vkbansal/spectrum/?branch=master)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/vkbansal/spectrum.svg?style=flat-square)](https://scrutinizer-ci.com/g/vkbansal/spectrum/?branch=master)
 [![Code Climate](https://img.shields.io/codeclimate/github/vkbansal/spectrum.svg?style=flat-square)](https://codeclimate.com/github/vkbansal/spectrum)
+[![Dependency Status](https://www.versioneye.com/user/projects/54fd34634f31084fdc000750/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/54fd34634f31084fdc000750)
+
 #Spectrum (WIP)
 A syntax highlighter written in php. This project is inspired from [prism.js](https://github.com/LeaVerou/prism) by [@LeaVerou](http://github.com/LeaVerou).
 
