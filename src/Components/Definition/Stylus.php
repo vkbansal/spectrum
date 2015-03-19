@@ -30,11 +30,11 @@ class Stylus extends AbstractDefinition
             "keyword"=> "/(px|r?em|ex|ch|vw|vh|vmin|vmax|deg|grad|rad|turn|m?s|k?Hz|dpi|dppx|dpcm)\\b|\\b(is|defined|not|isnt|and|or|unless|for|in)\\b/",
             "atrule"=> "/@[\\w-]+(?=\\s+\\S+)/i",
             "url"=> "/url\\(([\"']?).*?\\g{1}\\)/i",
-            "variable"=> "/^\\s*([\\w-]+)(?=\\s*[+-\\]?=)/m",
-            "string"=> "/(\"|')(\\\n|\\?.)*?\\g{1}/",
+            "variable"=> "/^\\s*([\\w-]+)(?=\\s*[+-\\\\]?=)/m",
+            "string"=> "/(\"|')(\\\\\\n|\\\\?.)*?\\g{1}/",
             "important"=> "/\\B!important\\b/i",
             "hexcode"=> "/#[\\da-f]{3,6}/i",
-            "entity"=> "/\\[\\da-f]{1,8}/i",
+            "entity"=> "/\\\\[\\da-f]{1,8}/i",
             "number"=> "/\\d+\\.?\\d*%?/",
             "selector"=> [
                 [
@@ -73,7 +73,7 @@ class Stylus extends AbstractDefinition
                 ],
             ],
             "property"=> [
-                "/^\\s*([a-z-]+)(?=\\s+[\\w\\W]+|\\s*:)(?!\\s*\\{|\r?\n)/mi",
+                "/^\\s*([a-z-]+)(?=\\s+[\\w\\W]+|\\s*:)(?!\\s*\\{|\\r?\\n)/im",
                 [
                     "pattern"=> "/(\\(\\s*)([a-z-]+)(?=\\s*:)/i",
                     "lookbehind"=> true
