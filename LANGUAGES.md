@@ -1,12 +1,12 @@
 #List of available language Definitions
 - [x] Actionscript
-- [x] apacheconf (**aliases**: htaccess)
+- [x] Apache Conf (**aliases**: htaccess)
 - [x] AppleScript
 - [x] ASP.Net
 - [x] AutoHotkey
-- [x] bash
+- [x] Bash
 - [x] C
-- [x] CLike
+- [x] C-like
 - [x] CoffeeScript
 - [x] CSS
 - [x] C++
@@ -45,13 +45,16 @@
 - [x] Powershell
 - [x] Python
 - [x] R
+- [x] reStructuredText (reST)
 - [x] Rip
 - [x] Ruby
 - [x] Rust
+- [x] SAS
 - [x] Scala
 - [x] Scheme
 - [x] SASS\SCSS
 - [x] Smarty
 - [x] SQL
+- [x] Stylus
 - [x] Swift
 - [x] Twig
