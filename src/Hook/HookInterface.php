@@ -4,7 +4,7 @@ namespace VKBansal\Spectrum\Hook;
 /**
  * Interface for Hook
  * @package VKBansal\Spectrum\Hook\HookInterface
- * @version 0.4.0
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

@@ -8,7 +8,7 @@ use VKBansal\Spectrum\Util;
  * Plugin for striping extra spaces in code tag
  * Based on https://github.com/leeoniya/preCode.js
  * @package VKBansal\Spectrum\Plugin\TrimCode
- * @version 0.4.0
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

@@ -4,9 +4,9 @@ namespace VKBansal\Spectrum\Components\Definition;
 use VKBansal\Spectrum\Language\AbstractDefinition;
 
 /**
- * SQL definition
- * @package VKBansal\Spectrum\Definition\Sql
- * @version 0.4.0
+ * SAS definition
+ * @package VKBansal\Spectrum\Definition\Sas
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

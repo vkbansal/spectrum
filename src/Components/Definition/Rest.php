@@ -3,6 +3,13 @@ namespace VKBansal\Spectrum\Components\Definition;
 
 use VKBansal\Spectrum\Language\AbstractDefinition;
 
+/**
+ * reStructuredText (reST) definition
+ * @package VKBansal\Spectrum\Definition\Rest
+ * @version 0.4.1
+ * @author Vivek Kumar Bansal <contact@vkbansal.me>
+ * @license MIT
+ */
 class Rest extends AbstractDefinition
 {
     /**

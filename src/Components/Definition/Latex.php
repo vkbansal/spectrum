@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Language\AbstractDefinition;
 /**
  * Latex definition
  * @package VKBansal\Spectrum\Definition\Latex
- * @version 0.4.0
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

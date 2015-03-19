@@ -10,7 +10,7 @@ use VKBansal\Spectrum\Language\DefinitionInterface;
 /**
  * Core Spectrum class for syntax highlighting
  * @package VKBansal\Spectrum\Spectrum
- * @version 0.4.0
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

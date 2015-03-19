@@ -4,7 +4,7 @@ namespace VKBansal\Spectrum\Language;
 /**
  * Language class mapper
  * @package VKBansal\Spectrum\Language\Mapper
- * @version 0.4.0
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

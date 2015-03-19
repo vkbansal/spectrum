@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Language\AbstractDefinition;
 /**
  * Groovy definition
  * @package VKBansal\Spectrum\Definition\Groovy
- * @version 0.4.0
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

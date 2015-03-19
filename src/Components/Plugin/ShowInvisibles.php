@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Plugin\AbstractPlugin;
 /**
  * Plugin for showing tab and new line characters
  * @package VKBansal\Spectrum\Components\Plugin\ShowLanguage
- * @version 0.4.0
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

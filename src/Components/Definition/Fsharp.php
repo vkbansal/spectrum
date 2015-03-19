@@ -5,7 +5,7 @@ use VKBansal\Spectrum\Language\AbstractDefinition;
 /**
  * F# definition
  * @package VKBansal\Spectrum\Definition\Fsharp
- * @version 0.4.0
+ * @version 0.4.1
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
