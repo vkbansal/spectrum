@@ -4,7 +4,7 @@ namespace VKBansal\Spectrum\Components\Definition;
 use VKBansal\Spectrum\Language\AbstractDefinition;
 
 /**
- * Definition for languages similat to 'C'
+ * Definition for languages similar to 'C'
  * @package VKBansal\Spectrum\Definition\CLike
  * @version 0.4.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
@@ -34,31 +34,31 @@ class CLike extends AbstractDefinition
                     'lookbehind' => true
                 ],
                 [
-                    'pattern' => '/(^|[^\\\\:])\/\/.*?(\r?\n|$)/',
+                    'pattern' => '/(^|[^\\\\:])\\/\\/.+/',
                     'lookbehind' => true
                 ]
             ],
             'string'=> '/("|\')(\\\\\n|\\\\?.)*?\g{1}/',
             'class-name'=> [
-                "pattern" => "/((?:(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\\\]+/i",
+                "pattern" => "/((?:(?:class|interface|extends|implements|trait|instanceof|new)\\s+)|(?:catch\\s+\\())[a-z0-9_\\.\\\\]+/i",
                 "lookbehind" => true,
                 "inside" => [
-                    "punctuation" => "/(\.|\\\\)/"
+                    "punctuation" => "/(\\.|\\\\)/"
                 ]
             ],
-            'keyword'=> "/\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/",
-            'boolean' => "/\b(true|false)\b/",
+            'keyword'=> "/\\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\\b/",
+            'boolean' => "/\\b(true|false)\\b/",
             'function' => [
-                "pattern" => "/[a-z0-9_]+\(/i",
+                "pattern" => "/[a-z0-9_]+\\(/i",
                 "inside" => [
-                    "punctuation" => "/\(/"
+                    "punctuation" => "/\\(/"
                 ]
             ],
 
-            "number" => "/\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?)\b/",
-            "operator" => "/[-+]{1,2}|!|<=?|>=?|={1,3}|&{1,2}|\|?\||\?|\*|\/|~|\^|%/",
+            "number" => "/\\b-?(0x[\\dA-Fa-f]+|\\d*\\.?\\d+([Ee]-?\\d+)?)\\b/",
+            "operator" => "/[-+]{1,2}|!|<=?|>=?|={1,3}|&{1,2}|\\|?\\||\\?|\\*|\\/|~|\\^|%/",
             "ignore" => "/&(lt|gt|amp);/i",
-            'punctuation'=> "/[{}[\];(),.:]/"
+            'punctuation'=> "/[{}[\\];(),.:]/"
         ];
     }
 }
