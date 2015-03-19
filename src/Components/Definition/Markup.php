@@ -48,36 +48,36 @@ class Markup extends AbstractDefinition
     public function definition()
     {
         return [
-            'comment'=> "/<!--[\w\W]*?-->/",
-            'prolog'=> "/<\?.+?\?>/",
+            'comment'=> "/<!--[\\w\\W]*?-->/",
+            'prolog'=> "/<\\?.+?\\?>/",
             'doctype'=> "/<!DOCTYPE.+?>/",
-            'cdata'=> "/<!\[CDATA\[[\w\W]*?]]>/i",
+            'cdata'=> "/<!\\[CDATA\\[[\\w\\W]*?]]>/i",
             "tag"=> [
-                "pattern"=> "/<\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:(\"|')(\\\\?[\w\W])*?\g{1}|[^\s'\">=]+))?\s*)*\/?>/i",
+                "pattern"=> "/<\\/?[\\w:-]+\\s*(?:\\s+[\\w:-]+(?:=(?:(\"|')(\\\\?[\\w\\W])*?\\g{1}|[^\\s'\">=]+))?\\s*)*\\/?>/i",
                 "inside"=> [
                     "tag"=> [
-                        "pattern"=> "/^<\/?[\w:-]+/i",
+                        "pattern"=> "/^<\\/?[\\w:-]+/i",
                         "inside"=> [
-                            'punctuation'=> "/^<\/?/",
-                            'namespace'=> "/^[\w-]+?:/"
+                            'punctuation'=> "/^<\\/?/",
+                            'namespace'=> "/^[\\w-]+?:/"
                         ]
                     ],
                     'attr-value'=> [
-                        "pattern" => "/=(?:('|\")[\w\W]*?(\g{1})|[^\s>]+)/i",
+                        "pattern" => "/=(?:('|\")[\\w\\W]*?(\\g{1})|[^\\s>]+)/i",
                         "inside" => [
                             'punctuation'=> "/=|>|\"/"
                         ]
                     ],
-                    'punctuation'=> "/\/?>/",
+                    'punctuation'=> "/\\/?>/",
                     'attr-name'=> [
-                        "pattern"=> "/[\w:-]+/",
+                        "pattern"=> "/[\\w:-]+/",
                         "inside"=> [
-                            "namespace"=> "/^[\w-]+?:/"
+                            "namespace"=> "/^[\\w-]+?:/"
                         ]
                     ]
                 ]
             ],
-            'entity'=> "/&#?[\da-z]{1,8};/i"
+            'entity'=> "/&#?[\\da-z]{1,8};/i"
         ];
     }
 }
