@@ -41,6 +41,7 @@ class Lexer
         $this->text = $text;
         $this->grammar = $this->optimizeGrammar($grammar);
         $this->language = $language;
+        $this->tokens = [$text];
     }
 
     /**
@@ -49,25 +50,22 @@ class Lexer
      */
     public function tokenize()
     {
-        $strarr = [$this->text];
-
         foreach ($this->grammar as $token => $regex) {
-            $this->patternWalk($strarr, $token, $regex);
+            $this->patternWalk($token, $regex);
         }
-        return $this->tokens = $strarr;
+        return $this->tokens;
     }
 
     /**
      * Walk over patterns for lexing
-     * @param  array       &$strarr
      * @param  string      $token
      * @param  strin|array $regex
      */
-    private function patternWalk(array &$strarr, $token, $regex)
+    private function patternWalk($token, $regex)
     {
         $patterns = is_string($regex) || Util::isAssoc($regex) ? [$regex] : $regex;
         foreach ($patterns as $pattern) {
-            $this->lex($strarr, $pattern, $token);
+            $this->lex($pattern, $token);
         }
     }
 
@@ -83,7 +81,7 @@ class Lexer
                 return $token->toNode($prism);
             }
             return $prism->getDocument()->createTextNode($token);
-        },$this->tokens);
+        }, $this->tokens);
     }
 
     /**
@@ -111,14 +109,14 @@ class Lexer
      * @param  string       $token
      * @return void
      */
-    private function lex(array &$strarr, $pattern, $token)
+    private function lex($pattern, $token)
     {
-        $count = count($strarr);
+        $count = count($this->tokens);
 
         for ($i = 0; $i < $count; $i++) {
-            $str = $strarr[$i];
+            $str = $this->tokens[$i];
 
-            if (count($strarr) > strlen($this->text)) {
+            if (count($this->tokens) > strlen($this->text)) {
                 throw new LexerException("Something went terribly wrong with generator, aborting!");
             }
 
@@ -135,8 +133,8 @@ class Lexer
             $args = $this->parseMatches($matches, $pattern, $token);
 
             if ($args) {
-                array_splice($strarr, $i, 1, $args);
-                $count = count($strarr);
+                array_splice($this->tokens, $i, 1, $args);
+                $count = count($this->tokens);
             }
         }
     }
