@@ -1,4 +1,5 @@
-#List of available language Definitions
+#List of available language definitions
+This list is used to keep track of available examples in documentation:
 - [x] Actionscript
 - [x] Apache Conf (**aliases**: htaccess)
 - [x] AppleScript
@@ -15,7 +16,7 @@
 - [x] Eiffel
 - [x] Erlang
 - [x] Fortran
-- [x] F#
+- [ ] F#
 - [x] Gherkin
 - [x] Git
 - [x] Go
@@ -33,8 +34,8 @@
 - [x] Latex  **(needs fix)**
 - [x] LESS
 - [x] LOLCODE
-- [x] Markup (**aliases**: xml, html, atom, epub, mathml, musicxml, rss, soap, svg, webfeed, xform, xhtml, xpath, xquery)
 - [x] Markdown
+- [x] Markup (**aliases**: xml, html, atom, epub, mathml, musicxml, rss, soap, svg, webfeed, xform, xhtml, xpath, xquery)
 - [x] MATLAB
 - [x] Nasm
 - [x] Nsis
@@ -45,16 +46,20 @@
 - [x] Powershell
 - [x] Python
 - [x] R
-- [x] reStructuredText (reST)
+- [ ] reStructuredText (reST)
 - [x] Rip
 - [x] Ruby
 - [x] Rust
-- [x] SAS
+- [ ] SAS
 - [x] Scala
 - [x] Scheme
 - [x] SASS\SCSS
+- [ ] Smalltalk
 - [x] Smarty
 - [x] SQL
-- [x] Stylus
+- [ ] Stylus
 - [x] Swift
 - [x] Twig
+- [x] TypeScript
+- [ ] Yaml
+- [ ] Wiki
