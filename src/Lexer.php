@@ -178,16 +178,16 @@ class Lexer
         }
 
         if ($lookbehind) {
-            $lookbehindLength = strlen($matches[1][0]);
+            $lookbehindLength = mb_strlen($matches[1][0]);
         }
 
         $matches = array_slice($matches, 0, 1);
         $from = $matches[0][1] + $lookbehindLength;
-        $match = substr($matches[0][0], $lookbehindLength);
-        $upto = $from + strlen($match);
+        $match = mb_substr($matches[0][0], $lookbehindLength);
+        $upto = $from + mb_strlen($match);
 
-        $before = substr($str, 0, $from);
-        $after = substr($str, $upto);
+        $before = mb_substr($str, 0, $from);
+        $after = mb_substr($str, $upto);
 
         return [$match, $before, $after];
     }
