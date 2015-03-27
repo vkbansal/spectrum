@@ -13,13 +13,13 @@ BE_VERBOSE<span class="token operator">=</span><span class="token boolean">false
 </span> <span class="token keyword">exit</span> <span class="token number">2</span>
 <span class="token keyword">fi</span>
 
-<span class="token keyword">if</span> test $<span class="token comment" spellcheck="true"># -eq 0
+<span class="token keyword">if</span> <span class="token function">test</span> $<span class="token comment" spellcheck="true"># -eq 0
 </span><span class="token keyword">then</span>
-<span class="token keyword">elif</span> test <span class="token punctuation">[</span> <span class="token property">$1</span> <span class="token operator">==</span> <span class="token string">'start'</span> <span class="token punctuation">]</span>
+<span class="token keyword">elif</span> <span class="token function">test</span> <span class="token punctuation">[</span> <span class="token property">$1</span> <span class="token operator">==</span> <span class="token string">'start'</span> <span class="token punctuation">]</span>
 <span class="token keyword">else</span>
 <span class="token keyword">fi</span>
 
-<span class="token function">genApacheConf<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+genApacheConf<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
  <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token property">$2</span>"</span> <span class="token operator">=</span> <span class="token string">"www"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span>
  <span class="token keyword">then</span>
   full_domain<span class="token operator">=</span><span class="token property">$1</span>

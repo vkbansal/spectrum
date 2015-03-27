@@ -1,28 +1,28 @@
 <p>Default language reference: <b></b></p>
-<pre class="language-"><code class="language-"><span class="token comment" spellcheck="true"># language: en
-</span><span class="token keyword">Feature</span>: Addition
-  <span class="token atrule">In order to</span> avoid silly mistakes
-  <span class="token atrule">As a</span> math idiot
-  <span class="token atrule">I want to</span> be told the sum of two numbers
+<pre class="language-"><code class="language-"><span class="token comment" spellcheck="true"># language: en</span>
+<span class="token feature"><span class="token keyword">Feature:</span><span class="token important"> Addition</span>
+  In order to avoid silly mistakes
+  As a math idiot
+  I want to be told the sum of two numbers
 
-  @this_is_a_tag
-  <span class="token keyword">Scenario Outline</span>: Add two numbers
+</span>  <span class="token tag">@this_is_a_tag</span>
+  <span class="token scenario"><span class="token keyword">Scenario Outline:</span><span class="token important"> Add two numbers</span></span>
     * I have a calculator
-    <span class="token atrule">Given</span> I have entered &lt;input_1&gt; into the calculator
-    <span class="token atrule">And</span> I have entered &lt;input_2&gt; into the calculator
-    <span class="token atrule">When</span> I press &lt;button&gt;
-    <span class="token atrule">Then</span> the result should be &lt;output&gt; on the screen
+    <span class="token atrule">Given</span> I have entered <span class="token outline variable">&lt;input_1&gt;</span> into the calculator
+    <span class="token atrule">And</span> I have entered <span class="token outline variable">&lt;input_2&gt;</span> into the calculator
+    <span class="token atrule">When</span> I press <span class="token outline variable">&lt;button&gt;</span>
+    <span class="token atrule">Then</span> the result should be <span class="token outline variable">&lt;output&gt;</span> on the screen
     <span class="token atrule">And</span> I have a string like
-    <span class="token string">""</span>"
+    <span class="token pystring string">"""
     Here is
     some
     multiline text
-    <span class="token string">""</span>"
+    """</span>
 
-  Examples:
-    | input_1 | input_2 | button | output |
-    | 20      | 30      | add    | 50     |
-    | 2       | 5       | add    | 7      |
-    | 0       | 40      | add    | 40     |
+  <span class="token scenario"><span class="token keyword">Examples:</span><span class="token important"></span></span><span class="token table-head"><span class="token th variable">
+    </span><span class="token punctuation">|</span><span class="token th variable"> input_1 </span><span class="token punctuation">|</span><span class="token th variable"> input_2 </span><span class="token punctuation">|</span><span class="token th variable"> button </span><span class="token punctuation">|</span><span class="token th variable"> output </span><span class="token punctuation">|</span></span><span class="token table-body"><span class="token td string">
+    </span><span class="token punctuation">|</span><span class="token td string"> 20      </span><span class="token punctuation">|</span><span class="token td string"> 30      </span><span class="token punctuation">|</span><span class="token td string"> add    </span><span class="token punctuation">|</span><span class="token td string"> 50     </span><span class="token punctuation">|</span><span class="token td string">
+    </span><span class="token punctuation">|</span><span class="token td string"> 2       </span><span class="token punctuation">|</span><span class="token td string"> 5       </span><span class="token punctuation">|</span><span class="token td string"> add    </span><span class="token punctuation">|</span><span class="token td string"> 7      </span><span class="token punctuation">|</span><span class="token td string">
+    </span><span class="token punctuation">|</span><span class="token td string"> 0       </span><span class="token punctuation">|</span><span class="token td string"> 40      </span><span class="token punctuation">|</span><span class="token td string"> add    </span><span class="token punctuation">|</span><span class="token td string"> 40     </span><span class="token punctuation">|</span></span>
 
 </code></pre>

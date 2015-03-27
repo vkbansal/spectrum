@@ -10,17 +10,17 @@ a multi<span class="token operator">-</span>line string<span class="token punctu
 
 It ends with an unescaped <span class="token string">'\"'</span><span class="token punctuation">.</span>"<span class="token punctuation">;</span>
     <span class="token keyword">let</span> c<span class="token punctuation">:</span> char <span class="token operator">=</span> <span class="token string">'&#1060;'</span><span class="token punctuation">;</span>
-    <span class="token keyword">let</span> r<span class="token punctuation">:</span> str <span class="token operator">=</span> <span class="token string">r##" raw string "##</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> r<span class="token punctuation">:</span> str <span class="token operator">=</span> r<span class="token string">r##" raw string "##</span>
 
     <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> n <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// No parens around the condition
-</span>        result <span class="token operator">*</span><span class="token operator">=</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> n <span class="token punctuation">{</span> <span class="token operator">/</span><span class="token comment" spellcheck="true">// No parens around the condition
+</span>       result <span class="token operator">*</span><span class="token operator">=</span> i<span class="token punctuation">;</span>
         i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     ret result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">pure</span> <span class="token keyword">fn</span> pure_length<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span>ls<span class="token punctuation">:</span> list<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> uint <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* ... */</span> <span class="token punctuation">}</span>
+<span class="token keyword">pure</span> <span class="token keyword">fn</span> pure_length<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span>ls<span class="token punctuation">:</span> list<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> uint <span class="token punctuation">{</span> <span class="token operator">/</span><span class="token comment" spellcheck="true">/* ... */</span><span class="token punctuation">}</span>
 
 <span class="token keyword">type</span> t <span class="token operator">=</span> map<span class="token punctuation">:</span><span class="token punctuation">:</span>hashtbl<span class="token operator">&lt;</span>int<span class="token punctuation">,</span>str<span class="token operator">&gt;</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> x <span class="token operator">=</span> id<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">&lt;</span>int<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
