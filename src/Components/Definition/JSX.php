@@ -38,16 +38,16 @@ class JSX extends AbstractDefinition
     {
         $tag =& $this->getDefinition('jsx.tag');
 
-        $tag['pattern'] = "/<\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:(\"|')(\\\\?[\w\W])*?\g{1}|[^\s'\">=]+|(\{[\w\W]*?\})))?\s*)*\/?>/i";
+        $tag['pattern'] = "/<\\/?[\\w:-]+\\s*(?:\\s+[\\w:-]+(?:=(?:(\"|')(\\\\?[\\w\\W])*?\\g{1}|[^\\s'\">=]+|(\\{[\\w\\W]*?\\})))?\\s*)*\\/?>/i";
 
-        $tag['inside']['attr-value']['pattern'] = "/=[^\{](?:('|\")[\w\W]*?(\g{1})|[^\s>]+)/i";
+        $tag['inside']['attr-value']['pattern'] = "/=[^\\{](?:('|\")[\\w\\W]*?(\\g{1})|[^\\s>]+)/i";
 
         $this->insertBefore('jsx.tag.inside', [
             "script" => [
-                "pattern" => "/=(\{[\w\W]*?\})/i",
+                "pattern" => "/=(\\{[\\w\\W]*?\\})/i",
                 "inside" => [
                     "function" => $this->getDefinition("javascript.function"),
-                    "punctuation" => "/[={}[\];(),.:]/",
+                    "punctuation" => "/[={}[\\];(),.:]/",
                     "keyword" => $this->getDefinition("javascript.keyword")
                 ],
                 "alias" => 'language-javascript'

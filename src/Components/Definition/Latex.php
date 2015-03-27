@@ -24,9 +24,9 @@ class Latex extends AbstractDefinition
     {
         return [
             'comment' => "/%.*?(\\r?\\n|$)$/m",
-            'string' => "/(\\$)(\\\\?.)*?\g{1}/",
+            'string' => "/(\\$)(\\\\?.)*?\\g{1}/",
             'punctuation' => "/[{}]/",
-            'selector' => "/\\\\[a-z;,:\.]*/i"
+            'selector' => "/\\\\[a-z;,:\\.]*/i"
         ];
     }
 }

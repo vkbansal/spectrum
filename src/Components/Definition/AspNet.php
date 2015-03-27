@@ -29,16 +29,16 @@ class AspNet extends AbstractDefinition
     {
         return $this->extend('markup', [
             'page-directive tag' => [
-                "pattern" => "/<%\s*@.*%>/i",
+                "pattern" => "/<%\\s*@.*%>/i",
                 "inside" => [
-                    'page-directive tag' => "/<%\s*@\s*(?:Assembly|Control|Implements|Import|Master|MasterType|OutputCache|Page|PreviousPageType|Reference|Register)?|%>/i",
+                    'page-directive tag' => "/<%\\s*@\\s*(?:Assembly|Control|Implements|Import|Master|MasterType|OutputCache|Page|PreviousPageType|Reference|Register)?|%>/i",
                     "rest" => $this->getDefinition('markup.tag.inside')
                 ]
             ],
             'directive tag' => [
                 "pattern" => "/<%.*%>/i",
                 "inside" => [
-                    'directive tag' => "/<%\s*?[$=%#:]{0,2}|%>/i",
+                    'directive tag' => "/<%\\s*?[$=%#:]{0,2}|%>/i",
                     "rest" => $this->getDefinition('csharp', [])
                 ]
             ]
@@ -56,7 +56,7 @@ class AspNet extends AbstractDefinition
         ], 'punctuation');
 
         $this->insertBefore('aspnet', [
-            'asp comment'=> "/<%--[\w\W]*?--%>/"
+            'asp comment'=> "/<%--[\\w\\W]*?--%>/"
         ], 'comment');
 
         // script runat="server" contains csharp, not javascript
@@ -66,7 +66,7 @@ class AspNet extends AbstractDefinition
                 "pattern" => "/<script(?=.*runat=['\"]?server['\"]?)[\w\W]*?>[\w\W]*?<\/script>/i",
                 "inside" => [
                     "tag" => [
-                        "pattern" => "/<\/?script\s*(?:\s+[\w:-]+(?:=(?:(\"|')(\\\\?[\w\W])*?\g{1}|\w+))?\s*)*\/?>/i",
+                        "pattern" => "/<\\/?script\\s*(?:\\s+[\\w:-]+(?:=(?:(\"|')(\\\\?[\\w\\W])*?\\g{1}|\\w+))?\\s*)*\\/?>/i",
                         "inside" => $this->getDefinition("aspnet.tag.inside")
                     ],
                     "rest" => $this->getDefinition('csharp', [])
@@ -78,7 +78,7 @@ class AspNet extends AbstractDefinition
         if ($this->hasDefinition('aspnet.style')) {
             $style =& $this->getDefinition('aspnet.style', []);
             $style["inside"]["tag"] = [];
-            $style["inside"]["tag"]["pattern"] = "/<\/?style\s*(?:\s+[\w:-]+(?:=(?:(\"|')(\\\\?[\w\W])*?\g{1}|\w+))?\s*)*\/?>/i";
+            $style["inside"]["tag"]["pattern"] = "/<\\/?style\\s*(?:\\s+[\\w:-]+(?:=(?:(\"|')(\\\\?[\\w\\W])*?\\g{1}|\\w+))?\\s*)*\\/?>/i";
             $style["inside"]["tag"]["inside"] = $this->getDefinition('aspnet.tag.inside');
         }
         if ($this->hasDefinition('aspnet.script')) {

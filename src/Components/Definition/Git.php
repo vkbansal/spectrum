@@ -37,7 +37,7 @@ class Git extends AbstractDefinition
             /*
              * a string (double and simple quote)
              */
-            'string'=> "/(\"|')(\\\\?.)*?\g{1}/m",
+            'string'=> "/(\"|')(\\\\?.)*?\\g{1}/m",
 
             /*
              * a git command. It starts with a random prompt finishing by a $, then "git" then some other parameters
@@ -53,7 +53,7 @@ class Git extends AbstractDefinition
                      * $ git diff --cached
                      * $ git log -p
                      */
-                    'parameter' => "/\s(--|-)\w+/m"
+                    'parameter' => "/\\s(--|-)\\w+/m"
                 ]
             ],
 
@@ -76,7 +76,7 @@ class Git extends AbstractDefinition
              * Regexp to match the changed lines in a git diff output. Check the example above.
              */
             'deleted'=> "/^-(?!-).+$/m",
-            'inserted'=> "/^\+(?!\+).+$/m",
+            'inserted'=> "/^\\+(?!\\+).+$/m",
 
             /*
              * Match a "commit [SHA1]" line in a git log output.
@@ -88,7 +88,7 @@ class Git extends AbstractDefinition
              *
              *     Add of a new line
              */
-            'commit_sha1'=> "/^commit \w{40}$/m"
+            'commit_sha1'=> "/^commit \\w{40}$/m"
         ];
     }
 }

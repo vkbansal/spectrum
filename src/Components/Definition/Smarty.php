@@ -15,7 +15,7 @@ class Smarty extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    protected $delimiterRegex = "/\{\*[\w\W]+?\*\}|\{[\w\W]+?\}/";
+    protected $delimiterRegex = "/\\{\\*[\\w\\W]+?\\*\\}|\\{[\\w\\W]+?\\}/";
 
     /**
      * {@inheritdoc}
@@ -42,49 +42,49 @@ class Smarty extends AbstractTemplateDefinition
                 'pattern' => $this->delimiterRegex,
                 'inside' => [
                     'delimiter' => [
-                        'pattern' => "/^\{|\}$/i",
+                        'pattern' => "/^\\{|\\}$/i",
                         'alias' => 'punctuation'
                     ],
-                    'string' => "/([\"'])(\\\\?.)*?\g{1}/",
-                    'number' => "/\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?)\b/",
+                    'string' => "/([\"'])(\\\\?.)*?\\g{1}/",
+                    'number' => "/\\b-?(0x[\\dA-Fa-f]+|\\d*\\.?\\d+([Ee]-?\\d+)?)\\b/",
                     'variable' => [
-                        "/\\$(?!\d)\w+/",
-                        "/#(?!\d)\w+#/",
+                        "/\\$(?!\\d)\\w+/",
+                        "/#(?!\\d)\\w+#/",
                         [
-                            'pattern' => "/(\.|->)(?!\d)\w+/",
+                            'pattern' => "/(\\.|->)(?!\\d)\\w+/",
                             'lookbehind' => true
                         ],
                         [
-                            'pattern' => "/(\[)(?!\d)\w+(?=\])/",
+                            'pattern' => "/(\\[)(?!\\d)\\w+(?=\\])/",
                             'lookbehind' => true
                         ]
                     ],
                     'function' => [
                         [
-                            'pattern' => "/(\|\s*)@?(?!\d)\w+/",
+                            'pattern' => "/(\\|\\s*)@?(?!\\d)\\w+/",
                             'lookbehind' => true
                         ],
-                        "/^\/?(?!\d)\w+/",
-                        "/(?!\d)\w+(?=\()/"
+                        "/^\\/?(?!\\d)\\w+/",
+                        "/(?!\\d)\\w+(?=\\()/"
                     ],
                     'attr-name' => [
                         // Value is made optional because it may have already been tokenized
-                        'pattern' => "/\w+\s*=\s*(?:(?!\d)\w+)?/",
+                        'pattern' => "/\\w+\\s*=\\s*(?:(?!\\d)\\w+)?/",
                         'inside' => [
                             "variable" => [
-                                'pattern' => "/(=\s*)(?!\d)\w+/",
+                                'pattern' => "/(=\\s*)(?!\\d)\\w+/",
                                 'lookbehind' => true
                             ],
                             "punctuation" => "/=/"
                         ]
                     ],
-                    'punctuation' => "/[\[\]().,=\|:`]|\->/",
+                    'punctuation' => "/[\\[\\]().,=\\|:`]|\\->/",
                     'operator' => [
-                        "/[+\-*\/%]|===?|[!<>]=?|&&|\|\|/",
-                        "/\bis\s+(?:not\s+)?(?:div|even|odd)(?:\s+by)?\b/",
-                        "/\b(?:eq|neq?|gt|lt|gt?e|lt?e|not|mod|or|and)\b/"
+                        "/[+\\-*\\/%]|===?|[!<>]=?|&&|\\|\\|/",
+                        "/\\bis\\s+(?:not\\s+)?(?:div|even|odd)(?:\\s+by)?\\b/",
+                        "/\\b(?:eq|neq?|gt|lt|gt?e|lt?e|not|mod|or|and)\\b/"
                     ],
-                    'keyword' => "/\b(?:false|off|on|no|true|yes)\b/"
+                    'keyword' => "/\\b(?:false|off|on|no|true|yes)\\b/"
                 ]
             ]
         ]);
@@ -99,7 +99,7 @@ class Smarty extends AbstractTemplateDefinition
         // surround markup
         $this->insertBefore('smarty', [
             'smarty-comment' => [
-                "pattern" => "/\{\*[\w\W]*?\*\}/",
+                "pattern" => "/\\{\\*[\\w\\W]*?\\*\\}/",
                 "alias" => ['smarty', 'comment']
             ]
         ], 'tag');

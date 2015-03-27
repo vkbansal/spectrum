@@ -24,24 +24,24 @@ class Jade extends AbstractDefinition
     {
         return [
             'multiline-comment' => [ // Multiline stuff should appear before the rest
-                "pattern" => "/((?:^|\\n)([\\t ]*))\/\/.*(\\n\g{2}[\\t ]+.+)*/",
+                "pattern" => "/((?:^|\\n)([\\t ]*))\\/\\/.*(\\n\\g{2}[\\t ]+.+)*/",
                 "lookbehind" => true,
                 "alias" => 'comment'
             ],
             // All the tag-related part is in lookbehind
             // so that it can be highlighted by the "tag" pattern
             'multiline-script' => [
-                "pattern" => "/((?:^|\\n)([\\t ]*)script\b.*\.[\\t ]*)(\\n(?:\g{2}[\\t ]+.+|\s*?(?=\\n)))+/",
+                "pattern" => "/((?:^|\\n)([\\t ]*)script\\b.*\\.[\\t ]*)(\\n(?:\\g{2}[\\t ]+.+|\\s*?(?=\\n)))+/",
                 "lookbehind" => true,
                 "inside" => [ "rest" => $this->getDefinition('javascript') ]
             ],
             'filter' => [ // See at the end of the file for known filters
-                "pattern" => "/((?:^|\\n)([\\t ]*)):.+(\\n(?:\g{2}[\\t ]+.+|\s*?(?=\\n)))+/",
+                "pattern" => "/((?:^|\\n)([\\t ]*)):.+(\\n(?:\\g{2}[\\t ]+.+|\\s*?(?=\\n)))+/",
                 "lookbehind" => true,
-                "inside" => [ 'filter-name' => [ "pattern" => "/^:[\w-]+/", "alias" => 'variable' ] ]
+                "inside" => [ 'filter-name' => [ "pattern" => "/^:[\\w-]+/", "alias" => 'variable' ] ]
             ],
             'multiline-plain-text' => [
-                "pattern" => "/((?:^|\\n)([\\t ]*)[\w\-#.]+\.[\\t ]*)(\\n(?:\g{2}[\\t ]+.+|\s*?(?=\\n)))+/",
+                "pattern" => "/((?:^|\\n)([\\t ]*)[\\w\\-#.]+\\.[\\t ]*)(\\n(?:\\g{2}[\\t ]+.+|\\s*?(?=\\n)))+/",
                 "lookbehind" => true
             ],
             'markup' => [
@@ -50,7 +50,7 @@ class Jade extends AbstractDefinition
                 "inside" => [ "rest" => $this->getDefinition('markup') ]
             ],
             'comment' => [
-                "pattern" => "/((?:^|\\n)[\\t ]*)\/\/.+/",
+                "pattern" => "/((?:^|\\n)[\\t ]*)\\/\\/.+/",
                 "lookbehind" => true
             ],
             'doctype' => [ "pattern" => "/((?:^|\\n)[\\t ]*)doctype(?: .+)?/", "lookbehind" => true ],
@@ -59,9 +59,9 @@ class Jade extends AbstractDefinition
                 "lookbehind" => true,
                 "inside" => [
                     'each' => [
-                        "pattern" => "/((?:^|\\n)[\\t ]*)each .+? in\b/",
+                        "pattern" => "/((?:^|\\n)[\\t ]*)each .+? in\\b/",
                         "lookbehind" => true,
-                        "inside" => [ 'keyword'=> "/\b(?:each|in)\b/", 'punctuation'=> "/,/" ]
+                        "inside" => [ 'keyword'=> "/\\b(?:each|in)\\b/", 'punctuation'=> "/,/" ]
                     ],
                     'branch' => [
                         "pattern" => "/((?:^|\\n)[\\t ]*)(?:if|unless|else|case|when|default|while)/",
@@ -72,7 +72,7 @@ class Jade extends AbstractDefinition
                 ]
             ],
             'keyword' => [
-                "pattern" => "/((?:^|\\n)[\\t ]*)(?:block|extends|include|append|prepend)\b.+/",
+                "pattern" => "/((?:^|\\n)[\\t ]*)(?:block|extends|include|append|prepend)\\b.+/",
                 "lookbehind" => true
             ],
             'mixin'=> [
@@ -81,46 +81,46 @@ class Jade extends AbstractDefinition
                     "lookbehind" => true,
                     "inside" => [
                         'keyword'=> "/^mixin/",
-                        'function'=> "/\w+(?=\s*\(|\s*$)/",
+                        'function'=> "/\\w+(?=\\s*\\(|\\s*$)/",
                         'punctuation'=> "/[(),.]/"
                     ]
                 ],
                 [ // Usage
-                    "pattern" => "/((?:^|\\n)[\\t ]*)\+.+/",
+                    "pattern" => "/((?:^|\\n)[\\t ]*)\\+.+/",
                     "lookbehind" => true,
                     "inside" => [
-                        'name' => [ "pattern" => "/^\+\w+/", "alias" => 'function' ],
+                        'name' => [ "pattern" => "/^\\+\\w+/", "alias" => 'function' ],
                         'rest'=> $this->getDefinition('javascript')
                     ]
                 ]
             ],
             'script' => [
-                "pattern" => "/((?:^|\\n)[\\t ]*script(?:(?:&[^(]+)?\([^)]+\))*) .+/",
+                "pattern" => "/((?:^|\\n)[\\t ]*script(?:(?:&[^(]+)?\\([^)]+\\))*) .+/",
                 "lookbehind" => true,
                 "inside" => [ "rest" => $this->getDefinition('javascript') ]
             ],
             'plain-text' => [
-                    "pattern" => "/((?:^|\\n)[\\t ]*(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?[\\t ]+).+/",
+                    "pattern" => "/((?:^|\\n)[\\t ]*(?!-)[\\w\\-#.]*[\\w\\-](?:(?:&[^(]+)?\\([^)]+\\))*\\/?[\\t ]+).+/",
                     "lookbehind" => true
             ],
             'tag' => [
-                "pattern" => "/((?:^|\\n)[\\t ]*)(?!-)[\w\-#.]*[\w\-](?:(?:&[^(]+)?\([^)]+\))*\/?:?/",
+                "pattern" => "/((?:^|\\n)[\\t ]*)(?!-)[\\w\\-#.]*[\\w\\-](?:(?:&[^(]+)?\\([^)]+\\))*\\/?:?/",
                 "lookbehind" => true,
                 "inside" => [
                     'attributes' => [
                         [
-                            "pattern" => "/&[^(]+\([^)]+\)/",
+                            "pattern" => "/&[^(]+\\([^)]+\\)/",
                             "inside" => [ "rest" => $this->getDefinition('javascript') ]
                         ],
                         [
-                            "pattern" => "/\([^)]+\)/",
+                            "pattern" => "/\\([^)]+\\)/",
                             "inside" => [
                                 'attr-value' => [
-                                    "pattern" => "/(=\s*)(?:\{[^}]*\}|[^,)\\n]+)/",
+                                    "pattern" => "/(=\\s*)(?:\\{[^}]*\\}|[^,)\\n]+)/",
                                     "lookbehind" => true,
                                     "inside" => [ "rest" => $this->getDefinition('javascript') ]
                                 ],
-                                'attr-name'=> "/[\w-]+(?=\s*!?=|\s*[,)])/",
+                                'attr-name'=> "/[\\w-]+(?=\\s*!?=|\\s*[,)])/",
                                 'punctuation'=> "/[!=(),]/"
                             ]
                         ]
@@ -135,7 +135,7 @@ class Jade extends AbstractDefinition
                     "inside" => [ "rest" => $this->getDefinition('javascript') ]
                 ]
             ],
-            'punctuation'=> "/[.\-!=|]/"
+            'punctuation'=> "/[.\\-!=|]/"
         ];
     }
 
@@ -144,7 +144,7 @@ class Jade extends AbstractDefinition
      */
     public function setup()
     {
-        $filter_pattern = "/((?:^|\\n)([\\t ]*)):{{filter_name}}(\\n(?:\g{2}[\\t ]+.+|\s*?(?=\\n)))+/";
+        $filter_pattern = "/((?:^|\\n)([\\t ]*)):{{filter_name}}(\\n(?:\\g{2}[\\t ]+.+|\\s*?(?=\\n)))+/";
 
         // Non exhaustive list of available filters and associated languages
         $filters = [
@@ -177,7 +177,7 @@ class Jade extends AbstractDefinition
                     "lookbehind" => true,
                     "inside" => [
                         'filter-name'=> [
-                            "pattern" => "/^:[\w-]+/",
+                            "pattern" => "/^:[\\w-]+/",
                             "alias" => 'variable'
                         ],
                         "rest"=> $this->getDefinition($filter['language'])

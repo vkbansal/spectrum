@@ -15,7 +15,7 @@ class Handlebars extends AbstractTemplateDefinition
     /**
      * {@inheritdoc}
      */
-    protected $delimiterRegex = "/\{\{\{[\w\W]+?\}\}\}|\{\{[\w\W]+?\}\}/";
+    protected $delimiterRegex = "/\\{\\{\\{[\\w\\W]+?\\}\\}\\}|\\{\\{[\\w\\W]+?\\}\\}/";
 
     /**
      * {@inheritdoc}
@@ -42,26 +42,26 @@ class Handlebars extends AbstractTemplateDefinition
                 "pattern" => $this->delimiterRegex,
                 "inside" => [
                     'delimiter' => [
-                        "pattern" => "/^\{\{\{?|\}\}\}?$/i",
+                        "pattern" => "/^\\{\\{\\{?|\\}\\}\\}?$/i",
                         "alias" => 'punctuation'
                     ],
-                    'string' => "/([\"'])(\\\\?.)+?\g{1}/",
-                    'number' => "/\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?)\b/",
-                    'boolean' => "/\b(true|false)\b/",
+                    'string' => "/([\"'])(\\\\?.)+?\\g{1}/",
+                    'number' => "/\\b-?(0x[\\dA-Fa-f]+|\\d*\\.?\\d+([Ee]-?\\d+)?)\\b/",
+                    'boolean' => "/\\b(true|false)\\b/",
                     'block' => [
-                        "pattern" => "/^(\s*~?\s*)[#\/]\w+/i",
+                        "pattern" => "/^(\\s*~?\\s*)[#\\/]\\w+/i",
                         "lookbehind" => true,
                         "alias" => 'keyword'
                     ],
                     'brackets' => [
-                        "pattern" => "/\[[^\]]+\]/",
+                        "pattern" => "/\\[[^\\]]+\\]/",
                         "inside" => [
-                            "punctuation" => "/\[|\]/",
-                            "variable" => "/[\w\W]+/"
+                            "punctuation" => "/\\[|\\]/",
+                            "variable" => "/[\\w\\W]+/"
                         ]
                     ],
-                    'punctuation' => "/[!\"#%&'()*+,.\/;<=>@\[\\\\\]^`{|}~]/",
-                    'variable' => "/[^!\"#%&'()*+,.\/;<=>@\[\\\\\]^`{|}~]+/"
+                    'punctuation' => "/[!\"#%&'()*+,.\\/;<=>@\\[\\\\\\]^`{|}~]/",
+                    'variable' => "/[^!\"#%&'()*+,.\\/;<=>@\\[\\\\\\]^`{|}~]+/"
                 ]
             ]
         ]);
@@ -76,7 +76,7 @@ class Handlebars extends AbstractTemplateDefinition
         // surround markup
         $this->insertBefore('handlebars', [
             'handlebars-comment' => [
-                "pattern" => "/\{\{![\w\W]*?\}\}/",
+                "pattern" => "/\\{\\{![\\w\\W]*?\\}\\}/",
                 "alias" => ['handlebars', 'comment']
             ]
         ], 'tag');

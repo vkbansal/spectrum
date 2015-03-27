@@ -31,28 +31,28 @@ class Rust extends AbstractDefinition
         return [
             'comment' => [
                 [
-                    'pattern' => "/(^|[^\\\\])\/\*[\w\W]*?\*\//",
+                    'pattern' => "/(^|[^\\\\])\\/\\*[\\w\\W]*?\\*\\//",
                     'lookbehind' => true
                 ],
                 [
-                    'pattern' => "/(^|[^\\\\:])\/\/.*?(\\r?\\n|$)/",
+                    'pattern' => "/(^|[^\\\\:])\\/\\/.*?(\\r?\\n|$)/",
                     'lookbehind' => true
                 ]
             ],
             'string' => [
-                "/b?r(#*)\"(?:\\\\?.)*?\"\g{1}/",
-                "/b?(\"|')(?:\\\\?.)*?\g{1}/"
+                "/b?r(#*)\"(?:\\\\?.)*?\"\\g{1}/",
+                "/b?(\"|')(?:\\\\?.)*?\\g{1}/"
             ],
-            'keyword' => "/\b(?:abstract|alignof|as|be|box|break|const|continue|crate|do|else|enum|extern|false|final|fn|for|if|impl|in|let|loop|match|mod|move|mut|offsetof|once|override|priv|pub|pure|ref|return|sizeof|static|self|struct|super|true|trait|type|typeof|unsafe|unsized|use|virtual|where|while|yield)\b/",
+            'keyword' => "/\\b(?:abstract|alignof|as|be|box|break|const|continue|crate|do|else|enum|extern|false|final|fn|for|if|impl|in|let|loop|match|mod|move|mut|offsetof|once|override|priv|pub|pure|ref|return|sizeof|static|self|struct|super|true|trait|type|typeof|unsafe|unsized|use|virtual|where|while|yield)\\b/",
             'attribute' => [
-                'pattern' => "/#!?\[.+?\]/",
+                'pattern' => "/#!?\\[.+?\\]/",
                 'alias' => 'attr-name'
             ],
 
             'function' => [
-                "/[a-z0-9_]+(?=\s*\()/i",
+                "/[a-z0-9_]+(?=\\s*\\()/i",
                 // Macros can use parens or brackets
-                "/[a-z0-9_]+!(?=\s*\(|\[)/i"
+                "/[a-z0-9_]+!(?=\\s*\\(|\\[)/i"
             ],
             'macro-rules' => [
                 'pattern' => "/[a-z0-9_]+!/i",
@@ -60,18 +60,18 @@ class Rust extends AbstractDefinition
             ],
 
             // Hex, oct, bin, dec numbers with visual separators and type suffix
-            'number' => "/\b-?(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(\d(_?\d)*)?\.?\d(_?\d)*([Ee][+-]?\d+)?)(?:_?(?:[iu](?:8|16|32)?|f32|f64))?\b/",
+            'number' => "/\\b-?(?:0x[\\dA-Fa-f](?:_?[\\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(\\d(_?\\d)*)?\\.?\\d(_?\\d)*([Ee][+-]?\\d+)?)(?:_?(?:[iu](?:8|16|32)?|f32|f64))?\\b/",
 
             // Closure params should not be confused with bitwise OR |
             'closure-params' => [
-                'pattern' => "/\|[^|]*\|(?=\s*[{-])/",
+                'pattern' => "/\\|[^|]*\\|(?=\\s*[{-])/",
                 'inside' => [
-                    'punctuation' => "/[\|:,]/",
+                    'punctuation' => "/[\\|:,]/",
                     'operator' => "/[&*]/"
                 ]
             ],
-            'punctuation' => "/[{}[\];(),.:]|->/",
-            'operator' => "/[-+]{1,2}|!=?|<=?|>=?|={1,3}|&&?|\|\|?|\*|\/|\^|%|<<|>>@/"
+            'punctuation' => "/[{}[\\];(),.:]|->/",
+            'operator' => "/[-+]{1,2}|!=?|<=?|>=?|={1,3}|&&?|\\|\\|?|\\*|\\/|\\^|%|<<|>>@/"
         ];
     }
 }

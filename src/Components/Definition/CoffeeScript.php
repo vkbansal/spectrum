@@ -34,24 +34,24 @@ class CoffeeScript extends AbstractDefinition
     {
         return $this->extend('javascript', [
             // Ignore comments starting with { to privilege string interpolation highlighting
-            'comment'=> "/#(?!\{).+/",
+            'comment'=> "/#(?!\\{).+/",
             'string'=> [
                 // Strings are multiline
-                "/'(?:\\\\?[\s\S])*?'/",
+                "/'(?:\\\\?[\\s\\S])*?'/",
                 [
                     // Strings are multiline
-                    "pattern"=> "/\"(?:\\\\?[\s\S])*?\"/",
+                    "pattern"=> "/\"(?:\\\\?[\\s\\S])*?\"/",
                     "inside"=> [
                         'interpolation'=> [
-                            "pattern"=> "/#\{[^}]+\}/",
+                            "pattern"=> "/#\\{[^}]+\\}/",
                             "alias"=> 'variable'
                         ]
                     ]
                 ]
             ],
-            'keyword'=> "/\b(and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/",
+            'keyword'=> "/\\b(and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\\b/",
             'class-member'=> [
-                "pattern"=> "/@(?!\d)\w+/",
+                "pattern"=> "/@(?!\\d)\\w+/",
                 "alias"=> 'variable'
             ]
         ]);
@@ -67,12 +67,12 @@ class CoffeeScript extends AbstractDefinition
 
         $this->insertBefore('coffeescript', [
             'multiline-comment'=> [
-                "pattern"=> "/###[\s\S]+?###/",
+                "pattern"=> "/###[\\s\\S]+?###/",
                 "alias"=> 'comment'
             ],
             // Block regexp can contain comments and interpolation
             'block-regex'=> [
-                "pattern"=> "/\/{3}[\s\S]*?\/{3}/",
+                "pattern"=> "/\\/{3}[\\s\\S]*?\\/{3}/",
                 "alias"=> 'regex',
                 "inside"=> [
                     'comment'=> $comment,
@@ -83,7 +83,7 @@ class CoffeeScript extends AbstractDefinition
 
         $this->insertBefore('coffeescript', [
             'inline-javascript'=> [
-                "pattern"=> "/`(?:\\\\?[\s\S])*?`/",
+                "pattern"=> "/`(?:\\\\?[\\s\\S])*?`/",
                 "inside"=> [
                     'delimiter'=> [
                         "pattern"=> "/^`|`$/",
@@ -94,7 +94,7 @@ class CoffeeScript extends AbstractDefinition
             ],
             'multiline-string'=> [ // Block strings
                 [
-                    "pattern"=> "/'''[\s\S]*?'''/",
+                    "pattern"=> "/'''[\\s\\S]*?'''/",
                     "alias"=> 'string'
                 ],
                 [
@@ -109,7 +109,7 @@ class CoffeeScript extends AbstractDefinition
         ], 'string');
 
         $this->insertBefore('coffeescript', [
-            'property'=> "/(?!\d)\w+(?=\s*:(?!:))/" // Object property
+            'property'=> "/(?!\\d)\\w+(?=\\s*:(?!:))/" // Object property
         ], 'keyword');
     }
 }

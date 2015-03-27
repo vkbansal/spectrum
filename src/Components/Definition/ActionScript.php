@@ -28,8 +28,8 @@ class ActionScript extends AbstractDefinition
     public function definition()
     {   /* Fix XML highlighting*/
         return $this->extend('javascript',  [
-            'keyword' => "/\b(?:as|break|case|catch|class|const|default|delete|do|else|extends|finally|for|function|if|implements|import|in|instanceof|interface|internal|is|native|new|null|package|private|protected|public|return|super|switch|this|throw|try|typeof|use|var|void|while|with|dynamic|each|final|get|include|namespace|native|override|set|static)\b/",
-            'operator' => "/(?:[+\-*\/%^]|&&?|\|\|?|<<?|>>?>?|[!=]=)=?|[=~?@]/"
+            'keyword' => "/\\b(?:as|break|case|catch|class|const|default|delete|do|else|extends|finally|for|function|if|implements|import|in|instanceof|interface|internal|is|native|new|null|package|private|protected|public|return|super|switch|this|throw|try|typeof|use|var|void|while|with|dynamic|each|final|get|include|namespace|native|override|set|static)\\b/",
+            'operator' => "/(?:[+\\-*\\/%^]|&&?|\\|\\|?|<<?|>>?>?|[!=]=)=?|[=~?@]/"
         ]);
     }
 
@@ -40,7 +40,7 @@ class ActionScript extends AbstractDefinition
     {
         $this->insertBefore('actionscript', [
             'xml' => [
-                "pattern" => "/(^|[^.])<[\s\S]*>(?=\s*($|[\\r\\n,.;\]})<]))/",
+                "pattern" => "/(^|[^.])<[\\s\\S]*>(?=\\s*($|[\\r\\n,.;\\]})<]))/",
                 "inside" => [
                     "rest" => $this->getDefinition('markup')
                 ]

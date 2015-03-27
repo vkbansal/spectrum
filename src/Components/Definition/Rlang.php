@@ -24,22 +24,22 @@ class Rlang extends AbstractDefinition
     {
         return [
             'comment' => "/#.+/",
-            'string' => "/(['\"])(?:\\\\?.)*?\g{1}/",
+            'string' => "/(['\"])(?:\\\\?.)*?\\g{1}/",
             'percent-operator' => [
                 // Includes user-defined operators
                 // and %%, %*%, %/%, %in%, %o%, %x%
                 'pattern' => "/%[^%]*?%/",
                 'alias' => 'operator'
             ],
-            'boolean' => "/\b(?:TRUE|FALSE)\b/",
-            'ellipsis' => "/\.\.(?:\.|\d+)/",
+            'boolean' => "/\\b(?:TRUE|FALSE)\\b/",
+            'ellipsis' => "/\\.\\.(?:\\.|\\d+)/",
             'number' => [
-                "/\b(?:NaN|Inf)\b/",
-                "/\b(?:0x[\dA-Fa-f]+(?:\.\d*)?|\d*\.?\d+)(?:[EePp][+-]??\d+)?[iL]?\b/"
+                "/\\b(?:NaN|Inf)\\b/",
+                "/\\b(?:0x[\\dA-Fa-f]+(?:\\.\\d*)?|\\d*\\.?\\d+)(?:[EePp][+-]??\\d+)?[iL]?\\b/"
             ],
-            'keyword' => "/\b(?:if|else|repeat|while|function|for|in|next|break|NULL|NA|NA_integer_|NA_real_|NA_complex_|NA_character_)\b/",
-            'operator' => "/->>?|<?<-|[<>!=]=?|::?|&&?|\|\|?|[+\-*\/^$@~]/",
-            'punctuation' => "/[(){}\[\],;]/"
+            'keyword' => "/\\b(?:if|else|repeat|while|function|for|in|next|break|NULL|NA|NA_integer_|NA_real_|NA_complex_|NA_character_)\\b/",
+            'operator' => "/->>?|<?<-|[<>!=]=?|::?|&&?|\\|\\|?|[+\\-*\\/^$@~]/",
+            'punctuation' => "/[(){}\\[\\],;]/"
         ];
     }
 }

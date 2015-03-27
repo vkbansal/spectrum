@@ -23,9 +23,9 @@ class Ini extends AbstractDefinition
     public function definition()
     {
         return [
-            'comment' => "/^\s*;.*$/m",
-            'important' => "/\[.*?\]/m",
-            'constant'=> "/^\s*[^\s=]+?(?=[ \\t]*=)/m",
+            'comment' => "/^\\s*;.*$/m",
+            'important' => "/\\[.*?\\]/m",
+            'constant'=> "/^\\s*[^\\s=]+?(?=[ \\t]*=)/m",
             'attr-value'=> [
                 "pattern" => "/=.*/m",
                 "inside" => [

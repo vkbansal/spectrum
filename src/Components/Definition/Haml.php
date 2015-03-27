@@ -36,33 +36,33 @@ class Haml extends AbstractDefinition
         return [
             'multiline-comment' => [ // Multiline stuff should appear before the rest
                 [
-                    'pattern' => "/((?:^|\\n)([\\t ]*))\/.*(\\n\g{2}[\\t ]+.+)*/",
+                    'pattern' => "/((?:^|\\n)([\\t ]*))\\/.*(\\n\\g{2}[\\t ]+.+)*/",
                     "lookbehind" => true,
                     "alias" => 'comment'
                 ],
                 [
-                    "pattern" => "/((?:^|\\n)([\\t ]*))-#.*(\\n\g{2}[\\t ]+.+)*/",
+                    "pattern" => "/((?:^|\\n)([\\t ]*))-#.*(\\n\\g{2}[\\t ]+.+)*/",
                     "lookbehind" => true,
                     "alias" => 'comment'
                 ]
             ],
             'multiline-code' => [
                 [
-                    "pattern" => "/((?:^|\\n)([\\t ]*)(?:[~-]|[&!]?=)).*,[\\t ]*(\\n\g{2}[\\t ]+.*,[\\t ]*)*(\\n\g{2}[\\t ]+.+)/",
+                    "pattern" => "/((?:^|\\n)([\\t ]*)(?:[~-]|[&!]?=)).*,[\\t ]*(\\n\\g{2}[\\t ]+.*,[\\t ]*)*(\\n\\g{2}[\\t ]+.+)/",
                     "lookbehind" => true,
                     "inside" => [ "rest" => $this->getDefinition('ruby', []) ]
                 ],
                 [
-                    "pattern" => "/((?:^|\\n)([\\t ]*)(?:[~-]|[&!]?=)).*\|[\\t ]*(\\n\g{2}[\\t ]+.*\|[\\t ]*)*/",
+                    "pattern" => "/((?:^|\\n)([\\t ]*)(?:[~-]|[&!]?=)).*\\|[\\t ]*(\\n\\g{2}[\\t ]+.*\\|[\\t ]*)*/",
                     "lookbehind" => true,
                     "inside" => [ "rest" => $this->getDefinition('ruby', []) ]
                 ]
             ],
             'filter' => [ // See at the end of the file for known filters
-                "pattern" => "/((?:^|\\n)([\\t ]*)):[\w-]+(\\n(?:\g{2}[\\t ]+.+|\s*?(?=\\n)))+/",
+                "pattern" => "/((?:^|\\n)([\\t ]*)):[\\w-]+(\\n(?:\\g{2}[\\t ]+.+|\\s*?(?=\\n)))+/",
                 "lookbehind" => true,
                 "inside" => [
-                    'filter-name' => [ "pattern" => "/^:[\w-]+/", "alias" => "variable" ]
+                    'filter-name' => [ "pattern" => "/^:[\\w-]+/", "alias" => "variable" ]
                 ]
             ],
             'markup' => [
@@ -72,29 +72,29 @@ class Haml extends AbstractDefinition
             ],
             'doctype' => [ "pattern" => "/((?:^|\\n)[\\t ]*)!!!(?: .+)?/", "lookbehind" => true ],
             'tag' => [ // Allows for one nested group of braces
-                "pattern" => "/((?:^|\\n)[\\t ]*)[%.#][\w\-#.]*[\w\-](?:\([^)]+\)|\{(?:\{[^}]+\}|[^}])+\}|\[[^\]]+\])*[\/<>]*/",
+                "pattern" => "/((?:^|\\n)[\\t ]*)[%.#][\\w\\-#.]*[\\w\\-](?:\\([^)]+\\)|\\{(?:\\{[^}]+\\}|[^}])+\\}|\\[[^\\]]+\\])*[\\/<>]*/",
                 "lookbehind" => true,
                 "inside" => [
                     'attributes' => [
                         [   // Lookbehind tries to prevent interpolations for breaking it all
                             // Allows for one nested group of braces
-                            "pattern" => "/(^|[^#])\{(?:\{[^}]+\}|[^}])+\}/",
+                            "pattern" => "/(^|[^#])\\{(?:\\{[^}]+\\}|[^}])+\\}/",
                             "lookbehind" => true,
                             "inside" => [ "rest" => $this->getDefinition('ruby', []) ]
                         ],
                         [
-                            "pattern" => "/\([^)]+\)/",
+                            "pattern" => "/\\([^)]+\\)/",
                             "inside" => [
                                 'attr-value' => [
-                                    "pattern" => "/(=\s*)(?:\"(?:\\\\?.)*?\"|[^)\s]+)/",
+                                    "pattern" => "/(=\\s*)(?:\"(?:\\\\?.)*?\"|[^)\\s]+)/",
                                     "lookbehind" => true
                                 ],
-                                'attr-name' => "/[\w:-]+(?=\s*!?=|\s*[,)])/",
+                                'attr-name' => "/[\\w:-]+(?=\\s*!?=|\\s*[,)])/",
                                 'punctuation' => "/[=(),]/"
                             ]
                         ],
                         [
-                            "pattern" => "/\[[^\]]+\]/",
+                            "pattern" => "/\\[[^\\]]+\\]/",
                             "inside" => [ "rest" => $this->getDefinition('ruby', []) ]
                         ]
                     ],
@@ -107,19 +107,19 @@ class Haml extends AbstractDefinition
                 "inside" => [ "rest" => $this->getDefinition('ruby', []) ]
             ],
             'interpolation' => [ // Interpolations in plain text
-                "pattern" => "/#\{[^}]+\}/",
+                "pattern" => "/#\\{[^}]+\\}/",
                 "inside" => [
-                    'delimiter' => [ "pattern" => "/^#\{|\}$/", "alias" => 'punctuation' ],
+                    'delimiter' => [ "pattern" => "/^#\\{|\\}$/", "alias" => 'punctuation' ],
                     "rest" => $this->getDefinition('ruby', [])
                 ]
             ],
-            'punctuation' => [ "pattern" => "/((?:^|\\n)[\\t ]*)[~=\-&!]/", "lookbehind" => true ]
+            'punctuation' => [ "pattern" => "/((?:^|\\n)[\\t ]*)[~=\\-&!]/", "lookbehind" => true ]
         ];
     }
 
     public function setup()
     {
-        $filter_pattern = "/((?:^|\\n)([\\t ]*)):{{filter_name}}(\\n(?:\g{2}[\\t ]+.+|\s*?(?=\\n)))+/";
+        $filter_pattern = "/((?:^|\\n)([\\t ]*)):{{filter_name}}(\\n(?:\\g{2}[\\t ]+.+|\\s*?(?=\\n)))+/";
 
         // Non exhaustive list of available filters and associated languages
         $filters = [
@@ -150,7 +150,7 @@ class Haml extends AbstractDefinition
                     "lookbehind" => true,
                     "inside" => [
                         'filter-name'=> [
-                            "pattern" => "/^:[\w-]+/",
+                            "pattern" => "/^:[\\w-]+/",
                             "alias" => 'variable'
                         ],
                         "rest"=> $this->getDefinition($filter['language'], [])

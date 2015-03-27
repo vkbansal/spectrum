@@ -63,7 +63,7 @@ class Markdown extends AbstractDefinition
 
                     // title 2
                     // -------
-                    'pattern' => "/\w+.*\\n(?:==+|--+)/",
+                    'pattern' => "/\\w+.*\\n(?:==+|--+)/",
                     'alias' => 'important',
                     'inside' => [
                         'punctuation' => "/==+$|--+$/"
@@ -72,7 +72,7 @@ class Markdown extends AbstractDefinition
                 [
                     // # title 1
                     // ###### title 6
-                    'pattern' => "/((?:^|\\n)\s*)#+.+/",
+                    'pattern' => "/((?:^|\\n)\\s*)#+.+/",
                     'lookbehind' => true,
                     'alias' => 'important',
                     'inside' => [
@@ -85,7 +85,7 @@ class Markdown extends AbstractDefinition
                 // ---
                 // * * *
                 // -----------
-                'pattern' => "/((?:^|\\n)\s*)([*-])([\\t ]*\g{2}){2,}(?=\s*(?:\\n|$))/",
+                'pattern' => "/((?:^|\\n)\\s*)([*-])([\\t ]*\\g{2}){2,}(?=\\s*(?:\\n|$))/",
                 'lookbehind' => true,
                 'alias' => 'punctuation'
             ],
@@ -94,7 +94,7 @@ class Markdown extends AbstractDefinition
                 // + item
                 // - item
                 // 1. item
-                'pattern' => "/((?:^|\\n)\s*)(?:[*+-]|\d+\.)(?=[\\t ].)/",
+                'pattern' => "/((?:^|\\n)\\s*)(?:[*+-]|\\d+\\.)(?=[\\t ].)/",
                 'lookbehind' => true,
                 'alias' => 'punctuation'
             ],
@@ -103,14 +103,14 @@ class Markdown extends AbstractDefinition
                 // [id]: http://example.com 'Optional title'
                 // [id]: http://example.com (Optional title)
                 // [id]: <http://example.com> "Optional title"
-                'pattern' => "/!?\[[^\]]+\]:[\\t ]+(?:\S+|<(?:[^>]|\\\\>)+>)(?:[\\t ]+(?:\"(?:[^\"]|\\\\\")*\"|'(?:[^']|\\\\')*'|\((?:[^)]|\\\\\))*\)))?/",
+                'pattern' => "/!?\\[[^\\]]+\\]:[\\t ]+(?:\\S+|<(?:[^>]|\\\\>)+>)(?:[\\t ]+(?:\"(?:[^\"]|\\\\\")*\"|'(?:[^']|\\\\')*'|\\((?:[^)]|\\\\\\))*\\)))?/",
                 'inside' => [
                     'variable' => [
-                        'pattern' => "/^(!?\[)[^\]]+/",
+                        'pattern' => "/^(!?\\[)[^\\]]+/",
                         'lookbehind' => true
                     ],
-                    'string' => "/(?:\"(?:[^\"]|\\\\\")*\"|'(?:[^']|\\\\')*'|\((?:[^)]|\\\\\))*\))$/",
-                    'punctuation' => "/[[\]\(\)<>:]/"
+                    'string' => "/(?:\"(?:[^\"]|\\\\\")*\"|'(?:[^']|\\\\')*'|\\((?:[^)]|\\\\\\))*\\))$/",
+                    'punctuation' => "/[[\\]\\(\\)<>:]/"
                 ],
                 'alias' => 'url'
             ],
@@ -119,10 +119,10 @@ class Markdown extends AbstractDefinition
                 // __strong__
 
                 // Allow only one line break
-                'pattern' => "/(^|[^\\\\])(\*\*|__)(?:\\n(?!\\n)|.)+?\g{2}/",
+                'pattern' => "/(^|[^\\\\])(\\*\\*|__)(?:\\n(?!\\n)|.)+?\\g{2}/",
                 'lookbehind' => true,
                 'inside' => [
-                    'punctuation' => "/^\*\*|^__|\*\*\s*$|__\s*$/"
+                    'punctuation' => "/^\\*\\*|^__|\\*\\*\\s*$|__\\s*$/"
                 ]
             ],
             'italic' => [
@@ -130,7 +130,7 @@ class Markdown extends AbstractDefinition
                 // _em_
 
                 // Allow only one line break
-                'pattern' => "/(^|[^\\\\])(?:\*(?:\\n(?!\\n)|.)+?\*|_(?:\\n(?!\\n)|.)+?_)/",
+                'pattern' => "/(^|[^\\\\])(?:\\*(?:\\n(?!\\n)|.)+?\\*|_(?:\\n(?!\\n)|.)+?_)/",
                 'lookbehind' => true,
                 'inside' => [
                     'punctuation'=> "/^[*_]|[*_]$/"
@@ -139,14 +139,14 @@ class Markdown extends AbstractDefinition
             'url' => [
                 // [example](http://example.com "Optional title")
                 // [example] [id]
-                'pattern' => "/!?\[[^\]]+\](?:\([^\s)]+(?:[\\t ]+\"(?:[^\"]|\\\\\")*\")?\)| ?\[[^\]\\n]*\])/",
+                'pattern' => "/!?\\[[^\\]]+\\](?:\\([^\\s)]+(?:[\\t ]+\"(?:[^\"]|\\\\\")*\")?\\)| ?\\[[^\\]\\n]*\\])/",
                 'inside' => [
                     'variable' => [
-                        'pattern' => "/(!?\[)[^\]]+(?=\]$)/",
+                        'pattern' => "/(!?\\[)[^\\]]+(?=\\]$)/",
                         'lookbehind' => true
                     ],
                     'string' => [
-                        'pattern' => "/\"(?:[^\"]|\\\\\")*\"(?=\)$)/"
+                        'pattern' => "/\"(?:[^\"]|\\\\\")*\"(?=\\)$)/"
                     ]
                 ]
             ]

@@ -36,29 +36,29 @@ class Less extends AbstractDefinition
          */
         return $this->extend('css', [
             'comment'=> [
-                "/\/\*[\w\W]*?\*\//",
+                "/\\/\\*[\\w\\W]*?\\*\\//",
                 [
-                    "pattern"=> "/(^|[^\\\\])\/\/.+/",
+                    "pattern"=> "/(^|[^\\\\])\\/\\/.+/",
                     "lookbehind"=> true
                 ]
             ],
             'atrule'=> [
-                "pattern"=> "/@[\w-]+?(?:\([^{}]+\)|[^(){};])*?(?=\s*\{)/i",
+                "pattern"=> "/@[\\w-]+?(?:\\([^{}]+\\)|[^(){};])*?(?=\\s*\\{)/i",
                 "inside"=> [
                     'punctuation'=> "/[:()]/"
                 ]
             ],
             // selectors and mixins are considered the same
             'selector'=> [
-                "pattern"=> "/(?:@\{[\w-]+\}|[^{};\s@])(?:@\{[\w-]+\}|\([^{}]*\)|[^{};@])*?(?=\s*\{)/",
+                "pattern"=> "/(?:@\\{[\\w-]+\\}|[^{};\\s@])(?:@\\{[\\w-]+\\}|\\([^{}]*\\)|[^{};@])*?(?=\\s*\\{)/",
                 "inside"=> [
                     // mixin parameters
-                    'variable'=> "/@+[\w-]+/"
+                    'variable'=> "/@+[\\w-]+/"
                 ]
             ],
-            'property'=> "/(\b|\B)(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/i",
+            'property'=> "/(\\b|\\B)(?:@\\{[\\w-]+\\}|[\\w-])+(?:\\+_?)?(?=\\s*:)/i",
             'punctuation'=> "/[{}();:,]/",
-            'operator'=> "/[+\-*\/]/"
+            'operator'=> "/[+\\-*\\/]/"
         ]);
     }
 
@@ -78,16 +78,16 @@ class Less extends AbstractDefinition
             'variable'=> [
                 // Variable declaration (the colon must be consumed!)
                 [
-                    "pattern"=> "/@[\w-]+\s*:/",
+                    "pattern"=> "/@[\\w-]+\\s*:/",
                     "inside"=> [
                         "punctuation"=> "/:/"
                     ]
                 ],
                 // Variable usage
-                "/@@?[\w-]+/"
+                "/@@?[\\w-]+/"
             ],
             'mixin-usage'=> [
-                "pattern"=> "/([{;]\s*)[.#](?!\d)[\w-]+.*?(?=[(;])/",
+                "pattern"=> "/([{;]\\s*)[.#](?!\\d)[\\w-]+.*?(?=[(;])/",
                 "lookbehind" => true,
                 "alias"=> 'function'
             ]
