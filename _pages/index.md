@@ -1,5 +1,4 @@
 #Spectrum (WIP)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b/big.png)](https://insight.sensiolabs.com/projects/aa72708a-2b29-4316-aa02-febeca97970b)
 
 [![Latest Version](https://img.shields.io/packagist/v/vkbansal/spectrum.svg?style=flat-square)](https://packagist.org/packages/vkbansal/spectrum)
 [![Software License](http://img.shields.io/badge/License-BSD--3-brightgreen.svg?style=flat-square)](LICENSE)

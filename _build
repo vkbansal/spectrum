@@ -100,10 +100,11 @@ foreach ($samples as $sample) {
     $console->out("<light_green>Building</light_green> <bold><light_cyan>{$lang}<light_cyan></bold>");
 
     $doc = Parser::parse($fs->read($sample['path']));
-    $meta[] = $doc->getConfig();
+    $_meta = $doc->getConfig();
     $code = $highlighter->highlightText($doc->getContent(), $lang);
-    $txt = $twig->render('code-partial.html', compact('meta','code'));
+    $txt = $twig->render('code-partial.html', compact('_meta','code'));
     $fs->put("/samples/partials/{$lang}.html", $txt);
+    $meta[] = $_meta;
 }
 
 $active = 'samples';
