@@ -1,0 +1,127 @@
+<p>Default language reference: <b>sas</b></p>
+<pre class="language-"><code class="language-"><span class="token comment" spellcheck="true">/* Some examples adapted from the documentation (http://support.sas.com/documentation/cdl/en/basess/64003/PDF/default/basess.pdf) */</span>
+
+<span class="token keyword">data</span> city<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">* another inline comment;</span>
+
+  <span class="token keyword">input</span> Year <span class="token number">4</span><span class="token punctuation">.</span> <span class="token punctuation">@</span><span class="token number">7</span> ServicesPolice comma6<span class="token punctuation">.</span>
+    <span class="token punctuation">@</span><span class="token number">15</span> ServicesFire comma6<span class="token punctuation">.</span> <span class="token punctuation">@</span><span class="token number">22</span> ServicesWater_Sewer comma6<span class="token punctuation">.</span>
+    <span class="token punctuation">@</span><span class="token number">30</span> AdminLabor comma6<span class="token punctuation">.</span> <span class="token punctuation">@</span><span class="token number">39</span> AdminSupplies comma6<span class="token punctuation">.</span>
+    <span class="token punctuation">@</span><span class="token number">45</span> AdminUtilities comma6<span class="token punctuation">.</span><span class="token punctuation">;</span>
+  ServicesTotal<span class="token operator">=</span>ServicesPolice<span class="token operator">+</span>ServicesFire<span class="token operator">+</span>ServicesWater_Sewer<span class="token punctuation">;</span>
+  AdminTotal<span class="token operator">=</span>AdminLabor<span class="token operator">+</span>AdminSupplies<span class="token operator">+</span>AdminUtilities<span class="token punctuation">;</span>
+  Total<span class="token operator">=</span>ServicesTotal<span class="token operator">+</span>AdminTotal<span class="token punctuation">;</span>
+
+  Test<span class="token operator">=</span><span class="token string">'A string '' whith a quote'</span><span class="token punctuation">;</span>
+  Test2 <span class="token operator">=</span> <span class="token string">"A string "" whith a quote"</span><span class="token punctuation">;</span>
+
+  label   Total<span class="token operator">=</span><span class="token string">'Total Outlays'</span>
+      ServicesTotal<span class="token operator">=</span><span class="token string">'Services: Total'</span>
+      ServicesPolice<span class="token operator">=</span><span class="token string">'Services: Police'</span>
+      ServicesFire<span class="token operator">=</span><span class="token string">'Services: Fire'</span>
+      ServicesWater_Sewer<span class="token operator">=</span><span class="token string">'Services: Water &amp;amp; Sewer'</span>
+      AdminTotal<span class="token operator">=</span><span class="token string">'Administration: Total'</span>
+      AdminLabor<span class="token operator">=</span><span class="token string">'Administration: Labor'</span>
+      AdminSupplies<span class="token operator">=</span><span class="token string">'Administration: Supplies'</span>
+      AdminUtilities<span class="token operator">=</span><span class="token string">'Administration: Utilities'</span><span class="token punctuation">;</span>
+<span class="token datalines"><span class="token data string">  </span><span class="token keyword">datalines</span><span class="token punctuation">;</span><span class="token data string">
+1993 2,819 1,120 422 391 63 98
+1994 2,477 1,160 500 172 47 70
+1995 2,028 1,061 510 269 29 79
+1996 2,754 893 540 227 21 67
+1997 2,195 963 541 214 21 59
+1998 1,877 926 535 198 16 80
+1999 1,727 1,111 535 213 27 70
+2000 1,532 1,220 519 195 11 69
+2001 1,448 1,156 577 225 12 58
+2002 1,500 1,076 606 235 19 62
+2003 1,934 969 646 266 11 63
+2004 2,195 1,002 643 256 24 55
+2005 2,204 964 692 256 28 70
+2006 2,175 1,144 735 241 19 83
+2007 2,556 1,341 813 238 25 97
+2008 2,026 1,380 868 226 24 97
+2009 2,526 1,454 946 317 13 89
+2010 2,027 1,486 1,043 226 . 82
+2011 2,037 1,667 1,152 244 20 88
+2012 2,852 1,834 1,318 270 23 74
+2013 2,787 1,701 1,317 307 26 66
+</span><span class="token punctuation">;</span></span>
+<span class="token keyword">proc</span> datasets library<span class="token operator">=</span>work nolist
+<span class="token punctuation">;</span>
+contents <span class="token keyword">data</span><span class="token operator">=</span>city
+<span class="token punctuation">;</span>
+<span class="token keyword">run</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">data</span> city3<span class="token punctuation">;</span>
+  set city<span class="token punctuation">(</span>firstobs<span class="token operator">=</span><span class="token number">10</span> obs<span class="token operator">=</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">run</span><span class="token punctuation">;</span>
+
+<span class="token keyword">data</span> services <span class="token punctuation">(</span>keep<span class="token operator">=</span>ServicesTotal ServicesPolice ServicesFire
+        ServicesWater_Sewer<span class="token punctuation">)</span>
+  admin <span class="token punctuation">(</span>keep<span class="token operator">=</span>AdminTotal AdminLabor AdminSupplies
+      AdminUtilities<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  set city<span class="token punctuation">(</span>drop<span class="token operator">=</span>Total<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">run</span><span class="token punctuation">;</span>
+<span class="token keyword">proc</span> print <span class="token keyword">data</span><span class="token operator">=</span>services<span class="token punctuation">;</span>
+  title <span class="token string">'City Expenditures: Services'</span><span class="token punctuation">;</span>
+<span class="token keyword">run</span><span class="token punctuation">;</span>
+
+<span class="token keyword">data</span> newlength<span class="token punctuation">;</span>
+  set mylib<span class="token punctuation">.</span>internationaltours<span class="token punctuation">;</span>
+  length Remarks <span class="token punctuation">$</span> <span class="token number">30</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> Vendor <span class="token operator">=</span> <span class="token string">'Hispania'</span> <span class="token keyword">then</span> Remarks <span class="token operator">=</span> <span class="token string">'Bonus for 10+ people'</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> Vendor <span class="token operator">=</span> <span class="token string">'Mundial'</span> <span class="token keyword">then</span> Remarks <span class="token operator">=</span> <span class="token string">'Bonus points'</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span> <span class="token keyword">if</span> Vendor <span class="token operator">=</span> <span class="token string">'Major'</span> <span class="token keyword">then</span> Remarks <span class="token operator">=</span> <span class="token string">'Discount for 30+ people'</span><span class="token punctuation">;</span>
+<span class="token keyword">run</span><span class="token punctuation">;</span>
+<span class="token keyword">proc</span> print <span class="token keyword">data</span><span class="token operator">=</span>newlength<span class="token punctuation">;</span>
+  var Country Vendor Remarks<span class="token punctuation">;</span>
+  title <span class="token string">'Information About Vendors'</span><span class="token punctuation">;</span>
+<span class="token keyword">run</span><span class="token punctuation">;</span>
+
+libname mylib <span class="token string">'permanent-data-library'</span><span class="token punctuation">;</span>
+<span class="token keyword">data</span> mylib<span class="token punctuation">.</span>departures<span class="token punctuation">;</span>
+  <span class="token keyword">input</span> Country <span class="token punctuation">$</span> <span class="token number">1</span><span class="token number">-9</span> CitiesInTour <span class="token number">11</span><span class="token number">-12</span> USGate <span class="token punctuation">$</span> <span class="token number">14</span><span class="token number">-26</span>
+  ArrivalDepartureGates <span class="token punctuation">$</span> <span class="token number">28</span><span class="token number">-48</span><span class="token punctuation">;</span>
+<span class="token datalines"><span class="token data string">  </span><span class="token keyword">datalines</span><span class="token punctuation">;</span><span class="token data string">
+Japan 5 San Francisco Tokyo, Osaka
+Italy 8 New York Rome, Naples
+Australia 12 Honolulu Sydney, Brisbane
+Venezuela 4 Miami Caracas, Maracaibo
+Brazil 4 Rio de Janeiro, Belem
+</span><span class="token punctuation">;</span></span>
+<span class="token keyword">proc</span> print <span class="token keyword">data</span><span class="token operator">=</span>mylib<span class="token punctuation">.</span>departures<span class="token punctuation">;</span>
+  title <span class="token string">'Data Set AIR.DEPARTURES'</span><span class="token punctuation">;</span>
+<span class="token keyword">run</span><span class="token punctuation">;</span>
+
+<span class="token keyword">data</span> missingval<span class="token punctuation">;</span>
+  length Country <span class="token punctuation">$</span> <span class="token number">10</span> TourGuide <span class="token punctuation">$</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  <span class="token keyword">input</span> Country TourGuide<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">* lines is an alias for datalines;</span>
+<span class="token datalines"><span class="token data string">  </span><span class="token keyword">lines</span><span class="token punctuation">;</span><span class="token data string">
+Japan Yamada
+Italy Militello
+Australia Edney
+Venezuela .
+Brazil Cardoso
+</span><span class="token punctuation">;</span></span>
+
+<span class="token keyword">data</span> inventory_tool<span class="token punctuation">;</span>
+  <span class="token keyword">input</span> PartNumber <span class="token punctuation">$</span> Description <span class="token punctuation">$</span> InStock <span class="token punctuation">@</span><span class="token number">17</span>
+    ReceivedDate date9<span class="token punctuation">.</span> <span class="token punctuation">@</span><span class="token number">27</span> Price<span class="token punctuation">;</span>
+  <span class="token keyword">format</span> ReceivedDate date9<span class="token punctuation">.</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">* cards is an alias for datalines;</span>
+<span class="token datalines"><span class="token data string">  </span><span class="token keyword">cards</span><span class="token punctuation">;</span><span class="token data string">
+K89R seal 34 27jul2010 245.00
+M4J7 sander 98 20jun2011 45.88
+LK43 filter 121 19may2011 10.99
+MN21 brace 43 10aug2012 27.87
+BC85 clamp 80 16aug2012 9.55
+NCF3 valve 198 20mar2012 24.50
+KJ66 cutter 6 18jun2010 19.77
+UYN7 rod 211 09sep2010 11.55
+JD03 switch 383 09jan2013 13.99
+BV1E timer 26 03aug2013 34.50
+</span><span class="token punctuation">;</span></span>
+<span class="token keyword">run</span><span class="token punctuation">;</span>
+</code></pre>

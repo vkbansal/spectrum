@@ -1,0 +1,31 @@
+<p>Default language reference: <b>fsharp</b></p>
+<pre class="language-"><code class="language-"><span class="token comment" spellcheck="true">// The declaration creates a constructor that takes two values, name and age.</span>
+<span class="token keyword">type</span> <span class="token function">Person<span class="token punctuation">(</span></span>name<span class="token punctuation">:</span>string<span class="token punctuation">,</span> age<span class="token punctuation">:</span>int<span class="token punctuation">)</span> <span class="token operator">=</span>
+    <span class="token comment" spellcheck="true">// A Person object's age can be changed. The mutable keyword in the</span>
+    <span class="token comment" spellcheck="true">// declaration makes that possible.</span>
+    <span class="token keyword">let</span> <span class="token keyword">mutable</span> internalAge <span class="token operator">=</span> age
+
+    <span class="token comment" spellcheck="true">// Declare a second constructor that takes only one argument, a name.</span>
+    <span class="token comment" spellcheck="true">// This constructor calls the constructor that requires two arguments,</span>
+    <span class="token comment" spellcheck="true">// sending 0 as the value for age.</span>
+    <span class="token keyword">new</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span>string<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">Person<span class="token punctuation">(</span></span>name<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// A read-only property.</span>
+    <span class="token keyword">member</span> this<span class="token punctuation">.</span>Name <span class="token operator">=</span> name
+    <span class="token comment" spellcheck="true">// A read/write property.</span>
+    <span class="token keyword">member</span> this<span class="token punctuation">.</span>Age
+        <span class="token keyword">with</span> <span class="token function">get<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token operator">=</span> internalAge
+        <span class="token keyword">and</span> <span class="token function">set<span class="token punctuation">(</span></span>value<span class="token punctuation">)</span> <span class="token operator">=</span> internalAge <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">-</span> value
+
+    <span class="token comment" spellcheck="true">// Instance methods.</span>
+    <span class="token comment" spellcheck="true">// Increment the person's age.</span>
+    <span class="token keyword">member</span> this<span class="token punctuation">.</span>HasABirthday <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> internalAge <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span><span class="token operator">-</span> internalAge <span class="token operator">+</span> <span class="token number">1</span>
+
+    <span class="token comment" spellcheck="true">// Check current age against some threshold.</span>
+    <span class="token keyword">member</span> this<span class="token punctuation">.</span>IsOfAge targetAge <span class="token operator">=</span> internalAge <span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token operator">=</span> targetAge
+
+    <span class="token comment" spellcheck="true">// Display the person's name and age.</span>
+    <span class="token keyword">override</span> this<span class="token punctuation">.</span>ToString <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span>
+        <span class="token string">"Name:  "</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"\n"</span> <span class="token operator">+</span> <span class="token string">"Age:   "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>string<span class="token punctuation">)</span>internalAge
+
+</code></pre>
