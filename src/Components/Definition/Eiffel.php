@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Language\AbstractDefinition;
 /**
  * Eiffel definition
  * @package VKBansal\Spectrum\Definition\Eiffel
- * @version 0.4.1
+ * @version 0.4.2
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

@@ -5,7 +5,7 @@ use VKBansal\Spectrum\Language\AbstractDefinition;
 /**
  * Abstract class for Template language definitions
  * @package VKBansal\Spectrum\Language\AbstractTemplateDefinition
- * @version 0.4.1
+ * @version 0.4.2
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Language\AbstractTemplateDefinition;
 /**
  * Smarty definition
  * @package VKBansal\Spectrum\Definition\Smarty
- * @version 0.4.1
+ * @version 0.4.2
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

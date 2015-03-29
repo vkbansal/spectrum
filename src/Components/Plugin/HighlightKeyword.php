@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Plugin\AbstractPlugin;
 /**
  * Plugin for highlighting keywords by adding 'keyword-*' class
  * @package VKBansal\Spectrum\Components\Plugin\HighlightKeyword
- * @version 0.4.1
+ * @version 0.4.2
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

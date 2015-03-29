@@ -4,7 +4,7 @@ namespace VKBansal\Spectrum\Hook;
 /**
  * Hooks Implementation.
  * @package VKBansal\Spectrum\Hooks\HookableTrait
- * @version 0.4.1
+ * @version 0.4.2
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

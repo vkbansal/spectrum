@@ -10,6 +10,8 @@ All the changes can be found below. Order used:
 
 ## [master]
 
+## v0.4.2
+
 ### Added
 - `SmallTalk` language definition
 - `Yaml` language definition
