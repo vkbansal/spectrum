@@ -16,7 +16,7 @@ This list is used to keep track of available examples in documentation:
 - [x] Eiffel
 - [x] Erlang
 - [x] Fortran
-- [ ] F#
+- [x] F#
 - [x] Gherkin
 - [x] Git
 - [x] Go
@@ -46,20 +46,20 @@ This list is used to keep track of available examples in documentation:
 - [x] Powershell
 - [x] Python
 - [x] R
-- [ ] reStructuredText (reST)
+- [x] reStructuredText (reST)
 - [x] Rip
 - [x] Ruby
 - [x] Rust
-- [ ] SAS
+- [x] SAS
 - [x] Scala
 - [x] Scheme
 - [x] SASS\SCSS
-- [ ] Smalltalk
+- [X] Smalltalk
 - [x] Smarty
 - [x] SQL
-- [ ] Stylus
+- [x] Stylus
 - [x] Swift
 - [x] Twig
 - [x] TypeScript
-- [ ] Yaml
-- [ ] Wiki
+- [x] Yaml
+- [x] Wiki
