@@ -13,8 +13,8 @@ All the changes can be found below. Order used:
 ### Added
 - `CodeBlockRenderer` for `league/commonmark`, to be used for code highlighting directly from markdown.
 
-###
-- Fixed typos in `python` definition
+### Fixed
+- Typos in `python` definition
 
 ## v0.4.2
 
