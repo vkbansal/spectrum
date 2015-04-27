@@ -10,6 +10,12 @@ All the changes can be found below. Order used:
 
 ## [master]
 
+### Added
+- `CodeBlockRenderer` for `league/commonmark`, to be used for code highlighting directly from markdown.
+
+###
+- Fixed typos in `python` definition
+
 ## v0.4.2
 
 ### Added
