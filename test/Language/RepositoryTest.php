@@ -1,6 +1,7 @@
 <?php
+namespace VKBansal\Test\Spectrum\Language;
 
-class RepositoryTest extends PHPUnit_Framework_TestCase {
+class RepositoryTest extends \PHPUnit_Framework_TestCase {
 
     protected $repo;
 

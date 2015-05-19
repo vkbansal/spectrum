@@ -1,7 +1,9 @@
 <?php
+namespace VKBansal\Test\Spectrum\Language;
+
 use VKBansal\Spectrum\Language\Mapper;
 
-class MapperTest extends PHPUnit_Framework_TestCase {
+class MapperTest extends \PHPUnit_Framework_TestCase {
 
     public function testGetDefinitionClasses()
     {

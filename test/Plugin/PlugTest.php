@@ -1,5 +1,5 @@
 <?php
-namespace VKBansal;
+namespace VKBansal\Test\Spectrum\Plugin;
 
 class PlugTest extends \PHPUnit_Framework_TestCase{
 
@@ -20,7 +20,7 @@ class PlugTest extends \PHPUnit_Framework_TestCase{
     }
 
     /**
-     * @expectedException           VKBansal\Spectrum\Plugin\PluginNotFoundException
+     * @expectedException           \VKBansal\Spectrum\Plugin\PluginNotFoundException
      */
     public function testRemoveException()
     {

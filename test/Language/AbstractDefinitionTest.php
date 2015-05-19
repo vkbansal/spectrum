@@ -1,7 +1,8 @@
 <?php
+namespace VKBansal\Test\Spectrum\Language;
 
-class AbstractDefinitionTest extends PHPUnit_Framework_TestCase {
-
+class AbstractDefinitionTest extends \PHPUnit_Framework_TestCase
+{
     protected $def;
     protected $prism;
 
@@ -52,5 +53,4 @@ class AbstractDefinitionTest extends PHPUnit_Framework_TestCase {
             'token3' => 'default3'
         ]);
     }
-
 }

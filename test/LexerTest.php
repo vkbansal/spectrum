@@ -1,7 +1,9 @@
 <?php
+namespace VKBansal\Test\Spectrum;
+
 use VKBansal\Spectrum\Lexer;
 
-class LexerTest extends PHPUnit_Framework_TestCase
+class LexerTest extends \PHPUnit_Framework_TestCase
 {
     protected $generator;
 
@@ -29,7 +31,7 @@ class LexerTest extends PHPUnit_Framework_TestCase
     public function testToNodes()
     {
         // $this->markTestSkipped();
-        $document = new DOMDocument();
+        $document = new \DOMDocument();
 
         $prism = $this->getMockBuilder('VKBansal\Spectrum\Spectrum')->getMock();
 

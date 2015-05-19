@@ -1,7 +1,9 @@
 <?php
+namespace VKBansal\Test\Spectrum;
+
 use VKBansal\Spectrum\Util;
 
-class UtilTest extends PHPUnit_Framework_TestCase {
+class UtilTest extends \PHPUnit_Framework_TestCase {
 
     public function testIsAssoc()
     {
@@ -27,7 +29,7 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
     public function testGetInnerHtml()
     {
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $elem = $doc->createElement("div", "Test content");
 
         $this->assertEquals("Test content", Util::getInnerHtml($elem));
@@ -35,7 +37,7 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
     public function testSetInnerHtml()
     {
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $elem = $doc->createElement("div");
 
         $nodes = [
@@ -50,7 +52,7 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
     public function testAddClass()
     {
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $elem = $doc->createElement("div");
 
         Util::addClass($elem, "test");
@@ -60,7 +62,7 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
     public function testRemoveClassString()
     {
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $elem = $doc->createElement("div");
 
         Util::addClass($elem, "myclass language-test dummy test");
@@ -72,18 +74,18 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
     public function testRemoveClassRegex()
     {
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $elem = $doc->createElement("div");
 
         Util::addClass($elem, "myclass language-test dummy test");
-        Util::removeClass($elem, "/\blang(?:uage)?-(?!\*)(\w+)\b/i", true);
+        Util::removeClass($elem, "/\\blang(?:uage)?-(?!\\*)(\\w+)\\b/i", true);
 
         $this->assertEquals("myclass dummy test", $elem->getAttribute('class'));
     }
 
     public function testDetectLanguage()
     {
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $elem = $doc->createElement("div");
 
         Util::addClass($elem, "myclass language-test dummy test");
@@ -95,7 +97,7 @@ class UtilTest extends PHPUnit_Framework_TestCase {
 
     public function testIsPre()
     {
-        $doc = new DOMDocument();
+        $doc = new \DOMDocument();
         $elem = $doc->createElement("PRE");
 
         $this->assertTrue(Util::isPre($elem));

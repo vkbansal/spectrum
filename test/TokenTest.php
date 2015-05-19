@@ -1,8 +1,10 @@
 <?php
+namespace VKBansal\Test\Spectrum;
+
 use VKBansal\Spectrum\Token;
 use VKBansal\Spectrum\AssetManager;
 
-class TokenTest extends PHPUnit_Framework_TestCase
+class TokenTest extends \PHPUnit_Framework_TestCase
 {
     protected $doc;
     protected $prism;
