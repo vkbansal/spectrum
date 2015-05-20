@@ -13,8 +13,12 @@ All the changes can be found below. Order used:
 ### Added
 - `CodeBlockRenderer` for `league/commonmark`, to be used for code highlighting directly from markdown.
 
+### Changed
+- Tests now use `PSR-4` namespaces
+
 ### Fixed
 - Typos in `python` definition
+- Fixed comments in `clike` and `less`
 
 ## v0.4.2
 
