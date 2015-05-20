@@ -30,11 +30,11 @@ class CLike extends AbstractDefinition
         return [
             'comment' => [
                 [
-                    'pattern' => '/(^|[^\\\\])\/\*[\w\W]*?\*\//',
+                    'pattern' => '/(^|[^\\\\])\\/\\*[\\w\\W]*?\\*\\//',
                     'lookbehind' => true
                 ],
                 [
-                    'pattern' => '/(^|[^\\\\:])\\/\\/.+/',
+                    'pattern' => '/(^|[^\\\\:])\\/\\/.*/',
                     'lookbehind' => true
                 ]
             ],

@@ -38,7 +38,7 @@ class Less extends AbstractDefinition
             'comment'=> [
                 "/\\/\\*[\\w\\W]*?\\*\\//",
                 [
-                    "pattern"=> "/(^|[^\\\\])\\/\\/.+/",
+                    "pattern"=> "/(^|[^\\\\])\\/\\/.*/",
                     "lookbehind"=> true
                 ]
             ],
