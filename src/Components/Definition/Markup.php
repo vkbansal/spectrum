@@ -53,13 +53,13 @@ class Markup extends AbstractDefinition
             'doctype'=> "/<!DOCTYPE.+?>/",
             'cdata'=> "/<!\\[CDATA\\[[\\w\\W]*?]]>/i",
             "tag"=> [
-                "pattern"=> "/<\\/?[\\w:-]+\\s*(?:\\s+[\\w:-]+(?:=(?:(\"|')(\\\\?[\\w\\W])*?\\g{1}|[^\\s'\">=]+))?\\s*)*\\/?>/i",
+                "pattern"=> "/<\\/?[^\\s>\\/]+(?:\\s+[^\\s>\\/=]+(?:=(?:(\"|')(?:\\\\\\g{1}|\\\\?(?!\\g{1})[\\w\\W])*\\g{1}|[^\\s'\">=]+))?)*\\s*\\/?>/i",
                 "inside"=> [
                     "tag"=> [
-                        "pattern"=> "/^<\\/?[\\w:-]+/i",
+                        "pattern"=> "/^<\\/?[^\\s>\\/]+/i",
                         "inside"=> [
                             'punctuation'=> "/^<\\/?/",
-                            'namespace'=> "/^[\\w-]+?:/"
+                            'namespace'=> "/^[^\\s>\\/:]+:/"
                         ]
                     ],
                     'attr-value'=> [
@@ -70,9 +70,9 @@ class Markup extends AbstractDefinition
                     ],
                     'punctuation'=> "/\\/?>/",
                     'attr-name'=> [
-                        "pattern"=> "/[\\w:-]+/",
+                        "pattern"=> "/[^\\s>\\/]+/",
                         "inside"=> [
-                            "namespace"=> "/^[\\w-]+?:/"
+                            "namespace"=> "/^[^\\s>\\/:]+:/"
                         ]
                     ]
                 ]
