@@ -9,14 +9,17 @@ All the changes can be found below. Order used:
  - Security
 
 ## [master]
-- Updated `symfony` dependencies to `2.7.*`.
+
+## v0.5.0
 
 ### Added
 - `CodeBlockRenderer` for `league/commonmark`, to be used for code highlighting directly from markdown.
 - Added ES6 keywords `from`, `as`, `of`, `with` to `javascript`.
+- Added support for octal and binary numbers in `javascript`.
 
 ### Changed
 - Tests now use `PSR-4` namespaces.
+- Updated `symfony` dependencies to `2.7.*`.
 
 ### Fixed
 - Typos in `python` definition.
