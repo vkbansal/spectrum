@@ -13,6 +13,7 @@ All the changes can be found below. Order used:
 
 ### Added
 - `CodeBlockRenderer` for `league/commonmark`, to be used for code highlighting directly from markdown.
+- Added ES6 keywords `from`, `as`, `of`, `with` to `javascript`.
 
 ### Changed
 - Tests now use `PSR-4` namespaces.
@@ -20,6 +21,8 @@ All the changes can be found below. Order used:
 ### Fixed
 - Typos in `python` definition.
 - Fixed comments in `clike` and `less`.
+- Fixed Strings in `csharp`.
+- Fixed Tags in `markup` and `handlebars`.
 
 ## v0.4.2
 
