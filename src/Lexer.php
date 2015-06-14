@@ -4,7 +4,7 @@ namespace VKBansal\Spectrum;
 /**
  * Token Factory Class
  * @package VKBansal\Spectrum\Lexer
- * @version 0.4.2
+ * @version 0.5.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

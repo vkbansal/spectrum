@@ -6,7 +6,7 @@ use VKBansal\Spectrum\Language\AbstractDefinition;
 /**
  * Jade definition
  * @package VKBansal\Spectrum\Definition\Jade
- * @version 0.4.2
+ * @version 0.5.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */

@@ -4,7 +4,7 @@ namespace VKBansal\Spectrum\Plugin;
 /**
  * Interface for plugin
  * @package VKBansal\Spectrum\Plugin\PluginInterface
- * @version 0.4.2
+ * @version 0.5.0
  * @author Vivek Kumar Bansal <contact@vkbansal.me>
  * @license MIT
  */
